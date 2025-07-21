@@ -1,0 +1,881 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { breadcrumbSchema } from "../data/structuredData";
+
+const breadcrumbs = breadcrumbSchema([
+  { name: "Home", url: "https://ixone.de/" },
+  {
+    name: "Social Media Recruiting",
+    url: "https://ixone.de/social-media-recruiting",
+  },
+]);
+
+// Service Schema für Social Media Recruiting
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Social Media Recruiting Agentur Regensburg",
+  description:
+    "Professionelles Social Media Recruiting aus Regensburg. Finden Sie die besten Talente über Facebook, Instagram, LinkedIn und TikTok. Moderne Personalgewinnung für Unternehmen.",
+  provider: {
+    "@type": "LocalBusiness",
+    name: "iXone Digitalagentur",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Regensburg",
+      addressRegion: "Bayern",
+      addressCountry: "DE",
+    },
+    telephone: "+49-9401-533-88-73",
+  },
+  areaServed: ["Regensburg", "Bayern", "Deutschland"],
+  serviceType: "Social Media Recruiting",
+  offers: {
+    "@type": "Offer",
+    price: "800",
+    priceCurrency: "EUR",
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      price: "800",
+      priceCurrency: "EUR",
+      valueAddedTaxIncluded: true,
+    },
+  },
+};
+
+// FAQ Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Was ist Social Media Recruiting?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Social Media Recruiting ist die moderne Personalgewinnung über soziale Netzwerke wie LinkedIn, Facebook, Instagram und TikTok. Wir erreichen passive Kandidaten und sprechen Talente direkt an, die nicht aktiv nach Jobs suchen.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Welche Plattformen nutzen Sie für Recruiting?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Wir nutzen LinkedIn für Fach- und Führungskräfte, Facebook für lokale Positionen, Instagram für kreative Berufe, TikTok für junge Zielgruppen und Xing für den deutschsprachigen Raum.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Wie lange dauert Social Media Recruiting?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Erste Bewerbungen erhalten Sie meist nach 1-2 Wochen. Je nach Position und Anforderungen dauert die Besetzung 4-12 Wochen. Wir arbeiten kontinuierlich an der Optimierung der Kampagnen.",
+      },
+    },
+  ],
+};
+---
+
+<Layout
+  title="Social Media Recruiting Agentur Regensburg | Personalgewinnung | iXone"
+  description="Professionelles Social Media Recruiting aus Regensburg. Finden Sie die besten Talente über Facebook, Instagram, LinkedIn und TikTok. Moderne Personalgewinnung für Unternehmen."
+  canonical="https://ixone.de/social-media-recruiting"
+  structuredData={[breadcrumbs, serviceSchema, faqSchema]}
+>
+  <main class="pt-16 md:pt-20 bg-white">
+    <!-- Hero Section -->
+    <section
+      class="relative min-h-[80vh] bg-gradient-to-br from-pink-900 via-purple-800 to-indigo-900 text-white overflow-hidden"
+    >
+      <!-- Animated Background -->
+      <div class="absolute inset-0 opacity-20">
+        <div
+          class="absolute top-0 left-0 w-96 h-96 bg-pink-400 rounded-full filter blur-3xl animate-blob"
+        >
+        </div>
+        <div
+          class="absolute bottom-0 right-0 w-96 h-96 bg-purple-400 rounded-full filter blur-3xl animate-blob animation-delay-2000"
+        >
+        </div>
+        <div
+          class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-indigo-400 rounded-full filter blur-3xl animate-blob animation-delay-4000"
+        >
+        </div>
+      </div>
+
+      <!-- Social Media Icons Pattern -->
+      <div class="absolute inset-0 opacity-10">
+        <div class="h-full w-full flex items-center justify-center">
+          <div class="grid grid-cols-6 gap-8 transform rotate-12">
+            <div class="w-8 h-8 bg-white rounded-lg"></div>
+            <div class="w-8 h-8 bg-white rounded-full"></div>
+            <div class="w-8 h-8 bg-white rounded-lg"></div>
+            <div class="w-8 h-8 bg-white rounded-full"></div>
+            <div class="w-8 h-8 bg-white rounded-lg"></div>
+            <div class="w-8 h-8 bg-white rounded-full"></div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex items-center min-h-[80vh]"
+      >
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <!-- Content -->
+            <div class="lg:col-span-8 text-center lg:text-left">
+              <header>
+                <h1
+                  class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+                >
+                  <span class="block text-white">Social Media</span>
+                  <span
+                    class="block bg-gradient-to-r from-brand-orange via-yellow-400 to-brand-orange bg-clip-text text-transparent animate-gradient-x"
+                  >
+                    Recruiting
+                  </span>
+                  <span
+                    class="block text-white/90 text-2xl md:text-3xl font-normal"
+                  >
+                    Agentur Regensburg
+                  </span>
+                </h1>
+              </header>
+
+              <div
+                class="bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/20 mb-8"
+              >
+                <p class="text-xl md:text-2xl text-gray-200 leading-relaxed">
+                  <strong class="text-white"
+                    >Moderne Personalgewinnung aus Regensburg</strong
+                  > – Finden Sie die <em class="text-brand-orange"
+                    >besten Talente</em
+                  > über
+                  <em class="text-brand-orange"
+                    >Facebook, Instagram, LinkedIn & TikTok</em
+                  >. Erreichen Sie passive Kandidaten und qualifizierte
+                  Fachkräfte.
+                </p>
+              </div>
+
+              <!-- CTA Buttons -->
+              <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                <a
+                  href="/kontakt"
+                  class="group relative px-8 py-4 bg-gradient-to-r from-brand-orange to-yellow-500 hover:from-yellow-500 hover:to-brand-orange text-white font-bold text-lg rounded-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 shadow-2xl hover:shadow-brand-orange/25 overflow-hidden text-center"
+                  aria-label="Social Media Recruiting starten"
+                >
+                  <span
+                    class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"
+                  ></span>
+                  <span class="relative z-10">Recruiting starten</span>
+                </a>
+
+                <a
+                  href="#recruiting-services"
+                  class="group px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl font-semibold text-lg text-white hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 text-center"
+                >
+                  <span class="flex items-center justify-center gap-2">
+                    Services entdecken
+                    <svg
+                      class="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                  </span>
+                </a>
+              </div>
+
+              <!-- Trust Indicators -->
+              <div
+                class="flex flex-wrap justify-center lg:justify-start gap-6 text-white/70 text-sm"
+              >
+                <span class="flex items-center gap-2">
+                  <svg
+                    class="w-5 h-5 text-green-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-white/90 font-medium"
+                    >Passive Kandidaten</span
+                  >
+                </span>
+                <span class="flex items-center gap-2">
+                  <svg
+                    class="w-5 h-5 text-green-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-white/90 font-medium">Alle Plattformen</span
+                  >
+                </span>
+                <span class="flex items-center gap-2">
+                  <svg
+                    class="w-5 h-5 text-green-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-white/90 font-medium"
+                    >Schnelle Ergebnisse</span
+                  >
+                </span>
+              </div>
+            </div>
+
+            <!-- Visual Element -->
+            <div class="lg:col-span-4 relative">
+              <!-- Social Media Platform Cards -->
+              <div class="relative">
+                <!-- LinkedIn Card -->
+                <div
+                  class="w-72 h-40 bg-gradient-to-br from-blue-600/20 to-blue-800/20 backdrop-blur-md rounded-3xl border border-white/20 p-6 transform rotate-2 hover:rotate-1 transition-transform duration-500 animate-float relative z-10"
+                >
+                  <div class="flex items-center gap-3 mb-4">
+                    <div
+                      class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center"
+                    >
+                      <span class="text-white font-bold text-sm">Li</span>
+                    </div>
+                    <h3 class="text-white font-bold">LinkedIn</h3>
+                  </div>
+                  <p class="text-gray-200 text-sm">Fach- und Führungskräfte</p>
+                </div>
+
+                <!-- Instagram Card -->
+                <div
+                  class="absolute top-8 right-8 w-72 h-40 bg-gradient-to-br from-pink-500/20 to-purple-600/20 backdrop-blur-md rounded-3xl border border-white/20 p-6 transform -rotate-3 hover:rotate-0 transition-transform duration-500 animate-float-delayed"
+                >
+                  <div class="flex items-center gap-3 mb-4">
+                    <div
+                      class="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center"
+                    >
+                      <span class="text-white font-bold text-sm">IG</span>
+                    </div>
+                    <h3 class="text-white font-bold">Instagram</h3>
+                  </div>
+                  <p class="text-gray-200 text-sm">Kreative & junge Talente</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="recruiting-services" class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Unsere <span
+              class="bg-gradient-to-r from-brand-orange via-yellow-400 to-brand-orange bg-clip-text text-transparent"
+              >Recruiting Services</span
+            >
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Moderne Personalgewinnung über alle relevanten Social Media
+            Plattformen
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+        >
+          <!-- LinkedIn Recruiting -->
+          <article
+            class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-8 text-center border border-gray-100"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300"
+            >
+              <span class="text-white font-bold text-lg">Li</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">
+              LinkedIn Recruiting
+            </h3>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              <strong>Professionelle Fach- und Führungskräfte</strong> gezielt ansprechen.
+              LinkedIn Ads, InMail-Kampagnen und Talent Solutions für qualifizierte
+              Kandidaten.
+            </p>
+            <ul class="text-gray-600 text-sm space-y-2 mb-6">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-blue-600 rounded-full"></span>
+                Sponsored InMail
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-blue-600 rounded-full"></span>
+                LinkedIn Ads
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-blue-600 rounded-full"></span>
+                Talent Solutions
+              </li>
+            </ul>
+            <div class="text-brand-orange font-bold text-lg">
+              ab 1.200€/Monat
+            </div>
+          </article>
+
+          <!-- Facebook Recruiting -->
+          <article
+            class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-8 text-center border border-gray-100"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300"
+            >
+              <span class="text-white font-bold text-lg">f</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">
+              Facebook Recruiting
+            </h3>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              <strong>Lokale Talente und Quereinsteiger</strong> erreichen. Facebook
+              Jobs, zielgruppenspezifische Ads und Community-basiertes Recruiting.
+            </p>
+            <ul class="text-gray-600 text-sm space-y-2 mb-6">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                Facebook Jobs
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                Zielgruppen-Ads
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                Community Recruiting
+              </li>
+            </ul>
+            <div class="text-brand-orange font-bold text-lg">ab 800€/Monat</div>
+          </article>
+
+          <!-- Instagram Recruiting -->
+          <article
+            class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-8 text-center border border-gray-100"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300"
+            >
+              <span class="text-white font-bold text-lg">IG</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">
+              Instagram Recruiting
+            </h3>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              <strong>Kreative und junge Zielgruppen</strong> ansprechen. Story Ads,
+              Influencer Recruiting und visuelles Employer Branding.
+            </p>
+            <ul class="text-gray-600 text-sm space-y-2 mb-6">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-pink-500 rounded-full"></span>
+                Story Ads
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-pink-500 rounded-full"></span>
+                Employer Branding
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-pink-500 rounded-full"></span>
+                Influencer Recruiting
+              </li>
+            </ul>
+            <div class="text-brand-orange font-bold text-lg">ab 600€/Monat</div>
+          </article>
+
+          <!-- TikTok Recruiting -->
+          <article
+            class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-8 text-center border border-gray-100"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-r from-gray-800 to-gray-900 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300"
+            >
+              <span class="text-white font-bold text-lg">TT</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">
+              TikTok Recruiting
+            </h3>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              <strong>Gen Z und Millennials</strong> für moderne Unternehmen. Authentische
+              Recruiting-Videos und Trend-basierte Kampagnen.
+            </p>
+            <ul class="text-gray-600 text-sm space-y-2 mb-6">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-gray-800 rounded-full"></span>
+                Recruiting Videos
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-gray-800 rounded-full"></span>
+                Trend-Kampagnen
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-gray-800 rounded-full"></span>
+                Authentisches Branding
+              </li>
+            </ul>
+            <div class="text-brand-orange font-bold text-lg">ab 900€/Monat</div>
+          </article>
+
+          <!-- Xing Recruiting -->
+          <article
+            class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-8 text-center border border-gray-100"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-r from-green-600 to-green-800 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300"
+            >
+              <span class="text-white font-bold text-lg">X</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">
+              Xing Recruiting
+            </h3>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              <strong>Deutschsprachige Fachkräfte</strong> im DACH-Raum. Xing E-Recruiting,
+              TalentManager und Premium-Stellenanzeigen.
+            </p>
+            <ul class="text-gray-600 text-sm space-y-2 mb-6">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-green-600 rounded-full"></span>
+                E-Recruiting
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-green-600 rounded-full"></span>
+                TalentManager
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-green-600 rounded-full"></span>
+                Premium Anzeigen
+              </li>
+            </ul>
+            <div class="text-brand-orange font-bold text-lg">ab 700€/Monat</div>
+          </article>
+
+          <!-- Multi-Channel Recruiting -->
+          <article
+            class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-8 text-center border border-gray-100"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300"
+            >
+              <svg
+                class="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">
+              Multi-Channel Recruiting
+            </h3>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              <strong>Alle Plattformen kombiniert</strong> für maximale Reichweite.
+              Strategische Kampagnen-Orchestrierung und Cross-Platform-Optimierung.
+            </p>
+            <ul class="text-gray-600 text-sm space-y-2 mb-6">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
+                Alle Plattformen
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
+                Strategische Planung
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
+                Performance Tracking
+              </li>
+            </ul>
+            <div class="text-brand-orange font-bold text-lg">
+              ab 1.500€/Monat
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Warum <span
+              class="bg-gradient-to-r from-brand-orange via-yellow-400 to-brand-orange bg-clip-text text-transparent"
+              >Social Media Recruiting?</span
+            >
+          </h2>
+          <p class="text-xl text-gray-600">
+            Die Vorteile moderner Personalgewinnung
+          </p>
+        </div>
+
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white rounded-xl p-8 shadow-lg text-center">
+              <div
+                class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6"
+              >
+                <svg
+                  class="w-8 h-8 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">
+                Passive Kandidaten erreichen
+              </h3>
+              <p class="text-gray-600">
+                95% der besten Talente suchen nicht aktiv nach Jobs. Wir
+                sprechen sie direkt an.
+              </p>
+            </div>
+
+            <div class="bg-white rounded-xl p-8 shadow-lg text-center">
+              <div
+                class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6"
+              >
+                <svg
+                  class="w-8 h-8 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">
+                Schnellere Besetzung
+              </h3>
+              <p class="text-gray-600">
+                Erste Bewerbungen nach 1-2 Wochen. Deutlich schneller als
+                klassische Stellenanzeigen.
+              </p>
+            </div>
+
+            <div class="bg-white rounded-xl p-8 shadow-lg text-center">
+              <div
+                class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6"
+              >
+                <svg
+                  class="w-8 h-8 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">
+                Höhere Qualität
+              </h3>
+              <p class="text-gray-600">
+                Präzise Zielgruppen-Ansprache führt zu qualifizierteren
+                Bewerbungen.
+              </p>
+            </div>
+
+            <div class="bg-white rounded-xl p-8 shadow-lg text-center">
+              <div
+                class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6"
+              >
+                <svg
+                  class="w-8 h-8 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">
+                Kosteneffizienz
+              </h3>
+              <p class="text-gray-600">
+                Niedrigere Kosten pro Bewerbung im Vergleich zu klassischen
+                Recruiting-Methoden.
+              </p>
+            </div>
+
+            <div class="bg-white rounded-xl p-8 shadow-lg text-center">
+              <div
+                class="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6"
+              >
+                <svg
+                  class="w-8 h-8 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">
+                Employer Branding
+              </h3>
+              <p class="text-gray-600">
+                Stärken Sie Ihre Arbeitgebermarke und werden Sie als attraktiver
+                Arbeitgeber wahrgenommen.
+              </p>
+            </div>
+
+            <div class="bg-white rounded-xl p-8 shadow-lg text-center">
+              <div
+                class="w-16 h-16 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6"
+              >
+                <svg
+                  class="w-8 h-8 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">
+                Messbare Erfolge
+              </h3>
+              <p class="text-gray-600">
+                Transparente Kennzahlen und detaillierte Reports für optimale
+                Kampagnen-Performance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Häufig gestellte <span
+                class="bg-gradient-to-r from-brand-orange via-yellow-400 to-brand-orange bg-clip-text text-transparent"
+                >Fragen</span
+              >
+            </h2>
+            <p class="text-xl text-gray-600">
+              Antworten auf die wichtigsten Fragen zu Social Media Recruiting
+            </p>
+          </div>
+
+          <div class="space-y-6">
+            <details
+              class="bg-white rounded-lg shadow-md overflow-hidden group border border-gray-200"
+            >
+              <summary
+                class="px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
+              >
+                <h3 class="text-lg font-semibold text-gray-900">
+                  Was ist Social Media Recruiting?
+                </h3>
+                <svg
+                  class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform duration-200"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
+              <div class="px-6 pb-4 text-gray-600">
+                <p>
+                  Social Media Recruiting ist die moderne Personalgewinnung über
+                  soziale Netzwerke wie LinkedIn, Facebook, Instagram und
+                  TikTok. Wir erreichen passive Kandidaten und sprechen Talente
+                  direkt an, die nicht aktiv nach Jobs suchen.
+                </p>
+              </div>
+            </details>
+
+            <details
+              class="bg-white rounded-lg shadow-md overflow-hidden group border border-gray-200"
+            >
+              <summary
+                class="px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
+              >
+                <h3 class="text-lg font-semibold text-gray-900">
+                  Welche Plattformen nutzen Sie für Recruiting?
+                </h3>
+                <svg
+                  class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform duration-200"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
+              <div class="px-6 pb-4 text-gray-600">
+                <p>
+                  Wir nutzen LinkedIn für Fach- und Führungskräfte, Facebook für
+                  lokale Positionen, Instagram für kreative Berufe, TikTok für
+                  junge Zielgruppen und Xing für den deutschsprachigen Raum.
+                </p>
+              </div>
+            </details>
+
+            <details
+              class="bg-white rounded-lg shadow-md overflow-hidden group border border-gray-200"
+            >
+              <summary
+                class="px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
+              >
+                <h3 class="text-lg font-semibold text-gray-900">
+                  Wie lange dauert Social Media Recruiting?
+                </h3>
+                <svg
+                  class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform duration-200"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
+              <div class="px-6 pb-4 text-gray-600">
+                <p>
+                  Erste Bewerbungen erhalten Sie meist nach 1-2 Wochen. Je nach
+                  Position und Anforderungen dauert die Besetzung 4-12 Wochen.
+                  Wir arbeiten kontinuierlich an der Optimierung der Kampagnen.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section
+      class="py-16 md:py-24 bg-gradient-to-r from-brand-orange to-yellow-500"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center text-white">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            Bereit für modernes Recruiting?
+          </h2>
+          <p class="text-xl mb-8 opacity-90">
+            Finden Sie die besten Talente über Social Media. Kostenlose Beratung
+            und Recruiting-Strategie.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/kontakt"
+              class="bg-white text-brand-orange hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            >
+              Recruiting starten
+            </a>
+            <a
+              href="tel:+4994015338873"
+              class="border-2 border-white text-white hover:bg-white hover:text-brand-orange px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                ></path>
+              </svg>
+              Direkt anrufen
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

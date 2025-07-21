@@ -1,0 +1,853 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { breadcrumbSchema } from "../data/structuredData";
+
+const breadcrumbs = breadcrumbSchema([
+  { name: "Home", url: "https://ixone.de/" },
+  { name: "Online-Marketing", url: "https://ixone.de/online-marketing" },
+]);
+
+// Service Schema für Online-Marketing
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Online-Marketing Agentur Regensburg",
+  description:
+    "Professionelles Online-Marketing aus Regensburg. SEA Kampagnen, Performance Marketing, Conversion-Optimierung und digitale Strategien für maximalen ROI.",
+  provider: {
+    "@type": "LocalBusiness",
+    name: "iXone Digitalagentur",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Regensburg",
+      addressRegion: "Bayern",
+      addressCountry: "DE",
+    },
+    telephone: "+49-9401-533-88-73",
+  },
+  areaServed: ["Regensburg", "Bayern", "Deutschland"],
+  serviceType: "Online-Marketing",
+  offers: {
+    "@type": "Offer",
+    price: "500",
+    priceCurrency: "EUR",
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      price: "500",
+      priceCurrency: "EUR",
+      valueAddedTaxIncluded: true,
+    },
+  },
+};
+
+// FAQ Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Was umfasst Online-Marketing?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Online-Marketing umfasst SEA Kampagnen, Google Ads, Performance Marketing, Conversion-Optimierung, Display Advertising, Remarketing und strategische Kampagnen-Planung für maximalen ROI.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Wie schnell sehe ich Ergebnisse im Online-Marketing?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Online-Marketing zeigt sofortige Ergebnisse. SEA Kampagnen sind nach 24-48 Stunden live. Optimale Performance erreichen wir nach 2-4 Wochen kontinuierlicher Optimierung und A/B-Tests.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Was kostet professionelles Online-Marketing?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Online-Marketing startet bei 500€ monatlich plus Werbebudget. Das Werbebudget bestimmen Sie selbst. Wir optimieren Ihre Kampagnen für maximalen ROI und niedrigste Kosten pro Conversion.",
+      },
+    },
+  ],
+};
+---
+
+<Layout
+  title="Online-Marketing Agentur Regensburg | SEA Kampagnen & Performance Marketing | iXone"
+  description="Professionelles Online-Marketing aus Regensburg. SEA Kampagnen, Google Ads, Performance Marketing und Conversion-Optimierung für maximalen ROI. Jetzt starten!"
+  canonical="https://ixone.de/online-marketing"
+  structuredData={[breadcrumbs, serviceSchema, faqSchema]}
+>
+  <main class="pt-16 md:pt-20 bg-white">
+    <!-- Hero Section -->
+    <section
+      class="relative min-h-[80vh] bg-gradient-to-br from-orange-900 via-red-800 to-pink-900 text-white overflow-hidden"
+    >
+      <!-- Animated Background -->
+      <div class="absolute inset-0 opacity-20">
+        <div
+          class="absolute top-0 left-0 w-96 h-96 bg-orange-400 rounded-full filter blur-3xl animate-blob"
+        >
+        </div>
+        <div
+          class="absolute bottom-0 right-0 w-96 h-96 bg-red-400 rounded-full filter blur-3xl animate-blob animation-delay-2000"
+        >
+        </div>
+        <div
+          class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-pink-400 rounded-full filter blur-3xl animate-blob animation-delay-4000"
+        >
+        </div>
+      </div>
+
+      <!-- Marketing Icons Pattern -->
+      <div class="absolute inset-0 opacity-10">
+        <div class="h-full w-full flex items-center justify-center">
+          <div class="grid grid-cols-6 gap-8 transform rotate-12">
+            <div class="w-8 h-8 bg-white rounded-lg"></div>
+            <div class="w-8 h-8 bg-white rounded-full"></div>
+            <div class="w-8 h-8 bg-white rounded-lg"></div>
+            <div class="w-8 h-8 bg-white rounded-full"></div>
+            <div class="w-8 h-8 bg-white rounded-lg"></div>
+            <div class="w-8 h-8 bg-white rounded-full"></div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex items-center min-h-[80vh]"
+      >
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <!-- Content -->
+            <div class="lg:col-span-8 text-center lg:text-left">
+              <header>
+                <h1
+                  class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+                >
+                  <span class="block text-white">Online-Marketing</span>
+                  <span
+                    class="block bg-gradient-to-r from-brand-orange via-yellow-400 to-brand-orange bg-clip-text text-transparent animate-gradient-x"
+                  >
+                    Agentur
+                  </span>
+                  <span
+                    class="block text-white/90 text-2xl md:text-3xl font-normal"
+                  >
+                    Regensburg
+                  </span>
+                </h1>
+              </header>
+
+              <div
+                class="bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/20 mb-8"
+              >
+                <p class="text-xl md:text-2xl text-gray-200 leading-relaxed">
+                  <strong class="text-white"
+                    >Strategisches Online-Marketing aus Regensburg</strong
+                  > –
+                  <em class="text-brand-orange">SEA Kampagnen</em>,
+                  <em class="text-brand-orange">Performance Marketing</em> und
+                  <em class="text-brand-orange">Conversion-Optimierung</em> für maximalen
+                  ROI und messbare Erfolge.
+                </p>
+              </div>
+
+              <!-- CTA Buttons -->
+              <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                <a
+                  href="/kontakt"
+                  class="group relative px-8 py-4 bg-gradient-to-r from-brand-orange to-yellow-500 hover:from-yellow-500 hover:to-brand-orange text-white font-bold text-lg rounded-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 shadow-2xl hover:shadow-brand-orange/25 overflow-hidden text-center"
+                  aria-label="Online-Marketing Strategie entwickeln"
+                >
+                  <span
+                    class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"
+                  ></span>
+                  <span class="relative z-10"
+                    >Marketing-Strategie entwickeln</span
+                  >
+                </a>
+
+                <a
+                  href="#marketing-services"
+                  class="group px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl font-semibold text-lg text-white hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 text-center"
+                >
+                  <span class="flex items-center justify-center gap-2">
+                    Services entdecken
+                    <svg
+                      class="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                  </span>
+                </a>
+              </div>
+
+              <!-- Trust Indicators -->
+              <div
+                class="flex flex-wrap justify-center lg:justify-start gap-6 text-white/70 text-sm"
+              >
+                <span class="flex items-center gap-2">
+                  <svg
+                    class="w-5 h-5 text-green-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-white/90 font-medium"
+                    >Sofortige Ergebnisse</span
+                  >
+                </span>
+                <span class="flex items-center gap-2">
+                  <svg
+                    class="w-5 h-5 text-green-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-white/90 font-medium">Maximaler ROI</span>
+                </span>
+                <span class="flex items-center gap-2">
+                  <svg
+                    class="w-5 h-5 text-green-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-white/90 font-medium"
+                    >Transparente Kosten</span
+                  >
+                </span>
+              </div>
+            </div>
+
+            <!-- Visual Element -->
+            <div class="lg:col-span-4 relative">
+              <!-- Marketing Cards -->
+              <div class="relative">
+                <!-- SEA Card -->
+                <div
+                  class="w-72 h-40 bg-gradient-to-br from-orange-500/20 to-red-500/20 backdrop-blur-md rounded-3xl border border-white/20 p-6 transform rotate-2 hover:rotate-1 transition-transform duration-500 animate-float relative z-10"
+                >
+                  <div class="flex items-center gap-3 mb-4">
+                    <div
+                      class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-6 h-6 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <h3 class="text-white font-bold">SEA Kampagnen</h3>
+                  </div>
+                  <p class="text-gray-200 text-sm">
+                    Google Ads & Performance Marketing
+                  </p>
+                </div>
+
+                <!-- Performance Card -->
+                <div
+                  class="absolute top-8 right-8 w-72 h-40 bg-gradient-to-br from-pink-500/20 to-purple-500/20 backdrop-blur-md rounded-3xl border border-white/20 p-6 transform -rotate-3 hover:rotate-0 transition-transform duration-500 animate-float-delayed"
+                >
+                  <div class="flex items-center gap-3 mb-4">
+                    <div
+                      class="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-500 rounded-xl flex items-center justify-center"
+                    >
+                      <svg
+                        class="w-6 h-6 text-white"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                      </svg>
+                    </div>
+                    <h3 class="text-white font-bold">Performance</h3>
+                  </div>
+                  <p class="text-gray-200 text-sm">ROI-optimierte Kampagnen</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="marketing-services" class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Unsere <span
+              class="bg-gradient-to-r from-brand-orange via-yellow-400 to-brand-orange bg-clip-text text-transparent"
+              >Online-Marketing</span
+            > Services
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Umfassende digitale Marketing-Lösungen für maximale
+            Online-Performance
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+        >
+          <!-- SEA Kampagnen -->
+          <article
+            class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-8 text-center border border-gray-100"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300"
+            >
+              <svg
+                class="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">SEA Kampagnen</h3>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              <strong>Professionelle Google Ads Betreuung</strong> für sofortige
+              Sichtbarkeit. Keyword-Optimierung, Anzeigentexte und Bid-Management
+              für niedrigste Klickpreise.
+            </p>
+            <ul class="text-gray-600 text-sm space-y-2 mb-6">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
+                Google Ads Kampagnen
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
+                Microsoft Ads (Bing)
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
+                Shopping Kampagnen
+              </li>
+            </ul>
+            <div class="text-brand-orange font-bold text-lg">ab 500€/Monat</div>
+            <a
+              href="/sea-kampagnen"
+              class="inline-block mt-4 text-brand-orange font-semibold hover:text-brand-orange-dark transition-colors duration-200"
+            >
+              Mehr erfahren →
+            </a>
+          </article>
+
+          <!-- Conversion Optimierung -->
+          <article
+            class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-8 text-center border border-gray-100"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300"
+            >
+              <svg
+                class="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">
+              Conversion Optimierung
+            </h3>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              <strong>Maximierung Ihrer Conversion-Rate</strong> durch datenbasierte
+              Optimierung. A/B-Tests, Landing Page Optimierung und User Experience
+              Verbesserungen.
+            </p>
+            <ul class="text-gray-600 text-sm space-y-2 mb-6">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                A/B Testing
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                Landing Page Optimierung
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                UX/UI Verbesserungen
+              </li>
+            </ul>
+            <div class="text-brand-orange font-bold text-lg">ab 800€/Monat</div>
+          </article>
+
+          <!-- Performance Marketing -->
+          <article
+            class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-8 text-center border border-gray-100"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300"
+            >
+              <svg
+                class="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">
+              Performance Marketing
+            </h3>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              <strong>ROI-orientierte Kampagnen</strong> mit messbaren Ergebnissen.
+              Datenbasierte Strategien für maximale Performance und Kosteneffizienz.
+            </p>
+            <ul class="text-gray-600 text-sm space-y-2 mb-6">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
+                ROI-Optimierung
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
+                Performance Tracking
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span>
+                Datenanalyse
+              </li>
+            </ul>
+            <div class="text-brand-orange font-bold text-lg">ab 700€/Monat</div>
+          </article>
+
+          <!-- Display Advertising -->
+          <article
+            class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-8 text-center border border-gray-100"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300"
+            >
+              <svg
+                class="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">
+              Display Advertising
+            </h3>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              <strong>Visuelle Werbeanzeigen</strong> für maximale Reichweite und
+              Markenbekanntheit. Banner-Werbung, Rich Media und programmatische Kampagnen.
+            </p>
+            <ul class="text-gray-600 text-sm space-y-2 mb-6">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                Banner-Werbung
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                Rich Media Ads
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                Programmatic Advertising
+              </li>
+            </ul>
+            <div class="text-brand-orange font-bold text-lg">ab 600€/Monat</div>
+          </article>
+
+          <!-- Remarketing -->
+          <article
+            class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-8 text-center border border-gray-100"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300"
+            >
+              <svg
+                class="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Remarketing</h3>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              <strong>Gezielte Ansprache</strong> von Website-Besuchern für höhere
+              Conversions. Personalisierte Werbeanzeigen und strategische Retargeting-Kampagnen.
+            </p>
+            <ul class="text-gray-600 text-sm space-y-2 mb-6">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-indigo-500 rounded-full"></span>
+                Website Remarketing
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-indigo-500 rounded-full"></span>
+                Dynamic Remarketing
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-indigo-500 rounded-full"></span>
+                Cross-Platform Retargeting
+              </li>
+            </ul>
+            <div class="text-brand-orange font-bold text-lg">ab 400€/Monat</div>
+          </article>
+
+          <!-- Analytics & Reporting -->
+          <article
+            class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-8 text-center border border-gray-100"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300"
+            >
+              <svg
+                class="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-4">
+              Analytics & Reporting
+            </h3>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              <strong>Transparente Erfolgsmessung</strong> mit detaillierten Reports.
+              Google Analytics, Conversion-Tracking und ROI-Analyse für optimale
+              Entscheidungen.
+            </p>
+            <ul class="text-gray-600 text-sm space-y-2 mb-6">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span>
+                Google Analytics Setup
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span>
+                Conversion Tracking
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-yellow-500 rounded-full"></span>
+                Monatliche Reports
+              </li>
+            </ul>
+            <div class="text-brand-orange font-bold text-lg">Inklusive</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-16 md:py-24 bg-gray-50">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Unser <span
+              class="bg-gradient-to-r from-brand-orange via-yellow-400 to-brand-orange bg-clip-text text-transparent"
+              >Marketing</span
+            > Prozess
+          </h2>
+          <p class="text-xl text-gray-600">
+            Strategisch, datenbasiert und ergebnisorientiert
+          </p>
+        </div>
+
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="text-center">
+              <div
+                class="w-16 h-16 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl"
+              >
+                1
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">
+                Analyse & Strategie
+              </h3>
+              <p class="text-gray-600">
+                Umfassende Analyse Ihrer Zielgruppe, Konkurrenz und
+                Marktposition für optimale Kampagnen-Performance
+              </p>
+            </div>
+
+            <div class="text-center">
+              <div
+                class="w-16 h-16 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl"
+              >
+                2
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">
+                Kampagnen-Setup
+              </h3>
+              <p class="text-gray-600">
+                Professionelle Einrichtung und Konfiguration Ihrer
+                Marketing-Kampagnen auf allen relevanten Plattformen
+              </p>
+            </div>
+
+            <div class="text-center">
+              <div
+                class="w-16 h-16 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl"
+              >
+                3
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Optimierung</h3>
+              <p class="text-gray-600">
+                Kontinuierliche Überwachung und datenbasierte Optimierung für
+                maximalen ROI und beste Performance
+              </p>
+            </div>
+
+            <div class="text-center">
+              <div
+                class="w-16 h-16 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl"
+              >
+                4
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-4">Reporting</h3>
+              <p class="text-gray-600">
+                Transparente Berichterstattung und strategische Skalierung
+                erfolgreicher Kampagnen
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Häufig gestellte <span
+                class="bg-gradient-to-r from-brand-orange via-yellow-400 to-brand-orange bg-clip-text text-transparent"
+                >Fragen</span
+              >
+            </h2>
+            <p class="text-xl text-gray-600">
+              Antworten auf die wichtigsten Fragen zu Online-Marketing
+            </p>
+          </div>
+
+          <div class="space-y-6">
+            <details
+              class="bg-white rounded-lg shadow-md overflow-hidden group border border-gray-200"
+            >
+              <summary
+                class="px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
+              >
+                <h3 class="text-lg font-semibold text-gray-900">
+                  Was umfasst Online-Marketing?
+                </h3>
+                <svg
+                  class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform duration-200"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
+              <div class="px-6 pb-4 text-gray-600">
+                <p>
+                  Online-Marketing umfasst SEA Kampagnen, Google Ads,
+                  Performance Marketing, Conversion-Optimierung, Display
+                  Advertising, Remarketing und strategische Kampagnen-Planung
+                  für maximalen ROI.
+                </p>
+              </div>
+            </details>
+
+            <details
+              class="bg-white rounded-lg shadow-md overflow-hidden group border border-gray-200"
+            >
+              <summary
+                class="px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
+              >
+                <h3 class="text-lg font-semibold text-gray-900">
+                  Wie schnell sehe ich Ergebnisse im Online-Marketing?
+                </h3>
+                <svg
+                  class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform duration-200"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
+              <div class="px-6 pb-4 text-gray-600">
+                <p>
+                  Online-Marketing zeigt sofortige Ergebnisse. SEA Kampagnen
+                  sind nach 24-48 Stunden live. Optimale Performance erreichen
+                  wir nach 2-4 Wochen kontinuierlicher Optimierung und
+                  A/B-Tests.
+                </p>
+              </div>
+            </details>
+
+            <details
+              class="bg-white rounded-lg shadow-md overflow-hidden group border border-gray-200"
+            >
+              <summary
+                class="px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
+              >
+                <h3 class="text-lg font-semibold text-gray-900">
+                  Was kostet professionelles Online-Marketing?
+                </h3>
+                <svg
+                  class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform duration-200"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
+              <div class="px-6 pb-4 text-gray-600">
+                <p>
+                  Online-Marketing startet bei 500€ monatlich plus Werbebudget.
+                  Das Werbebudget bestimmen Sie selbst. Wir optimieren Ihre
+                  Kampagnen für maximalen ROI und niedrigste Kosten pro
+                  Conversion.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section
+      class="py-16 md:py-24 bg-gradient-to-r from-brand-orange to-yellow-500"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center text-white">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            Bereit für erfolgreiches Online-Marketing?
+          </h2>
+          <p class="text-xl mb-8 opacity-90">
+            Lassen Sie uns gemeinsam Ihre digitale Marketing-Strategie
+            entwickeln. Kostenlose Beratung und maßgeschneidertes Konzept.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/kontakt"
+              class="bg-white text-brand-orange hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            >
+              Strategie entwickeln
+            </a>
+            <a
+              href="tel:+4994015338873"
+              class="border-2 border-white text-white hover:bg-white hover:text-brand-orange px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                ></path>
+              </svg>
+              Direkt anrufen
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

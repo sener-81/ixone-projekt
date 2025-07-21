@@ -1,0 +1,161 @@
+---
+import { navItems } from '../data/navigation';
+import Logo from './Logo.astro';
+import MobileMenu from './MobileMenu.astro';
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b border-gray-200/50 shadow-sm supports-[backdrop-filter]:bg-white/80" id="header">
+  <div class="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16">
+    <div class="flex justify-between items-center h-14 sm:h-16 md:h-18 lg:h-20 xl:h-22">
+      <!-- Logo -->
+      <div class="flex-shrink-0 z-50">
+        <Logo />
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center space-x-1 xl:space-x-2" role="navigation" aria-label="Hauptnavigation">
+        {navItems.map((item) => (
+          <a 
+            href={item.href} 
+            class="nav-item relative px-3 xl:px-4 py-2 text-sm lg:text-base xl:text-lg text-gray-700 hover:text-brand-orange transition-colors duration-300 font-medium group outline-none"
+            aria-label={item.description}
+          >
+            <!-- Text -->
+            <span class="relative z-10">{item.label}</span>
+            
+            <!-- Animierte Unterlinie -->
+            <span class="absolute bottom-1 left-3 xl:left-4 right-3 xl:right-4 h-0.5 bg-gradient-to-r from-brand-orange to-yellow-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full"></span>
+          </a>
+        ))}
+      </nav>
+      
+      <!-- Enhanced CTA Button -->
+      <div class="hidden lg:flex">
+        <a 
+          href="/kontakt" 
+          class="group relative px-4 lg:px-6 xl:px-8 py-2.5 lg:py-3 xl:py-4 bg-gradient-to-r from-brand-orange to-yellow-500 text-white font-semibold text-sm lg:text-base xl:text-lg rounded-lg xl:rounded-xl shadow-lg hover:shadow-brand-orange/25 transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105 outline-none overflow-hidden"
+          aria-label="Kostenloses Beratungsgespräch vereinbaren"
+        >
+          <!-- Shimmer Effect -->
+          <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+          
+          <!-- Text -->
+          <span class="relative z-10 flex items-center gap-1.5 lg:gap-2">
+            <span class="hidden xl:inline">Projekt starten</span>
+            <span class="xl:hidden">Starten</span>
+            <svg class="w-3 h-3 lg:w-4 lg:h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+      
+      <!-- Mobile Menu Component -->
+      <MobileMenu />
+    </div>
+  </div>
+</header>
+
+<script>
+  // Enhanced header scroll effect with hide/show functionality
+  const header = document.getElementById('header');
+  let ticking = false;
+  let lastScrollY = 0;
+  let isScrollingDown = false;
+  
+  function updateHeader() {
+    const scrollY = window.scrollY;
+    const scrollDirection = scrollY > lastScrollY ? 'down' : 'up';
+    const scrollDifference = Math.abs(scrollY - lastScrollY);
+    
+    // Only update if scroll difference is significant (prevents jitter)
+    if (scrollDifference < 5) {
+      ticking = false;
+      return;
+    }
+    
+    // Add scrolled class for background change
+    if (scrollY > 50) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+    
+    // Hide/show navigation based on scroll direction
+    if (scrollDirection === 'down' && scrollY > 100) {
+      // Scrolling down - hide header
+      header?.classList.add('header-hidden');
+      isScrollingDown = true;
+    } else if (scrollDirection === 'up' || scrollY <= 100) {
+      // Scrolling up or near top - show header
+      header?.classList.remove('header-hidden');
+      isScrollingDown = false;
+    }
+    
+    lastScrollY = scrollY;
+    ticking = false;
+  }
+  
+  function requestTick() {
+    if (!ticking) {
+      requestAnimationFrame(updateHeader);
+      ticking = true;
+    }
+  }
+  
+  window.addEventListener('scroll', requestTick, { passive: true });
+</script>
+
+<style>
+  /* Header Styles */
+  #header {
+    will-change: background-color, backdrop-filter, transform;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease, backdrop-filter 0.3s ease;
+  }
+  
+  #header.header-hidden {
+    transform: translateY(-100%);
+  }
+  
+  #header.scrolled {
+    @apply bg-white shadow-lg backdrop-blur-md;
+  }
+  
+  /* Navigation Styles */
+  .nav-item {
+    position: relative;
+  }
+  
+  .nav-item:focus,
+  .nav-item:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  
+  /* Responsive Navigation */
+  @media (max-width: 1024px) {
+    .nav-item {
+      font-size: 0.875rem;
+      padding: 0.5rem 0.75rem;
+    }
+  }
+  
+  /* Reduced Motion Support */
+  @media (prefers-reduced-motion: reduce) {
+    #header,
+    #header.header-hidden,
+    .nav-item,
+    .nav-item span {
+      transition: none;
+      animation: none;
+      transform: none;
+    }
+  }
+  
+  /* High DPI Displays */
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    #header {
+      border-bottom-width: 0.5px;
+    }
+  }
+</style>

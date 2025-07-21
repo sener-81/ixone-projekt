@@ -1,0 +1,29 @@
+---
+// src/pages/index.astro
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Services from "../components/Services.astro";
+import WhyChooseUs from "../components/WhyChooseUs.astro";
+import CTA from "../components/CTA.astro";
+import { breadcrumbSchema } from "../data/structuredData";
+
+const breadcrumbs = breadcrumbSchema([
+  { name: "Home", url: "https://ixone.de/" },
+]);
+---
+
+<Layout
+  title="iXone – Digitalagentur Regensburg | Webdesign, SEO & Online-Marketing"
+  description="Ihre Digitalagentur aus Regensburg! …"
+  canonical="https://ixone.de/"
+  structuredData={[breadcrumbs]}
+>
+  <!-- Kein Header hier mehr! -->
+  <main class="pt-16 md:pt-20">
+    <Hero />
+    <Services />
+    <WhyChooseUs />
+    <CTA />
+  </main>
+  <!-- Kein Footer mehr! -->
+</Layout>

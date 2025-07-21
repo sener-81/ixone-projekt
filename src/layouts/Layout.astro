@@ -1,0 +1,53 @@
+---
+// src/layouts/Layout.astro
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import BackTop from "../components/BackTop.astro";
+import Head from "../components/Head.astro";
+import "../styles/global.css";
+
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  noindex?: boolean;
+  structuredData?: object[];
+}
+
+const { title, description, canonical, ogImage, noindex, structuredData } =
+  Astro.props as Props;
+---
+
+<!doctype html>
+<html lang="de" class="scroll-smooth">
+  <head>
+    <Head
+      title={title}
+      description={description}
+      canonical={canonical}
+      ogImage={ogImage}
+      noindex={noindex}
+      structuredData={structuredData}
+    />
+  </head>
+
+  <body class="bg-white text-gray-900 antialiased">
+    <!-- Skip Link für Accessibility -->
+    <a href="#main-content" class="skip-to-main">Zum Hauptinhalt springen</a>
+
+    <!-- Header -->
+    <Header />
+
+    <!-- Main Content -->
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <Footer />
+
+    <!-- BackTop Button -->
+    <BackTop />
+  </body>
+</html>

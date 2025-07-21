@@ -1,0 +1,1204 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { breadcrumbSchema } from "../../data/structuredData";
+
+const breadcrumbs = breadcrumbSchema([
+  { name: "Home", url: "https://ixone.de/" },
+  { name: "Blog", url: "https://ixone.de/blog" },
+  { name: "SEO Trends 2025", url: "https://ixone.de/blog/seo-trends-2025" },
+]);
+
+// Blog-spezifische Structured Data
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline:
+    "SEO Trends 2025: Was Sie jetzt wissen müssen für bessere Google Rankings",
+  description:
+    "Entdecken Sie die wichtigsten SEO-Trends für 2025. Von KI-Integration bis Core Web Vitals - alles was Sie für erfolgreiche Suchmaschinenoptimierung wissen müssen.",
+  image: "https://ixone.de/blog-images/seo-trends-2025.jpg",
+  author: {
+    "@type": "Organization",
+    name: "iXone Digitalagentur",
+    url: "https://ixone.de",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "iXone Digitalagentur",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://ixone.de/logo.png",
+    },
+  },
+  datePublished: "2025-01-15T09:00:00+01:00",
+  dateModified: "2025-01-15T09:00:00+01:00",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://ixone.de/blog/seo-trends-2025",
+  },
+  keywords: [
+    "SEO Trends 2025",
+    "Suchmaschinenoptimierung",
+    "Google Rankings",
+    "SEO Agentur Regensburg",
+    "KI SEO",
+    "Core Web Vitals",
+  ],
+  articleSection: "SEO",
+  wordCount: 2500,
+};
+
+// FAQ Schema für bessere SERP Features
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Was sind die wichtigsten SEO-Trends für 2025?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Die wichtigsten SEO-Trends 2025 sind: KI-Integration in Suchmaschinen, Core Web Vitals 2.0, verstärkte E-E-A-T Bewertung, hyperlokal optimiertes Local SEO, Voice Search Optimierung und Mobile-First Indexing.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Wie beeinflusst KI die Suchmaschinenoptimierung 2025?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "KI revolutioniert SEO durch Google's Search Generative Experience (SGE), automatisierte Content-Optimierung, bessere Keyword-Analyse und personalisierte Suchergebnisse. Content muss KI-freundlich strukturiert werden.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Was sind Core Web Vitals 2.0?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Core Web Vitals 2.0 sind erweiterte Performance-Metriken von Google, die Interaction to Next Paint (INP), Smoothness Metrics und verbesserte Ladezeit-Bewertungen umfassen.",
+      },
+    },
+  ],
+};
+---
+
+<Layout
+  title="SEO Trends 2025: Was Sie jetzt wissen müssen | iXone Blog"
+  description="Entdecken Sie die wichtigsten SEO-Trends für 2025. Von KI-Integration bis Core Web Vitals - alles was Sie für erfolgreiche Suchmaschinenoptimierung wissen müssen."
+  structuredData={[breadcrumbs, articleSchema, faqSchema]}
+>
+  <main class="pt-16 md:pt-20 bg-white">
+    <!-- Hero Section -->
+    <article class="py-12 md:py-16 lg:py-20">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+          <!-- Breadcrumb Navigation -->
+          <nav class="mb-8" aria-label="Breadcrumb">
+            <ol class="flex items-center space-x-2 text-sm text-gray-500">
+              <li>
+                <a
+                  href="/"
+                  class="hover:text-brand-orange transition-colors duration-200"
+                  >Home</a>
+              </li>
+              <li><span class="mx-2">/</span></li>
+              <li>
+                <a
+                  href="/blog"
+                  class="hover:text-brand-orange transition-colors duration-200"
+                  >Blog</a>
+              </li>
+              <li><span class="mx-2">/</span></li>
+              <li class="text-gray-900 font-medium">SEO Trends 2025</li>
+            </ol>
+          </nav>
+
+          <!-- Article Header -->
+          <header class="mb-12">
+            <!-- Category Badge -->
+            <div class="mb-6">
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-brand-orange to-yellow-500 text-white"
+              >
+                <svg
+                  class="w-4 h-4 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                SEO & Suchmaschinenoptimierung
+              </span>
+            </div>
+
+            <!-- Main Headline -->
+            <h1
+              class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight"
+            >
+              SEO Trends 2025: Was Sie jetzt wissen müssen für
+              <span
+                class="bg-gradient-to-r from-brand-orange via-yellow-400 to-brand-orange bg-clip-text text-transparent animate-gradient-x"
+              >
+                bessere Google Rankings
+              </span>
+            </h1>
+
+            <!-- Article Meta -->
+            <div class="flex flex-wrap items-center gap-6 text-gray-600 mb-8">
+              <div class="flex items-center gap-2">
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  ></path>
+                </svg>
+                <time datetime="2025-01-15">15. Januar 2025</time>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span>8 Min. Lesezeit</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  ></path>
+                </svg>
+                <span>iXone Digitalagentur</span>
+              </div>
+            </div>
+
+            <!-- Featured Image -->
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl mb-8">
+              <div
+                class="aspect-video bg-gradient-to-br from-brand-orange via-yellow-500 to-brand-orange flex items-center justify-center"
+              >
+                <div class="text-center text-white p-8">
+                  <svg
+                    class="w-24 h-24 mx-auto mb-4 opacity-80"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                  <h2 class="text-2xl font-bold">SEO Trends 2025</h2>
+                  <p class="text-lg opacity-90">
+                    Die Zukunft der Suchmaschinenoptimierung
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Article Summary -->
+            <div
+              class="bg-gray-50 rounded-2xl p-6 md:p-8 border-l-4 border-brand-orange"
+            >
+              <h2 class="text-xl font-bold text-gray-900 mb-4">
+                📋 Das erwartet Sie in diesem Artikel:
+              </h2>
+              <ul class="space-y-2 text-gray-700">
+                <li class="flex items-start gap-2">
+                  <span class="text-brand-orange font-bold">•</span>
+                  <span>Die 7 wichtigsten SEO-Trends für 2025</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-brand-orange font-bold">•</span>
+                  <span>Wie KI die Suchmaschinenoptimierung revolutioniert</span
+                  >
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-brand-orange font-bold">•</span>
+                  <span>Praktische Tipps für bessere Google Rankings</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-brand-orange font-bold">•</span>
+                  <span>Was Unternehmen aus Regensburg beachten sollten</span>
+                </li>
+              </ul>
+            </div>
+          </header>
+
+          <!-- Table of Contents -->
+          <div
+            class="bg-white border border-gray-200 rounded-xl p-6 mb-12 sticky top-24 z-10 shadow-lg"
+          >
+            <h3
+              class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"
+            >
+              <svg
+                class="w-5 h-5 text-brand-orange"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+              </svg>
+              Inhaltsverzeichnis
+            </h3>
+            <nav class="space-y-2">
+              <a
+                href="#ki-integration"
+                class="block text-sm text-gray-600 hover:text-brand-orange transition-colors duration-200 py-1"
+                >1. KI-Integration in der SEO-Strategie</a
+              >
+              <a
+                href="#core-web-vitals"
+                class="block text-sm text-gray-600 hover:text-brand-orange transition-colors duration-200 py-1"
+                >2. Core Web Vitals 2.0: Neue Performance-Standards</a
+              >
+              <a
+                href="#e-e-a-t"
+                class="block text-sm text-gray-600 hover:text-brand-orange transition-colors duration-200 py-1"
+                >3. E-E-A-T wird noch wichtiger</a
+              >
+              <a
+                href="#local-seo"
+                class="block text-sm text-gray-600 hover:text-brand-orange transition-colors duration-200 py-1"
+                >4. Local SEO wird hyper-personalisiert</a
+              >
+              <a
+                href="#voice-search"
+                class="block text-sm text-gray-600 hover:text-brand-orange transition-colors duration-200 py-1"
+                >5. Voice Search Optimierung</a
+              >
+              <a
+                href="#mobile-first"
+                class="block text-sm text-gray-600 hover:text-brand-orange transition-colors duration-200 py-1"
+                >6. Mobile-First wird Standard</a
+              >
+              <a
+                href="#praktische-tipps"
+                class="block text-sm text-gray-600 hover:text-brand-orange transition-colors duration-200 py-1"
+                >7. Praktische Tipps für 2025</a
+              >
+            </nav>
+          </div>
+
+          <!-- Article Content -->
+          <div class="prose prose-lg max-w-none">
+            <!-- Introduction -->
+            <section class="mb-12">
+              <p class="text-xl text-gray-700 leading-relaxed mb-6">
+                <strong
+                  >Das Jahr 2025 bringt revolutionäre Veränderungen für die
+                  Suchmaschinenoptimierung.</strong
+                >
+                Als erfahrene <a
+                  href="/seo-agentur"
+                  class="text-brand-orange hover:text-brand-orange-dark font-semibold"
+                  >SEO Agentur aus Regensburg</a
+                >
+                haben wir die wichtigsten Trends analysiert, die Ihr Google-Ranking
+                maßgeblich beeinflussen werden.
+              </p>
+
+              <p class="text-gray-700 leading-relaxed mb-6">
+                Von der Integration künstlicher Intelligenz bis hin zu neuen
+                Core Web Vitals – die SEO-Landschaft entwickelt sich rasant
+                weiter. Unternehmen, die jetzt die richtigen Weichen stellen,
+                werden 2025 deutliche Wettbewerbsvorteile genießen.
+              </p>
+            </section>
+
+            <!-- Trend 1: KI-Integration -->
+            <section id="ki-integration" class="mb-12">
+              <h2
+                class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3"
+              >
+                <span
+                  class="w-8 h-8 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-sm"
+                  >1</span
+                >
+                KI-Integration in der SEO-Strategie
+              </h2>
+
+              <div
+                class="bg-blue-50 rounded-xl p-6 mb-6 border border-blue-200"
+              >
+                <h3 class="text-lg font-bold text-blue-900 mb-3">
+                  🤖 Wichtigste Entwicklungen:
+                </h3>
+                <ul class="space-y-2 text-blue-800">
+                  <li>
+                    • Google's Search Generative Experience (SGE) wird Standard
+                  </li>
+                  <li>
+                    • KI-generierte Inhalte benötigen neue
+                    Optimierungsstrategien
+                  </li>
+                  <li>
+                    • Automatisierte SEO-Tools werden präziser und effizienter
+                  </li>
+                  <li>
+                    • Personalisierte Suchergebnisse durch Machine Learning
+                  </li>
+                </ul>
+              </div>
+
+              <p class="text-gray-700 leading-relaxed mb-4">
+                <strong
+                  >Künstliche Intelligenz revolutioniert 2025 die Art, wie wir
+                  SEO betreiben.</strong
+                >
+                Google's SGE verändert die Suchergebnisse fundamental – statt klassischer
+                Links erhalten Nutzer direkte, KI-generierte Antworten.
+              </p>
+
+              <p class="text-gray-700 leading-relaxed mb-6">
+                Für Unternehmen aus Regensburg bedeutet das: Content muss nicht
+                nur für traditionelle Rankings optimiert werden, sondern auch
+                als Quelle für KI-Antworten dienen. Strukturierte Daten und
+                präzise, faktische Inhalte werden noch wichtiger.
+              </p>
+
+              <!-- Praktische KI-Tipps -->
+              <div
+                class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-6 border border-purple-200"
+              >
+                <h4 class="text-lg font-bold text-purple-900 mb-3">
+                  💡 KI-SEO Praxis-Tipps:
+                </h4>
+                <ul class="space-y-2 text-purple-800">
+                  <li>✓ FAQ-Bereiche für direkte KI-Antworten optimieren</li>
+                  <li>
+                    ✓ Strukturierte Daten (Schema.org) konsequent einsetzen
+                  </li>
+                  <li>✓ Content in "Antwort-Format" strukturieren</li>
+                  <li>✓ Featured Snippets gezielt optimieren</li>
+                </ul>
+              </div>
+            </section>
+
+            <!-- Trend 2: Core Web Vitals 2.0 -->
+            <section id="core-web-vitals" class="mb-12">
+              <h2
+                class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3"
+              >
+                <span
+                  class="w-8 h-8 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-sm"
+                  >2</span
+                >
+                Core Web Vitals 2.0: Neue Performance-Standards
+              </h2>
+
+              <p class="text-gray-700 leading-relaxed mb-4">
+                Google führt 2025 erweiterte Core Web Vitals ein, die noch
+                stärker die Nutzererfahrung bewerten.
+                <strong>Neue Metriken umfassen:</strong>
+              </p>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-green-50 rounded-xl p-6 border border-green-200">
+                  <h3 class="text-lg font-bold text-green-900 mb-3">
+                    ⚡ Interaction to Next Paint (INP)
+                  </h3>
+                  <p class="text-green-800 text-sm mb-3">
+                    Misst die Reaktionsfähigkeit der gesamten Seiteninteraktion
+                  </p>
+                  <div class="bg-green-100 rounded-lg p-3">
+                    <p class="text-xs text-green-700">
+                      <strong>Zielwert:</strong> Unter 200ms für optimale Performance
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="bg-purple-50 rounded-xl p-6 border border-purple-200"
+                >
+                  <h3 class="text-lg font-bold text-purple-900 mb-3">
+                    🎯 Smoothness Metrics
+                  </h3>
+                  <p class="text-purple-800 text-sm mb-3">
+                    Bewertet die Flüssigkeit von Animationen und Scrolling
+                  </p>
+                  <div class="bg-purple-100 rounded-lg p-3">
+                    <p class="text-xs text-purple-700">
+                      <strong>Zielwert:</strong> 60 FPS für alle Interaktionen
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <p class="text-gray-700 leading-relaxed mb-6">
+                Unsere <a
+                  href="/webdesign"
+                  class="text-brand-orange hover:text-brand-orange-dark font-semibold"
+                  >Webdesign-Agentur aus Regensburg</a
+                >
+                optimiert bereits heute Websites für diese neuen Standards. Schnelle
+                Ladezeiten und flüssige Interaktionen werden 2025 noch entscheidender
+                für Top-Rankings.
+              </p>
+            </section>
+
+            <!-- Trend 3: E-E-A-T Evolution -->
+            <section id="e-e-a-t" class="mb-12">
+              <h2
+                class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3"
+              >
+                <span
+                  class="w-8 h-8 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-sm"
+                  >3</span
+                >
+                E-E-A-T wird noch wichtiger
+              </h2>
+
+              <p class="text-gray-700 leading-relaxed mb-4">
+                <strong
+                  >Experience, Expertise, Authoritativeness, Trustworthiness
+                  (E-E-A-T)</strong
+                > bleibt 2025 ein zentraler Ranking-Faktor. Google wird noch genauer
+                prüfen:
+              </p>
+
+              <ul class="space-y-3 mb-6">
+                <li class="flex items-start gap-3">
+                  <span
+                    class="w-6 h-6 bg-brand-orange rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5"
+                    >E</span
+                  >
+                  <div>
+                    <strong class="text-gray-900">Experience:</strong>
+                    <span class="text-gray-700"
+                      >Praktische Erfahrung des Autors mit dem Thema</span
+                    >
+                  </div>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span
+                    class="w-6 h-6 bg-brand-orange rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5"
+                    >E</span
+                  >
+                  <div>
+                    <strong class="text-gray-900">Expertise:</strong>
+                    <span class="text-gray-700"
+                      >Fachliche Kompetenz und Qualifikationen</span
+                    >
+                  </div>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span
+                    class="w-6 h-6 bg-brand-orange rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5"
+                    >A</span
+                  >
+                  <div>
+                    <strong class="text-gray-900">Authoritativeness:</strong>
+                    <span class="text-gray-700"
+                      >Anerkennung als Autorität in der Branche</span
+                    >
+                  </div>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span
+                    class="w-6 h-6 bg-brand-orange rounded-full flex items-center justify-center text-white text-xs font-bold mt-0.5"
+                    >T</span
+                  >
+                  <div>
+                    <strong class="text-gray-900">Trustworthiness:</strong>
+                    <span class="text-gray-700"
+                      >Vertrauenswürdigkeit der Website und des Inhalts</span
+                    >
+                  </div>
+                </li>
+              </ul>
+            </section>
+
+            <!-- Trend 4: Local SEO -->
+            <section id="local-seo" class="mb-12">
+              <h2
+                class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3"
+              >
+                <span
+                  class="w-8 h-8 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-sm"
+                  >4</span
+                >
+                Local SEO wird hyper-personalisiert
+              </h2>
+
+              <div
+                class="bg-yellow-50 rounded-xl p-6 mb-6 border border-yellow-200"
+              >
+                <h3 class="text-lg font-bold text-yellow-900 mb-3">
+                  📍 Besonders relevant für Regensburg:
+                </h3>
+                <p class="text-yellow-800">
+                  Lokale Unternehmen profitieren 2025 von noch präziserer
+                  geografischer Ausrichtung. Google berücksichtigt
+                  Mikro-Standorte und individuelle Nutzergewohnheiten.
+                </p>
+              </div>
+
+              <p class="text-gray-700 leading-relaxed mb-6">
+                Für Unternehmen in Regensburg bedeutet das: Optimierung für
+                spezifische Stadtteile, lokale Events und regionale
+                Besonderheiten wird noch wichtiger. Unsere
+                <a
+                  href="/online-marketing"
+                  class="text-brand-orange hover:text-brand-orange-dark font-semibold"
+                  >Online-Marketing-Agentur</a
+                >
+                entwickelt bereits hyperlokal ausgerichtete SEO-Strategien.
+              </p>
+            </section>
+
+            <!-- Trend 5: Voice Search -->
+            <section id="voice-search" class="mb-12">
+              <h2
+                class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3"
+              >
+                <span
+                  class="w-8 h-8 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-sm"
+                  >5</span
+                >
+                Voice Search Optimierung wird Standard
+              </h2>
+
+              <p class="text-gray-700 leading-relaxed mb-4">
+                <strong
+                  >Über 50% aller Suchanfragen werden 2025 per Sprache gestellt.</strong
+                >
+                Voice Search erfordert eine völlig neue Content-Strategie:
+              </p>
+
+              <div
+                class="bg-indigo-50 rounded-xl p-6 mb-6 border border-indigo-200"
+              >
+                <h4 class="text-lg font-bold text-indigo-900 mb-3">
+                  🎤 Voice Search Optimierung:
+                </h4>
+                <ul class="space-y-2 text-indigo-800">
+                  <li>• Natürliche Sprache und Konversationston</li>
+                  <li>• Long-Tail Keywords in Frageform</li>
+                  <li>• FAQ-Bereiche für direkte Antworten</li>
+                  <li>• Lokale Suchanfragen optimieren</li>
+                </ul>
+              </div>
+            </section>
+
+            <!-- Trend 6: Mobile-First -->
+            <section id="mobile-first" class="mb-12">
+              <h2
+                class="text-2xl md:text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3"
+              >
+                <span
+                  class="w-8 h-8 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-sm"
+                  >6</span
+                >
+                Mobile-First wird absoluter Standard
+              </h2>
+
+              <p class="text-gray-700 leading-relaxed mb-6">
+                <strong
+                  >Google indexiert 2025 ausschließlich mobile Versionen.</strong
+                >
+                Desktop-Versionen werden nur noch als Referenz betrachtet. Mobile
+                Performance wird zum entscheidenden Ranking-Faktor.
+              </p>
+            </section>
+
+            <!-- Practical Tips Section -->
+            <section id="praktische-tipps" class="mb-12">
+              <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
+                🚀 Praktische SEO-Tipps für 2025
+              </h2>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div
+                  class="bg-white rounded-xl p-6 shadow-lg border border-gray-200"
+                >
+                  <h3
+                    class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"
+                  >
+                    <span class="text-brand-orange">✓</span>
+                    Content-Optimierung
+                  </h3>
+                  <ul class="space-y-2 text-gray-700 text-sm">
+                    <li>• KI-freundliche Strukturierung</li>
+                    <li>• FAQ-Bereiche für Voice Search</li>
+                    <li>• Multimediale Inhalte</li>
+                    <li>• Regelmäßige Content-Updates</li>
+                  </ul>
+                </div>
+
+                <div
+                  class="bg-white rounded-xl p-6 shadow-lg border border-gray-200"
+                >
+                  <h3
+                    class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"
+                  >
+                    <span class="text-brand-orange">✓</span>
+                    Technische Optimierung
+                  </h3>
+                  <ul class="space-y-2 text-gray-700 text-sm">
+                    <li>• Core Web Vitals 2.0 Compliance</li>
+                    <li>• Mobile-First Indexing</li>
+                    <li>• Structured Data Markup</li>
+                    <li>• HTTPS und Sicherheit</li>
+                  </ul>
+                </div>
+
+                <div
+                  class="bg-white rounded-xl p-6 shadow-lg border border-gray-200"
+                >
+                  <h3
+                    class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"
+                  >
+                    <span class="text-brand-orange">✓</span>
+                    Local SEO Maßnahmen
+                  </h3>
+                  <ul class="space-y-2 text-gray-700 text-sm">
+                    <li>• Google Business Profile Optimierung</li>
+                    <li>• Lokale Keyword-Strategien</li>
+                    <li>• Regionale Backlinks</li>
+                    <li>• Kundenbewertungen Management</li>
+                  </ul>
+                </div>
+
+                <div
+                  class="bg-white rounded-xl p-6 shadow-lg border border-gray-200"
+                >
+                  <h3
+                    class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"
+                  >
+                    <span class="text-brand-orange">✓</span>
+                    E-E-A-T Stärkung
+                  </h3>
+                  <ul class="space-y-2 text-gray-700 text-sm">
+                    <li>• Autor-Profile und Biografien</li>
+                    <li>• Branchenauszeichnungen</li>
+                    <li>• Kundentestimonials</li>
+                    <li>• Transparente Kontaktdaten</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="mb-12">
+              <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8">
+                ❓ Häufig gestellte Fragen zu SEO 2025
+              </h2>
+
+              <div class="space-y-4">
+                <details
+                  class="bg-white rounded-lg shadow-md overflow-hidden group"
+                >
+                  <summary
+                    class="px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
+                  >
+                    <h3 class="text-lg font-semibold text-gray-900">
+                      Was sind die wichtigsten SEO-Trends für 2025?
+                    </h3>
+                    <svg
+                      class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform duration-200"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </summary>
+                  <div class="px-6 pb-4 text-gray-600">
+                    <p>
+                      Die wichtigsten SEO-Trends 2025 sind: KI-Integration in
+                      Suchmaschinen, Core Web Vitals 2.0, verstärkte E-E-A-T
+                      Bewertung, hyperlokal optimiertes Local SEO, Voice Search
+                      Optimierung und Mobile-First Indexing.
+                    </p>
+                  </div>
+                </details>
+
+                <details
+                  class="bg-white rounded-lg shadow-md overflow-hidden group"
+                >
+                  <summary
+                    class="px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
+                  >
+                    <h3 class="text-lg font-semibold text-gray-900">
+                      Wie beeinflusst KI die Suchmaschinenoptimierung 2025?
+                    </h3>
+                    <svg
+                      class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform duration-200"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </summary>
+                  <div class="px-6 pb-4 text-gray-600">
+                    <p>
+                      KI revolutioniert SEO durch Google's Search Generative
+                      Experience (SGE), automatisierte Content-Optimierung,
+                      bessere Keyword-Analyse und personalisierte
+                      Suchergebnisse. Content muss KI-freundlich strukturiert
+                      werden.
+                    </p>
+                  </div>
+                </details>
+
+                <details
+                  class="bg-white rounded-lg shadow-md overflow-hidden group"
+                >
+                  <summary
+                    class="px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
+                  >
+                    <h3 class="text-lg font-semibold text-gray-900">
+                      Was sind Core Web Vitals 2.0?
+                    </h3>
+                    <svg
+                      class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform duration-200"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </summary>
+                  <div class="px-6 pb-4 text-gray-600">
+                    <p>
+                      Core Web Vitals 2.0 sind erweiterte Performance-Metriken
+                      von Google, die Interaction to Next Paint (INP),
+                      Smoothness Metrics und verbesserte Ladezeit-Bewertungen
+                      umfassen.
+                    </p>
+                  </div>
+                </details>
+              </div>
+            </section>
+
+            <!-- Conclusion -->
+            <section class="mb-12">
+              <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+                Fazit: Jetzt handeln für SEO-Erfolg 2025
+              </h2>
+
+              <div
+                class="bg-gradient-to-r from-brand-orange to-yellow-500 rounded-2xl p-8 text-white mb-6"
+              >
+                <h3 class="text-xl font-bold mb-4">💡 Unser Expertenrat:</h3>
+                <p class="leading-relaxed">
+                  Die SEO-Trends 2025 erfordern eine ganzheitliche Strategie.
+                  Unternehmen, die jetzt in KI-optimierte Inhalte, technische
+                  Performance und lokale Sichtbarkeit investieren, werden die
+                  Gewinner von morgen sein.
+                </p>
+              </div>
+
+              <p class="text-gray-700 leading-relaxed mb-6">
+                Als <strong>erfahrene SEO Agentur aus Regensburg</strong> unterstützen
+                wir Sie dabei, Ihre Website für die Zukunft zu rüsten. Von der technischen
+                Optimierung bis zur Content-Strategie – wir entwickeln maßgeschneiderte
+                Lösungen für nachhaltigen SEO-Erfolg.
+              </p>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="bg-gray-50 rounded-2xl p-8 text-center">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">
+                Bereit für SEO-Erfolg in 2025?
+              </h3>
+              <p class="text-gray-700 mb-6 max-w-2xl mx-auto">
+                Lassen Sie uns gemeinsam Ihre SEO-Strategie für 2025 entwickeln.
+                Kostenlose Analyse und unverbindliche Beratung von Ihrer SEO
+                Agentur aus Regensburg.
+              </p>
+              <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="/kontakt"
+                  class="bg-gradient-to-r from-brand-orange to-yellow-500 hover:from-yellow-500 hover:to-brand-orange text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                >
+                  Kostenlose SEO-Analyse anfordern
+                </a>
+                <a
+                  href="/seo-agentur"
+                  class="border-2 border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300"
+                >
+                  Unsere SEO-Services entdecken
+                </a>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Related Articles -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">
+            Weitere interessante <span
+              class="bg-gradient-to-r from-brand-orange via-yellow-400 to-brand-orange bg-clip-text text-transparent"
+              >Blog-Artikel</span
+            >
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Related Article 1 -->
+            <article
+              class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+            >
+              <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600">
+              </div>
+              <div class="p-6">
+                <div class="flex items-center text-sm text-gray-500 mb-3">
+                  <time datetime="2025-01-10">10. Januar 2025</time>
+                  <span class="mx-2">•</span>
+                  <span>Webdesign</span>
+                </div>
+                <h3
+                  class="text-xl font-bold text-gray-900 mb-3 hover:text-brand-orange transition-colors duration-200"
+                >
+                  <a href="/blog/responsive-design-best-practices"
+                    >Responsive Design: Best Practices für 2025</a
+                  >
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Moderne Ansätze für responsives Webdesign und wie Sie eine
+                  optimale Nutzererfahrung auf allen Geräten schaffen.
+                </p>
+                <a
+                  href="/blog/responsive-design-best-practices"
+                  class="text-brand-orange font-semibold hover:text-brand-orange-dark transition-colors duration-200"
+                >
+                  Weiterlesen →
+                </a>
+              </div>
+            </article>
+
+            <!-- Related Article 2 -->
+            <article
+              class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+            >
+              <div class="h-48 bg-gradient-to-br from-green-500 to-teal-600">
+              </div>
+              <div class="p-6">
+                <div class="flex items-center text-sm text-gray-500 mb-3">
+                  <time datetime="2025-01-05">5. Januar 2025</time>
+                  <span class="mx-2">•</span>
+                  <span>Online-Marketing</span>
+                </div>
+                <h3
+                  class="text-xl font-bold text-gray-900 mb-3 hover:text-brand-orange transition-colors duration-200"
+                >
+                  <a href="/blog/google-ads-optimierung"
+                    >Google Ads Optimierung: Mehr Erfolg mit weniger Budget</a
+                  >
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Praktische Tipps zur Optimierung Ihrer Google Ads Kampagnen
+                  für bessere Performance und niedrigere Kosten.
+                </p>
+                <a
+                  href="/blog/google-ads-optimierung"
+                  class="text-brand-orange font-semibold hover:text-brand-orange-dark transition-colors duration-200"
+                >
+                  Weiterlesen →
+                </a>
+              </div>
+            </article>
+
+            <!-- Related Article 3 -->
+            <article
+              class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+            >
+              <div class="h-48 bg-gradient-to-br from-indigo-500 to-blue-600">
+              </div>
+              <div class="p-6">
+                <div class="flex items-center text-sm text-gray-500 mb-3">
+                  <time datetime="2024-12-15">15. Dezember 2024</time>
+                  <span class="mx-2">•</span>
+                  <span>SEO</span>
+                </div>
+                <h3
+                  class="text-xl font-bold text-gray-900 mb-3 hover:text-brand-orange transition-colors duration-200"
+                >
+                  <a href="/blog/local-seo-regensburg"
+                    >Local SEO für Regensburger Unternehmen</a
+                  >
+                </h3>
+                <p class="text-gray-600 mb-4">
+                  Spezielle SEO-Strategien für lokale Unternehmen in Regensburg
+                  und Umgebung für bessere lokale Sichtbarkeit.
+                </p>
+                <a
+                  href="/blog/local-seo-regensburg"
+                  class="text-brand-orange font-semibold hover:text-brand-orange-dark transition-colors duration-200"
+                >
+                  Weiterlesen →
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <!-- Back to Blog -->
+          <div class="text-center mt-12">
+            <a
+              href="/blog"
+              class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-orange to-yellow-500 hover:from-yellow-500 hover:to-brand-orange text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+              </svg>
+              Zurück zum Blog
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Article-specific styles */
+  .prose {
+    color: #374151;
+    line-height: 1.75;
+  }
+
+  .prose h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .prose h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .prose p {
+    margin-bottom: 1.25rem;
+  }
+
+  .prose ul {
+    margin-bottom: 1.25rem;
+  }
+
+  .prose li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Enhanced link styles */
+  .prose a {
+    transition: all 0.2s ease;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+
+  .prose a:hover {
+    border-bottom-color: currentColor;
+  }
+
+  /* Reading progress indicator */
+  .reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(to right, #ec6a1b, #fbbf24);
+    z-index: 9999;
+    transition: width 0.1s ease;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Table of Contents sticky behavior */
+  @media (min-width: 1024px) {
+    .sticky {
+      position: sticky;
+      top: 6rem;
+    }
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    .prose {
+      font-size: 16px;
+    }
+
+    .prose h1 {
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .prose h2 {
+      font-size: 1.5rem;
+      line-height: 1.3;
+    }
+
+    .prose h3 {
+      font-size: 1.25rem;
+      line-height: 1.4;
+    }
+
+    .sticky {
+      position: relative;
+      top: auto;
+    }
+  }
+
+  /* Print styles */
+  @media print {
+    .prose {
+      font-size: 12pt;
+      line-height: 1.5;
+    }
+
+    .prose h1,
+    .prose h2,
+    .prose h3 {
+      page-break-after: avoid;
+    }
+
+    .prose p {
+      orphans: 3;
+      widows: 3;
+    }
+  }
+</style>
+
+<script>
+  // Reading progress indicator
+  document.addEventListener("DOMContentLoaded", function () {
+    // Create progress bar
+    const progressBar = document.createElement("div");
+    progressBar.className = "reading-progress";
+    document.body.appendChild(progressBar);
+
+    // Update progress on scroll
+    function updateProgress() {
+      const article = document.querySelector("article");
+      if (!article) return;
+
+      const articleTop = article.offsetTop;
+      const articleHeight = article.offsetHeight;
+      const windowHeight = window.innerHeight;
+      const scrollTop = window.pageYOffset;
+
+      const articleBottom = articleTop + articleHeight - windowHeight;
+      const progress = Math.min(
+        Math.max((scrollTop - articleTop) / (articleBottom - articleTop), 0),
+        1
+      );
+
+      progressBar.style.width = progress * 100 + "%";
+    }
+
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    updateProgress(); // Initial call
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      });
+    });
+
+    // Table of Contents active link highlighting
+    const tocLinks = document.querySelectorAll('nav a[href^="#"]');
+    const sections = document.querySelectorAll("section[id]");
+
+    function highlightTocLink() {
+      let current = "";
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.pageYOffset >= sectionTop - 200) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      tocLinks.forEach((link) => {
+        link.classList.remove("text-brand-orange", "font-semibold");
+        link.classList.add("text-gray-600");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.remove("text-gray-600");
+          link.classList.add("text-brand-orange", "font-semibold");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", highlightTocLink, { passive: true });
+    highlightTocLink(); // Initial call
+  });
+</script>

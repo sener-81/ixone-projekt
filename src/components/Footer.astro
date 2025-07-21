@@ -1,0 +1,112 @@
+---
+import { footerLinks } from "../data/navigation";
+---
+
+<footer class="bg-gray-900 text-white">
+  <div
+    class="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16 py-8 sm:py-12"
+  >
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+      <!-- Company Info -->
+      <div class="sm:col-span-2 lg:col-span-2">
+        <div class="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">
+          <span class="text-white">i</span>
+          <span class="text-brand-orange">X</span>
+          <span class="text-white">one</span>
+        </div>
+        <p class="text-brand-orange font-semibold mb-2 text-sm sm:text-base">
+          Digitalagentur aus Regensburg
+        </p>
+        <p class="text-gray-300 mb-3 sm:mb-4 text-sm sm:text-base">
+          Webdesign, SEO & Online-Marketing seit 2007
+        </p>
+        <div
+          class="space-y-1.5 sm:space-y-2 text-gray-300 text-sm sm:text-base"
+        >
+          <p>
+            <a
+              href="tel:+4994015338873"
+              class="hover:text-brand-orange transition-colors duration-200"
+            >
+              Tel.: +49 (0) 9401 – 533 88 73
+            </a>
+          </p>
+          <p>
+            <a
+              href="mailto:info@ixone.de"
+              class="hover:text-brand-orange transition-colors duration-200"
+            >
+              E-Mail: info@ixone.de
+            </a>
+          </p>
+          <p>Regensburg, Bayern</p>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h3 class="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">
+          Services
+        </h3>
+        <ul class="space-y-1.5 sm:space-y-2 text-gray-300 text-sm">
+          {
+            footerLinks.services.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="hover:text-brand-orange transition-colors duration-200"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h3 class="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">
+          Unternehmen
+        </h3>
+        <ul class="space-y-1.5 sm:space-y-2 text-gray-300 text-sm">
+          {
+            footerLinks.company.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="hover:text-brand-orange transition-colors duration-200"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div
+      class="border-t border-gray-800 mt-6 sm:mt-8 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0"
+    >
+      <p class="text-gray-400 text-xs sm:text-sm text-center sm:text-left">
+        © 2025 iXone Digitalagentur. Alle Rechte vorbehalten.
+      </p>
+      <div
+        class="flex flex-wrap justify-center sm:justify-end space-x-4 sm:space-x-6"
+      >
+        {
+          footerLinks.legal.map((link) => (
+            <a
+              href={link.href}
+              class="text-gray-400 hover:text-brand-orange text-xs sm:text-sm transition-colors duration-200"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</footer>

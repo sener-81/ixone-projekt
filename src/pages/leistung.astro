@@ -1,0 +1,35 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { breadcrumbSchema } from "../data/structuredData";
+
+const breadcrumbs = breadcrumbSchema([
+  { name: "Home", url: "https://ixone.de/" },
+  { name: "Leistung XY", url: "https://ixone.de/leistung-xy" },
+]);
+---
+
+<Layout
+  title="Leistung XY in Regensburg | iXone Digitalagentur"
+  description="Professionelle Leistung XY aus Regensburg – individuell, effektiv & modern umgesetzt durch die iXone Digitalagentur."
+  canonical="https://ixone.de/leistung-xy"
+  structuredData={[breadcrumbs]}
+>
+  <main class="pt-16 md:pt-20">
+    <section class="max-w-5xl mx-auto px-4">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4">
+        Leistung XY in Regensburg
+      </h1>
+      <p class="mb-6 text-lg">
+        Wir bieten Ihnen umfassende Leistungen im Bereich XY – maßgeschneidert
+        auf Ihre Branche und Zielgruppe.
+      </p>
+
+      <!-- Weitere Inhalte, evtl. mit Komponenten -->
+      <!-- <ComponentXY /> -->
+
+      <!-- Beispiel CTA-Komponente -->
+      <!-- import CTA from "../components/CTA.astro"; -->
+      <!-- <CTA /> -->
+    </section>
+  </main>
+</Layout>

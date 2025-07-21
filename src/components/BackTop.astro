@@ -1,0 +1,50 @@
+---
+// BackTop.astro - Simple BackTop Button
+---
+
+<button
+  type="button"
+  id="backtop"
+  class="backtop-btn"
+  aria-label="Nach oben scrollen"
+  title="Zurück zum Seitenanfang"
+>
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M18 15l-6-6-6 6"></path>
+  </svg>
+</button>
+
+<script>
+  // Simple BackTop functionality
+  document.addEventListener("DOMContentLoaded", function () {
+    const backtop = document.getElementById("backtop");
+
+    if (!backtop) return;
+
+    // Show/hide button on scroll
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 300) {
+        backtop.classList.add("visible");
+      } else {
+        backtop.classList.remove("visible");
+      }
+    });
+
+    // Smooth scroll to top
+    backtop.addEventListener("click", function () {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    });
+  });
+</script>
