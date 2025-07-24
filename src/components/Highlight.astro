@@ -1,0 +1,23 @@
+---
+interface Props {
+  gradient?: "brand" | "blue" | "green" | "purple";
+  animate?: boolean;
+}
+
+const { gradient = "brand", animate = true }: Props = Astro.props;
+
+const gradientClasses = {
+  brand: "from-brand-orange via-yellow-400 to-brand-orange",
+  blue: "from-blue-500 via-cyan-400 to-blue-600",
+  green: "from-green-500 via-emerald-400 to-green-600",
+  purple: "from-purple-500 via-pink-400 to-purple-600",
+} as const;
+
+const animateClass = animate ? "animate-gradient-x" : "";
+---
+
+<span
+  class={`bg-gradient-to-r ${gradientClasses[gradient]} bg-clip-text text-transparent ${animateClass}`}
+>
+  <slot />
+</span>
