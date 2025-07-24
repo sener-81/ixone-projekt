@@ -4,7 +4,8 @@ import Logo from './Logo.astro';
 import MobileMenu from './MobileMenu.astro';
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-md border-b border-gray-200/50 shadow-sm supports-[backdrop-filter]:bg-white/80" id="header">
+<!-- FIXED: Komplett weißer Header ohne Transparenz -->
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white border-b border-gray-200 shadow-sm" id="header">
   <div class="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16">
     <div class="flex justify-between items-center h-14 sm:h-16 md:h-18 lg:h-20 xl:h-22">
       <!-- Logo -->
@@ -118,7 +119,7 @@ import MobileMenu from './MobileMenu.astro';
   }
   
   #header.scrolled {
-    @apply bg-white shadow-lg backdrop-blur-md;
+    @apply bg-white shadow-lg;
   }
   
   /* Navigation Styles */
