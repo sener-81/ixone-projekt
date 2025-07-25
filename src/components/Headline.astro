@@ -5,13 +5,13 @@ interface Props {
   size?: "small" | "medium" | "large" | "xl";
 }
 
-const { tag = "h2", className = "", size = "large" }: Props = Astro.props;
+const { tag = "h2", className = "", size = "medium" }: Props = Astro.props;
 
 const sizeClasses = {
-  small: "text-2xl md:text-4xl",
-  medium: "text-3xl md:text-5xl",
-  large: "text-4xl md:text-6xl",
-  xl: "text-5xl md:text-7xl",
+  small: "text-2xl md:text-3xl",
+  medium: "text-3xl md:text-4xl",
+  large: "text-4xl md:text-5xl",
+  xl: "text-5xl md:text-6xl",
 } as const;
 
 const Element = tag;
