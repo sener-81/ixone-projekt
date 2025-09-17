@@ -1,24 +1,24 @@
 <!-- Hero Section -->
 <section
-  class="relative min-h-[80vh] bg-gradient-to-br from-pink-900 via-purple-800 to-indigo-900 text-white overflow-hidden"
+  class="relative min-h-[80vh] bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden"
 >
   <!-- Animated Background -->
   <div class="absolute inset-0 opacity-20">
     <div
-      class="absolute top-0 left-0 w-96 h-96 bg-pink-400 rounded-full filter blur-3xl animate-blob"
+      class="absolute top-0 left-0 w-96 h-96 bg-purple-400 rounded-full filter blur-3xl animate-blob"
     >
     </div>
     <div
-      class="absolute bottom-0 right-0 w-96 h-96 bg-purple-400 rounded-full filter blur-3xl animate-blob animation-delay-2000"
+      class="absolute bottom-0 right-0 w-96 h-96 bg-brand-orange rounded-full filter blur-3xl animate-blob animation-delay-2000"
     >
     </div>
     <div
-      class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-indigo-400 rounded-full filter blur-3xl animate-blob animation-delay-4000"
+      class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-yellow-400 rounded-full filter blur-3xl animate-blob animation-delay-4000"
     >
     </div>
   </div>
 
-  <!-- Social Media Icons Pattern -->
+  <!-- Floating 3D Elements Pattern -->
   <div class="absolute inset-0 opacity-10">
     <div class="h-full w-full flex items-center justify-center">
       <div class="grid grid-cols-6 gap-8 transform rotate-12">
@@ -39,20 +39,30 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         <!-- Content -->
         <div class="lg:col-span-8 text-center lg:text-left">
+          <!-- Badge -->
+          <div
+            class="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-medium animate-fade-in mb-6"
+          >
+            <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"
+            ></span>
+            <span class="hidden sm:inline"
+              >Seit 2007 • Über 500+ erfolgreiche Projekte in Regensburg</span
+            >
+            <span class="sm:hidden">Seit 2007 • 500+ Projekte</span>
+          </div>
+
           <header>
             <h1
               class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
             >
-              <span class="block text-white">Social Media</span>
-              <span
-                class="block bg-gradient-to-r from-brand-orange via-yellow-400 to-brand-orange bg-clip-text text-transparent animate-gradient-x"
-              >
-                Marketing
+              <span class="block text-white">Digitalagentur</span>
+            <span class="gradient-text-brand">
+                Regensburg
               </span>
               <span
                 class="block text-white/90 text-2xl md:text-3xl font-normal"
               >
-                Agentur Regensburg
+                für Webdesign, SEO & Online-Marketing
               </span>
             </h1>
           </header>
@@ -62,32 +72,25 @@
           >
             <p class="text-xl md:text-2xl text-gray-200 leading-relaxed">
               <strong class="text-white"
-                >Strategisches Social Media Marketing aus Regensburg</strong
+                >Ihre professionelle Digitalagentur aus Regensburg</strong
               > –
-              <em class="text-brand-orange">Facebook, Instagram, TikTok</em>
+              Spezialisiert auf
+              <em class="text-brand-orange">modernes Webdesign</em>,
+              <em class="text-brand-orange">Suchmaschinenoptimierung (SEO)</em>
               und
-              <em class="text-brand-orange">LinkedIn Marketing</em> für mehr Reichweite,
-              Engagement und qualifizierte Leads.
+              <em class="text-brand-orange">strategisches Online-Marketing</em> für messbare
+              Erfolge und nachhaltiges Wachstum.
             </p>
           </div>
 
           <!-- CTA Buttons -->
           <div class="flex flex-col sm:flex-row gap-4 mb-8">
-            <a
-              href="/kontakt"
-              class="group relative px-8 py-4 bg-gradient-to-r from-brand-orange to-yellow-500 hover:from-yellow-500 hover:to-brand-orange text-white font-bold text-lg rounded-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 shadow-2xl hover:shadow-brand-orange/25 overflow-hidden text-center"
-              aria-label="Social Media Strategie entwickeln"
-            >
-              <span
-                class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"
-              ></span>
-              <span class="relative z-10"
-                >Social Media Strategie entwickeln</span
-              >
-            </a>
+         <a href="/kontakt" class="cta-button-primary">
+  <span>Kostenlose Erstberatung starten</span>
+</a>
 
             <a
-              href="#social-services"
+              href="#services"
               class="group px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl font-semibold text-lg text-white hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 text-center"
             >
               <span class="flex items-center justify-center gap-2">
@@ -125,7 +128,7 @@
                   d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                   clip-rule="evenodd"></path>
               </svg>
-              <span class="text-white/90 font-medium">Alle Plattformen</span>
+              <span class="text-white/90 font-medium">Kostenlose SEO-Analyse</span>
             </span>
             <span class="flex items-center gap-2">
               <svg
@@ -139,7 +142,7 @@
                   d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                   clip-rule="evenodd"></path>
               </svg>
-              <span class="text-white/90 font-medium">Content-Erstellung</span>
+              <span class="text-white/90 font-medium">Keine Mindestlaufzeit</span>
             </span>
             <span class="flex items-center gap-2">
               <svg
@@ -153,8 +156,7 @@
                   d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                   clip-rule="evenodd"></path>
               </svg>
-              <span class="text-white/90 font-medium">Community Management</span
-              >
+              <span class="text-white/90 font-medium">Persönlicher Service</span>
             </span>
           </div>
         </div>
@@ -163,7 +165,7 @@
         <div class="lg:col-span-4 relative">
           <img
             src="/assets/ixone-online-marketing-regensburg.webp"
-            alt="iXone Social Media Marketing Regensburg - Strategische Betreuung aller Plattformen"
+            alt="iXone Digitalagentur Regensburg - Webdesign, SEO und Online-Marketing Experten"
             class="w-full max-w-md mx-auto h-auto rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-500 animate-float"
             loading="eager"
           />
@@ -172,3 +174,131 @@
     </div>
   </div>
 </section>
+
+<style>
+/* CSS Variables für Branding */
+:root {
+  --brand-orange: #ec6a1b;
+}
+
+.bg-brand-orange {
+  background-color: var(--brand-orange);
+}
+
+.text-brand-orange {
+  color: var(--brand-orange);
+}
+
+.from-brand-orange {
+  --tw-gradient-from: var(--brand-orange);
+  --tw-gradient-to: rgb(236 106 27 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-brand-orange {
+  --tw-gradient-to: var(--brand-orange);
+}
+
+.shadow-brand-orange\/25 {
+  --tw-shadow-color: rgb(236 106 27 / 0.25);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+/* Animations */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 3s ease infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Glassmorphism Effects */
+.backdrop-blur-md {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Responsive Typography */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+  }
+}
+</style>

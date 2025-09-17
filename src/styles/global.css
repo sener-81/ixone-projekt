@@ -1,3 +1,224 @@
+/* animierte buttons */
+
+/* CSS Variables für Branding */
+:root {
+  --brand-orange: #ec6a1b;
+}
+
+/* Haupt CTA Button Klasse */
+.cta-button-primary {
+  position: relative;
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: linear-gradient(to right, var(--brand-orange), #eab308);
+  color: white;
+  font-weight: bold;
+  font-size: 1.125rem;
+  border-radius: 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms ease;
+  transform: translateY(0);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+}
+
+/* Hover-Effekte */
+.cta-button-primary:hover {
+  background: linear-gradient(to right, #eab308, var(--brand-orange));
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 25px 50px -12px rgba(236, 106, 27, 0.25);
+}
+
+/* Shine-Effekt (der gleitende Lichtstrahl) */
+.cta-button-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: skewX(-12deg) translateX(-100%);
+  transition: transform 700ms ease;
+  pointer-events: none;
+}
+
+.cta-button-primary:hover::before {
+  transform: skewX(-12deg) translateX(100%);
+}
+
+/* Text über dem Shine-Effekt */
+.cta-button-primary > span {
+  position: relative;
+  z-index: 10;
+}
+
+/* Varianten */
+.cta-button-secondary {
+  position: relative;
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-weight: 600;
+  font-size: 1.125rem;
+  border-radius: 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms ease;
+  transform: translateY(0);
+  cursor: pointer;
+}
+
+.cta-button-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+/* Kompakte Version */
+.cta-button-compact {
+  position: relative;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(to right, var(--brand-orange), #eab308);
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 0.75rem;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms ease;
+  transform: translateY(0);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+}
+
+.cta-button-compact:hover {
+  background: linear-gradient(to right, #eab308, var(--brand-orange));
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 20px 40px -10px rgba(236, 106, 27, 0.25);
+}
+
+.cta-button-compact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: skewX(-12deg) translateX(-100%);
+  transition: transform 500ms ease;
+  pointer-events: none;
+}
+
+.cta-button-compact:hover::before {
+  transform: skewX(-12deg) translateX(100%);
+}
+
+.cta-button-compact > span {
+  position: relative;
+  z-index: 10;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 640px) {
+  .cta-button-primary,
+  .cta-button-secondary {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Verwendung in HTML: */
+/*
+<!-- Haupt CTA Button -->
+<a href="/kontakt" class="cta-button-primary">
+  <span>Kostenlose Erstberatung starten</span>
+</a>
+
+<!-- Secondary Button -->
+<a href="#services" class="cta-button-secondary">
+  <span>Services entdecken</span>
+</a>
+
+<!-- Kompakte Version -->
+<button class="cta-button-compact">
+  <span>Jetzt starten</span>
+</button>
+
+<!-- Als Button-Element -->
+<button type="submit" class="cta-button-primary">
+  <span>Absenden</span>
+</button>
+*/
+
+/* animerte headings */
+
+/* CSS Variables für Branding */
+:root {
+  --brand-orange: #ec6a1b;
+}
+
+/* Globale Gradient Text Klasse */
+.gradient-text-brand {
+  display: block;
+  background: linear-gradient(to right, var(--brand-orange), #fbbf24, var(--brand-orange));
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradient-x 3s ease infinite;
+}
+
+/* Alternative Varianten */
+.gradient-text-brand-inline {
+  display: inline;
+  background: linear-gradient(to right, var(--brand-orange), #fbbf24, var(--brand-orange));
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradient-x 3s ease infinite;
+}
+
+.gradient-text-brand-slow {
+  display: block;
+  background: linear-gradient(to right, var(--brand-orange), #fbbf24, var(--brand-orange));
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradient-x 6s ease infinite;
+}
+
+/* Gradient Animation */
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Verwendung in HTML: */
+/*
+<h1>
+  <span class="gradient-text-brand">Digitalagentur</span>
+  <span class="gradient-text-brand">Regensburg</span>
+</h1>
+
+<p>Text mit <span class="gradient-text-brand-inline">Gradient Wort</span> inline</p>
+
+<h2 class="gradient-text-brand-slow">Langsamerer Effekt</h2>
+*/
+
+
+
+
+
 .skip-to-main {
   position: absolute;  /* ← Nicht im Document Flow */
   top: -40px;         /* ← Versteckt oberhalb */
