@@ -80,47 +80,182 @@ const faqSchema = {
   canonical="https://ixone.de/webdesign"
   structuredData={[breadcrumbs, serviceSchema, faqSchema]}
 >
-  <main class="pt-16 md:pt-20 bg-white">
-    <SimpleHero
-      backgroundBase="/assets/webdesigner-aus-regensburg"
-      alt="Professioneller Webdesigner aus Regensburg"
-      title="Webdesign Regensburg"
-      subtitle="Moderne, responsive Websites die konvertieren und bei Google ranken"
+  <main class="pt-14 sm:pt-16 md:pt-18 lg:pt-20 xl:pt-22 bg-white">
+    <!-- Hero Section -->
+    <section
+      class="relative min-h-[80vh] bg-gradient-to-br from-cyan-900 via-blue-800 to-indigo-900 text-white overflow-hidden"
     >
-      <!-- CTA-Buttons mit vollem Styling: -->
-      <a
-        href="/kontakt"
-        class="group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-xl font-bold text-base sm:text-lg text-white shadow-2xl hover:shadow-brand-orange/25 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 overflow-hidden text-center"
-        aria-label="Kostenlose Beratung starten"
-      >
-        <span
-          class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"
-        ></span>
-        <span class="relative z-10">Kostenlose Beratung starten</span>
-      </a>
+      <!-- Animated Background -->
+      <div class="absolute inset-0 opacity-20">
+        <div
+          class="absolute top-0 left-0 w-96 h-96 bg-cyan-400 rounded-full filter blur-3xl animate-blob"
+        >
+        </div>
+        <div
+          class="absolute bottom-0 right-0 w-96 h-96 bg-blue-400 rounded-full filter blur-3xl animate-blob animation-delay-2000"
+        >
+        </div>
+        <div
+          class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-indigo-400 rounded-full filter blur-3xl animate-blob animation-delay-4000"
+        >
+        </div>
+      </div>
 
-      <a
-        href="#webdesign-features"
-        class="group px-6 sm:px-8 py-3 sm:py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl font-semibold text-base sm:text-lg text-white hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 text-center"
-        aria-label="Features entdecken"
+      <!-- Code/Design Pattern -->
+      <div class="absolute inset-0 opacity-10">
+        <div class="h-full w-full flex items-center justify-center">
+          <div class="grid grid-cols-6 gap-8 transform rotate-12">
+            <div class="w-8 h-8 bg-white rounded-sm"></div>
+            <div class="w-8 h-8 bg-white rounded-lg"></div>
+            <div class="w-8 h-8 bg-white rounded-sm"></div>
+            <div class="w-8 h-8 bg-white rounded-lg"></div>
+            <div class="w-8 h-8 bg-white rounded-sm"></div>
+            <div class="w-8 h-8 bg-white rounded-lg"></div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24 relative z-10 flex items-center min-h-[80vh]"
       >
-        <span class="flex items-center justify-center gap-2">
-          Features entdecken
-          <svg
-            class="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-          </svg>
-        </span>
-      </a>
-    </SimpleHero>
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <!-- Content -->
+            <div class="lg:col-span-8 text-center lg:text-left">
+              <header>
+                <h1
+                  class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+                >
+                  <span class="block text-white">Professionelles</span>
+                  <span
+                    class="block bg-gradient-to-r from-brand-orange via-yellow-400 to-brand-orange bg-clip-text text-transparent animate-gradient-x"
+                  >
+                    Webdesign
+                  </span>
+                  <span
+                    class="block text-white/90 text-2xl md:text-3xl font-normal"
+                  >
+                    Agentur Regensburg
+                  </span>
+                </h1>
+              </header>
+
+              <div
+                class="bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/20 mb-8"
+              >
+                <p class="text-xl md:text-2xl text-gray-200 leading-relaxed">
+                  <strong class="text-white"
+                    >Moderne Webdesign Lösungen aus Regensburg</strong
+                  > –
+                  <em class="text-brand-orange">Responsive Design, UX/UI</em>
+                  und
+                  <em class="text-brand-orange">Performance-Optimierung</em> für
+                  Websites, die begeistern und konvertieren.
+                </p>
+              </div>
+
+              <!-- CTA Buttons -->
+              <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                <a
+                  href="/kontakt"
+                  class="group relative px-8 py-4 bg-gradient-to-r from-brand-orange to-yellow-500 hover:from-yellow-500 hover:to-brand-orange text-white font-bold text-lg rounded-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 shadow-2xl hover:shadow-brand-orange/25 overflow-hidden text-center"
+                  aria-label="Webdesign Projekt starten"
+                >
+                  <span
+                    class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"
+                  ></span>
+                  <span class="relative z-10">Webdesign Projekt starten</span>
+                </a>
+
+                <a
+                  href="#webdesign-services"
+                  class="group px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl font-semibold text-lg text-white hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 text-center"
+                >
+                  <span class="flex items-center justify-center gap-2">
+                    Services entdecken
+                    <svg
+                      class="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                  </span>
+                </a>
+              </div>
+
+              <!-- Trust Indicators -->
+              <div
+                class="flex flex-wrap justify-center lg:justify-start gap-6 text-white/70 text-sm"
+              >
+                <span class="flex items-center gap-2">
+                  <svg
+                    class="w-5 h-5 text-green-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-white/90 font-medium">100% Responsive</span>
+                </span>
+                <span class="flex items-center gap-2">
+                  <svg
+                    class="w-5 h-5 text-green-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-white/90 font-medium">SEO-optimiert</span>
+                </span>
+                <span class="flex items-center gap-2">
+                  <svg
+                    class="w-5 h-5 text-green-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-white/90 font-medium"
+                    >PageSpeed optimiert</span
+                  >
+                </span>
+              </div>
+            </div>
+
+            <!-- Visual Element -->
+            <div class="lg:col-span-4 relative">
+              <img
+                src="/assets/ixone-webdesign-regensburg.webp"
+                alt="iXone Webdesign Regensburg - Moderne und responsive Webentwicklung"
+                class="w-full max-w-md mx-auto h-auto rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-500 animate-float"
+                loading="eager"
+                width="400"
+                height="400"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Features Section -->
     <section
