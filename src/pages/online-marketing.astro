@@ -79,7 +79,7 @@ const faqSchema = {
   canonical="https://ixone.de/online-marketing"
   structuredData={[breadcrumbs, serviceSchema, faqSchema]}
 >
-  <main class="pt-16 md:pt-20 bg-white">
+  <main class="pt-14 sm:pt-16 md:pt-18 lg:pt-20 xl:pt-22 bg-white">
     <!-- Hero Section -->
     <section
       class="relative min-h-[80vh] bg-gradient-to-br from-emerald-900 via-teal-800 to-cyan-900 text-white overflow-hidden"
@@ -117,7 +117,7 @@ const faqSchema = {
       </div>
 
       <div
-        class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex items-center min-h-[80vh]"
+        class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24 relative z-10 flex items-center min-h-[80vh]"
       >
         <div class="max-w-6xl mx-auto">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -129,7 +129,7 @@ const faqSchema = {
                 >
                   <span class="block text-white">Online Marketing</span>
                   <span
-                    class="block bg-gradient-to-r from-brand-orange via-yellow-400 to-brand-orange bg-clip-text text-transparent animate-gradient-x"
+                    class="block bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-400 bg-clip-text text-transparent animate-gradient-x"
                   >
                     Agentur
                   </span>
@@ -148,9 +148,9 @@ const faqSchema = {
                   <strong class="text-white"
                     >Ganzheitliches Online Marketing aus Regensburg</strong
                   > –
-                  <em class="text-brand-orange">Google Ads</em>,
-                  <em class="text-brand-orange">Performance Marketing</em> und
-                  <em class="text-brand-orange">Conversion-Optimierung</em> für messbare
+                  <em class="text-orange-300">Google Ads</em>,
+                  <em class="text-orange-300">Performance Marketing</em> und
+                  <em class="text-orange-300">Conversion-Optimierung</em> für messbare
                   Erfolge und nachhaltiges Wachstum.
                 </p>
               </div>
@@ -159,7 +159,7 @@ const faqSchema = {
               <div class="flex flex-col sm:flex-row gap-4 mb-8">
                 <a
                   href="/kontakt"
-                  class="group relative px-8 py-4 bg-gradient-to-r from-brand-orange to-yellow-500 hover:from-yellow-500 hover:to-brand-orange text-white font-bold text-lg rounded-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 shadow-2xl hover:shadow-brand-orange/25 overflow-hidden text-center"
+                  class="group relative px-8 py-4 bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-yellow-500 hover:to-orange-500 text-white font-bold text-lg rounded-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 shadow-2xl hover:shadow-orange-500/25 overflow-hidden text-center"
                   aria-label="Online Marketing Strategie entwickeln"
                 >
                   <span
@@ -241,65 +241,68 @@ const faqSchema = {
               </div>
             </div>
 
-            <!-- Visual Element -->
+            <!-- Visual Element - Professional Marketing Image -->
             <div class="lg:col-span-4 relative">
-              <!-- Marketing Cards -->
-              <div class="relative">
-                <!-- Google Ads Card -->
+              <div class="relative group">
+                <!-- Image Container with Effects -->
                 <div
-                  class="w-72 h-40 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 backdrop-blur-md rounded-3xl border border-white/20 p-6 transform rotate-2 hover:rotate-1 transition-transform duration-500 animate-float relative z-10"
+                  class="relative rounded-3xl overflow-hidden shadow-2xl transform group-hover:scale-105 transition-transform duration-700"
                 >
-                  <div class="flex items-center gap-3 mb-4">
-                    <div
-                      class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl flex items-center justify-center"
-                    >
-                      <svg
-                        class="w-6 h-6 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                      </svg>
-                    </div>
-                    <h3 class="text-white font-bold">Google Ads</h3>
+                  <!-- Decorative Frame -->
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 z-10"
+                  >
                   </div>
-                  <p class="text-gray-200 text-sm">
-                    Sofortige Sichtbarkeit & Leads
-                  </p>
+
+                  <!-- Main Image -->
+                  <img
+                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=1000&fit=crop&crop=entropy"
+                    alt="Online Marketing Dashboard - Performance Metriken und Analytics"
+                    class="w-full h-auto object-cover animate-float"
+                    loading="lazy"
+                    width="800"
+                    height="1000"
+                  />
+
+                  <!-- Overlay with Stats -->
+                  <div
+                    class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 z-20"
+                  >
+                    <div class="grid grid-cols-3 gap-4 text-white">
+                      <div class="text-center">
+                        <div class="text-2xl font-bold text-orange-400">
+                          +250%
+                        </div>
+                        <div class="text-xs uppercase tracking-wider">
+                          ROI Steigerung
+                        </div>
+                      </div>
+                      <div class="text-center">
+                        <div class="text-2xl font-bold text-yellow-400">
+                          500+
+                        </div>
+                        <div class="text-xs uppercase tracking-wider">
+                          Kampagnen
+                        </div>
+                      </div>
+                      <div class="text-center">
+                        <div class="text-2xl font-bold text-green-400">98%</div>
+                        <div class="text-xs uppercase tracking-wider">
+                          Zufriedenheit
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <!-- Performance Card -->
+                <!-- Decorative Elements -->
                 <div
-                  class="absolute top-8 right-8 w-72 h-40 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 backdrop-blur-md rounded-3xl border border-white/20 p-6 transform -rotate-3 hover:rotate-0 transition-transform duration-500 animate-float-delayed"
+                  class="absolute -bottom-2 -left-2 w-20 h-20 bg-gradient-to-br from-emerald-400/30 to-teal-400/30 rounded-full blur-2xl"
                 >
-                  <div class="flex items-center gap-3 mb-4">
-                    <div
-                      class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center"
-                    >
-                      <svg
-                        class="w-6 h-6 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                        ></path>
-                      </svg>
-                    </div>
-                    <h3 class="text-white font-bold">Performance</h3>
-                  </div>
-                  <p class="text-gray-200 text-sm">Maximaler ROI garantiert</p>
+                </div>
+                <div
+                  class="absolute -top-2 -left-2 w-16 h-16 bg-gradient-to-br from-cyan-400/30 to-blue-400/30 rounded-full blur-2xl"
+                >
                 </div>
               </div>
             </div>
