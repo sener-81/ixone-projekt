@@ -1,0 +1,139 @@
+---
+// Testimonials.astro
+---
+
+<section class="py-16 bg-gray-50" itemscope itemtype="https://schema.org/Organization">
+  <div class="container mx-auto px-4 max-w-6xl">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Das sagen unsere Kunden
+      </h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        Erfolgsgeschichten aus Regensburg und Umgebung – echte Ergebnisse durch professionelles Webdesign
+      </p>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Testimonial 1 -->
+      <article class="bg-white rounded-lg shadow-md p-8 hover:shadow-xl transition-shadow" itemscope itemtype="https://schema.org/Review">
+        <meta itemprop="itemReviewed" content="Webdesign Service">
+        <div class="flex items-center mb-4" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+          <meta itemprop="ratingValue" content="5">
+          <meta itemprop="bestRating" content="5">
+          <!-- 5 Sterne -->
+          <div class="flex text-yellow-400 text-xl">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+        </div>
+        
+        <blockquote class="text-gray-700 mb-6 italic leading-relaxed" itemprop="reviewBody">
+          "Die neue Website von iXone hat unsere Online-Anfragen verdreifacht. Besonders beeindruckend: PageSpeed 98/100 und endlich auf Seite 1 bei Google!"
+        </blockquote>
+        
+        <div class="flex items-center">
+          <img 
+            src="https://api.dicebear.com/7.x/avataaars/svg?seed=Michael" 
+            alt="Michael Weber" 
+            class="w-12 h-12 rounded-full mr-4"
+            width="48"
+            height="48"
+            loading="lazy"
+          >
+          <div itemprop="author" itemscope itemtype="https://schema.org/Person">
+            <p class="font-semibold text-gray-900" itemprop="name">Michael Weber</p>
+            <p class="text-sm text-gray-600">Geschäftsführer, Weber Sanitär GmbH</p>
+          </div>
+        </div>
+        
+        <div class="mt-4 pt-4 border-t border-gray-200">
+          <p class="text-sm font-semibold text-green-600">Ergebnis: +200% Anfragen</p>
+        </div>
+      </article>
+
+      <!-- Testimonial 2 -->
+      <article class="bg-white rounded-lg shadow-md p-8 hover:shadow-xl transition-shadow" itemscope itemtype="https://schema.org/Review">
+        <meta itemprop="itemReviewed" content="Webdesign Service">
+        <div class="flex items-center mb-4" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+          <meta itemprop="ratingValue" content="5">
+          <meta itemprop="bestRating" content="5">
+          <div class="flex text-yellow-400 text-xl">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+        </div>
+        
+        <blockquote class="text-gray-700 mb-6 italic leading-relaxed" itemprop="reviewBody">
+          "Professionell, schnell und immer erreichbar. Unsere Ladezeit ging von 8 Sekunden auf 1,2 Sekunden runter – die Kunden merken den Unterschied sofort!"
+        </blockquote>
+        
+        <div class="flex items-center">
+          <img 
+            src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" 
+            alt="Sarah Müller" 
+            class="w-12 h-12 rounded-full mr-4"
+            width="48"
+            height="48"
+            loading="lazy"
+          >
+          <div itemprop="author" itemscope itemtype="https://schema.org/Person">
+            <p class="font-semibold text-gray-900" itemprop="name">Sarah Müller</p>
+            <p class="text-sm text-gray-600">Inhaberin, Café Zeitlos Regensburg</p>
+          </div>
+        </div>
+        
+        <div class="mt-4 pt-4 border-t border-gray-200">
+          <p class="text-sm font-semibold text-green-600">PageSpeed: 98/100</p>
+        </div>
+      </article>
+
+      <!-- Testimonial 3 -->
+      <article class="bg-white rounded-lg shadow-md p-8 hover:shadow-xl transition-shadow" itemscope itemtype="https://schema.org/Review">
+        <meta itemprop="itemReviewed" content="Webdesign Service">
+        <div class="flex items-center mb-4" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+          <meta itemprop="ratingValue" content="5">
+          <meta itemprop="bestRating" content="5">
+          <div class="flex text-yellow-400 text-xl">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+        </div>
+        
+        <blockquote class="text-gray-700 mb-6 italic leading-relaxed" itemprop="reviewBody">
+          "Endlich eine Agentur, die versteht, was technisches SEO bedeutet. Strukturierte Daten, perfekte Mobile-Optimierung – Google liebt unsere neue Seite!"
+        </blockquote>
+        
+        <div class="flex items-center">
+          <img 
+            src="https://api.dicebear.com/7.x/avataaars/svg?seed=Thomas" 
+            alt="Thomas Bauer" 
+            class="w-12 h-12 rounded-full mr-4"
+            width="48"
+            height="48"
+            loading="lazy"
+          >
+          <div itemprop="author" itemscope itemtype="https://schema.org/Person">
+            <p class="font-semibold text-gray-900" itemprop="name">Thomas Bauer</p>
+            <p class="text-sm text-gray-600">Marketing Manager, TechStart Regensburg</p>
+          </div>
+        </div>
+        
+        <div class="mt-4 pt-4 border-t border-gray-200">
+          <p class="text-sm font-semibold text-green-600">Top 3 Rankings in 8 Wochen</p>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Trust Badge -->
+    <div class="text-center mt-12">
+      <p class="text-gray-600 mb-4">Über 150 zufriedene Kunden seit 2007</p>
+      <a 
+        href="/kontakt" 
+        class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+      >
+        Jetzt unverbindlich beraten lassen
+      </a>
+    </div>
+  </div>
+</section>
