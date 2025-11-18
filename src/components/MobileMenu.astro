@@ -125,137 +125,130 @@ import { navItems } from '../data/navigation';
 
 <script>
   class MobileMenu {
-    private button: HTMLElement | null;
-    private menu: HTMLElement | null;
-    private closeButton: HTMLElement | null;
-    private navLinks: NodeListOf<Element>;
-    private hamburgerLines: NodeListOf<Element>;
-    private isOpen = false;
-
     constructor() {
       this.button = document.getElementById('mobile-menu-button');
       this.menu = document.getElementById('mobile-menu');
       this.closeButton = document.getElementById('mobile-menu-close');
       this.navLinks = document.querySelectorAll('.mobile-nav-link');
       this.hamburgerLines = document.querySelectorAll('.hamburger-line');
-      
+      this.isOpen = false;
+
       this.init();
     }
 
-    private init() {
-      // Event Listeners
+    init() {
       this.button?.addEventListener('click', () => this.toggle());
       this.closeButton?.addEventListener('click', () => this.close());
-      
-      // Navigation Links schließen Menu
-      this.navLinks.forEach(link => {
+
+      this.navLinks.forEach((link) => {
         link.addEventListener('click', () => this.close());
       });
-      
-      // Keyboard Navigation
-      document.addEventListener('keydown', (e) => this.handleKeydown(e));
+
+      document.addEventListener('keydown', (event) =>
+        this.handleKeydown(event)
+      );
     }
 
-    private toggle() {
-      this.isOpen ? this.close() : this.open();
+    toggle() {
+      if (this.isOpen) {
+        this.close();
+      } else {
+        this.open();
+      }
     }
 
-    private open() {
+    open() {
       if (!this.menu || !this.button) return;
-      
+
       this.isOpen = true;
-      
-      // Slide Menu herein (ganze Seite) - KEIN Scroll-Lock
       this.menu.classList.remove('translate-x-full');
       this.menu.setAttribute('aria-hidden', 'false');
-      
-      // Update Button State
       this.button.setAttribute('aria-expanded', 'true');
-      
-      // Animiere Hamburger zu X
       this.animateHamburgerToX();
-      
-      // Focus Management
+
       setTimeout(() => {
         this.closeButton?.focus();
       }, 300);
     }
 
-    private close() {
+    close() {
       if (!this.menu || !this.button) return;
-      
+
       this.isOpen = false;
-      
-      // Slide Menu raus - KEIN Scroll-Reset
       this.menu.classList.add('translate-x-full');
       this.menu.setAttribute('aria-hidden', 'true');
-      
-      // Update Button State
       this.button.setAttribute('aria-expanded', 'false');
-      
-      // Animiere X zurück zu Hamburger
       this.animateXToHamburger();
-      
-      // Return Focus
       this.button.focus();
     }
 
-    private animateHamburgerToX() {
-      if (this.hamburgerLines.length >= 3) {
-        // Erste Linie: Rotiere zu \
-        (this.hamburgerLines[0] as HTMLElement).style.transform = 'rotate(45deg) translate(5px, 5px)';
-        // Zweite Linie: Verstecke
-        (this.hamburgerLines[1] as HTMLElement).style.opacity = '0';
-        // Dritte Linie: Rotiere zu /
-        (this.hamburgerLines[2] as HTMLElement).style.transform = 'rotate(-45deg) translate(7px, -6px)';
+    animateHamburgerToX() {
+      if (this.hamburgerLines.length < 3) return;
+
+      const [line1, line2, line3] = this.hamburgerLines;
+      if (line1 instanceof HTMLElement) {
+        line1.style.transform = 'rotate(45deg) translate(5px, 5px)';
+      }
+      if (line2 instanceof HTMLElement) {
+        line2.style.opacity = '0';
+      }
+      if (line3 instanceof HTMLElement) {
+        line3.style.transform = 'rotate(-45deg) translate(7px, -6px)';
       }
     }
 
-    private animateXToHamburger() {
-      if (this.hamburgerLines.length >= 3) {
-        // Reset alle Transformationen
-        (this.hamburgerLines[0] as HTMLElement).style.transform = '';
-        (this.hamburgerLines[1] as HTMLElement).style.opacity = '1';
-        (this.hamburgerLines[2] as HTMLElement).style.transform = '';
+    animateXToHamburger() {
+      if (this.hamburgerLines.length < 3) return;
+
+      const [line1, line2, line3] = this.hamburgerLines;
+      if (line1 instanceof HTMLElement) {
+        line1.style.transform = '';
+      }
+      if (line2 instanceof HTMLElement) {
+        line2.style.opacity = '1';
+      }
+      if (line3 instanceof HTMLElement) {
+        line3.style.transform = '';
       }
     }
 
-    private handleKeydown(e: KeyboardEvent) {
-      if (e.key === 'Escape' && this.isOpen) {
+    handleKeydown(event) {
+      if (event.key === 'Escape' && this.isOpen) {
         this.close();
       }
-      
-      // Tab-Trapping im Menu
-      if (this.isOpen && e.key === 'Tab') {
-        this.trapFocus(e);
+
+      if (this.isOpen && event.key === 'Tab') {
+        this.trapFocus(event);
       }
     }
 
-    private trapFocus(e: KeyboardEvent) {
+    trapFocus(event) {
       if (!this.menu) return;
-      
+
       const focusableElements = this.menu.querySelectorAll(
         'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
       );
-      
-      const firstElement = focusableElements[0] as HTMLElement;
-      const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
-      
-      if (e.shiftKey) {
+
+      const firstElement = focusableElements[0];
+      const lastElement =
+        focusableElements[focusableElements.length - 1];
+
+      if (!(firstElement instanceof HTMLElement) || !(lastElement instanceof HTMLElement)) {
+        return;
+      }
+
+      if (event.shiftKey) {
         if (document.activeElement === firstElement) {
           lastElement.focus();
-          e.preventDefault();
+          event.preventDefault();
         }
-      } else {
-        if (document.activeElement === lastElement) {
-          firstElement.focus();
-          e.preventDefault();
-        }
+      } else if (document.activeElement === lastElement) {
+        firstElement.focus();
+        event.preventDefault();
       }
     }
   }
 
-  // Initialize Mobile Menu
   document.addEventListener('DOMContentLoaded', () => {
     new MobileMenu();
   });
