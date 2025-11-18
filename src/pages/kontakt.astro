@@ -137,34 +137,6 @@ const serviceSchema = {
   },
 };
 
-// Hero-Konfiguration - Kompakter Kontakt-Header
-const heroConfig = {
-  variant: "contact" as const,
-  backgroundGradient:
-    "bg-gradient-to-br from-gray-900 via-gray-800 to-slate-900",
-  patternType: "contact" as const,
-  useMinHeight: false, // Kontakt-Seite verwendet padding statt min-height
-  paddingY: "py-12 md:py-16", // Kompakter - weniger Padding
-  ctaButtons: [
-    {
-      text: "Sofort anrufen: 09401 533 88 73",
-      href: "tel:+4994015338873",
-      type: "primary" as const,
-      ariaLabel: "Digitalagentur Regensburg sofort anrufen",
-    },
-    {
-      text: "E-Mail senden: info@ixone.de",
-      href: "mailto:info@ixone.de",
-      type: "secondary" as const,
-      ariaLabel: "E-Mail an Digitalagentur Regensburg senden",
-    },
-  ],
-  trustIndicators: [
-    { text: "Kostenlose Erstberatung", icon: true },
-    { text: "Unverbindliches Angebot", icon: true },
-    { text: "Persönlicher Ansprechpartner", icon: true },
-  ],
-};
 ---
 
 <Layout
@@ -193,8 +165,7 @@ const heroConfig = {
         <div class="max-w-4xl mx-auto text-center">
           <h1 class="text-3xl md:text-5xl font-bold mb-6">
             Kontakt zur <span
-              class="bg-gradient-to-r from-brand-orange via-yellow-400 to-brand-orange bg-clip-text text-transparent"
-              >Digitalagentur Regensburg</span
+                    class="block gradient-text-brand">Digitalagentur Regensburg</span
             >
           </h1>
 
