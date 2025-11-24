@@ -1,0 +1,371 @@
+---
+/**
+ * HeroVideoScroll Component v6
+ * 
+ * Simpel & Smooth mit Text-Wechsel:
+ * - Video startet boxed
+ * - Beim Scrollen wächst es butterweich zu fullscreen
+ * - Bei ~80% Fullscreen wechselt der Text smooth
+ * - Dann normal weiterscrollen
+ */
+
+interface Props {
+  videoSrc: string;
+  posterSrc?: string;
+  headline1?: string;
+  subline1?: string;
+  buttonText1?: string;
+  buttonLink1?: string;
+  headline2?: string;
+  subline2?: string;
+  buttonText2?: string;
+  buttonLink2?: string;
+}
+
+const {
+  videoSrc,
+  posterSrc = "",
+  headline1 = "Digitalagentur aus Regensburg",
+  subline1 = "Webdesign • SEO • Online Marketing",
+  buttonText1 = "Jetzt Beratung sichern",
+  buttonLink1 = "#kontakt",
+  headline2 = "Bereit durchzustarten?",
+  subline2 = "Lassen Sie uns gemeinsam Ihr Projekt umsetzen",
+  buttonText2 = "Kostenloses Angebot",
+  buttonLink2 = "#kontakt",
+} = Astro.props;
+---
+
+<section class="hero-video-section" aria-label="Video Hero Section">
+  <div class="scroll-track">
+    <div class="video-sticky">
+      <div class="video-container">
+        <div class="video-frame">
+          <video
+            class="hero-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster={posterSrc}
+          >
+            <source src={videoSrc} type="video/mp4" />
+          </video>
+          
+          <div class="video-overlay"></div>
+          
+          <!-- Text 1 -->
+          <div class="video-content content-1">
+            <h2 class="hero-headline">{headline1}</h2>
+            <p class="hero-subline">{subline1}</p>
+            <a href={buttonLink1} class="hero-btn">
+              {buttonText1}
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+          
+          <!-- Text 2 -->
+          <div class="video-content content-2">
+            <h2 class="hero-headline">{headline2}</h2>
+            <p class="hero-subline">{subline2}</p>
+            <a href={buttonLink2} class="hero-btn btn-secondary">
+              {buttonText2}
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-space"></div>
+  </div>
+</section>
+
+<style>
+  :root {
+    --hero-primary: #ec6a1b;
+    --hero-primary-hover: #d55a10;
+    --hero-text: #ffffff;
+    --hero-bg: #ffffff;
+  }
+
+  .hero-video-section {
+    position: relative;
+    width: 100%;
+    background: var(--hero-bg);
+  }
+
+  .scroll-track {
+    position: relative;
+    height: 200vh;
+  }
+
+  .video-sticky {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--hero-bg);
+    overflow: hidden;
+  }
+
+  .video-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .video-frame {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .video-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    pointer-events: none;
+  }
+
+  /* ===== CONTENT ===== */
+  .video-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: 
+      opacity 0.6s ease,
+      transform 0.6s ease;
+    pointer-events: none;
+  }
+
+  .content-1 {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Text 2 aktiv */
+  .video-container.show-text-2 .content-1 {
+    opacity: 0;
+    transform: translateY(-12px);
+    pointer-events: none;
+  }
+
+  .video-container.show-text-2 .content-2 {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .hero-headline {
+    font-size: clamp(1.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--hero-text);
+    margin: 0 0 0.75rem;
+    line-height: 1.15;
+    text-shadow: 0 2px 25px rgba(0, 0, 0, 0.6);
+  }
+
+  .hero-subline {
+    font-size: clamp(0.95rem, 2.5vw, 1.4rem);
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0 0 1.75rem;
+    font-weight: 400;
+    text-shadow: 0 1px 15px rgba(0, 0, 0, 0.5);
+  }
+
+  .hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem 2rem;
+    background: var(--hero-primary);
+    color: var(--hero-text);
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: 
+      background 0.3s ease,
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+    box-shadow: 0 4px 25px rgba(236, 106, 27, 0.45);
+  }
+
+  .hero-btn:hover {
+    background: var(--hero-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(236, 106, 27, 0.55);
+  }
+
+  .hero-btn svg {
+    transition: transform 0.3s ease;
+  }
+
+  .hero-btn:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* Secondary Button */
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-secondary:hover {
+    background: var(--hero-text);
+    color: #1a1a1a;
+    border-color: var(--hero-text);
+  }
+
+  .scroll-space {
+    height: 100vh;
+    pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    .scroll-track {
+      height: 180vh;
+    }
+    
+    .scroll-space {
+      height: 80vh;
+    }
+
+    .hero-btn {
+      padding: 0.875rem 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .video-content {
+      padding: 1.25rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .video-content,
+    .hero-btn {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const scrollTrack = document.querySelector('.scroll-track') as HTMLElement;
+    const container = document.querySelector('.video-container') as HTMLElement;
+    const frame = document.querySelector('.video-frame') as HTMLElement;
+    const overlay = document.querySelector('.video-overlay') as HTMLElement;
+    
+    if (!scrollTrack || !container || !frame || !overlay) return;
+
+    // Start & End Werte
+    const isMobile = window.innerWidth <= 768;
+    const viewportWidth = window.innerWidth;
+    
+    // Start: Video boxed (~70% Breite)
+    const startPadding = isMobile ? 24 : Math.max(80, viewportWidth * 0.15);
+    const startBorderRadius = isMobile ? 16 : 20;
+    const startAspect = isMobile ? 50 : 45;
+    
+    // End: Fullscreen
+    const endPadding = 0;
+    const endBorderRadius = 0;
+    const endAspect = 100;
+
+    // Butterweiche Easing Funktion
+    const easeInOutSine = (t: number): number => {
+      return -(Math.cos(Math.PI * t) - 1) / 2;
+    };
+
+    const handleScroll = () => {
+      const rect = scrollTrack.getBoundingClientRect();
+      const scrollHeight = rect.height - window.innerHeight;
+      const rawProgress = -rect.top / scrollHeight;
+      const progress = Math.max(0, Math.min(1, rawProgress));
+      
+      // Video-Expansion: 0-70% des Scrolls
+      const expansionProgress = Math.min(1, progress / 0.7);
+      const eased = easeInOutSine(expansionProgress);
+      
+      // Berechne aktuelle Werte
+      const padding = startPadding + (endPadding - startPadding) * eased;
+      const borderRadius = startBorderRadius + (endBorderRadius - startBorderRadius) * eased;
+      const aspectHeight = startAspect + (endAspect - startAspect) * eased;
+      const overlayOpacity = 0.30 + (0.20 * eased);
+      
+      // Wende Styles an
+      frame.style.marginLeft = `${padding}px`;
+      frame.style.marginRight = `${padding}px`;
+      frame.style.borderRadius = `${borderRadius}px`;
+      frame.style.height = `${aspectHeight}vh`;
+      overlay.style.background = `rgba(0, 0, 0, ${overlayOpacity})`;
+      
+      // Text-Wechsel bei 75% (wenn Video fast fullscreen ist)
+      if (progress >= 0.75) {
+        container.classList.add('show-text-2');
+      } else {
+        container.classList.remove('show-text-2');
+      }
+    };
+
+    // Scroll Handler
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    window.addEventListener('resize', handleScroll, { passive: true });
+    
+    // Initial
+    handleScroll();
+  });
+
+  // Video Lazy Loading
+  if ('IntersectionObserver' in window) {
+    const video = document.querySelector('.hero-video') as HTMLVideoElement;
+    if (video) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            entry.isIntersecting ? video.play().catch(() => {}) : video.pause();
+          });
+        },
+        { threshold: 0.1 }
+      );
+      observer.observe(video);
+    }
+  }
+</script>

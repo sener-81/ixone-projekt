@@ -6,6 +6,7 @@ import Services from "../components/Services.astro";
 import WhyChooseUs from "../components/WhyChooseUs.astro";
 import CTA from "../components/CTA.astro";
 import { breadcrumbSchema } from "../data/structuredData";
+import HeroVideoScroll from '../components/HeroVideoScroll.astro';
 
 const breadcrumbs = breadcrumbSchema([
   { name: "Home", url: "https://ixone.de/" },
@@ -18,12 +19,29 @@ const breadcrumbs = breadcrumbSchema([
   canonical="https://ixone.de/"
   structuredData={[breadcrumbs]}
 >
-  <!-- Kein Header hier mehr! -->
   <div class="pt-14 sm:pt-16 md:pt-18 lg:pt-20 xl:pt-22 bg-white">
     <Hero />
-    <Services />
-    <WhyChooseUs />
-    <CTA />
   </div>
-  <!-- Kein Footer mehr! -->
+
+    <!-- Video Section OHNE Padding -->
+<HeroVideoScroll
+  videoSrc="/videos/clip-ixone.mp4"
+  posterSrc="/videos/poster-hero.jpg"
+  headline1="Digitalagentur aus Regensburg"
+  subline1="Webdesign • SEO • Online Marketing"
+  buttonText1="Jetzt Beratung sichern"
+  buttonLink1="#kontakt"
+  headline2="Bereit durchzustarten?"
+  subline2="Lassen Sie uns gemeinsam Ihr Projekt umsetzen"
+  buttonText2="Kostenloses Angebot"
+  buttonLink2="#kontakt"
+/>
+
+  <Services />
+
+  
+  <WhyChooseUs />
+
+
+  <CTA />
 </Layout>
