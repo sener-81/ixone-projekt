@@ -1,4 +1,4 @@
-export const organizationSchema = {
+﻿export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": "https://ixone.de/#organization",
@@ -8,22 +8,34 @@ export const organizationSchema = {
   "url": "https://ixone.de",
   "telephone": "+49-9401-533-88-73",
   "email": "info@ixone.de",
+  "logo": "https://ixone.de/favicon.svg",
+  "image": "https://ixone.de/assets/ixone-online-marketing-regensburg.webp",
   "foundingDate": "2007",
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "Deine Straße 1", // echte Straße eintragen
     "addressLocality": "Regensburg",
     "addressRegion": "Bayern",
-    "addressCountry": "DE",
-    "postalCode": "93047"
+    "postalCode": "93047",
+    "addressCountry": "DE"
   },
   "geo": {
     "@type": "GeoCoordinates",
     "latitude": "49.0134",
     "longitude": "12.1016"
   },
-  "openingHours": ["Mo-Fr 09:00-18:00"],
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "09:00",
+    "closes": "18:00"
+  }],
   "priceRange": "€€",
-  "serviceArea": ["Regensburg", "Bayern", "Deutschland"],
+  "areaServed": [
+    { "@type": "City", "name": "Regensburg" },
+    { "@type": "State", "name": "Bayern" },
+    { "@type": "Country", "name": "Deutschland" }
+  ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Digitalagentur Services",
@@ -68,9 +80,7 @@ export const websiteSchema = {
   "url": "https://ixone.de",
   "name": "iXone Digitalagentur",
   "description": "Digitalagentur aus Regensburg für Webdesign, SEO und Online-Marketing",
-  "publisher": {
-    "@id": "https://ixone.de/#organization"
-  },
+  "publisher": { "@id": "https://ixone.de/#organization" },
   "potentialAction": [
     {
       "@type": "SearchAction",
@@ -83,7 +93,7 @@ export const websiteSchema = {
   ]
 };
 
-export const breadcrumbSchema = (items: Array<{name: string, url: string}>) => ({
+export const breadcrumbSchema = (items: Array<{ name: string; url: string }>) => ({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": items.map((item, index) => ({
