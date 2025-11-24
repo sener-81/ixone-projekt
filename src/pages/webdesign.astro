@@ -14,32 +14,24 @@ const breadcrumbs = breadcrumbSchema([
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
+  "@id": "https://ixone.de/webdesign#service",
   name: "Webdesign Regensburg",
   description:
     "Professionelles Webdesign aus Regensburg. Moderne, responsive Websites die konvertieren und bei Google ranken.",
-  provider: {
-    "@type": "LocalBusiness",
-    name: "iXone Digitalagentur",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Regensburg",
-      addressRegion: "Bayern",
-      addressCountry: "DE",
-    },
-    telephone: "+49-9401-533-88-73",
-  },
-  areaServed: ["Regensburg", "Bayern", "Deutschland"],
-  serviceType: "Webdesign",
+  provider: { "@id": "https://ixone.de/#organization" },
+  telephone: "+4994015338873",
+  areaServed: [
+    { "@type": "City", name: "Regensburg" },
+    { "@type": "State", name: "Bayern" },
+    { "@type": "Country", name: "Deutschland" },
+  ],
+  serviceType: ["Webdesign", "Webentwicklung", "UX/UI"],
   offers: {
     "@type": "Offer",
-    price: "2500",
+    priceRange: "€€",
     priceCurrency: "EUR",
-    priceSpecification: {
-      "@type": "PriceSpecification",
-      price: "2500",
-      priceCurrency: "EUR",
-      valueAddedTaxIncluded: true,
-    },
+    availability: "https://schema.org/InStock",
+    url: "https://ixone.de/webdesign",
   },
 };
 

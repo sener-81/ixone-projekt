@@ -1,40 +1,83 @@
-﻿export const organizationSchema = {
+export const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": "Organization",
   "@id": "https://ixone.de/#organization",
   "name": "iXone Digitalagentur",
   "alternateName": ["iXone", "Digitalagentur Regensburg"],
   "description": "Professionelle Digitalagentur aus Regensburg für Webdesign, SEO und Online-Marketing seit 2007",
   "url": "https://ixone.de",
-  "telephone": "+49-9401-533-88-73",
+  "telephone": "+4994015338873",
   "email": "info@ixone.de",
   "logo": "https://ixone.de/favicon.svg",
   "image": "https://ixone.de/assets/ixone-online-marketing-regensburg.webp",
   "foundingDate": "2007",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Deine Straße 1", // echte Straße eintragen
-    "addressLocality": "Regensburg",
-    "addressRegion": "Bayern",
-    "postalCode": "93047",
-    "addressCountry": "DE"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "49.0134",
-    "longitude": "12.1016"
-  },
-  "openingHoursSpecification": [{
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    "opens": "09:00",
-    "closes": "18:00"
-  }],
-  "priceRange": "€€",
-  "areaServed": [
-    { "@type": "City", "name": "Regensburg" },
-    { "@type": "State", "name": "Bayern" },
-    { "@type": "Country", "name": "Deutschland" }
+  "department": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://ixone.de/#neutraubling",
+      "name": "iXone Digitalagentur – Neutraubling",
+      "telephone": "+4994015338873",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Oder-Neisse-Str. 1",
+        "addressLocality": "Neutraubling",
+        "addressRegion": "Bayern",
+        "postalCode": "93073",
+        "addressCountry": "DE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "48.99002",
+        "longitude": "12.20109"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "priceRange": "€€",
+      "areaServed": [
+        { "@type": "City", "name": "Neutraubling" },
+        { "@type": "State", "name": "Bayern" },
+        { "@type": "Country", "name": "Deutschland" }
+      ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://ixone.de/#regensburg",
+      "name": "iXone Digitalagentur – Regensburg",
+      "telephone": "+4915228970613",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Humboldtstr. 48",
+        "addressLocality": "Regensburg",
+        "addressRegion": "Bayern",
+        "postalCode": "93053",
+        "addressCountry": "DE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "48.996183",
+        "longitude": "12.105524"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ],
+      "priceRange": "€€",
+      "areaServed": [
+        { "@type": "City", "name": "Regensburg" },
+        { "@type": "State", "name": "Bayern" },
+        { "@type": "Country", "name": "Deutschland" }
+      ]
+    }
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
