@@ -45,7 +45,7 @@ const faqSchema = {
       name: "Was kostet professionelles Webdesign in Regensburg?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Professionelles Webdesign in Regensburg startet bei 2.500€ für eine Unternehmenswebsite. E-Commerce-Lösungen beginnen bei 5.000€. Wir erstellen transparente, individuelle Angebote ohne versteckte Kosten.",
+        text: "Professionelles Webdesign in Regensburg startet ab 2.500 € für eine Unternehmenswebsite. E-Commerce-Lösungen beginnen ab 5.000 €. Wir erstellen transparente, individuelle Angebote ohne versteckte Kosten.",
       },
     },
     {
@@ -53,7 +53,7 @@ const faqSchema = {
       name: "Wie lange dauert die Webdesign-Entwicklung?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Eine professionelle Website benötigt 2-4 Wochen Entwicklungszeit. Komplexere Projekte mit E-Commerce oder speziellen Funktionen dauern 6-12 Wochen. Sie erhalten einen detaillierten Zeitplan nach dem Erstgespräch.",
+        text: "Typischerweise 4–8 Wochen vom Konzept bis zum Launch. Shops oder Spezialfunktionen können 8–12 Wochen dauern. Sie erhalten nach dem Erstgespräch einen klaren Zeitplan.",
       },
     },
     {
@@ -61,7 +61,23 @@ const faqSchema = {
       name: "Ist das Webdesign responsive und mobile-optimiert?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ja, alle unsere Websites sind responsive und mobile-first entwickelt. Sie funktionieren perfekt auf Desktop, Tablet und Smartphone mit optimaler Benutzerfreundlichkeit auf allen Geräten.",
+        text: "Ja, alle Websites sind responsive und mobile-first. Sie funktionieren auf Desktop, Tablet und Smartphone mit optimaler Benutzerfreundlichkeit und schnellen Ladezeiten.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Mit welchem CMS arbeitet ihr?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Wir setzen je nach Bedarf auf WordPress oder moderne Headless-Stacks (z. B. Astro/React). Inhalte können Sie anschließend selbst pflegen.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Sind SEO und Performance inklusive?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ja. Onpage-SEO-Grundlagen, strukturierte Daten, saubere Core Web Vitals und Pagespeed-Optimierung gehören zum Standardumfang.",
       },
     },
   ],
@@ -237,7 +253,7 @@ const faqSchema = {
             <!-- Visual Element -->
             <div class="lg:col-span-4 relative">
               <img
-                src="/assets/ixone-webdesign-regensburg.webp"
+                 src="/assets/ixone-online-marketing-regensburg.webp"
                 alt="iXone Webdesign Regensburg - Moderne und responsive Webentwicklung"
                 class="w-full max-w-md mx-auto h-auto rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-500 animate-float"
                 loading="eager"
@@ -627,7 +643,7 @@ const faqSchema = {
           <div class="space-y-6">
             <!-- FAQ Item 1 -->
             <details
-              class="bg-white rounded-lg shadow-md overflow-hidden group border border-gray-200"
+              class="faq-transition bg-white rounded-lg shadow-md overflow-hidden group border border-gray-200"
             >
               <summary
                 class="px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
@@ -648,25 +664,24 @@ const faqSchema = {
                     d="M19 9l-7 7-7-7"></path>
                 </svg>
               </summary>
-              <div class="px-6 pb-4 text-gray-600">
+              <div class="faq-content px-6 pb-4 text-gray-600">
                 <p>
-                  Professionelles Webdesign in Regensburg startet bei 2.500€ für
-                  eine Unternehmenswebsite. E-Commerce-Lösungen beginnen bei
-                  5.000€. Wir erstellen transparente, individuelle Angebote ohne
-                  versteckte Kosten.
+                  Webdesign startet ab 2.500 € für Unternehmensseiten. Shops oder
+                  Spezialfunktionen liegen ab ca. 5.000 €. Sie erhalten ein individuelles,
+                  transparentes Angebot.
                 </p>
               </div>
             </details>
 
             <!-- FAQ Item 2 -->
             <details
-              class="bg-white rounded-lg shadow-md overflow-hidden group border border-gray-200"
+              class="faq-transition bg-white rounded-lg shadow-md overflow-hidden group border border-gray-200"
             >
               <summary
                 class="px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
               >
                 <h3 class="text-lg font-semibold text-gray-900">
-                  Wie lange dauert die Webdesign-Entwicklung?
+                  Wie lange dauert ein Webdesign-Projekt?
                 </h3>
                 <svg
                   class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform duration-200"
@@ -681,25 +696,24 @@ const faqSchema = {
                     d="M19 9l-7 7-7-7"></path>
                 </svg>
               </summary>
-              <div class="px-6 pb-4 text-gray-600">
+              <div class="faq-content px-6 pb-4 text-gray-600">
                 <p>
-                  Eine professionelle Website benötigt 2-4 Wochen
-                  Entwicklungszeit. Komplexere Projekte mit E-Commerce oder
-                  speziellen Funktionen dauern 6-12 Wochen. Sie erhalten einen
-                  detaillierten Zeitplan nach dem Erstgespräch.
+                  Meist 4–8 Wochen vom Konzept bis zum Launch. Shops oder besondere
+                  Integrationen dauern 8–12 Wochen. Nach dem Erstgespräch gibt es
+                  einen klaren Zeitplan.
                 </p>
               </div>
             </details>
 
             <!-- FAQ Item 3 -->
             <details
-              class="bg-white rounded-lg shadow-md overflow-hidden group border border-gray-200"
+              class="faq-transition bg-white rounded-lg shadow-md overflow-hidden group border border-gray-200"
             >
               <summary
                 class="px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
               >
                 <h3 class="text-lg font-semibold text-gray-900">
-                  Ist das Webdesign responsive und mobile-optimiert?
+                  Mit welchem CMS arbeitet ihr?
                 </h3>
                 <svg
                   class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform duration-200"
@@ -714,12 +728,72 @@ const faqSchema = {
                     d="M19 9l-7 7-7-7"></path>
                 </svg>
               </summary>
-              <div class="px-6 pb-4 text-gray-600">
+              <div class="faq-content px-6 pb-4 text-gray-600">
                 <p>
-                  Ja, alle unsere Websites sind responsive und mobile-first
-                  entwickelt. Sie funktionieren perfekt auf Desktop, Tablet und
-                  Smartphone mit optimaler Benutzerfreundlichkeit auf allen
-                  Geräten.
+                  Je nach Bedarf WordPress oder moderne Headless-Stacks (z. B. Astro/React).
+                  Sie können Inhalte anschließend selbst pflegen.
+                </p>
+              </div>
+            </details>
+
+            <!-- FAQ Item 4 -->
+            <details
+              class="faq-transition bg-white rounded-lg shadow-md overflow-hidden group border border-gray-200"
+            >
+              <summary
+                class="px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
+              >
+                <h3 class="text-lg font-semibold text-gray-900">
+                  Sind SEO und Performance inklusive?
+                </h3>
+                <svg
+                  class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform duration-200"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
+              <div class="faq-content px-6 pb-4 text-gray-600">
+                <p>
+                  Ja. Onpage-SEO-Basics, strukturierte Daten und Pagespeed-Optimierung
+                  für gute Core Web Vitals sind Standard.
+                </p>
+              </div>
+            </details>
+
+            <!-- FAQ Item 5 -->
+            <details
+              class="faq-transition bg-white rounded-lg shadow-md overflow-hidden group border border-gray-200"
+            >
+              <summary
+                class="px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
+              >
+                <h3 class="text-lg font-semibold text-gray-900">
+                  Übernehmt ihr Wartung und Hosting?
+                </h3>
+                <svg
+                  class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform duration-200"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
+              <div class="faq-content px-6 pb-4 text-gray-600">
+                <p>
+                  Ja, optional. Updates, Backups, Monitoring und Support können wir
+                  für Sie übernehmen; Hosting beraten oder bereitstellen wir auf Wunsch.
                 </p>
               </div>
             </details>
@@ -789,6 +863,60 @@ const faqSchema = {
           </div>
         </div>
       </div>
-    </section>
+  </section>
   </div>
 </Layout>
+
+<script>
+if (typeof window !== "undefined") {
+  document.querySelectorAll(".faq-transition").forEach((details) => {
+    const content = details.querySelector(".faq-content");
+    if (!content) return;
+
+    const open = () => {
+      // Measure height, set explicit value for animation, then remove cap after transition
+      const fullHeight = content.scrollHeight;
+      content.style.maxHeight = `${fullHeight}px`;
+      content.style.opacity = "1";
+      content.style.transform = "translateY(0)";
+      const onEnd = (e) => {
+        if (e.propertyName === "max-height") {
+          content.style.maxHeight = "none";
+          content.removeEventListener("transitionend", onEnd);
+        }
+      };
+      content.addEventListener("transitionend", onEnd);
+    };
+
+    const close = () => {
+      // If maxHeight is none (from open), set current height first, then animate to 0
+      const currentHeight = content.scrollHeight;
+      content.style.maxHeight = `${currentHeight}px`;
+      requestAnimationFrame(() => {
+        content.style.maxHeight = "0px";
+        content.style.opacity = "0";
+        content.style.transform = "translateY(-6px)";
+      });
+    };
+
+    // Initial state
+    if (details.open) {
+      content.style.maxHeight = "none";
+      content.style.opacity = "1";
+      content.style.transform = "translateY(0)";
+    } else {
+      content.style.maxHeight = "0px";
+      content.style.opacity = "0";
+      content.style.transform = "translateY(-6px)";
+    }
+
+    details.addEventListener("toggle", () => {
+      if (details.open) {
+        open();
+      } else {
+        close();
+      }
+    });
+  });
+}
+</script>
