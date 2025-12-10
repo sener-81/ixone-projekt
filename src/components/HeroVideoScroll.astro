@@ -1,7 +1,7 @@
 ---
 /**
  * HeroVideoScroll Component v6
- * 
+ *
  * Simpel & Smooth mit Text-Wechsel:
  * - Video startet boxed
  * - Beim Scrollen wächst es butterweich zu fullscreen
@@ -52,29 +52,49 @@ const {
           >
             <source src={videoSrc} type="video/mp4" />
           </video>
-          
+
           <div class="video-overlay"></div>
-          
+
           <!-- Text 1 -->
           <div class="video-content content-1">
             <h2 class="hero-headline">{headline1}</h2>
             <p class="hero-subline">{subline1}</p>
             <a href={buttonLink1} class="hero-btn">
               {buttonText1}
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
               </svg>
             </a>
           </div>
-          
+
           <!-- Text 2 -->
           <div class="video-content content-2">
             <h2 class="hero-headline">{headline2}</h2>
             <p class="hero-subline">{subline2}</p>
             <a href={buttonLink2} class="hero-btn btn-secondary">
               {buttonText2}
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
               </svg>
             </a>
           </div>
@@ -156,7 +176,7 @@ const {
     z-index: 2;
     opacity: 0;
     transform: translateY(12px);
-    transition: 
+    transition:
       opacity 0.6s ease,
       transform 0.6s ease;
     pointer-events: none;
@@ -209,7 +229,7 @@ const {
     font-weight: 600;
     text-decoration: none;
     border-radius: 50px;
-    transition: 
+    transition:
       background 0.3s ease,
       transform 0.3s ease,
       box-shadow 0.3s ease;
@@ -253,7 +273,7 @@ const {
     .scroll-track {
       height: 180vh;
     }
-    
+
     .scroll-space {
       height: 80vh;
     }
@@ -277,23 +297,26 @@ const {
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const scrollTrack = document.querySelector('.scroll-track') as HTMLElement;
-    const container = document.querySelector('.video-container') as HTMLElement;
-    const frame = document.querySelector('.video-frame') as HTMLElement;
-    const overlay = document.querySelector('.video-overlay') as HTMLElement;
-    
+  document.addEventListener("DOMContentLoaded", () => {
+    const scrollTrack = document.querySelector(".scroll-track") as HTMLElement;
+    const container = document.querySelector(".video-container") as HTMLElement;
+    const frame = document.querySelector(".video-frame") as HTMLElement;
+    const overlay = document.querySelector(".video-overlay") as HTMLElement;
+
     if (!scrollTrack || !container || !frame || !overlay) return;
 
     // Start & End Werte
     const isMobile = window.innerWidth <= 768;
     const viewportWidth = window.innerWidth;
-    
+
     // Start: Video boxed (~70% Breite)
-    const startPadding = isMobile ? 24 : Math.max(80, viewportWidth * 0.15);
-    const startBorderRadius = isMobile ? 16 : 20;
-    const startAspect = isMobile ? 50 : 45;
-    
+    // Breakpoint-basierte Startwerte (mehr Padding auf Desktop, weniger auf Mobile)
+    const startPadding = isMobile
+      ? Math.max(4, viewportWidth * 0.01) // Mobile: maximal breit starten
+      : Math.max(120, viewportWidth * 0.12); // Desktop: klarer boxed-Start
+    const startBorderRadius = isMobile ? 18 : 18;
+    const startAspect = isMobile ? 80 : 55;
+
     // End: Fullscreen
     const endPadding = 0;
     const endBorderRadius = 0;
@@ -309,53 +332,58 @@ const {
       const scrollHeight = rect.height - window.innerHeight;
       const rawProgress = -rect.top / scrollHeight;
       const progress = Math.max(0, Math.min(1, rawProgress));
-      
+
       // Video-Expansion: 0-70% des Scrolls
       const expansionProgress = Math.min(1, progress / 0.7);
       const eased = easeInOutSine(expansionProgress);
-      
+
       // Berechne aktuelle Werte
       const padding = startPadding + (endPadding - startPadding) * eased;
-      const borderRadius = startBorderRadius + (endBorderRadius - startBorderRadius) * eased;
+      const borderRadius =
+        startBorderRadius + (endBorderRadius - startBorderRadius) * eased;
       const aspectHeight = startAspect + (endAspect - startAspect) * eased;
-      const overlayOpacity = 0.30 + (0.20 * eased);
-      
+      const overlayOpacity = 0.3 + 0.2 * eased;
+
       // Wende Styles an
       frame.style.marginLeft = `${padding}px`;
       frame.style.marginRight = `${padding}px`;
       frame.style.borderRadius = `${borderRadius}px`;
       frame.style.height = `${aspectHeight}vh`;
       overlay.style.background = `rgba(0, 0, 0, ${overlayOpacity})`;
-      
+
       // Text-Wechsel bei 75% (wenn Video fast fullscreen ist)
       if (progress >= 0.75) {
-        container.classList.add('show-text-2');
+        container.classList.add("show-text-2");
       } else {
-        container.classList.remove('show-text-2');
+        container.classList.remove("show-text-2");
       }
     };
 
     // Scroll Handler
     let ticking = false;
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          handleScroll();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }, { passive: true });
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            handleScroll();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
 
-    window.addEventListener('resize', handleScroll, { passive: true });
-    
+    window.addEventListener("resize", handleScroll, { passive: true });
+
     // Initial
     handleScroll();
   });
 
   // Video Lazy Loading
-  if ('IntersectionObserver' in window) {
-    const video = document.querySelector('.hero-video') as HTMLVideoElement;
+  if ("IntersectionObserver" in window) {
+    const video = document.querySelector(".hero-video") as HTMLVideoElement;
     if (video) {
       const observer = new IntersectionObserver(
         (entries) => {

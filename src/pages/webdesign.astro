@@ -1,8 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Testimonials from '../components/Testimonials.astro';
-import Portfolio from '../components/Portfolio.astro';
-import TechStack from '../components/TechStack.astro';
+import Testimonials from "../components/Testimonials.astro";
+import Portfolio from "../components/Portfolio.astro";
+import TechStack from "../components/TechStack.astro";
 import { breadcrumbSchema } from "../data/structuredData";
 
 const breadcrumbs = breadcrumbSchema([
@@ -136,11 +136,8 @@ const faqSchema = {
                 <h1
                   class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
                 >
-                  <span class="block text-white">Professionelles</span>         
-                  <span
-                    class="block gradient-text-brand">
-                    Webdesign
-                  </span>
+                  <span class="block text-white">Professionelles</span>
+                  <span class="block gradient-text-brand"> Webdesign </span>
                   <span
                     class="block text-white/90 text-2xl md:text-3xl font-normal"
                   >
@@ -253,7 +250,7 @@ const faqSchema = {
             <!-- Visual Element -->
             <div class="lg:col-span-4 relative">
               <img
-                 src="/assets/ixone-online-marketing-regensburg.webp"
+                src="/assets/ixone-online-marketing-regensburg.webp"
                 alt="iXone Webdesign Regensburg - Moderne und responsive Webentwicklung"
                 class="w-full max-w-md mx-auto h-auto rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-500 animate-float"
                 loading="eager"
@@ -616,11 +613,9 @@ const faqSchema = {
       </div>
     </section>
 
-
-
-      <Portfolio />
-  <Testimonials />
-  <TechStack />
+    <Portfolio />
+    <Testimonials />
+    <TechStack />
 
     <!-- FAQ Section -->
     <section class="py-12 md:py-16 lg:py-24 xl:py-32 bg-white">
@@ -666,9 +661,9 @@ const faqSchema = {
               </summary>
               <div class="faq-content px-6 pb-4 text-gray-600">
                 <p>
-                  Webdesign startet ab 2.500 € für Unternehmensseiten. Shops oder
-                  Spezialfunktionen liegen ab ca. 5.000 €. Sie erhalten ein individuelles,
-                  transparentes Angebot.
+                  Webdesign startet ab 2.500 € für Unternehmensseiten. Shops
+                  oder Spezialfunktionen liegen ab ca. 5.000 €. Sie erhalten ein
+                  individuelles, transparentes Angebot.
                 </p>
               </div>
             </details>
@@ -698,9 +693,9 @@ const faqSchema = {
               </summary>
               <div class="faq-content px-6 pb-4 text-gray-600">
                 <p>
-                  Meist 4–8 Wochen vom Konzept bis zum Launch. Shops oder besondere
-                  Integrationen dauern 8–12 Wochen. Nach dem Erstgespräch gibt es
-                  einen klaren Zeitplan.
+                  Meist 4–8 Wochen vom Konzept bis zum Launch. Shops oder
+                  besondere Integrationen dauern 8–12 Wochen. Nach dem
+                  Erstgespräch gibt es einen klaren Zeitplan.
                 </p>
               </div>
             </details>
@@ -730,8 +725,8 @@ const faqSchema = {
               </summary>
               <div class="faq-content px-6 pb-4 text-gray-600">
                 <p>
-                  Je nach Bedarf WordPress oder moderne Headless-Stacks (z. B. Astro/React).
-                  Sie können Inhalte anschließend selbst pflegen.
+                  Je nach Bedarf WordPress oder moderne Headless-Stacks (z. B.
+                  Astro/React). Sie können Inhalte anschließend selbst pflegen.
                 </p>
               </div>
             </details>
@@ -761,8 +756,8 @@ const faqSchema = {
               </summary>
               <div class="faq-content px-6 pb-4 text-gray-600">
                 <p>
-                  Ja. Onpage-SEO-Basics, strukturierte Daten und Pagespeed-Optimierung
-                  für gute Core Web Vitals sind Standard.
+                  Ja. Onpage-SEO-Basics, strukturierte Daten und
+                  Pagespeed-Optimierung für gute Core Web Vitals sind Standard.
                 </p>
               </div>
             </details>
@@ -792,8 +787,9 @@ const faqSchema = {
               </summary>
               <div class="faq-content px-6 pb-4 text-gray-600">
                 <p>
-                  Ja, optional. Updates, Backups, Monitoring und Support können wir
-                  für Sie übernehmen; Hosting beraten oder bereitstellen wir auf Wunsch.
+                  Ja, optional. Updates, Backups, Monitoring und Support können
+                  wir für Sie übernehmen; Hosting beraten oder bereitstellen wir
+                  auf Wunsch.
                 </p>
               </div>
             </details>
@@ -863,60 +859,60 @@ const faqSchema = {
           </div>
         </div>
       </div>
-  </section>
+    </section>
   </div>
 </Layout>
 
 <script>
-if (typeof window !== "undefined") {
-  document.querySelectorAll(".faq-transition").forEach((details) => {
-    const content = details.querySelector(".faq-content");
-    if (!content) return;
+  if (typeof window !== "undefined") {
+    document.querySelectorAll(".faq-transition").forEach((details) => {
+      const content = details.querySelector(".faq-content");
+      if (!content) return;
 
-    const open = () => {
-      // Measure height, set explicit value for animation, then remove cap after transition
-      const fullHeight = content.scrollHeight;
-      content.style.maxHeight = `${fullHeight}px`;
-      content.style.opacity = "1";
-      content.style.transform = "translateY(0)";
-      const onEnd = (e) => {
-        if (e.propertyName === "max-height") {
-          content.style.maxHeight = "none";
-          content.removeEventListener("transitionend", onEnd);
-        }
+      const open = () => {
+        // Measure height, set explicit value for animation, then remove cap after transition
+        const fullHeight = content.scrollHeight;
+        content.style.maxHeight = `${fullHeight}px`;
+        content.style.opacity = "1";
+        content.style.transform = "translateY(0)";
+        const onEnd = (e) => {
+          if (e.propertyName === "max-height") {
+            content.style.maxHeight = "none";
+            content.removeEventListener("transitionend", onEnd);
+          }
+        };
+        content.addEventListener("transitionend", onEnd);
       };
-      content.addEventListener("transitionend", onEnd);
-    };
 
-    const close = () => {
-      // If maxHeight is none (from open), set current height first, then animate to 0
-      const currentHeight = content.scrollHeight;
-      content.style.maxHeight = `${currentHeight}px`;
-      requestAnimationFrame(() => {
+      const close = () => {
+        // If maxHeight is none (from open), set current height first, then animate to 0
+        const currentHeight = content.scrollHeight;
+        content.style.maxHeight = `${currentHeight}px`;
+        requestAnimationFrame(() => {
+          content.style.maxHeight = "0px";
+          content.style.opacity = "0";
+          content.style.transform = "translateY(-6px)";
+        });
+      };
+
+      // Initial state
+      if (details.open) {
+        content.style.maxHeight = "none";
+        content.style.opacity = "1";
+        content.style.transform = "translateY(0)";
+      } else {
         content.style.maxHeight = "0px";
         content.style.opacity = "0";
         content.style.transform = "translateY(-6px)";
-      });
-    };
-
-    // Initial state
-    if (details.open) {
-      content.style.maxHeight = "none";
-      content.style.opacity = "1";
-      content.style.transform = "translateY(0)";
-    } else {
-      content.style.maxHeight = "0px";
-      content.style.opacity = "0";
-      content.style.transform = "translateY(-6px)";
-    }
-
-    details.addEventListener("toggle", () => {
-      if (details.open) {
-        open();
-      } else {
-        close();
       }
+
+      details.addEventListener("toggle", () => {
+        if (details.open) {
+          open();
+        } else {
+          close();
+        }
+      });
     });
-  });
-}
+  }
 </script>
