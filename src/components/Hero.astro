@@ -1,6 +1,10 @@
+---
+// Hero.astro - Hero Section mit Mouse Spotlight-Effekt
+---
+
 <!-- Hero Section -->
 <section
-  class="relative min-h-[80vh] bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden"
+  class="hero-section relative min-h-[80vh] bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden"
 >
   <!-- Animated Background -->
   <div class="absolute inset-0 opacity-20">
@@ -31,6 +35,9 @@
       </div>
     </div>
   </div>
+
+  <!-- Spotlight Overlay -->
+  <div class="hero-spotlight-overlay absolute inset-0 opacity-0 transition-opacity duration-300"></div>
 
   <div
     class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24 relative z-10 flex items-center min-h-[80vh]"
@@ -208,6 +215,20 @@
     --tw-shadow: var(--tw-shadow-colored);
   }
 
+  /* Spotlight Effect */
+  .hero-spotlight-overlay {
+    background: radial-gradient(
+      600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(255, 255, 255, 0.08),
+      transparent 40%
+    );
+    pointer-events: none;
+  }
+
+  .hero-section:hover .hero-spotlight-overlay {
+    opacity: 1;
+  }
+
   /* Animations */
   @keyframes blob {
     0% {
@@ -308,3 +329,20 @@
     }
   }
 </style>
+
+<script>
+  // Mouse-Follow Spotlight Effekt für Hero Section
+  const heroSection = document.querySelector('.hero-section') as HTMLElement;
+  const heroSpotlight = document.querySelector('.hero-spotlight-overlay') as HTMLElement;
+
+  if (heroSection && heroSpotlight) {
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      
+      heroSpotlight.style.setProperty('--mouse-x', `${x}%`);
+      heroSpotlight.style.setProperty('--mouse-y', `${y}%`);
+    });
+  }
+</script>
