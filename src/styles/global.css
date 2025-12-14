@@ -1,3 +1,20 @@
+/* Intro Section - Brand Orange Utilities */
+.bg-brand-orange {
+  background-color: var(--brand-orange);
+}
+
+.text-brand-orange {
+  color: var(--brand-orange);
+}
+
+.hover\:bg-brand-orange\/90:hover {
+  background-color: rgba(236, 106, 27, 0.9);
+}
+
+
+
+
+
 /* Hero Section Animations */
 @keyframes blob {
   0%, 100% { transform: translate(0px, 0px) scale(1); }

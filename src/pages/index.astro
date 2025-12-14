@@ -23,6 +23,87 @@ const breadcrumbs = breadcrumbSchema([
     <Hero />
   </div>
 
+
+  <!-- About/Intro Section - Bild Links, Text Rechts -->
+<section class="py-24 md:py-32 bg-white">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        
+        <!-- Bild Links -->
+        <div class="relative">
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+            <img
+              src="/assets/placeholder-websites.jpg"
+              alt="iXone Digitalagentur Regensburg - Webdesign Beispiele"
+              class="w-full h-auto object-cover"
+              width="700"
+              height="600"
+              loading="lazy"
+            />
+          </div>
+          
+          <!-- Decorative Element -->
+          <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-brand-orange/10 rounded-full blur-3xl -z-10"></div>
+          <div class="absolute -top-6 -left-6 w-24 h-24 bg-yellow-400/10 rounded-full blur-2xl -z-10"></div>
+        </div>
+
+        <!-- Text Rechts -->
+        <div>
+          <!-- Badge -->
+          <div class="inline-flex items-center px-4 py-2 rounded-full text-white text-sm font-semibold mb-6" style="background-color: var(--brand-orange);">
+            RUNDUM BETREUT
+          </div>
+
+          <!-- Überschrift -->
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-gray-900">
+            Digital Agentur Regensburg
+          </h2>
+
+          <!-- Beschreibungstext -->
+          <p class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
+            Herzlich willkommen bei iXone, Ihrer Full-Service-Digitalagentur in Regensburg – Ihrem zuverlässigen Partner für innovative digitale Lösungen. Wir sind spezialisiert darauf, Unternehmen zu unterstützen und bieten Lösungen für viele <a href="/branchen" class="hover:underline" style="color: var(--brand-orange);">Branchen</a>, um ihre Online-Präsenz nachhaltig zu optimieren.
+          </p>
+
+          <!-- Liste mit Pfeilen -->
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start gap-3 text-gray-900">
+              <svg class="w-6 h-6 flex-shrink-0 mt-0.5" style="color: var(--brand-orange);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+              <span class="text-lg font-medium">Professionelles Webdesign</span>
+            </li>
+            <li class="flex items-start gap-3 text-gray-900">
+              <svg class="w-6 h-6 flex-shrink-0 mt-0.5" style="color: var(--brand-orange);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+              <span class="text-lg font-medium">Erfolgreiches Online-Marketing</span>
+            </li>
+            <li class="flex items-start gap-3 text-gray-900">
+              <svg class="w-6 h-6 flex-shrink-0 mt-0.5" style="color: var(--brand-orange);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+              <span class="text-lg font-medium">SEO, das wirkt</span>
+            </li>
+            <li class="flex items-start gap-3 text-gray-900">
+              <svg class="w-6 h-6 flex-shrink-0 mt-0.5" style="color: var(--brand-orange);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+              <span class="text-lg font-medium">Rundum-Service</span>
+            </li>
+          </ul>
+
+          <!-- CTA Button -->
+          <a href="/kontakt" class="inline-flex items-center justify-center px-8 py-4 text-white font-semibold text-lg rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl" style="background-color: var(--brand-orange);">
+            Kontakt aufnehmen
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
   <Services />
 
   <HeroVideoScroll
@@ -38,6 +119,12 @@ const breadcrumbs = breadcrumbSchema([
     buttonLink2="#kontakt"
   />
 
+
+
+
+
+
+  
   <WhyChooseUs />
 
   <CTA />
