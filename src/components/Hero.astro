@@ -1,5 +1,6 @@
 ---
-// n11 Hero.astro - Hero Section mit Mouse Spotlight-Effekt neu
+import { Image } from "astro:assets";
+import heroImage from "../assets/ixone-online-marketing-regensburg.webp";
 ---
 
 <!-- Hero Section -->
@@ -37,7 +38,10 @@
   </div>
 
   <!-- Spotlight Overlay -->
-  <div class="hero-spotlight-overlay absolute inset-0 opacity-0 transition-opacity duration-300"></div>
+  <div
+    class="hero-spotlight-overlay absolute inset-0 opacity-0 transition-opacity duration-300"
+  >
+  </div>
 
   <div
     class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24 relative z-10 flex items-center min-h-[80vh]"
@@ -172,13 +176,13 @@
 
         <!-- Visual Element - HIER an der richtigen Stelle im Grid! -->
         <div class="lg:col-span-4 relative">
-          <img
-            src="/assets/ixone-online-marketing-regensburg.webp"
-            alt="iXone Webdesign Regensburg - Moderne und responsive Webentwicklung"
-            class="w-full max-w-md mx-auto h-auto rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
+          <Image
+            src={heroImage}
+            alt="iXone Webdesign Regensburg – Moderne und responsive Webentwicklung"
+            width={400}
+            height={400}
             loading="eager"
-            width="400"
-            height="400"
+            class="w-full max-w-md mx-auto h-auto rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
           />
         </div>
       </div>
@@ -332,17 +336,19 @@
 
 <script>
   // Mouse-Follow Spotlight Effekt für Hero Section
-  const heroSection = document.querySelector('.hero-section') as HTMLElement;
-  const heroSpotlight = document.querySelector('.hero-spotlight-overlay') as HTMLElement;
+  const heroSection = document.querySelector(".hero-section") as HTMLElement;
+  const heroSpotlight = document.querySelector(
+    ".hero-spotlight-overlay"
+  ) as HTMLElement;
 
   if (heroSection && heroSpotlight) {
-    heroSection.addEventListener('mousemove', (e) => {
+    heroSection.addEventListener("mousemove", (e) => {
       const rect = heroSection.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 100;
       const y = ((e.clientY - rect.top) / rect.height) * 100;
-      
-      heroSpotlight.style.setProperty('--mouse-x', `${x}%`);
-      heroSpotlight.style.setProperty('--mouse-y', `${y}%`);
+
+      heroSpotlight.style.setProperty("--mouse-x", `${x}%`);
+      heroSpotlight.style.setProperty("--mouse-y", `${y}%`);
     });
   }
 </script>
