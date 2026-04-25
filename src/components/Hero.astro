@@ -1,53 +1,41 @@
+---
+// src/components/Hero.astro
+---
 
+<section class="hero-section relative min-h-[80vh] text-white overflow-hidden">
+  <img
+    src="/assets/hero-digitalagentur-regensburg.webp"
+    alt=""
+    aria-hidden="true"
+    fetchpriority="high"
+    decoding="async"
+    class="absolute inset-0 w-full h-full object-cover object-center"
+    width="2000"
+    height="768"
+  />
 
-<!-- Hero Section abi -->
-<section
-  class="hero-section relative min-h-[80vh] bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden"
->
-  <!-- Animated Background -->
-  <div class="absolute inset-0 opacity-20">
-    <div
-      class="absolute top-0 left-0 w-96 h-96 bg-purple-400 rounded-full filter blur-3xl animate-blob"
-    >
-    </div>
-    <div
-      class="absolute bottom-0 right-0 w-96 h-96 bg-brand-orange rounded-full filter blur-3xl animate-blob animation-delay-2000"
-    >
-    </div>
-    <div
-      class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-yellow-400 rounded-full filter blur-3xl animate-blob animation-delay-4000"
-    >
-    </div>
-  </div>
-
-  <!-- Floating 3D Elements Pattern -->
-  <div class="absolute inset-0 opacity-10">
-    <div class="h-full w-full flex items-center justify-center">
-      <div class="grid grid-cols-6 gap-8 transform rotate-12">
-        <div class="w-8 h-8 bg-white rounded-lg"></div>
-        <div class="w-8 h-8 bg-white rounded-full"></div>
-        <div class="w-8 h-8 bg-white rounded-lg"></div>
-        <div class="w-8 h-8 bg-white rounded-full"></div>
-        <div class="w-8 h-8 bg-white rounded-lg"></div>
-        <div class="w-8 h-8 bg-white rounded-full"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Spotlight Overlay -->
   <div
-    class="hero-spotlight-overlay absolute inset-0 opacity-0 transition-opacity duration-300"
+    class="absolute inset-0 bg-gradient-to-br from-slate-900/90 via-slate-900/75 to-slate-800/80"
   >
+  </div>
+
+  <div class="absolute inset-0 pointer-events-none">
+    <div
+      class="absolute bottom-0 right-0 w-96 h-96 bg-brand-orange/10 rounded-full filter blur-3xl"
+    >
+    </div>
+    <div
+      class="absolute top-0 left-0 w-72 h-72 bg-slate-700/30 rounded-full filter blur-3xl"
+    >
+    </div>
   </div>
 
   <div
     class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24 relative z-10 flex items-center min-h-[80vh]"
   >
-    <div class="max-w-6xl mx-auto">
+    <div class="max-w-6xl mx-auto w-full">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <!-- Content -->
         <div class="lg:col-span-8 text-center lg:text-left">
-          <!-- Badge -->
           <div
             class="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-medium animate-fade-in mb-6"
           >
@@ -64,9 +52,9 @@
               class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
             >
               <span class="block text-white">Digitalagentur</span>
-              <span class="gradient-text-brand"> Regensburg </span>
+              <span class="gradient-text-brand">Regensburg</span>
               <span
-                class="block text-white/90 text-2xl md:text-3xl font-normal"
+                class="block text-white/90 text-2xl md:text-3xl font-normal mt-2"
               >
                 für Webdesign, SEO & Online-Marketing
               </span>
@@ -81,22 +69,19 @@
                 >Ihre professionelle Digitalagentur aus Regensburg</strong
               > – Spezialisiert auf
               <em class="text-brand-orange">modernes Webdesign</em>,
-              <em class="text-brand-orange">Suchmaschinenoptimierung (SEO)</em>
-              und
+              <em class="text-brand-orange">Suchmaschinenoptimierung (SEO)</em> und
               <em class="text-brand-orange">strategisches Online-Marketing</em> für
               messbare Erfolge und nachhaltiges Wachstum.
             </p>
           </div>
 
-          <!-- CTA Buttons -->
           <div class="flex flex-col sm:flex-row gap-4 mb-8">
             <a href="/kontakt" class="cta-button-primary">
               <span>Kostenlose Erstberatung starten</span>
             </a>
-
             <a
               href="#services"
-              class="group px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl font-semibold text-lg text-white hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 text-center"
+              class="group px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl font-semibold text-lg text-white hover:bg-white/20 transition-all duration-300 text-center"
             >
               <span class="flex items-center justify-center gap-2">
                 Services entdecken
@@ -117,13 +102,12 @@
             </a>
           </div>
 
-          <!-- Trust Indicators -->
           <div
-            class="flex flex-wrap justify-center lg:justify-start gap-6 text-white/70 text-sm"
+            class="flex flex-wrap justify-center lg:justify-start gap-6 text-sm"
           >
             <span class="flex items-center gap-2">
               <svg
-                class="w-5 h-5 text-green-400"
+                class="w-5 h-5 text-green-400 shrink-0"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 aria-hidden="true"
@@ -139,7 +123,7 @@
             </span>
             <span class="flex items-center gap-2">
               <svg
-                class="w-5 h-5 text-green-400"
+                class="w-5 h-5 text-green-400 shrink-0"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 aria-hidden="true"
@@ -150,11 +134,12 @@
                   clip-rule="evenodd"></path>
               </svg>
               <span class="text-white/90 font-medium"
-                >Keine Mindestlaufzeit</span>
+                >Keine Mindestlaufzeit</span
+              >
             </span>
             <span class="flex items-center gap-2">
               <svg
-                class="w-5 h-5 text-green-400"
+                class="w-5 h-5 text-green-400 shrink-0"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 aria-hidden="true"
@@ -170,22 +155,23 @@
           </div>
         </div>
 
-        <!-- Visual Element - HIER an der richtigen Stelle im Grid! -->
         <div class="lg:col-span-4">
           <div
             class="relative bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 md:p-8 overflow-hidden shadow-2xl animate-fade-in"
           >
             <div
               class="absolute inset-0 bg-gradient-to-br from-brand-orange/20 via-yellow-400/10 to-purple-500/10 opacity-70"
-            ></div>
+            >
+            </div>
             <div
               class="absolute -top-10 -right-10 w-48 h-48 bg-white/10 rounded-full blur-3xl"
-            ></div>
+            >
+            </div>
 
             <div class="relative z-10 space-y-6">
               <div class="flex items-center gap-3">
                 <div
-                  class="w-12 h-12 rounded-2xl bg-gradient-to-br from-brand-orange to-yellow-400 flex items-center justify-center text-white font-bold shadow-lg shadow-brand-orange/25"
+                  class="w-12 h-12 rounded-2xl bg-gradient-to-br from-brand-orange to-yellow-400 flex items-center justify-center text-white font-bold shadow-lg"
                 >
                   iX
                 </div>
@@ -199,13 +185,13 @@
 
               <div class="grid grid-cols-2 gap-4">
                 <div
-                  class="rounded-2xl border border-white/15 bg-white/5 p-4 text-center"
+                  class="rounded-2xl border border-white/20 bg-white/5 p-4 text-center"
                 >
                   <p class="text-3xl font-bold text-white">500+</p>
                   <p class="text-white/70 text-sm">Projekte</p>
                 </div>
                 <div
-                  class="rounded-2xl border border-white/15 bg-white/5 p-4 text-center"
+                  class="rounded-2xl border border-white/20 bg-white/5 p-4 text-center"
                 >
                   <p class="text-3xl font-bold text-white">4.9★</p>
                   <p class="text-white/70 text-sm">Kundenzufriedenheit</p>
@@ -213,10 +199,10 @@
               </div>
 
               <div
-                class="rounded-2xl border border-white/15 bg-gradient-to-r from-brand-orange/30 via-yellow-400/20 to-brand-orange/30 p-4"
+                class="rounded-2xl border border-white/20 bg-gradient-to-r from-brand-orange/30 via-yellow-400/20 to-brand-orange/30 p-4"
               >
                 <p class="text-white font-semibold mb-2">
-                  “Modernes Webdesign, das auffällt.”
+                  "Modernes Webdesign, das auffällt."
                 </p>
                 <p class="text-white/80 text-sm">
                   Individuelle Websites mit Performance, SEO und Conversion im
@@ -225,7 +211,9 @@
               </div>
 
               <div class="flex items-center gap-3">
-                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                <span
+                  class="w-2 h-2 bg-green-400 rounded-full animate-pulse shrink-0"
+                ></span>
                 <p class="text-white/80 text-sm">
                   Sofort verfügbar für neue Projekte
                 </p>
@@ -238,163 +226,4 @@
   </div>
 </section>
 
-<style>
-  /* CSS Variables für Branding */
-  :root {
-    --brand-orange: #ec6a1b;
-  }
-
-  .bg-brand-orange {
-    background-color: var(--brand-orange);
-  }
-
-  .text-brand-orange {
-    color: var(--brand-orange);
-  }
-
-  .from-brand-orange {
-    --tw-gradient-from: var(--brand-orange);
-    --tw-gradient-to: rgb(236 106 27 / 0);
-    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-  }
-
-  .to-brand-orange {
-    --tw-gradient-to: var(--brand-orange);
-  }
-
-  .shadow-brand-orange\/25 {
-    --tw-shadow-color: rgb(236 106 27 / 0.25);
-    --tw-shadow: var(--tw-shadow-colored);
-  }
-
-  /* Spotlight Effect */
-  .hero-spotlight-overlay {
-    background: radial-gradient(
-      600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      rgba(255, 255, 255, 0.08),
-      transparent 40%
-    );
-    pointer-events: none;
-  }
-
-  .hero-section:hover .hero-spotlight-overlay {
-    opacity: 1;
-  }
-
-  /* Animations */
-  @keyframes blob {
-    0% {
-      transform: translate(0px, 0px) scale(1);
-    }
-    33% {
-      transform: translate(30px, -50px) scale(1.1);
-    }
-    66% {
-      transform: translate(-20px, 20px) scale(0.9);
-    }
-    100% {
-      transform: translate(0px, 0px) scale(1);
-    }
-  }
-
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-
-  @keyframes gradient-x {
-    0%,
-    100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-  }
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-blob {
-    animation: blob 7s infinite;
-  }
-
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .animate-gradient-x {
-    background-size: 200% 200%;
-    animation: gradient-x 3s ease infinite;
-  }
-
-  .animate-fade-in {
-    animation: fade-in 0.6s ease-out;
-  }
-
-  .animation-delay-2000 {
-    animation-delay: 2s;
-  }
-
-  .animation-delay-4000 {
-    animation-delay: 4s;
-  }
-
-  /* Glassmorphism Effects */
-  .backdrop-blur-md {
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-
-  /* Responsive Typography */
-  @media (max-width: 640px) {
-    h1 {
-      font-size: 2rem;
-      line-height: 1.2;
-    }
-  }
-
-  @media (min-width: 641px) and (max-width: 768px) {
-    h1 {
-      font-size: 2.5rem;
-      line-height: 1.2;
-    }
-  }
-
-  @media (min-width: 769px) and (max-width: 1024px) {
-    h1 {
-      font-size: 3rem;
-      line-height: 1.2;
-    }
-  }
-</style>
-
-<script>
-  // Mouse-Follow Spotlight Effekt für Hero Section
-  const heroSection = document.querySelector(".hero-section");
-  const heroSpotlight = document.querySelector(".hero-spotlight-overlay");
-
-  if (heroSection && heroSpotlight) {
-    heroSection.addEventListener("mousemove", (e) => {
-      const rect = heroSection.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-      heroSpotlight.style.setProperty("--mouse-x", `${x}%`);
-      heroSpotlight.style.setProperty("--mouse-y", `${y}%`);
-    });
-  }
-</script>
+<!-- KEIN <style>-Block mehr -->

@@ -1,3 +1,14 @@
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-pulse,
+  .gradient-text-brand,
+  .gradient-text-brand-inline,
+  .gradient-text-brand-slow {
+    animation: none;
+  }
+}
+
 /* Intro Section - Brand Orange Utilities */
 .bg-brand-orange {
   background-color: var(--brand-orange);
@@ -11,39 +22,10 @@
   background-color: rgba(236, 106, 27, 0.9);
 }
 
-
-
-
-
-/* Hero Section Animations */
-@keyframes blob {
-  0%, 100% { transform: translate(0px, 0px) scale(1); }
-  33% { transform: translate(30px, -50px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.9); }
-}
-
-.animate-blob {
-  animation: blob 7s infinite;
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.gradient-text-brand {
-  background: linear-gradient(135deg, #FF6B35 0%, #FCA311 50%, #FF6B35 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 /* Smooth counter animations */
 .counter-transition {
   transition: opacity 0.3s ease-in-out;
 }
-
-
-
 
 /* CSS Variables für Branding */
 :root {
@@ -70,14 +52,12 @@
   border: none;
 }
 
-/* Hover-Effekte */
 .cta-button-primary:hover {
   background: linear-gradient(to right, #eab308, var(--brand-orange));
   transform: translateY(-4px) scale(1.05);
   box-shadow: 0 25px 50px -12px rgba(236, 106, 27, 0.25);
 }
 
-/* Shine-Effekt (der gleitende Lichtstrahl) */
 .cta-button-primary::before {
   content: '';
   position: absolute;
@@ -92,13 +72,12 @@
   transform: skewX(-12deg) translateX(100%);
 }
 
-/* Text über dem Shine-Effekt */
 .cta-button-primary > span {
   position: relative;
   z-index: 10;
 }
 
-/* Varianten */
+/* Secondary Button */
 .cta-button-secondary {
   position: relative;
   display: inline-block;
@@ -167,7 +146,6 @@
   z-index: 10;
 }
 
-/* Responsive Anpassungen */
 @media (max-width: 640px) {
   .cta-button-primary,
   .cta-button-secondary {
@@ -176,37 +154,7 @@
   }
 }
 
-/* Verwendung in HTML: */
-/*
-<!-- Haupt CTA Button -->
-<a href="/kontakt" class="cta-button-primary">
-  <span>Kostenlose Erstberatung starten</span>
-</a>
-
-<!-- Secondary Button -->
-<a href="#services" class="cta-button-secondary">
-  <span>Services entdecken</span>
-</a>
-
-<!-- Kompakte Version -->
-<button class="cta-button-compact">
-  <span>Jetzt starten</span>
-</button>
-
-<!-- Als Button-Element -->
-<button type="submit" class="cta-button-primary">
-  <span>Absenden</span>
-</button>
-*/
-
-/* animerte headings */
-
-/* CSS Variables für Branding */
-:root {
-  --brand-orange: #ec6a1b;
-}
-
-/* Globale Gradient Text Klasse */
+/* Globale Gradient Text Klassen */
 .gradient-text-brand {
   display: block;
   background: linear-gradient(to right, var(--brand-orange), #fbbf24, var(--brand-orange));
@@ -217,7 +165,6 @@
   animation: gradient-x 3s ease infinite;
 }
 
-/* Alternative Varianten */
 .gradient-text-brand-inline {
   display: inline;
   background: linear-gradient(to right, var(--brand-orange), #fbbf24, var(--brand-orange));
@@ -238,40 +185,21 @@
   animation: gradient-x 6s ease infinite;
 }
 
-/* Gradient Animation */
 @keyframes gradient-x {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
 }
 
-/* Verwendung in HTML: */
-/*
-<h1>
-  <span class="gradient-text-brand">Digitalagentur</span>
-  <span class="gradient-text-brand">Regensburg</span>
-</h1>
-
-<p>Text mit <span class="gradient-text-brand-inline">Gradient Wort</span> inline</p>
-
-<h2 class="gradient-text-brand-slow">Langsamerer Effekt</h2>
-*/
-
-
-
-
-
+/* Skip Link Accessibility */
 .skip-to-main {
-  position: absolute;  /* ← Nicht im Document Flow */
-  top: -40px;         /* ← Versteckt oberhalb */
+  position: absolute;
+  top: -40px;
 }
 
 .skip-to-main:focus {
-  top: 6px;           /* ← Nur beim Fokus sichtbar */
+  top: 6px;
 }
+
 /* ===== BACKTOP BUTTON ===== */
 .backtop-btn {
   position: fixed;
@@ -290,15 +218,12 @@
   justify-content: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
-  
-  /* Initially hidden */
   opacity: 0;
   visibility: hidden;
   transform: translateY(1rem) scale(0.8);
   pointer-events: none;
 }
 
-/* Visible state */
 .backtop-btn.visible {
   opacity: 1;
   visibility: visible;
@@ -306,14 +231,12 @@
   pointer-events: auto;
 }
 
-/* Hover effects */
 .backtop-btn:hover {
   transform: translateY(-0.125rem) scale(1.05);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   background: linear-gradient(135deg, #fbbf24 0%, #ff6b35 100%);
 }
 
-/* Mobile responsive */
 @media (max-width: 768px) {
   .backtop-btn {
     bottom: 1rem;
@@ -323,8 +246,7 @@
   }
 }
 
-
-/* Performance-optimierte Styles */
+/* Hero Image */
 .hero-image {
   will-change: transform;
   transform: translateZ(0);
@@ -332,7 +254,6 @@
   object-position: center;
 }
 
-/* Mobile-spezifische Optimierungen */
 @media (max-width: 768px) {
   .hero-image {
     object-position: center top;
@@ -347,18 +268,18 @@
   .group { min-height: 48px; }
 }
 
-/* Tablet-Optimierungen */
 @media (min-width: 768px) and (max-width: 1024px) {
   .hero-image { object-position: center center; }
 }
 
-/* Desktop-Optimierungen */
 @media (min-width: 1024px) {
-  .hero-image { object-position: center center; filter: brightness(0.85) contrast(1.1); }
+  .hero-image {
+    object-position: center center;
+    filter: brightness(0.85) contrast(1.1);
+  }
   .container { max-width: 1400px; }
 }
 
-/* Ultra-wide Bildschirme */
 @media (min-width: 1536px) {
   .container { max-width: 1600px; }
 }
@@ -366,13 +287,16 @@
 /* Smooth Scrolling */
 html { scroll-behavior: smooth; }
 
-/* Enhanced Floating Animations */
-@keyframes float { /* … wie gehabt … */ }
-@keyframes float-delayed { /* … */ }
-@keyframes float-slow { /* … */ }
-.animate-float { animation: float 6s ease-in-out infinite; }
-.animate-float-delayed { animation: float-delayed 8s ease-in-out infinite 2s; }
-.animate-float-slow { animation: float-slow 10s ease-in-out infinite 1s; }
+/* Float Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-8px) rotate(1deg); }
+  66%       { transform: translateY(-4px) rotate(-1deg); }
+}
+
+.animate-float         { animation: float 6s ease-in-out infinite; }
+.animate-float-delayed { animation: float 8s ease-in-out infinite 2s; }
+.animate-float-slow    { animation: float 10s ease-in-out infinite 1s; }
 
 /* Accessibility & Performance */
 @media (prefers-reduced-motion: reduce) {
@@ -397,13 +321,13 @@ html { scroll-behavior: smooth; }
   }
 }
 
-/* Touch-optimierte Buttons für Mobile */
+/* Touch-optimierte Buttons */
 @media (max-width: 768px) {
   .group { min-height: 44px; padding: 12px 16px; }
   a, button { min-height: 44px; min-width: 44px; }
 }
 
-/* Optimierte Schriftgrößen für bessere Lesbarkeit */
+/* Schriftgrößen Mobile */
 @media (max-width: 480px) {
   h1 { font-size: 2rem; line-height: 1.1; }
   h2 { font-size: 1.5rem; line-height: 1.2; }
@@ -411,7 +335,7 @@ html { scroll-behavior: smooth; }
   p  { font-size: 0.875rem; line-height: 1.5; }
 }
 
-/* FAQ Smooth Transition (JS-assisted for true height) */
+/* FAQ Transition */
 .faq-transition .faq-content {
   max-height: 0;
   overflow: hidden;
