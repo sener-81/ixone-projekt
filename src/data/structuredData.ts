@@ -8,7 +8,13 @@ export const organizationSchema = {
   "url": "https://ixone.de",
   "telephone": "+4994015338873",
   "email": "info@ixone.de",
-  "logo": "https://ixone.de/favicon.svg",
+  // FIX: ImageObject statt reiner URL – Google benötigt min. 112x112px
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://ixone.de/assets/ixone-logo.webp",
+    "width": 512,
+    "height": 512
+  },
   "image": "https://ixone.de/assets/ixone-online-marketing-regensburg.webp",
   "foundingDate": "2007",
   "department": [
@@ -88,7 +94,7 @@ export const organizationSchema = {
         "itemOffered": {
           "@type": "Service",
           "name": "Webdesign",
-          "description": "Professionelle Website-Entwicklung und responsive Design"
+          "description": "Professionelle Website-Entwicklung und responsives Design"
         }
       },
       {
@@ -105,6 +111,14 @@ export const organizationSchema = {
           "@type": "Service",
           "name": "Online-Marketing",
           "description": "Strategisches digitales Marketing für messbare Erfolge"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Social Media Marketing",
+          "description": "Zielgruppengerechte Social Media Strategien für Facebook, Instagram und LinkedIn"
         }
       }
     ]
@@ -123,17 +137,8 @@ export const websiteSchema = {
   "url": "https://ixone.de",
   "name": "iXone Digitalagentur",
   "description": "Digitalagentur aus Regensburg für Webdesign, SEO und Online-Marketing",
-  "publisher": { "@id": "https://ixone.de/#organization" },
-  "potentialAction": [
-    {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://ixone.de/suche?q={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
-    }
-  ]
+  "publisher": { "@id": "https://ixone.de/#organization" }
+  // SearchAction entfernt – /suche existiert nicht, würde Search Console Fehler erzeugen
 };
 
 export const breadcrumbSchema = (items: Array<{ name: string; url: string }>) => ({
