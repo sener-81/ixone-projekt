@@ -50,7 +50,7 @@ export const organizationSchema = {
         itemOffered: {
           "@type": "Service",
           name: "SEO Regensburg",
-          url: "https://ixone.de/seo",
+          url: "https://ixone.de/seo-agentur",
           description: "Suchmaschinenoptimierung für bessere Google Rankings",
         },
       },
