@@ -1,16 +1,16 @@
 ---
+// src/pages/webdesign.astro
 import Layout from "../layouts/Layout.astro";
-import Testimonials from "../components/Testimonials.astro";
-import Portfolio from "../components/Portfolio.astro";
 import TechStack from "../components/TechStack.astro";
+import { Image } from "astro:assets";
 import { breadcrumbSchema } from "../data/structuredData";
+import { galerieData } from "../data/galerieData";
 
 const breadcrumbs = breadcrumbSchema([
   { name: "Home", url: "https://ixone.de/" },
   { name: "Webdesign", url: "https://ixone.de/webdesign" },
 ]);
 
-// Service Schema für bessere SERP Features
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
@@ -25,7 +25,7 @@ const serviceSchema = {
     { "@type": "State", name: "Bayern" },
     { "@type": "Country", name: "Deutschland" },
   ],
-  serviceType: ["Webdesign", "Webentwicklung", "UX/UI"],
+  serviceType: ["Webdesign", "Webentwicklung", "UX/UI Design", "Responsive Webdesign"],
   offers: {
     "@type": "Offer",
     priceRange: "€€",
@@ -35,7 +35,6 @@ const serviceSchema = {
   },
 };
 
-// FAQ Schema
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -69,7 +68,7 @@ const faqSchema = {
       name: "Mit welchem CMS arbeitet ihr?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Wir setzen je nach Bedarf auf WordPress oder moderne Headless-Stacks (z. B. Astro/React). Inhalte können Sie anschließend selbst pflegen.",
+        text: "Wir setzen je nach Bedarf auf WordPress oder moderne Headless-Stacks wie Astro. Inhalte können Sie anschließend selbst pflegen – ohne technisches Vorwissen.",
       },
     },
     {
@@ -77,842 +76,860 @@ const faqSchema = {
       name: "Sind SEO und Performance inklusive?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ja. Onpage-SEO-Grundlagen, strukturierte Daten, saubere Core Web Vitals und Pagespeed-Optimierung gehören zum Standardumfang.",
+        text: "Ja. Technisches SEO, strukturierte Daten nach Schema.org, saubere Core Web Vitals und Pagespeed-Optimierung sind bei uns Standard – keine Extras.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Was macht eine professionelle Webdesign Agentur in Regensburg?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Eine professionelle Webdesign Agentur in Regensburg übernimmt die gesamte digitale Präsenz: Konzeption, UX/UI Design, Entwicklung, SEO-Optimierung und Hosting. iXone entwickelt Websites die nicht nur gut aussehen, sondern messbar mehr Anfragen und Umsatz generieren.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Übernehmt ihr Wartung und Hosting?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Ja, optional. Updates, Backups, Performance-Monitoring und technischer Support gehören zu unseren Betreuungspaketen. Hosting empfehlen oder stellen wir auf Wunsch bereit.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Wie messe ich den Erfolg meiner neuen Website?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Relevante KPIs sind: organischer Traffic, Conversion-Rate, Absprungrate, PageSpeed Score und Keyword-Rankings. iXone liefert klares Reporting und kontinuierliche Optimierungen – damit Ihre Website dauerhaft performt.",
       },
     },
   ],
 };
+
+// ─────────────────────────────────────────────────────────────
+// GALERIE – Bilder aus src/assets/galerie/
+// Alt-Texte + Captions aus src/data/galerieData.ts pflegen
+// ─────────────────────────────────────────────────────────────
+const imageFiles = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/galerie/*.webp",
+  { eager: true }
+);
+
+const galerieItems = galerieData
+  .map((item, index) => {
+    const path = `/src/assets/galerie/${item.file}`;
+    const module = imageFiles[path];
+    if (!module) return null;
+    return { image: module.default, alt: item.alt, caption: item.caption, index };
+  })
+  .filter(Boolean) as { image: ImageMetadata; alt: string; caption: string; index: number }[];
+
+// Kunden-Logos
+const clientLogos = [
+  { name: "ProvoNexpert", initials: "PN" },
+  { name: "Kunde 2", initials: "K2" },
+  { name: "Kunde 3", initials: "K3" },
+  { name: "Kunde 4", initials: "K4" },
+  { name: "Kunde 5", initials: "K5" },
+  { name: "Kunde 6", initials: "K6" },
+];
 ---
 
 <Layout
-  title="Webdesign Regensburg | Moderne Websites | iXone Digitalagentur"
-  description="Professionelles Webdesign aus Regensburg. Moderne, responsive Websites die konvertieren. Mobile-optimiert, SEO-freundlich und performance-optimiert."
+  title="Webdesign Regensburg | Moderne Websites die ranken | iXone Digitalagentur"
+  description="Professionelles Webdesign aus Regensburg. Responsive, SEO-optimierte Websites ab 2.500 €. Mobile-first, schnell ladend, conversion-fokussiert. Jetzt kostenlos beraten lassen."
   canonical="https://ixone.de/webdesign"
   structuredData={[breadcrumbs, serviceSchema, faqSchema]}
 >
   <div class="pt-14 sm:pt-16 md:pt-18 lg:pt-20 xl:pt-22 bg-white">
-    <!-- Hero Section -->
+
+    <!-- ═══════════════════════════════════════════════════
+         HERO
+    ════════════════════════════════════════════════════ -->
     <section
-      class="relative min-h-[80vh] bg-gradient-to-br from-cyan-900 via-blue-800 to-indigo-900 text-white overflow-hidden"
+      class="relative min-h-[75vh] bg-gradient-to-br from-cyan-900 via-blue-800 to-indigo-900 text-white overflow-hidden flex items-center"
+      aria-label="Webdesign Regensburg Hero"
     >
-      <!-- Animated Background -->
-      <div class="absolute inset-0 opacity-20">
-        <div
-          class="absolute top-0 left-0 w-96 h-96 bg-cyan-400 rounded-full filter blur-3xl animate-blob"
-        >
-        </div>
-        <div
-          class="absolute bottom-0 right-0 w-96 h-96 bg-blue-400 rounded-full filter blur-3xl animate-blob animation-delay-2000"
-        >
-        </div>
-        <div
-          class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-indigo-400 rounded-full filter blur-3xl animate-blob animation-delay-4000"
-        >
-        </div>
+      <div class="absolute inset-0 opacity-20" aria-hidden="true">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-cyan-400 rounded-full filter blur-3xl animate-blob"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-400 rounded-full filter blur-3xl animate-blob animation-delay-2000"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-indigo-400 rounded-full filter blur-3xl animate-blob animation-delay-4000"></div>
       </div>
 
-      <!-- Code/Design Pattern -->
-      <div class="absolute inset-0 opacity-10">
-        <div class="h-full w-full flex items-center justify-center">
-          <div class="grid grid-cols-6 gap-8 transform rotate-12">
-            <div class="w-8 h-8 bg-white rounded-sm"></div>
-            <div class="w-8 h-8 bg-white rounded-lg"></div>
-            <div class="w-8 h-8 bg-white rounded-sm"></div>
-            <div class="w-8 h-8 bg-white rounded-lg"></div>
-            <div class="w-8 h-8 bg-white rounded-sm"></div>
-            <div class="w-8 h-8 bg-white rounded-lg"></div>
+      <div class="absolute inset-0 opacity-5" aria-hidden="true">
+        <div class="h-full w-full" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+      </div>
+
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24 lg:py-32 relative z-10 w-full">
+        <div class="max-w-5xl mx-auto text-center">
+
+          <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 text-sm font-medium text-white/90 mb-8">
+            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse" aria-hidden="true"></span>
+            Digitalagentur aus Regensburg – seit 2007
+          </div>
+
+          <header class="mb-8">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-6">
+              <span class="block text-white">Professionelles</span>
+              <span class="gradient-text-brand">Webdesign</span>
+              <span class="block text-white/85 text-2xl sm:text-3xl md:text-4xl font-normal mt-2">
+                für Unternehmen in Regensburg & Bayern
+              </span>
+            </h1>
+            <p class="text-lg sm:text-xl md:text-2xl text-white/80 leading-relaxed max-w-3xl mx-auto">
+              Websites die <strong class="text-white">bei Google ranken</strong>,
+              Besucher überzeugen und
+              <em class="text-brand-orange">messbar mehr Kunden gewinnen</em> –
+              mit modernem Tech-Stack, PageSpeed 90+ und SEO von Anfang an.
+            </p>
+          </header>
+
+          <div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-10">
+            {[
+              { icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z", label: "DSGVO-konform" },
+              { icon: "M13 10V3L4 14h7v7l9-11h-7z", label: "PageSpeed 90+" },
+              { icon: "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z", label: "Mobile-first" },
+              { icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z", label: "SEO inklusive" },
+            ].map((badge) => (
+              <span class="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-sm font-medium text-white/90">
+                <svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={badge.icon}/>
+                </svg>
+                {badge.label}
+              </span>
+            ))}
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <a href="/kontakt" class="cta-button-primary text-center" aria-label="Kostenloses Webdesign Erstgespräch vereinbaren">
+              <span>Kostenloses Erstgespräch</span>
+            </a>
+            <a href="#webdesign-galerie" class="cta-button-secondary text-center">
+              <span class="flex items-center justify-center gap-2">
+                Projekte ansehen
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
+            {[
+              { value: "ab 2.500 €", label: "Unternehmenswebsite" },
+              { value: "4–8 Wochen", label: "Bis zum Launch" },
+              { value: "90+ Score", label: "PageSpeed Ziel" },
+              { value: "seit 2007", label: "Erfahrung" },
+            ].map((stat) => (
+              <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4 text-center">
+                <div class="text-lg md:text-xl font-black text-white leading-tight">{stat.value}</div>
+                <div class="text-xs text-white/60 font-medium mt-1">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
+    </section>
 
-      <div
-        class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-24 relative z-10 flex items-center min-h-[80vh]"
-      >
-        <div class="max-w-6xl mx-auto">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <!-- Content -->
-            <div class="lg:col-span-8 text-center lg:text-left">
-              <header>
-                <h1
-                  class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
-                >
-                  <span class="block text-white">Professionelles</span>
-                  <span class="block gradient-text-brand"> Webdesign </span>
-                  <span
-                    class="block text-white/90 text-2xl md:text-3xl font-normal"
-                  >
-                    Agentur Regensburg
-                  </span>
-                </h1>
-              </header>
+    <!-- ═══════════════════════════════════════════════════
+         KUNDEN-LOGOS
+    ════════════════════════════════════════════════════ -->
+    <section class="py-10 md:py-12 bg-gray-50 border-y border-gray-100" aria-label="Unsere Kunden">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-center text-sm font-semibold uppercase tracking-widest text-gray-400 mb-8">
+          Vertrauen von Unternehmen in Regensburg & Bayern
+        </p>
+        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16">
+          {clientLogos.map((client) => (
+            <div
+              class="flex items-center justify-center w-32 h-14 md:w-36 md:h-16 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 group"
+              title={client.name}
+            >
+              <!-- TODO: <img src="/assets/logos/name.svg" alt={client.name} width="120" height="40" loading="lazy" /> -->
+              <span class="text-gray-400 group-hover:text-brand-orange font-bold text-lg tracking-wide transition-colors duration-300">
+                {client.initials}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
 
-              <div
-                class="bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 border border-white/20 mb-8"
-              >
-                <p class="text-xl md:text-2xl text-gray-200 leading-relaxed">
-                  <strong class="text-white"
-                    >Moderne Webdesign Lösungen aus Regensburg</strong
-                  > –
-                  <em class="text-brand-orange">Responsive Design, UX/UI</em>
-                  und
-                  <em class="text-brand-orange">Performance-Optimierung</em> für
-                  Websites, die begeistern und konvertieren.
+    <!-- ═══════════════════════════════════════════════════
+         LEISTUNGEN
+    ════════════════════════════════════════════════════ -->
+    <section id="webdesign-leistungen" class="py-12 md:py-16 lg:py-24 xl:py-32 bg-white" aria-labelledby="leistungen-heading">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="text-center mb-12 md:mb-16 lg:mb-20">
+          <h2 id="leistungen-heading" class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4 md:mb-6">
+            Unsere <span class="gradient-text-brand-inline">Webdesign</span> Leistungen
+          </h2>
+          <p class="text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            Alles aus einer Hand – von der ersten Idee bis zum erfolgreichen Launch
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 max-w-7xl mx-auto">
+          {[
+            {
+              icon: "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z",
+              title: "Responsive Webdesign",
+              desc: "<strong>Mobile-first entwickelt</strong> – perfekte Darstellung auf jedem Gerät. Google bewertet Mobilfreundlichkeit als direkten Rankingfaktor.",
+            },
+            {
+              icon: "M13 10V3L4 14h7v7l9-11h-7z",
+              title: "PageSpeed & Core Web Vitals",
+              desc: "<strong>Score 90+ garantiert</strong> durch modernen Astro-Tech-Stack und optimierte Assets. Schnelle Ladezeiten bedeuten bessere Rankings und höhere Conversion.",
+            },
+            {
+              icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z",
+              title: "Technisches SEO",
+              desc: "<strong>SEO von Grund auf eingebaut</strong>: Schema.org Markup, Meta-Tags, saubere URL-Struktur und interne Verlinkung – kein nachträgliches Flickwerk.",
+            },
+            {
+              icon: "M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01",
+              title: "UX/UI & Conversion Design",
+              desc: "<strong>Design das verkauft</strong> – strategische CTAs, klare User Journeys und conversion-optimierte Layouts für maximale Anfragen und Abschlüsse.",
+            },
+            {
+              icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065zM15 12a3 3 0 11-6 0 3 3 0 016 0z",
+              title: "CMS & Content-Pflege",
+              desc: "<strong>WordPress oder Headless CMS</strong> – Sie aktualisieren Inhalte selbst, ohne Programmier­kenntnisse. Einfach, schnell, unabhängig.",
+            },
+            {
+              icon: "M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z",
+              title: "Wartung & Weiterentwicklung",
+              desc: "<strong>Langfristiger Partner</strong> statt einmaliger Dienstleister – Updates, Backups, Performance-Monitoring und Weiterentwicklung nach Ihrem Bedarf.",
+            },
+          ].map((feature) => (
+            <article class="group text-center p-6 md:p-8 lg:p-10 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+              <div class="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={feature.icon}/>
+                </svg>
+              </div>
+              <h3 class="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-3 md:mb-4">{feature.title}</h3>
+              <p class="text-gray-600 leading-relaxed text-sm md:text-base lg:text-lg" set:html={feature.desc}/>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         CONTENT – Was ist Webdesign
+    ════════════════════════════════════════════════════ -->
+    <section class="py-12 md:py-16 lg:py-24 bg-gray-50" aria-labelledby="webdesign-intro-heading">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-7xl mx-auto">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div>
+              <h2 id="webdesign-intro-heading" class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                Was macht gutes <span class="gradient-text-brand-inline">Webdesign in Regensburg</span> aus?
+              </h2>
+              <div class="space-y-5 text-gray-600 text-base md:text-lg leading-relaxed">
+                <p>
+                  Modernes Webdesign ist weit mehr als ein ansprechendes Layout.
+                  Als <strong class="text-gray-900">Webdesign Agentur in Regensburg</strong> entwickeln
+                  wir digitale Auftritte, die drei Dinge gleichzeitig leisten: bei Google ranken,
+                  Vertrauen aufbauen und Besucher in Kunden verwandeln.
+                </p>
+                <p>
+                  Jede Website, die iXone entwickelt, startet mit einem
+                  <strong class="text-gray-900">PageSpeed Score von 90+</strong>,
+                  ist vollständig <strong class="text-gray-900">mobile-first</strong> gebaut
+                  und enthält technisches SEO von Anfang an. Das ist kein Bonus –
+                  das ist unser Standard.
+                </p>
+                <p>
+                  Als <strong class="text-gray-900">Digitalagentur direkt in Regensburg</strong>
+                  kennen wir den lokalen Markt, die regionalen Suchbegriffe und die Anforderungen
+                  bayerischer Unternehmen – vom Handwerksbetrieb bis zum mittelständischen
+                  Dienstleister.
                 </p>
               </div>
+              <ul class="mt-8 space-y-3" role="list">
+                {[
+                  "Individuelles Design – keine Templates, keine Kompromisse",
+                  "Astro-Technologie für PageSpeed 90+ und Top-Rankings",
+                  "Persönlicher Ansprechpartner – kein Ticket-System",
+                  "Transparente Festpreise ohne versteckte Kosten",
+                ].map((item) => (
+                  <li class="flex items-start gap-3">
+                    <span class="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center mt-0.5" aria-hidden="true">
+                      <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                      </svg>
+                    </span>
+                    <span class="text-gray-700 font-medium">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="grid grid-cols-2 gap-4 md:gap-6">
+              <div class="bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl p-6 md:p-8 text-white text-center shadow-lg">
+                <div class="text-3xl md:text-4xl font-black leading-none mb-1">4–8<span class="text-base font-bold opacity-80 ml-1">Wo.</span></div>
+                <div class="text-sm md:text-base opacity-90 font-medium mt-2">Bis zum Launch</div>
+              </div>
+              <div class="bg-gradient-to-br from-orange-500 to-yellow-500 rounded-2xl p-6 md:p-8 text-white text-center shadow-lg">
+                <div class="text-3xl md:text-4xl font-black leading-none mb-1">90+<span class="text-base font-bold opacity-80 ml-1">Pts</span></div>
+                <div class="text-sm md:text-base opacity-90 font-medium mt-2">PageSpeed Score</div>
+              </div>
+              <div class="bg-gradient-to-br from-green-500 to-teal-600 rounded-2xl p-6 md:p-8 text-white text-center shadow-lg">
+                <div class="text-2xl md:text-3xl font-black leading-none mb-1">ab 2.500<span class="text-base font-bold opacity-80 ml-1">€</span></div>
+                <div class="text-sm md:text-base opacity-90 font-medium mt-2">Unternehmenswebsite</div>
+              </div>
+              <div class="bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl p-6 md:p-8 text-white text-center shadow-lg">
+                <div class="text-3xl md:text-4xl font-black leading-none mb-1">100%</div>
+                <div class="text-sm md:text-base opacity-90 font-medium mt-2">DSGVO-konform</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-              <!-- CTA Buttons -->
-              <div class="flex flex-col sm:flex-row gap-4 mb-8">
-                <a
-                  href="/kontakt"
-                  class="group relative px-8 py-4 bg-gradient-to-r from-brand-orange to-yellow-500 hover:from-yellow-500 hover:to-brand-orange text-white font-bold text-lg rounded-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 shadow-2xl hover:shadow-brand-orange/25 overflow-hidden text-center"
-                  aria-label="Webdesign Projekt starten"
-                >
-                  <span
-                    class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"
-                  ></span>
-                  <span class="relative z-10">Webdesign Projekt starten</span>
-                </a>
+    <!-- ═══════════════════════════════════════════════════
+         CONTENT – Was Sie wissen sollten
+    ════════════════════════════════════════════════════ -->
+    <section class="py-12 md:py-16 lg:py-24 bg-white" aria-labelledby="webdesign-wissen-heading">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-12 md:mb-16">
+            <h2 id="webdesign-wissen-heading" class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Webdesign Regensburg – <span class="gradient-text-brand-inline">Was Sie wissen sollten</span>
+            </h2>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+              Von aktuellen Trends bis zur richtigen Agenturwahl – fundiertes Wissen für Ihren digitalen Erfolg
+            </p>
+          </div>
 
-                <a
-                  href="#webdesign-services"
-                  class="group px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl font-semibold text-lg text-white hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 text-center"
-                >
-                  <span class="flex items-center justify-center gap-2">
-                    Services entdecken
-                    <svg
-                      class="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+
+            <!-- Karte 1: Webdesign Trends -->
+            <article class="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div class="flex items-start gap-4 mb-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                  </svg>
+                </div>
+                <h3 class="text-lg md:text-xl font-bold text-gray-900">Webdesign Trends 2025 in Regensburg</h3>
+              </div>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                Die wichtigsten Entwicklungen im Webdesign drehen sich um
+                <strong class="text-gray-800">Performance, Accessibility und KI-Optimierung</strong>.
+                Websites müssen heute auf jedem Gerät blitzschnell laden und
+                barrierefrei sein – Google bewertet beides direkt als Rankingfaktor.
+              </p>
+              <p class="text-gray-600 leading-relaxed">
+                iXone setzt auf <strong class="text-gray-800">Astro als modernen Tech-Stack</strong> –
+                das Ergebnis sind statisch generierte Websites mit Core Web Vitals
+                im grünen Bereich, strukturierten Daten nach Schema.org und
+                sauberer Semantik für maximale Suchmaschinen-Sichtbarkeit.
+              </p>
+            </article>
+
+            <!-- Karte 2: Agenturwahl -->
+            <article class="bg-gradient-to-br from-orange-50 to-white rounded-2xl p-6 md:p-8 border border-orange-100 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div class="flex items-start gap-4 mb-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-xl flex items-center justify-center">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                  </svg>
+                </div>
+                <h3 class="text-lg md:text-xl font-bold text-gray-900">Die richtige Webdesign Agentur in Regensburg wählen</h3>
+              </div>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                Nicht jede Agentur liefert das gleiche. Achten Sie auf
+                <strong class="text-gray-800">konkrete Referenzen mit messbaren Ergebnissen</strong>,
+                auf den verwendeten Tech-Stack und darauf, ob SEO wirklich
+                von Anfang an mitgedacht wird – nicht erst als kostenpflichtiges Extra.
+              </p>
+              <ul class="space-y-2 text-gray-600 text-sm md:text-base">
+                {[
+                  "Nachweisbare PageSpeed-Scores der Referenzprojekte prüfen",
+                  "SEO-Strategie bereits im Webdesign-Prozess verankert?",
+                  "Fester Ansprechpartner statt wechselnde Projektmanager",
+                  "Transparente Festpreise ohne laufende Überraschungen",
+                ].map((point) => (
+                  <li class="flex items-start gap-2">
+                    <svg class="w-4 h-4 text-brand-orange flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
                     </svg>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+
+            <!-- Karte 3: Lokal vs. entfernt -->
+            <article class="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div class="flex items-start gap-4 mb-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-green-500 to-teal-600 rounded-xl flex items-center justify-center">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                </div>
+                <h3 class="text-lg md:text-xl font-bold text-gray-900">Lokale Digitalagentur vs. anonyme Webagentur</h3>
+              </div>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                Eine <strong class="text-gray-800">Digitalagentur vor Ort in Regensburg</strong>
+                kennt den regionalen Markt, lokale Suchbegriffe und die Wettbewerbssituation
+                Ihrer Branche. Persönliche Beratung, schnelle Reaktionszeiten und
+                ein Ansprechpartner der Ihr Unternehmen wirklich kennt – das ist der Unterschied.
+              </p>
+              <p class="text-gray-600 leading-relaxed">
+                Mit iXone erhalten Sie keinen anonymen Support per Ticket-System,
+                sondern einen <strong class="text-gray-800">direkten Draht zu Ihrem Projektverantwortlichen</strong>
+                – von der Konzeption über den Launch bis zur laufenden Optimierung.
+              </p>
+            </article>
+
+            <!-- Karte 4: KPIs -->
+            <article class="bg-gradient-to-br from-purple-50 to-white rounded-2xl p-6 md:p-8 border border-purple-100 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div class="flex items-start gap-4 mb-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                  </svg>
+                </div>
+                <h3 class="text-lg md:text-xl font-bold text-gray-900">So messen Sie den Erfolg Ihrer Website</h3>
+              </div>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                Eine gute Webdesign Agentur liefert nicht nur ein schönes Design –
+                sie liefert <strong class="text-gray-800">messbare Ergebnisse</strong>.
+                Diese KPIs zeigen ob Ihre Website wirklich funktioniert:
+              </p>
+              <div class="grid grid-cols-2 gap-2">
+                {[
+                  "Organischer Traffic",
+                  "Conversion-Rate",
+                  "Core Web Vitals",
+                  "Absprungrate",
+                  "Keyword-Rankings",
+                  "Kosten pro Lead",
+                ].map((kpi) => (
+                  <span class="flex items-center gap-2 text-sm text-gray-600">
+                    <span class="w-1.5 h-1.5 bg-purple-500 rounded-full flex-shrink-0" aria-hidden="true"></span>
+                    {kpi}
                   </span>
-                </a>
+                ))}
               </div>
+            </article>
+          </div>
 
-              <!-- Trust Indicators -->
-              <div
-                class="flex flex-wrap justify-center lg:justify-start gap-6 text-white/70 text-sm"
-              >
-                <span class="flex items-center gap-2">
-                  <svg
-                    class="w-5 h-5 text-green-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                  <span class="text-white/90 font-medium">100% Responsive</span>
-                </span>
-                <span class="flex items-center gap-2">
-                  <svg
-                    class="w-5 h-5 text-green-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                  <span class="text-white/90 font-medium">SEO-optimiert</span>
-                </span>
-                <span class="flex items-center gap-2">
-                  <svg
-                    class="w-5 h-5 text-green-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                  <span class="text-white/90 font-medium"
-                    >PageSpeed optimiert</span
-                  >
-                </span>
-              </div>
-            </div>
-
-            <!-- Visual Element -->
-            <div class="lg:col-span-4 relative">
-              <img
-                src="/assets/ixone-online-marketing-regensburg.webp"
-                alt="iXone Webdesign Regensburg - Moderne und responsive Webentwicklung"
-                class="w-full max-w-md mx-auto h-auto rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-500 animate-float"
-                loading="eager"
-                width="400"
-                height="400"
-              />
-            </div>
+          <div class="mt-10 text-center">
+            <p class="text-gray-600 text-base md:text-lg">
+              Mehr über nachhaltige Sichtbarkeit in Google erfahren Sie auf unserer
+              <a href="/seo-agentur" class="text-brand-orange font-semibold hover:underline">SEO Agentur Regensburg</a> Seite –
+              oder sprechen Sie uns direkt an für eine kostenlose Website-Analyse.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Features Section -->
-    <section
-      id="webdesign-features"
-      class="py-12 md:py-16 lg:py-24 xl:py-32 bg-white"
-    >
+    <!-- ═══════════════════════════════════════════════════
+         PROZESS
+    ════════════════════════════════════════════════════ -->
+    <section class="py-12 md:py-16 lg:py-24 xl:py-32 bg-gray-50" aria-labelledby="prozess-heading">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div class="text-center mb-12 md:mb-16 lg:mb-20">
-          <h2
-            class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4 md:mb-6"
-          >
-            Unsere <span
-              class="bg-gradient-to-r from-brand-orange via-yellow-400 to-brand-orange bg-clip-text text-transparent animate-gradient-x"
-              >Webdesign</span
-            > Leistungen
+          <h2 id="prozess-heading" class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4 md:mb-6">
+            Unser <span class="gradient-text-brand-inline">Webdesign</span> Prozess
           </h2>
-          <p
-            class="text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
-          >
-            Professionelle Webdesign-Services aus Regensburg
+          <p class="text-lg md:text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+            Vier Phasen. Klare Meilensteine. Keine Überraschungen.
+          </p>
+        </div>
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
+          {[
+            {
+              step: "1",
+              title: "Strategie & Konzeption",
+              desc: "Wir analysieren Ihre Ziele, Zielgruppe und Wettbewerber. Das Ergebnis: eine klare Content-Strategie, Seitenstruktur und SEO-Roadmap – bevor eine Zeile Code geschrieben wird.",
+            },
+            {
+              step: "2",
+              title: "UX/UI Design",
+              desc: "Wireframes, interaktive Prototypen und finales Design – abgestimmt auf Ihre Corporate Identity. Jedes Element ist auf Usability und Conversion optimiert, nicht nur auf Optik.",
+            },
+            {
+              step: "3",
+              title: "Entwicklung & SEO-Integration",
+              desc: "Saubere Entwicklung mit modernem Tech-Stack, CMS-Integration und eingebautem technischen SEO – Schema.org, Core Web Vitals, Lazy Loading und mehr. Standard, kein Extra.",
+            },
+            {
+              step: "4",
+              title: "Launch & Qualitätssicherung",
+              desc: "Umfassende Tests auf allen Geräten: PageSpeed, DSGVO-Konformität, Funktionalität und mobile Darstellung. Erst wenn alles stimmt, geht Ihre Website live.",
+            },
+          ].map((item) => (
+            <div class="flex items-start space-x-4 lg:space-x-6">
+              <div class="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center text-white font-black text-lg md:text-xl shadow-lg" aria-hidden="true">
+                {item.step}
+              </div>
+              <div>
+                <h3 class="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-2 md:mb-3">{item.title}</h3>
+                <p class="text-gray-600 text-sm md:text-base lg:text-lg leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         GALERIE
+    ════════════════════════════════════════════════════ -->
+    <section id="webdesign-galerie" class="py-12 md:py-16 lg:py-24 xl:py-32 bg-white" aria-labelledby="galerie-heading">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="text-center mb-12 md:mb-16">
+          <h2 id="galerie-heading" class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4 md:mb-6">
+            Unsere <span class="gradient-text-brand-inline">Webdesign</span> Projekte
+          </h2>
+          <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Ausgewählte Referenzen aus Regensburg und Bayern – performant, modern und conversion-optimiert
           </p>
         </div>
 
         <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 max-w-7xl mx-auto"
+          class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 max-w-7xl mx-auto"
+          role="list"
+          aria-label="Webdesign Referenzen iXone Regensburg"
         >
-          <!-- Feature 1: Responsive Design -->
-          <article
-            class="group text-center p-6 md:p-8 lg:p-10 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
-          >
-            <div
-              class="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300"
+          {galerieItems.map((item) => (
+            <figure
+              class="galerie-item group relative overflow-hidden rounded-xl bg-gray-200 cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+              role="listitem"
+              data-index={item.index}
+              data-alt={item.alt}
+              data-caption={item.caption}
+              tabindex="0"
+              aria-label={`Bild öffnen: ${item.caption}`}
             >
-              <svg
-                class="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-                ></path>
-              </svg>
-            </div>
-            <h3
-              class="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-3 md:mb-4"
-            >
-              Responsive Design
-            </h3>
-            <p
-              class="text-gray-600 leading-relaxed text-sm md:text-base lg:text-lg"
-            >
-              <strong>Mobile-first</strong> für alle Geräte. Perfekte Darstellung
-              auf Desktop, Tablet und Smartphone.
-            </p>
-          </article>
+              <div class="aspect-[4/3] overflow-hidden">
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  width={800}
+                  height={600}
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-3 md:p-4">
+                <p class="text-white text-xs md:text-sm font-semibold leading-tight">{item.caption}</p>
+                <span class="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+                  </svg>
+                </span>
+              </div>
+            </figure>
+          ))}
+        </div>
 
-          <!-- Feature 2: Performance -->
-          <article
-            class="group text-center p-6 md:p-8 lg:p-10 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
-          >
-            <div
-              class="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300"
-            >
-              <svg
-                class="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-              </svg>
-            </div>
-            <h3
-              class="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-3 md:mb-4"
-            >
-              Schnelle Performance
-            </h3>
-            <p
-              class="text-gray-600 leading-relaxed text-sm md:text-base lg:text-lg"
-            >
-              <strong>Unter 3 Sekunden</strong> Ladezeit für bessere User Experience
-              und höhere Google-Rankings.
-            </p>
-          </article>
-
-          <!-- Feature 3: SEO -->
-          <article
-            class="group text-center p-6 md:p-8 lg:p-10 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
-          >
-            <div
-              class="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300"
-            >
-              <svg
-                class="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-              </svg>
-            </div>
-            <h3
-              class="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-3 md:mb-4"
-            >
-              SEO-optimiert
-            </h3>
-            <p
-              class="text-gray-600 leading-relaxed text-sm md:text-base lg:text-lg"
-            >
-              <strong>Suchmaschinenfreundlich</strong> programmiert. Structured Data
-              und technisches SEO für bessere Rankings.
-            </p>
-          </article>
-
-          <!-- Feature 4: UX/UI Design -->
-          <article
-            class="group text-center p-6 md:p-8 lg:p-10 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
-          >
-            <div
-              class="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300"
-            >
-              <svg
-                class="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
-                ></path>
-              </svg>
-            </div>
-            <h3
-              class="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-3 md:mb-4"
-            >
-              Conversion-optimiert
-            </h3>
-            <p
-              class="text-gray-600 leading-relaxed text-sm md:text-base lg:text-lg"
-            >
-              <strong>Benutzerfreundlich</strong> und conversion-fokussiert. Strategische
-              Call-to-Actions für maximale Erfolge.
-            </p>
-          </article>
-
-          <!-- Feature 5: CMS Integration -->
-          <article
-            class="group text-center p-6 md:p-8 lg:p-10 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
-          >
-            <div
-              class="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300"
-            >
-              <svg
-                class="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                ></path>
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-              </svg>
-            </div>
-            <h3
-              class="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-3 md:mb-4"
-            >
-              CMS-Integration
-            </h3>
-            <p
-              class="text-gray-600 leading-relaxed text-sm md:text-base lg:text-lg"
-            >
-              <strong>Einfache Verwaltung</strong> mit WordPress oder headless CMS.
-              Sie können Inhalte selbst pflegen.
-            </p>
-          </article>
-
-          <!-- Feature 6: Wartung & Support -->
-          <article
-            class="group text-center p-6 md:p-8 lg:p-10 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
-          >
-            <div
-              class="w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300"
-            >
-              <svg
-                class="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"
-                ></path>
-              </svg>
-            </div>
-            <h3
-              class="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-3 md:mb-4"
-            >
-              Wartung & Support
-            </h3>
-            <p
-              class="text-gray-600 leading-relaxed text-sm md:text-base lg:text-lg"
-            >
-              <strong>Langfristige Betreuung</strong> aus Regensburg. Updates, Backups
-              und technischer Support.
-            </p>
-          </article>
+        <div class="text-center mt-10 md:mt-12">
+          <a href="/kontakt" class="cta-button-compact" style="display:inline-flex; align-items:center; gap:0.5rem;">
+            <span>Ihr Projekt starten</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Process Section -->
-    <section class="py-12 md:py-16 lg:py-24 xl:py-32 bg-gray-50">
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div class="text-center mb-12 md:mb-16 lg:mb-20">
-          <h2
-            class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4 md:mb-6"
-          >
-            Unser <span
-              class="bg-gradient-to-r from-brand-orange via-yellow-400 to-brand-orange bg-clip-text text-transparent animate-gradient-x"
-              >Webdesign</span
-            > Prozess
-          </h2>
-          <p
-            class="text-lg md:text-xl lg:text-2xl text-gray-600 leading-relaxed"
-          >
-            Strukturiert und transparent
-          </p>
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-label="Bild Vollansicht">
+      <button id="lightbox-close" class="absolute top-4 right-4 z-10 w-10 h-10 bg-white/10 hover:bg-white/25 rounded-full flex items-center justify-center transition-colors duration-200" aria-label="Schließen">
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <button id="lightbox-prev" class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-white/10 hover:bg-white/25 rounded-full flex items-center justify-center transition-colors duration-200" aria-label="Vorheriges Bild">
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <button id="lightbox-next" class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-white/10 hover:bg-white/25 rounded-full flex items-center justify-center transition-colors duration-200" aria-label="Nächstes Bild">
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </button>
+      <div class="max-w-5xl w-full mx-auto flex flex-col items-center gap-4">
+        <img id="lightbox-img" src="" alt="" class="max-h-[75vh] max-w-full rounded-xl shadow-2xl object-contain" width="1200" height="900"/>
+        <div class="text-center">
+          <p id="lightbox-caption" class="text-white font-semibold text-sm md:text-base"></p>
+          <p id="lightbox-counter" class="text-white/50 text-xs mt-1"></p>
         </div>
+      </div>
+    </div>
 
-        <div class="max-w-6xl mx-auto">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
-            <div class="flex items-start space-x-3 md:space-x-4 lg:space-x-6">
-              <div
-                class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-base md:text-lg lg:text-xl"
-              >
-                1
+    <!-- ═══════════════════════════════════════════════════
+         VORTEILE
+    ════════════════════════════════════════════════════ -->
+    <section class="py-12 md:py-16 lg:py-24 bg-gray-50" aria-labelledby="vorteile-heading">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-12 md:mb-16">
+            <h2 id="vorteile-heading" class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Warum <span class="gradient-text-brand-inline">iXone</span> als Webdesign-Partner wählen?
+            </h2>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+              Nicht die günstigste Agentur – aber die mit dem besten Preis-Leistungs-Verhältnis
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+
+            <div class="relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 group">
+              <div class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
               </div>
-              <div>
-                <h3
-                  class="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-2 md:mb-3"
-                >
-                  Konzeption
-                </h3>
-                <p
-                  class="text-gray-600 text-sm md:text-base lg:text-lg leading-relaxed"
-                >
-                  Analyse Ihrer Ziele und Zielgruppe für die optimale
-                  Webdesign-Strategie
-                </p>
-              </div>
+              <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3">Lokal verwurzelt, digital führend</h3>
+              <p class="text-gray-600 leading-relaxed">
+                Als Digitalagentur in Regensburg kennen wir den regionalen Markt, Ihre Wettbewerber
+                und die lokalen Suchbegriffe die Ihre Kunden wirklich verwenden.
+                Direkte Beratung vor Ort – kein Offshore, kein Callcenter.
+              </p>
             </div>
 
-            <div class="flex items-start space-x-3 md:space-x-4 lg:space-x-6">
-              <div
-                class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-base md:text-lg lg:text-xl"
-              >
-                2
+            <div class="relative bg-gradient-to-br from-orange-50 to-white rounded-2xl p-6 md:p-8 border border-orange-100 shadow-md hover:shadow-xl transition-all duration-300 group">
+              <div class="w-12 h-12 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
               </div>
-              <div>
-                <h3
-                  class="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-2 md:mb-3"
-                >
-                  Design
-                </h3>
-                <p
-                  class="text-gray-600 text-sm md:text-base lg:text-lg leading-relaxed"
-                >
-                  Wireframes, Mockups und Prototypen für Ihr individuelles
-                  Webdesign
-                </p>
-              </div>
+              <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3">Webdesign & SEO aus einem Guss</h3>
+              <p class="text-gray-600 leading-relaxed">
+                Viele Agenturen bauen erst die Website, dann kommt SEO als Nachgedanke.
+                Bei iXone ist SEO von der ersten Zeile Code integriert –
+                Ihre Website rankt von Tag 1, nicht erst nach teurer Nachoptimierung.
+              </p>
             </div>
 
-            <div class="flex items-start space-x-3 md:space-x-4 lg:space-x-6">
-              <div
-                class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-base md:text-lg lg:text-xl"
-              >
-                3
+            <div class="relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 group">
+              <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
               </div>
-              <div>
-                <h3
-                  class="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-2 md:mb-3"
-                >
-                  Entwicklung
-                </h3>
-                <p
-                  class="text-gray-600 text-sm md:text-base lg:text-lg leading-relaxed"
-                >
-                  Responsive Umsetzung mit modernen Technologien und
-                  SEO-Optimierung
-                </p>
-              </div>
-            </div>
-
-            <div class="flex items-start space-x-3 md:space-x-4 lg:space-x-6">
-              <div
-                class="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-base md:text-lg lg:text-xl"
-              >
-                4
-              </div>
-              <div>
-                <h3
-                  class="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-2 md:mb-3"
-                >
-                  Launch
-                </h3>
-                <p
-                  class="text-gray-600 text-sm md:text-base lg:text-lg leading-relaxed"
-                >
-                  Testing, Performance-Optimierung und erfolgreicher
-                  Website-Launch
-                </p>
-              </div>
+              <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3">Ergebnisse die sich messen lassen</h3>
+              <p class="text-gray-600 leading-relaxed">
+                Kein Agentur-Blabla, sondern klare KPIs: organischer Traffic, Conversion-Rate,
+                PageSpeed Score und Rankings. Sie sehen genau was Ihre Investition bringt –
+                und wo wir gemeinsam weiter optimieren.
+              </p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <Portfolio />
-    <Testimonials />
     <TechStack />
 
-    <!-- FAQ Section -->
-    <section class="py-12 md:py-16 lg:py-24 xl:py-32 bg-white">
+    <!-- ═══════════════════════════════════════════════════
+         FAQ
+    ════════════════════════════════════════════════════ -->
+    <section class="py-12 md:py-16 lg:py-24 xl:py-32 bg-white" aria-labelledby="faq-heading">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div class="max-w-4xl mx-auto">
           <div class="text-center mb-12 md:mb-16">
-            <h2
-              class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 md:mb-6"
-            >
-              Häufig gestellte <span
-                class="bg-gradient-to-r from-brand-orange via-yellow-400 to-brand-orange bg-clip-text text-transparent"
-                >Fragen</span
-              >
+            <h2 id="faq-heading" class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 md:mb-6">
+              Häufige Fragen zum <span class="gradient-text-brand-inline">Webdesign Regensburg</span>
             </h2>
-            <p class="text-lg md:text-xl text-gray-600">
-              Antworten auf die wichtigsten Fragen zu unserem Webdesign-Service
-            </p>
+            <p class="text-lg md:text-xl text-gray-600">Ehrliche Antworten – keine Marketing-Floskeln</p>
           </div>
-
-          <div class="space-y-6">
-            <!-- FAQ Item 1 -->
-            <details
-              class="faq-transition bg-white rounded-lg shadow-md overflow-hidden group border border-gray-200"
-            >
-              <summary
-                class="px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
-              >
-                <h3 class="text-lg font-semibold text-gray-900">
-                  Was kostet professionelles Webdesign in Regensburg?
-                </h3>
-                <svg
-                  class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform duration-200"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"></path>
-                </svg>
-              </summary>
-              <div class="faq-content px-6 pb-4 text-gray-600">
-                <p>
-                  Webdesign startet ab 2.500 € für Unternehmensseiten. Shops
-                  oder Spezialfunktionen liegen ab ca. 5.000 €. Sie erhalten ein
-                  individuelles, transparentes Angebot.
-                </p>
-              </div>
-            </details>
-
-            <!-- FAQ Item 2 -->
-            <details
-              class="faq-transition bg-white rounded-lg shadow-md overflow-hidden group border border-gray-200"
-            >
-              <summary
-                class="px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
-              >
-                <h3 class="text-lg font-semibold text-gray-900">
-                  Wie lange dauert ein Webdesign-Projekt?
-                </h3>
-                <svg
-                  class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform duration-200"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"></path>
-                </svg>
-              </summary>
-              <div class="faq-content px-6 pb-4 text-gray-600">
-                <p>
-                  Meist 4–8 Wochen vom Konzept bis zum Launch. Shops oder
-                  besondere Integrationen dauern 8–12 Wochen. Nach dem
-                  Erstgespräch gibt es einen klaren Zeitplan.
-                </p>
-              </div>
-            </details>
-
-            <!-- FAQ Item 3 -->
-            <details
-              class="faq-transition bg-white rounded-lg shadow-md overflow-hidden group border border-gray-200"
-            >
-              <summary
-                class="px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
-              >
-                <h3 class="text-lg font-semibold text-gray-900">
-                  Mit welchem CMS arbeitet ihr?
-                </h3>
-                <svg
-                  class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform duration-200"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"></path>
-                </svg>
-              </summary>
-              <div class="faq-content px-6 pb-4 text-gray-600">
-                <p>
-                  Je nach Bedarf WordPress oder moderne Headless-Stacks (z. B.
-                  Astro/React). Sie können Inhalte anschließend selbst pflegen.
-                </p>
-              </div>
-            </details>
-
-            <!-- FAQ Item 4 -->
-            <details
-              class="faq-transition bg-white rounded-lg shadow-md overflow-hidden group border border-gray-200"
-            >
-              <summary
-                class="px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
-              >
-                <h3 class="text-lg font-semibold text-gray-900">
-                  Sind SEO und Performance inklusive?
-                </h3>
-                <svg
-                  class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform duration-200"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"></path>
-                </svg>
-              </summary>
-              <div class="faq-content px-6 pb-4 text-gray-600">
-                <p>
-                  Ja. Onpage-SEO-Basics, strukturierte Daten und
-                  Pagespeed-Optimierung für gute Core Web Vitals sind Standard.
-                </p>
-              </div>
-            </details>
-
-            <!-- FAQ Item 5 -->
-            <details
-              class="faq-transition bg-white rounded-lg shadow-md overflow-hidden group border border-gray-200"
-            >
-              <summary
-                class="px-6 py-4 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center"
-              >
-                <h3 class="text-lg font-semibold text-gray-900">
-                  Übernehmt ihr Wartung und Hosting?
-                </h3>
-                <svg
-                  class="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform duration-200"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"></path>
-                </svg>
-              </summary>
-              <div class="faq-content px-6 pb-4 text-gray-600">
-                <p>
-                  Ja, optional. Updates, Backups, Monitoring und Support können
-                  wir für Sie übernehmen; Hosting beraten oder bereitstellen wir
-                  auf Wunsch.
-                </p>
-              </div>
-            </details>
+          <div class="space-y-4">
+            {[
+              {
+                q: "Was kostet professionelles Webdesign in Regensburg?",
+                a: "Eine Unternehmenswebsite startet ab 2.500 €, E-Commerce-Lösungen ab ca. 5.000 €. Der genaue Preis hängt von Funktionsumfang, Seitenanzahl und gewünschten Integrationen ab. Nach einem kostenlosen Erstgespräch erhalten Sie ein verbindliches Angebot ohne versteckte Kosten.",
+              },
+              {
+                q: "Wie lange dauert ein Webdesign-Projekt bei iXone?",
+                a: "Standard-Websites: 4–6 Wochen. Komplexere Projekte mit Shop, Buchungssystem oder individuellen Funktionen: 8–12 Wochen. Nach dem Kickoff erhalten Sie einen detaillierten Projektplan mit klaren Meilensteinen.",
+              },
+              {
+                q: "Was macht eine professionelle Webdesign Agentur in Regensburg?",
+                a: "Eine gute Webdesign Agentur übernimmt mehr als nur das Design. iXone liefert Strategie, UX/UI Design, technische Entwicklung, SEO-Integration, DSGVO-Konformität und Hosting – alles aus einer Hand mit einem persönlichen Ansprechpartner.",
+              },
+              {
+                q: "Mit welchem CMS arbeitet ihr?",
+                a: "Je nach Anforderung setzen wir auf WordPress für inhaltsgetriebene Projekte oder Astro für maximale Performance. Beide Systeme ermöglichen Ihnen eine einfache Content-Pflege ohne technische Vorkenntnisse.",
+              },
+              {
+                q: "Sind SEO und Performance wirklich inklusive?",
+                a: "Ja – ohne Wenn und Aber. Technisches SEO, Schema.org Markup, Core Web Vitals Optimierung, saubere URL-Strukturen und Pagespeed-Optimierung sind bei jedem Projekt dabei. Wir übergeben keine Website mit schlechten Scores.",
+              },
+              {
+                q: "Warum Astro statt WordPress?",
+                a: "Astro generiert statische HTML-Seiten – das Ergebnis sind PageSpeed-Scores über 90, deutlich schnellere Ladezeiten und bessere Google-Rankings. Für Content-lastige Projekte mit häufigen Updates bleibt WordPress eine sehr gute Wahl. Wir empfehlen das Richtige für Ihren konkreten Fall.",
+              },
+              {
+                q: "Übernehmt ihr auch Wartung und Hosting?",
+                a: "Ja. Unsere Wartungspakete umfassen regelmäßige Updates, Backups, Performance-Monitoring und technischen Support. Hosting empfehlen oder stellen wir auf Wunsch bereit – mit deutschen Servern und DSGVO-Konformität.",
+              },
+              {
+                q: "Wie messe ich ob meine Website erfolgreich ist?",
+                a: "Die relevantesten KPIs für Unternehmenswebsites sind: organischer Traffic aus Google, Conversion-Rate (Anfragen/Käufe), Core Web Vitals Score, Absprungrate und Keyword-Rankings für Ihre Zielregion. iXone richtet Tracking ein und liefert regelmäßige Reports.",
+              },
+            ].map((item) => (
+              <details class="faq-item bg-white rounded-xl shadow-sm overflow-hidden group border border-gray-200 transition-colors duration-200">
+                <summary class="px-6 py-5 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center gap-4 list-none">
+                  <h3 class="text-base md:text-lg font-semibold text-gray-900 text-left">{item.q}</h3>
+                  <span class="flex-shrink-0 w-8 h-8 bg-gray-100 group-open:bg-brand-orange rounded-full flex items-center justify-center transition-colors duration-200" aria-hidden="true">
+                    <svg class="w-4 h-4 text-gray-500 group-open:text-white group-open:rotate-180 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                  </span>
+                </summary>
+                <div class="faq-body px-6 pb-5 text-gray-600 leading-relaxed text-sm md:text-base border-t border-gray-100 pt-4">
+                  <p>{item.a}</p>
+                </div>
+              </details>
+            ))}
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- ═══════════════════════════════════════════════════
+         CTA
+    ════════════════════════════════════════════════════ -->
     <section
       class="py-12 md:py-16 lg:py-24 xl:py-32 bg-gradient-to-r from-brand-orange to-yellow-500 relative overflow-hidden"
+      aria-labelledby="cta-heading"
     >
-      <!-- Background Pattern -->
-      <div class="absolute inset-0 opacity-10">
-        <div
-          class="h-full w-full"
-          style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 50px 50px;"
-        >
-        </div>
+      <div class="absolute inset-0 opacity-10" aria-hidden="true">
+        <div class="h-full w-full" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 50px 50px;"></div>
       </div>
-
-      <div
-        class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10"
-      >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
         <div class="max-w-5xl mx-auto text-center text-white">
-          <h2
-            class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 lg:mb-8"
-          >
-            Bereit für Ihr Webdesign?
+          <h2 id="cta-heading" class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 lg:mb-8">
+            Bereit für eine Website die wirklich rankt?
           </h2>
-          <p
-            class="text-base md:text-lg lg:text-xl xl:text-2xl mb-6 md:mb-8 lg:mb-12 opacity-90 leading-relaxed"
-          >
-            Lassen Sie uns Ihre moderne Website entwickeln. Kostenlose Beratung
-            aus Regensburg.
+          <p class="text-base md:text-lg lg:text-xl xl:text-2xl mb-6 md:mb-8 lg:mb-12 opacity-90 leading-relaxed max-w-3xl mx-auto">
+            Kostenlose Erstberatung, festes Angebot, persönlicher Ansprechpartner.
+            Starten Sie jetzt Ihr Webdesign-Projekt mit iXone Regensburg.
           </p>
-          <div
-            class="flex flex-col sm:flex-row gap-3 md:gap-4 lg:gap-6 justify-center"
-          >
-            <a
-              href="/kontakt"
-              class="group relative bg-white text-brand-orange hover:bg-gray-100 px-6 py-3 md:px-8 md:py-4 lg:px-10 lg:py-5 rounded-lg font-semibold text-base md:text-lg lg:text-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 overflow-hidden"
-            >
-              <span class="relative z-10">Projekt starten</span>
+          <div class="flex flex-col sm:flex-row gap-3 md:gap-4 lg:gap-6 justify-center">
+            <a href="/kontakt" class="bg-white text-brand-orange hover:bg-gray-100 px-6 py-3 md:px-8 md:py-4 lg:px-10 lg:py-5 rounded-xl font-bold text-base md:text-lg lg:text-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+              Jetzt kostenlos beraten lassen
             </a>
             <a
               href="tel:+4994015338873"
-              class="border-2 border-white text-white hover:bg-white hover:text-brand-orange px-6 py-3 md:px-8 md:py-4 lg:px-10 lg:py-5 rounded-lg font-semibold text-base md:text-lg lg:text-xl transition-all duration-300 flex items-center justify-center gap-2"
+              class="border-2 border-white text-white hover:bg-white hover:text-brand-orange px-6 py-3 md:px-8 md:py-4 lg:px-10 lg:py-5 rounded-xl font-semibold text-base md:text-lg lg:text-xl transition-all duration-300 flex items-center justify-center gap-2"
+              aria-label="iXone Digitalagentur Regensburg anrufen"
             >
-              <svg
-                class="w-4 h-4 md:w-5 md:h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                ></path>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
               </svg>
-              <span class="hidden sm:inline">Direkt anrufen</span>
-              <span class="sm:hidden">Anrufen</span>
+              Direkt anrufen
             </a>
           </div>
         </div>
       </div>
     </section>
+
   </div>
 </Layout>
 
 <script>
-  if (typeof window !== "undefined") {
-    document.querySelectorAll(".faq-transition").forEach((details) => {
-      const content = details.querySelector(".faq-content");
-      if (!content) return;
-
-      const open = () => {
-        // Measure height, set explicit value for animation, then remove cap after transition
-        const fullHeight = content.scrollHeight;
-        content.style.maxHeight = `${fullHeight}px`;
-        content.style.opacity = "1";
-        content.style.transform = "translateY(0)";
-        const onEnd = (e) => {
+  // ── FAQ ───────────────────────────────────────────────
+  document.querySelectorAll(".faq-item").forEach((details) => {
+    const body = details.querySelector(".faq-body") as HTMLElement | null;
+    if (!body) return;
+    body.style.overflow = "hidden";
+    body.style.transition = "max-height 0.35s ease, opacity 0.25s ease";
+    if ((details as HTMLDetailsElement).open) {
+      body.style.maxHeight = "none";
+      body.style.opacity = "1";
+    } else {
+      body.style.maxHeight = "0px";
+      body.style.opacity = "0";
+    }
+    details.addEventListener("toggle", () => {
+      if ((details as HTMLDetailsElement).open) {
+        const h = body.scrollHeight;
+        body.style.maxHeight = `${h}px`;
+        body.style.opacity = "1";
+        const onEnd = (e: TransitionEvent) => {
           if (e.propertyName === "max-height") {
-            content.style.maxHeight = "none";
-            content.removeEventListener("transitionend", onEnd);
+            body.style.maxHeight = "none";
+            body.removeEventListener("transitionend", onEnd);
           }
         };
-        content.addEventListener("transitionend", onEnd);
-      };
-
-      const close = () => {
-        // If maxHeight is none (from open), set current height first, then animate to 0
-        const currentHeight = content.scrollHeight;
-        content.style.maxHeight = `${currentHeight}px`;
-        requestAnimationFrame(() => {
-          content.style.maxHeight = "0px";
-          content.style.opacity = "0";
-          content.style.transform = "translateY(-6px)";
-        });
-      };
-
-      // Initial state
-      if (details.open) {
-        content.style.maxHeight = "none";
-        content.style.opacity = "1";
-        content.style.transform = "translateY(0)";
+        body.addEventListener("transitionend", onEnd);
       } else {
-        content.style.maxHeight = "0px";
-        content.style.opacity = "0";
-        content.style.transform = "translateY(-6px)";
+        body.style.maxHeight = `${body.scrollHeight}px`;
+        requestAnimationFrame(() => {
+          body.style.maxHeight = "0px";
+          body.style.opacity = "0";
+        });
       }
-
-      details.addEventListener("toggle", () => {
-        if (details.open) {
-          open();
-        } else {
-          close();
-        }
-      });
     });
-  }
+  });
+
+  // ── Lightbox ──────────────────────────────────────────
+  const lightbox  = document.getElementById("lightbox") as HTMLElement;
+  const lbImg     = document.getElementById("lightbox-img") as HTMLImageElement;
+  const lbCaption = document.getElementById("lightbox-caption") as HTMLElement;
+  const lbCounter = document.getElementById("lightbox-counter") as HTMLElement;
+  const lbClose   = document.getElementById("lightbox-close") as HTMLButtonElement;
+  const lbPrev    = document.getElementById("lightbox-prev") as HTMLButtonElement;
+  const lbNext    = document.getElementById("lightbox-next") as HTMLButtonElement;
+  const items     = Array.from(document.querySelectorAll(".galerie-item")) as HTMLElement[];
+  const total     = items.length;
+  let current     = 0;
+
+  const getSrc = (el: HTMLElement) => el.querySelector("img")?.src ?? "";
+
+  const openLb = (index: number) => {
+    current = index;
+    const el = items[current];
+    lbImg.src = getSrc(el);
+    lbImg.alt = el.dataset.alt ?? "";
+    lbCaption.textContent = el.dataset.caption ?? "";
+    lbCounter.textContent = `${current + 1} / ${total}`;
+    lightbox.classList.remove("hidden");
+    lightbox.classList.add("flex");
+    document.body.style.overflow = "hidden";
+    lbClose.focus();
+  };
+
+  const closeLb = () => {
+    lightbox.classList.add("hidden");
+    lightbox.classList.remove("flex");
+    document.body.style.overflow = "";
+    items[current]?.focus();
+  };
+
+  const prevLb = () => openLb((current - 1 + total) % total);
+  const nextLb = () => openLb((current + 1) % total);
+
+  items.forEach((el, i) => {
+    el.addEventListener("click", () => openLb(i));
+    el.addEventListener("keydown", (e: Event) => {
+      const ke = e as KeyboardEvent;
+      if (ke.key === "Enter" || ke.key === " ") { ke.preventDefault(); openLb(i); }
+    });
+  });
+
+  lbClose.addEventListener("click", closeLb);
+  lbPrev.addEventListener("click", prevLb);
+  lbNext.addEventListener("click", nextLb);
+  lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLb(); });
+
+  document.addEventListener("keydown", (e) => {
+    if (lightbox.classList.contains("hidden")) return;
+    if (e.key === "Escape")     closeLb();
+    if (e.key === "ArrowLeft")  prevLb();
+    if (e.key === "ArrowRight") nextLb();
+  });
+
+  let touchStartX = 0;
+  lightbox.addEventListener("touchstart", (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  lightbox.addEventListener("touchend", (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) diff > 0 ? nextLb() : prevLb();
+  });
 </script>
+
+<style>
+  .galerie-item:focus-visible { outline: 3px solid #ec6a1b; outline-offset: 2px; }
+  #lightbox:not(.hidden) { animation: lb-fade 0.2s ease forwards; }
+  @keyframes lb-fade { from { opacity: 0; } to { opacity: 1; } }
+</style>

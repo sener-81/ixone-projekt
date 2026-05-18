@@ -61,30 +61,32 @@ const { title, description, canonical, ogImage, noindex, structuredData } =
       src="https://assets.calendly.com/assets/external/widget.js"
       type="text/javascript"
       async
-      data-calendly-script
-    ></script>
+      data-calendly-script></script>
     <script is:inline>
       (() => {
-        const CALENDLY_SRC = 'https://assets.calendly.com/assets/external/widget.js';
+        const CALENDLY_SRC =
+          "https://assets.calendly.com/assets/external/widget.js";
 
         // Ensure script is present (in case async load was blocked)
         function ensureCalendlyScript() {
           if (window.Calendly) return Promise.resolve();
 
           return new Promise((resolve) => {
-            const existing = document.querySelector('script[data-calendly-script]');
+            const existing = document.querySelector(
+              "script[data-calendly-script]",
+            );
             if (existing) {
-              existing.addEventListener('load', () => resolve());
-              existing.addEventListener('error', () => resolve());
+              existing.addEventListener("load", () => resolve());
+              existing.addEventListener("error", () => resolve());
               return;
             }
 
-            const script = document.createElement('script');
+            const script = document.createElement("script");
             script.src = CALENDLY_SRC;
             script.async = true;
-            script.setAttribute('data-calendly-script', '');
-            script.addEventListener('load', () => resolve());
-            script.addEventListener('error', () => resolve());
+            script.setAttribute("data-calendly-script", "");
+            script.addEventListener("load", () => resolve());
+            script.addEventListener("error", () => resolve());
             document.body.appendChild(script);
           });
         }
@@ -96,12 +98,15 @@ const { title, description, canonical, ogImage, noindex, structuredData } =
           }
         }
 
-        document.addEventListener('click', (event) => {
-          const target = event.target instanceof Element ? event.target.closest('[data-calendly-popup-url]') : null;
+        document.addEventListener("click", (event) => {
+          const target =
+            event.target instanceof Element
+              ? event.target.closest("[data-calendly-popup-url]")
+              : null;
           if (!target) return;
 
           event.preventDefault();
-          const url = target.getAttribute('data-calendly-popup-url');
+          const url = target.getAttribute("data-calendly-popup-url");
           if (!url) return;
           openCalendlyPopup(url);
         });
