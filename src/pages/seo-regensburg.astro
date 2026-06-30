@@ -1,17 +1,17 @@
 ---
-// src/pages/seo-agentur.astro
+// src/pages/seo-regensburg.astro
 import Layout from "../layouts/Layout.astro";
 import { breadcrumbSchema } from "../data/structuredData";
 
 const breadcrumbs = breadcrumbSchema([
   { name: "Home", url: "https://ixone.de/" },
-  { name: "SEO Agentur", url: "https://ixone.de/seo-agentur" },
+  { name: "SEO Agentur", url: "https://ixone.de/seo-regensburg" },
 ]);
 
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "@id": "https://ixone.de/seo-agentur#service",
+  "@id": "https://ixone.de/seo-regensburg#service",
   name: "SEO Agentur Regensburg",
   description:
     "Professionelle SEO Agentur aus Regensburg. Suchmaschinenoptimierung, OnPage SEO, OffPage SEO und Technical SEO für bessere Google Rankings und mehr organischen Traffic.",
@@ -35,7 +35,7 @@ const serviceSchema = {
     priceRange: "€€",
     priceCurrency: "EUR",
     availability: "https://schema.org/InStock",
-    url: "https://ixone.de/seo-agentur",
+    url: "https://ixone.de/seo-regensburg",
   },
 };
 
@@ -114,7 +114,7 @@ const faqSchema = {
 <Layout
   title="SEO Agentur Regensburg | Nachhaltige Suchmaschinenoptimierung | iXone"
   description="SEO Agentur Regensburg: Nachhaltige Suchmaschinenoptimierung für Ihre Sichtbarkeit bei Google. Steigern Sie Ihren Umsatz mit Local SEO. Jetzt unverbindlich anfragen!"
-  canonical="https://ixone.de/seo-agentur"
+  canonical="https://ixone.de/seo-regensburg"
   structuredData={[breadcrumbs, serviceSchema, faqSchema]}
 >
   <div class="pt-14 sm:pt-16 md:pt-18 lg:pt-20 xl:pt-22 bg-white">
@@ -1120,7 +1120,7 @@ const faqSchema = {
                 id="technical-seo-heading"
                 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-6"
               >
-                <span class="gradient-text-brand-inline">Technisches SEO</span> –
+                <span class="gradient-text-brand-inline">Technisches SEO</span> -
                 die Basis für Top-Rankings
               </h2>
               <div
@@ -1199,7 +1199,7 @@ const faqSchema = {
               id="seo-vs-ads-heading"
               class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
             >
-              <span class="gradient-text-brand-inline">SEO vs. Google Ads</span> –
+              <span class="gradient-text-brand-inline">SEO vs. Google Ads</span> -
               was ist besser für Ihr Unternehmen?
             </h2>
             <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
@@ -1364,7 +1364,7 @@ const faqSchema = {
                 während SEO aufgebaut wird – mittelfristig übernimmt die organische
                 Reichweite und reduziert Ihre Abhängigkeit vom Werbebudget.
                 <a
-                  href="/online-marketing"
+                  href="/online-marketing-regensburg"
                   class="text-brand-orange font-semibold hover:underline ml-1"
                   >Mehr zu Google Ads →</a
                 >
@@ -1458,7 +1458,7 @@ const faqSchema = {
               id="preise-heading"
               class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
             >
-              <span class="gradient-text-brand-inline">Preis-Orientierung</span> –
+              <span class="gradient-text-brand-inline">Preis-Orientierung</span> -
               damit Sie ein Gefühl bekommen
             </h2>
             <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
@@ -1826,9 +1826,9 @@ const faqSchema = {
               Kostenlose SEO-Analyse anfordern
             </a>
             <a
-              href="tel:+4994015338873"
+              href="/kontakt"
               class="border-2 border-white text-white hover:bg-white hover:text-blue-700 px-6 py-3 md:px-8 md:py-4 lg:px-10 lg:py-5 rounded-xl font-semibold text-base md:text-lg lg:text-xl transition-all duration-300 flex items-center justify-center gap-2"
-              aria-label="iXone SEO Agentur Regensburg anrufen"
+              aria-label="Zum Kontaktformular der iXone SEO Agentur Regensburg"
             >
               <svg
                 class="w-5 h-5"
@@ -1841,10 +1841,10 @@ const faqSchema = {
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                 ></path>
               </svg>
-              Direkt anrufen
+              Zum Kontaktformular
             </a>
           </div>
         </div>

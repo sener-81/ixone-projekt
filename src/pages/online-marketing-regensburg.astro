@@ -1,35 +1,28 @@
 ---
-// src/pages/online-marketing.astro
+// src/pages/online-marketing-regensburg.astro
 import Layout from "../layouts/Layout.astro";
 import { breadcrumbSchema } from "../data/structuredData";
 
 const breadcrumbs = breadcrumbSchema([
   { name: "Home", url: "https://ixone.de/" },
-  { name: "Online Marketing", url: "https://ixone.de/online-marketing" },
+  {
+    name: "Online Marketing",
+    url: "https://ixone.de/online-marketing-regensburg",
+  },
 ]);
 
 // Service Schema für Online Marketing (ohne Preisangaben)
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "@id": "https://ixone.de/online-marketing#service",
+  "@id": "https://ixone.de/online-marketing-regensburg#service",
   name: "Online Marketing Agentur Regensburg",
   description:
     "Online Marketing Agentur aus Regensburg. Google Ads, SEA, Social Media Ads, Content Marketing, E-Mail Marketing und Conversion-Optimierung für messbare Erfolge und maximalen ROI.",
-  provider: {
-    "@type": "LocalBusiness",
-    name: "iXone Digitalagentur",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Regensburg",
-      addressRegion: "Bayern",
-      addressCountry: "DE",
-    },
-    telephone: "+49-9401-533-88-73",
-  },
+  provider: { "@id": "https://ixone.de/#organization" },
   areaServed: ["Regensburg", "Bayern", "Deutschland"],
   serviceType: "Online Marketing",
-  url: "https://ixone.de/online-marketing",
+  url: "https://ixone.de/online-marketing-regensburg",
 };
 
 // FAQ Schema – aus NeuronWriter-Content
@@ -108,7 +101,7 @@ const faqSchema = {
 <Layout
   title="Online Marketing Agentur Regensburg | Google Ads & Performance | iXone"
   description="Online Marketing Agentur aus Regensburg: Google Ads, Social Media Ads, Content Marketing & Conversion-Optimierung für messbare Erfolge und maximalen ROI. Jetzt kostenlos beraten lassen."
-  canonical="https://ixone.de/online-marketing"
+  canonical="https://ixone.de/online-marketing-regensburg"
   structuredData={[breadcrumbs, serviceSchema, faqSchema]}
 >
   <main class="pt-14 sm:pt-16 md:pt-18 lg:pt-20 xl:pt-22 bg-white">
@@ -235,11 +228,11 @@ const faqSchema = {
             gewinnen Neukunden, stärken die Kundenbindung und steigern Ihren
             Umsatz nachhaltig. Eng verzahnt mit unserem
             <a
-              href="/seo-agentur"
+              href="/seo-regensburg"
               class="text-brand-orange font-semibold hover:underline">SEO</a
             > und
             <a
-              href="/webdesign"
+              href="/webdesign-regensburg"
               class="text-brand-orange font-semibold hover:underline"
               >Webdesign</a
             > greifen alle Maßnahmen sauber ineinander.
@@ -625,7 +618,7 @@ const faqSchema = {
               und steigert gleichzeitig die Conversion-Rate. Hier zahlt sich
               unser
               <a
-                href="/webdesign"
+                href="/webdesign-regensburg"
                 class="text-brand-orange font-semibold hover:underline"
                 >Webdesign</a
               > direkt aus.
@@ -646,7 +639,7 @@ const faqSchema = {
             erscheinen auf besseren Positionen, kosten weniger pro Klick und
             liefern mehr qualifizierte Leads. Ergänzend dazu stärkt
             <a
-              href="/seo-agentur"
+              href="/seo-regensburg"
               class="text-brand-orange font-semibold hover:underline"
               >organisches SEO</a
             > Ihre Sichtbarkeit langfristig und unabhängig vom Werbebudget.
@@ -942,16 +935,16 @@ const faqSchema = {
             <p class="text-gray-600 leading-relaxed">
               Von
               <a
-                href="/webdesign"
+                href="/webdesign-regensburg"
                 class="text-brand-orange font-semibold hover:underline"
                 >Webdesign</a
               > über
               <a
-                href="/seo-agentur"
+                href="/seo-regensburg"
                 class="text-brand-orange font-semibold hover:underline">SEO</a
               > bis
               <a
-                href="/social-media-marketing"
+                href="/social-media-marketing-regensburg"
                 class="text-brand-orange font-semibold hover:underline"
                 >Social Media</a
               > – eine kohärente Strategie, in der alle Maßnahmen ineinandergreifen.
