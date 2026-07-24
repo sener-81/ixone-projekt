@@ -1,99 +1,118 @@
-/* ===== REDUCED MOTION ===== */
-@media (prefers-reduced-motion: reduce) {
-  .animate-fade-in,
-  .animate-pulse,
-  .gradient-text-brand,
-  .gradient-text-brand-inline,
-  .gradient-text-brand-slow {
-    animation: none;
+/* ═══════════════════════════════════════════════════════════
+   TAILWIND v4 – CSS-FIRST KONFIGURATION
+   Ersetzt die komplette tailwind.config.mjs.
+═══════════════════════════════════════════════════════════ */
+@import "tailwindcss";
+
+@theme {
+  /* ───── BREAKPOINTS (vorher: screens) ───── */
+  --breakpoint-xs: 475px;
+  --breakpoint-3xl: 1600px;
+  --breakpoint-4xl: 1920px;
+
+  /* ───── FARBEN (vorher: colors) ───── */
+  --color-brand-orange: #ec6a1b;
+  --color-brand-orange-light: #f47c2e;
+  --color-brand-orange-dark: #d15c17;
+
+  /* ───── SPACING (vorher: spacing) ───── */
+  --spacing-18: 4.5rem;
+  --spacing-88: 22rem;
+  --spacing-128: 32rem;
+
+  /* ───── FONTS (vorher: fontFamily) ───── */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* ───── FONT SIZES (vorher: fontSize) ───── */
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1rem;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.25rem;
+  --text-base: 1rem;
+  --text-base--line-height: 1.5rem;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.75rem;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.75rem;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 2rem;
+  --text-3xl: 1.875rem;
+  --text-3xl--line-height: 2.25rem;
+  --text-4xl: 2.25rem;
+  --text-4xl--line-height: 2.5rem;
+  --text-5xl: 3rem;
+  --text-5xl--line-height: 1;
+  --text-6xl: 3.75rem;
+  --text-6xl--line-height: 1;
+  --text-7xl: 4.5rem;
+  --text-7xl--line-height: 1;
+  --text-8xl: 6rem;
+  --text-8xl--line-height: 1;
+  --text-9xl: 8rem;
+  --text-9xl--line-height: 1;
+
+  /* ───── BACKDROP BLUR (vorher: backdropBlur) ───── */
+  --blur-xs: 2px;
+
+  /* ───── ANIMATIONEN (vorher: animation) ───── */
+  --animate-fade-in: fadeIn 0.6s ease-out;
+  --animate-slide-up: slideUp 0.6s ease-out;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 8s ease-in-out infinite 2s;
+  --animate-float-slow: float 10s ease-in-out infinite 1s;
+  --animate-blob: blob 7s infinite;
+  --animate-gradient-x: gradient-x 3s ease infinite;
+  --animate-bounce-slow: bounce 3s infinite;
+
+  /* ───── KEYFRAMES (vorher: keyframes) ───── */
+  @keyframes fadeIn {
+    0%   { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideUp {
+    0%   { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33%      { transform: translateY(-8px) rotate(1deg); }
+    66%      { transform: translateY(-4px) rotate(-1deg); }
+  }
+  @keyframes blob {
+    0%   { transform: translate(0px, 0px) scale(1); }
+    33%  { transform: translate(20px, -30px) scale(1.05); }
+    66%  { transform: translate(-15px, 15px) scale(0.95); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+  @keyframes gradient-x {
+    0%, 100% {
+      background-size: 200% 200%;
+      background-position: left center;
+    }
+    50% {
+      background-size: 200% 200%;
+      background-position: right center;
+    }
   }
 }
 
-/* Intro Section - Brand Orange Utilities */
-.bg-brand-orange {
-  background-color: var(--brand-orange);
-}
+/* ═══════════════════════════════════════════════════════════
+   EIGENE STYLES & KOMPONENTEN
+   Hinweis: Die früheren manuellen brand-orange-Workarounds
+   (from-brand-orange, to-brand-orange, border-brand-orange,
+   text-brand-orange, bg-brand-orange ...) sind ENTFERNT –
+   Tailwind v4 generiert diese jetzt automatisch aus @theme.
+═══════════════════════════════════════════════════════════ */
 
-.text-brand-orange {
-  color: var(--brand-orange);
-}
-
-.hover\:bg-brand-orange\/90:hover {
-  background-color: rgba(236, 106, 27, 0.9);
+/* CSS Variable fürs Branding (für eigene CSS-Regeln unten) */
+:root {
+  --brand-orange: #ec6a1b;
 }
 
 /* Smooth counter animations */
 .counter-transition {
   transition: opacity 0.3s ease-in-out;
 }
-
-/* CSS Variables für Branding */
-:root {
-  --brand-orange: #ec6a1b;
-}
-
-/* ─────────────────────────────────────────────
-   BRAND ORANGE GRADIENT UTILITIES
-   Tailwind kennt "brand-orange" nicht nativ –
-   diese Klassen werden benötigt für:
-   from-brand-orange, to-brand-orange, border-brand-orange
-───────────────────────────────────────────── */
-.from-brand-orange {
-  --tw-gradient-from: #ec6a1b;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(236, 106, 27, 0));
-}
-
-.to-brand-orange {
-  --tw-gradient-to: #ec6a1b;
-}
-
-.via-brand-orange {
-  --tw-gradient-stops: var(--tw-gradient-from), #ec6a1b, var(--tw-gradient-to, rgba(236, 106, 27, 0));
-}
-
-.border-brand-orange {
-  border-color: #ec6a1b;
-}
-
-.hover\:border-brand-orange\/30:hover {
-  border-color: rgba(236, 106, 27, 0.3);
-}
-
-.hover\:border-brand-orange\/40:hover {
-  border-color: rgba(236, 106, 27, 0.4);
-}
-
-.shadow-brand-orange\/25 {
-  --tw-shadow-color: rgba(236, 106, 27, 0.25);
-}
-
-.group-open\:bg-brand-orange:is(details[open] *) {
-  background-color: #ec6a1b;
-}
-
-/* ─────────────────────────────────────────────
-   ANIMATE GRADIENT X
-───────────────────────────────────────────── */
-.animate-gradient-x {
-  background-size: 200% 200%;
-  animation: gradient-x 3s ease infinite;
-}
-
-/* ─────────────────────────────────────────────
-   ANIMATE BLOB
-───────────────────────────────────────────── */
-@keyframes blob {
-  0%, 100% { transform: translate(0px, 0px) scale(1); }
-  33%       { transform: translate(30px, -50px) scale(1.1); }
-  66%       { transform: translate(-20px, 20px) scale(0.9); }
-}
-
-.animate-blob {
-  animation: blob 7s infinite ease-in-out;
-}
-
-.animation-delay-2000 { animation-delay: 2s; }
-.animation-delay-4000 { animation-delay: 4s; }
 
 /* Haupt CTA Button Klasse */
 .cta-button-primary {
@@ -248,10 +267,15 @@
   animation: gradient-x 6s ease infinite;
 }
 
-@keyframes gradient-x {
-  0%, 100% { background-position: 0% 50%; }
-  50%       { background-position: 100% 50%; }
+/* animate-gradient-x als eigene Klasse (für Hintergründe) */
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 3s ease infinite;
 }
+
+/* animation-delay Hilfsklassen */
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-4000 { animation-delay: 4s; }
 
 /* Skip Link Accessibility */
 .skip-to-main {
@@ -350,11 +374,11 @@
 /* Smooth Scrolling */
 html { scroll-behavior: smooth; }
 
-/* Float Animations */
-@keyframes float {
+/* Float Animations als eigene Klassen */
+@keyframes float-css {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
-  33%       { transform: translateY(-8px) rotate(1deg); }
-  66%       { transform: translateY(-4px) rotate(-1deg); }
+  33%      { transform: translateY(-8px) rotate(1deg); }
+  66%      { transform: translateY(-4px) rotate(-1deg); }
 }
 
 .animate-float         { animation: float 6s ease-in-out infinite; }
@@ -369,7 +393,11 @@ html { scroll-behavior: smooth; }
   .animate-pulse,
   .animate-float,
   .animate-float-delayed,
-  .animate-float-slow {
+  .animate-float-slow,
+  .animate-fade-in,
+  .gradient-text-brand,
+  .gradient-text-brand-inline,
+  .gradient-text-brand-slow {
     animation: none;
   }
   .transition-all,

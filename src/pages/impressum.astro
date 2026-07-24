@@ -1,0 +1,73 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// Dein manueller HTML-Text direkt von eRecht24
+const impressumHtml = `
+  <h1>Impressum</h1>
+
+  <p>Binnur Sener<br />
+  IXONE | Webdesign und Onlinemarketing<br />
+  Oder-Nei&szlig;e-Stra&szlig;e 1<br />
+  93073 Neutraubling</p>
+
+  <h2>Kontakt</h2>
+  <p>Telefon: 0152/28970613<br />
+  E-Mail: info@ixone.de</p>
+
+  <h2>Umsatzsteuer-ID</h2>
+  <p>Umsatzsteuer-Identifikationsnummer gem&auml;&szlig; &sect; 27 a Umsatzsteuergesetz:<br />
+  DE305077270</p>
+
+  <h2>EU-Streitschlichtung</h2>
+  <p>Die Europ&auml;ische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a>.<br /> Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
+
+  <h2>Verbraucher&shy;streit&shy;beilegung/Universal&shy;schlichtungs&shy;stelle</h2>
+  <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+`;
+---
+
+<Layout
+  title="Impressum | iXone – Digitalagentur"
+  description="Impressum und rechtliche Angaben der iXone Digitalagentur."
+  canonical="https://ixone.de/impressum"
+>
+  <main class="pt-24 sm:pt-28 md:pt-32 pb-20 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto legal-content">
+        {
+          /* set:html sorgt dafür, dass die Umlaute und Formatierungen korrekt gerendert werden */
+        }
+        <article set:html={impressumHtml} />
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style is:global>
+  /* Styling passt sich perfekt dem iXone-Design an */
+  .legal-content article h1 {
+    font-size: 2.25rem;
+    font-weight: 900;
+    color: #111827;
+    margin-bottom: 2rem;
+  }
+  .legal-content article h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .legal-content article p {
+    color: #4b5563;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+  .legal-content article a {
+    color: var(--brand-orange, #ff8b00);
+    text-decoration: underline;
+  }
+  .legal-content article a:hover {
+    opacity: 0.8;
+  }
+</style>

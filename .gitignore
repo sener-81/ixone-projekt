@@ -134,4 +134,32 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+<<<<<<< HEAD
 *.json
+=======
+
+# ─────────────────────────────────────────────
+# Astro
+# ─────────────────────────────────────────────
+# Generierte Typen & Cache (ändern sich bei jedem dev/build)
+.astro/
+
+# Build-Output
+dist/
+
+# ─────────────────────────────────────────────
+# Editor & OS
+# ─────────────────────────────────────────────
+# macOS Finder-Dateien
+.DS_Store
+.DS_Store?
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# VSCode (optional – entfernen, falls du Einstellungen teilen willst)
+.vscode/*
+!.vscode/extensions.json
+>>>>>>> c6fa34b81f6e002e21b78baad1844bdcdff5756a
