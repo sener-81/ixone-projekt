@@ -1,11 +1,13 @@
 ---
-
+const CALENDLY =
+  "https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b";
 ---
 
 <section
-  class="py-20 sm:py-28 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden border-t border-gray-200"
+  class="py-20 md:py-28 lg:py-32 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden border-t border-gray-200"
+  aria-labelledby="cta-home-heading"
 >
-  <div class="absolute inset-0 opacity-[0.03]">
+  <div class="absolute inset-0 opacity-[0.03]" aria-hidden="true">
     <div
       class="absolute inset-0"
       style="background-image: radial-gradient(circle at 1px 1px, rgb(0 0 0) 1px, transparent 0); background-size: 40px 40px;"
@@ -16,79 +18,53 @@
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="max-w-3xl mx-auto text-center">
       <p
-        class="text-orange-500 font-semibold text-sm sm:text-base mb-4 tracking-wide uppercase"
+        class="text-brand-orange font-semibold text-sm sm:text-base mb-4 tracking-wide uppercase"
       >
         Digitalagentur Regensburg
       </p>
 
       <h2
-        class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight"
+        id="cta-home-heading"
+        class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight"
       >
         Bereit für Ihr digitales Projekt?
       </h2>
 
-      <p class="text-lg sm:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+      <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
         Lassen Sie uns gemeinsam Ihre Online-Präsenz auf das nächste Level
         bringen. Kostenlose Erstberatung – unverbindlich und persönlich.
       </p>
 
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <div class="flex justify-center">
         <a
-          href="/kontakt"
-          class="group bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 inline-flex items-center gap-2"
-          aria-label="Kostenlose Beratung anfragen"
+          href={CALENDLY}
+          target="_blank"
+          rel="noopener"
+          data-calendly-popup-url={CALENDLY}
+          class="group inline-flex items-center justify-center gap-3 bg-brand-orange hover:bg-brand-orange-dark text-white px-10 py-5 rounded-full font-bold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+          aria-label="Termin vereinbaren – online oder vor Ort"
         >
-          Kostenlos beraten lassen
           <svg
-            class="w-5 h-5 group-hover:translate-x-1 transition-transform"
+            class="w-6 h-6 flex-shrink-0"
             fill="none"
             stroke="currentColor"
+            stroke-width="1.75"
             viewBox="0 0 24 24"
+            aria-hidden="true"
           >
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
-              stroke-width="2"
-              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-          </svg>
-        </a>
-
-        <a
-          href="#"
-          data-calendly-popup-url="https://calendly.com/senerbayram-info/30min?primary_color=ff8b00"
-          class="group border-2 border-gray-300 hover:border-orange-500 text-gray-700 hover:text-orange-500 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 inline-flex items-center gap-2"
-          aria-label="Termin online buchen"
-        >
-          <svg
-            class="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M8 7V3m8 4V3m-9 8h10m-11 9h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v10a2 2 0 002 2z"
+              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
             ></path>
           </svg>
-          Termin buchen
+          Termin vereinbaren
         </a>
       </div>
 
       <p class="mt-8 text-sm text-gray-500">
-        ✓ Über 15 Jahre Erfahrung • ✓ 100% unverbindlich • ✓ Persönliche
-        Beratung
+        Seit 2007 am Markt · 100 % unverbindlich · Persönliche Beratung
       </p>
     </div>
   </div>
 </section>
-
-<script>
-  if (typeof window !== "undefined") {
-    const script = document.createElement("script");
-    script.src = "https://assets.calendly.com/assets/external/widget.js";
-    script.async = true;
-    document.head.appendChild(script);
-  }
-</script>
