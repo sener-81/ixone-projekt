@@ -1,7 +1,9 @@
 ---
-// src/pages/social-media-marketing-regensburg.astro
 import Layout from "../layouts/Layout.astro";
 import { breadcrumbSchema } from "../data/structuredData";
+
+const CALENDLY =
+  "https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b";
 
 const breadcrumbs = breadcrumbSchema([
   { name: "Home", url: "https://ixone.de/" },
@@ -11,7 +13,6 @@ const breadcrumbs = breadcrumbSchema([
   },
 ]);
 
-// Service Schema für Social Media Marketing (ohne Preisangaben)
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
@@ -19,93 +20,192 @@ const serviceSchema = {
   name: "Social Media Marketing Agentur Regensburg",
   description:
     "Social Media Marketing aus Regensburg: Facebook, Instagram, TikTok und YouTube Marketing, Content-Erstellung, Social Media Ads, Recruiting und Influencer Marketing für mehr Reichweite, Engagement und Kunden.",
-  provider: {
-    "@type": "LocalBusiness",
-    name: "iXone Digitalagentur",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Regensburg",
-      addressRegion: "Bayern",
-      addressCountry: "DE",
-    },
-    telephone: "+49-9401-533-88-73",
-  },
-  areaServed: ["Regensburg", "Bayern", "Deutschland"],
+  provider: { "@id": "https://ixone.de/#organization" },
+  telephone: "+4994015338873",
+  areaServed: [
+    { "@type": "City", name: "Regensburg" },
+    { "@type": "City", name: "Neutraubling" },
+    { "@type": "City", name: "Obertraubling" },
+    { "@type": "City", name: "Lappersdorf" },
+    { "@type": "City", name: "Pentling" },
+    { "@type": "City", name: "Barbing" },
+    { "@type": "City", name: "Sinzing" },
+    { "@type": "City", name: "Zeitlarn" },
+    { "@type": "City", name: "Wenzenbach" },
+    { "@type": "City", name: "Nittendorf" },
+    { "@type": "City", name: "Regenstauf" },
+    { "@type": "City", name: "Donaustauf" },
+    { "@type": "State", name: "Bayern" },
+    { "@type": "Country", name: "Deutschland" },
+  ],
   serviceType: "Social Media Marketing",
   url: "https://ixone.de/social-media-marketing-regensburg",
 };
 
-// FAQ Schema – aus NeuronWriter-Content, optimiert
+const faqs = [
+  {
+    q: "Was umfasst Social Media Marketing?",
+    a: "Social Media Marketing umfasst alle Maßnahmen, um Ihre Marke und Leistungen über soziale Medien zu bewerben und Ihre Zielgruppe zu erreichen: Social-Media-Strategie, Content-Erstellung (Bilder, Videos, Texte), Community Management, Social Media Ads, Influencer Marketing und Recruiting über Kanäle wie LinkedIn. Ziel ist mehr Sichtbarkeit, Interaktion und Leads für Ihr Unternehmen aus Regensburg.",
+  },
+  {
+    q: "Welche Social-Media-Plattformen lohnen sich für mein Unternehmen?",
+    a: "Das hängt von Zielgruppe und Zielen ab. Facebook und Instagram bieten breite Reichweite und Community-Aufbau, TikTok erreicht jüngere Zielgruppen über virale Trends, YouTube punktet mit Video-Content und Sichtbarkeit in der Suche, LinkedIn und Xing eignen sich für B2B und Employer Branding. Wir analysieren Ihre Zielgruppe und wählen die effektivsten Kanäle.",
+  },
+  {
+    q: "Was kostet Social Media Marketing?",
+    a: "Die Kosten sind individuell und hängen von Plattformen, Umfang und Zielen ab. Wir erstellen ein maßgeschneidertes Angebot, das genau zu Ihren Anforderungen passt. In einer kostenlosen Erstberatung besprechen wir Ihre Ziele und nennen Ihnen einen transparenten Preis auf Anfrage – ohne versteckte Kosten.",
+  },
+  {
+    q: "Wie schnell sieht man Erfolge im Social Media Marketing?",
+    a: "Das variiert je nach Ausgangslage, Budget und Intensität. Organische Reichweite und Community-Aufbau brauchen meist mehrere Monate kontinuierlicher Content-Erstellung. Über gezielte Social Media Ads sind dagegen schon innerhalb weniger Wochen erste messbare Ergebnisse möglich. Langfristig zahlt sich eine strategische, nachhaltige Betreuung immer aus.",
+  },
+  {
+    q: "Was ist der Unterschied zwischen organischem Content und Social Media Ads?",
+    a: "Organischer Content (reguläre Posts, Reels, Stories) baut langfristig Reichweite, Vertrauen und Community auf, wirkt aber langsamer. Social Media Ads sind bezahlte Anzeigen mit präzisem Targeting, die schnell Sichtbarkeit und Leads bringen. Die beste Wirkung entsteht aus der Kombination beider Ansätze.",
+  },
+  {
+    q: "Lohnt sich Social Media Marketing für kleine Unternehmen?",
+    a: "Ja. Social Media Marketing ist gerade für kleine und mittelständische Unternehmen aus Regensburg ein kosteneffizienter Weg, lokale Sichtbarkeit aufzubauen, neue Kunden zu erreichen und sich gegen größere Wettbewerber zu behaupten. Schon mit überschaubarem Budget lassen sich über lokales Targeting messbare Ergebnisse erzielen.",
+  },
+  {
+    q: "Wie wird der Erfolg im Social Media Marketing gemessen?",
+    a: "Über Kennzahlen wie Reichweite, Engagement, Klicks, Lead-Anfragen und letztlich Conversions und Umsatz. Für lokale Unternehmen sind zusätzlich regionale KPIs sinnvoll – etwa wie viele Anfragen aus Regensburg und Umgebung stammen. Sie erhalten von uns regelmäßige, transparente Reports.",
+  },
+  {
+    q: "Warum eine lokale Social Media Agentur aus Regensburg?",
+    a: "Eine lokale Agentur wie iXone bietet Ihnen einen persönlichen Ansprechpartner und ein tiefes Verständnis für den regionalen Markt. Wir kennen die Besonderheiten von Regensburg und Umgebung, stimmen Ihre Strategie präzise auf Ihre Zielgruppe ab und reagieren durch die räumliche Nähe schnell und flexibel.",
+  },
+];
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Was umfasst Social Media Marketing?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Social Media Marketing umfasst alle Maßnahmen, um Ihre Marke und Leistungen über soziale Medien zu bewerben und Ihre Zielgruppe zu erreichen: Social-Media-Strategie, Content-Erstellung (Bilder, Videos, Texte), Community Management, Social Media Ads, Influencer Marketing und Recruiting über Kanäle wie LinkedIn. Ziel ist mehr Sichtbarkeit, Interaktion und Leads für Ihr Unternehmen aus Regensburg.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Welche Social-Media-Plattformen lohnen sich für mein Unternehmen?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Das hängt von Zielgruppe und Zielen ab. Facebook und Instagram bieten breite Reichweite und Community-Aufbau, TikTok erreicht jüngere Zielgruppen über virale Trends, YouTube punktet mit Video-Content und Sichtbarkeit in der Suche, LinkedIn und Xing eignen sich für B2B und Employer Branding. Wir analysieren Ihre Zielgruppe und wählen die effektivsten Kanäle.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Was kostet Social Media Marketing?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Die Kosten sind individuell und hängen von Plattformen, Umfang und Zielen ab. Wir erstellen ein maßgeschneidertes Angebot, das genau zu Ihren Anforderungen passt. In einer kostenlosen Erstberatung besprechen wir Ihre Ziele und nennen Ihnen einen transparenten Preis auf Anfrage – ohne versteckte Kosten.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Wie schnell sieht man Erfolge im Social Media Marketing?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Das variiert je nach Ausgangslage, Budget und Intensität. Organische Reichweite und Community-Aufbau brauchen meist mehrere Monate kontinuierlicher Content-Erstellung. Über gezielte Social Media Ads sind dagegen schon innerhalb weniger Wochen erste messbare Ergebnisse möglich. Langfristig zahlt sich eine strategische, nachhaltige Betreuung immer aus.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Was ist der Unterschied zwischen organischem Content und Social Media Ads?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Organischer Content (reguläre Posts, Reels, Stories) baut langfristig Reichweite, Vertrauen und Community auf, wirkt aber langsamer. Social Media Ads sind bezahlte Anzeigen mit präzisem Targeting, die schnell Sichtbarkeit und Leads bringen. Die beste Wirkung entsteht aus der Kombination beider Ansätze.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Lohnt sich Social Media Marketing für kleine Unternehmen?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ja. Social Media Marketing ist gerade für kleine und mittelständische Unternehmen aus Regensburg ein kosteneffizienter Weg, lokale Sichtbarkeit aufzubauen, neue Kunden zu erreichen und sich gegen größere Wettbewerber zu behaupten. Schon mit überschaubarem Budget lassen sich über lokales Targeting messbare Ergebnisse erzielen.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Wie wird der Erfolg im Social Media Marketing gemessen?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Über Kennzahlen wie Reichweite, Engagement, Klicks, Lead-Anfragen und letztlich Conversions und Umsatz. Für lokale Unternehmen sind zusätzlich regionale KPIs sinnvoll – etwa wie viele Anfragen aus Regensburg und Umgebung stammen. Sie erhalten von uns regelmäßige, transparente Reports.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Warum eine lokale Social Media Agentur aus Regensburg?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Eine lokale Agentur wie iXone bietet Ihnen einen persönlichen Ansprechpartner und ein tiefes Verständnis für den regionalen Markt. Wir kennen die Besonderheiten von Regensburg und Umgebung, stimmen Ihre Strategie präzise auf Ihre Zielgruppe ab und reagieren durch die räumliche Nähe schnell und flexibel.",
-      },
-    },
-  ],
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
 };
+
+const counters = [
+  { target: "4", suffix: "", label: "Haupt-Plattformen" },
+  { target: "500", suffix: "+", label: "Projekte umgesetzt" },
+  { target: "19", suffix: "", label: "Jahre am Markt" },
+  { target: "100", suffix: "%", label: "lokaler Fokus" },
+];
+
+const plattformen = [
+  {
+    kuerzel: "f",
+    name: "Facebook",
+    badgeClass: "bg-blue-600",
+    title: "Facebook Marketing Regensburg",
+    image: "/assets/hero-digitalagentur-regensburg.webp",
+    alt: "Facebook Marketing Regensburg – Reichweite und Community-Aufbau durch iXone",
+    text: "Facebook bietet Unternehmen aus Regensburg exzellente Möglichkeiten, Reichweite aufzubauen und eine engagierte Community zu pflegen. Mit gezielten Postings, strategischem Community Management und performancestarken Facebook Ads sprechen wir genau Ihre lokale Zielgruppe an – ob zur Neukundengewinnung oder fürs Employer Branding.",
+    items: [
+      "Reichweite & Community-Aufbau",
+      "Zielgerichtete Facebook Ads",
+      "Transparentes Reporting",
+    ],
+  },
+  {
+    kuerzel: "IG",
+    name: "Instagram",
+    badgeClass: "bg-gradient-to-r from-pink-500 to-purple-600",
+    title: "Instagram Marketing Regensburg",
+    image: "/assets/hero-digitalagentur-regensburg.webp",
+    alt: "Instagram Marketing Regensburg – visuelles Storytelling mit Reels und Stories",
+    text: "Instagram ist die Bühne für visuelles Storytelling. Wir erwecken Ihre Marke mit ästhetisch ansprechendem Content zum Leben, bauen über Reels und Stories Reichweite auf und nutzen Instagram Shopping, damit Ihre Produkte direkt verkaufen. So entsteht eine starke emotionale Verbindung zu Ihrer Zielgruppe in Regensburg.",
+    items: [
+      "Visuelles Storytelling & Feed-Design",
+      "Reels & Stories",
+      "Instagram Shopping",
+    ],
+  },
+  {
+    kuerzel: "TT",
+    name: "TikTok",
+    badgeClass: "bg-gray-900",
+    title: "TikTok Marketing Regensburg",
+    image: "/assets/hero-digitalagentur-regensburg.webp",
+    alt: "TikTok Marketing Regensburg – virale Reichweite für junge Zielgruppen",
+    text: "TikTok bietet Unternehmen aus Regensburg eine einzigartige Chance auf virale Reichweite – besonders bei jüngeren Zielgruppen, die anderswo schwer erreichbar sind. Mit kreativem, trendorientiertem Content, strategischen Posting-Plänen und aktivem Community Management steigern wir Ihre Markenbekanntheit und Interaktion.",
+    items: [
+      "Virale Reichweite & junge Zielgruppen",
+      "Trend-basierter Content",
+      "Community Management",
+    ],
+  },
+  {
+    kuerzel: "YT",
+    name: "YouTube",
+    badgeClass: "bg-red-600",
+    title: "YouTube Marketing Regensburg",
+    image: "/assets/hero-digitalagentur-regensburg.webp",
+    alt: "YouTube Marketing Regensburg – Video-Content und Branding über die zweitgrößte Suchmaschine",
+    text: "Als zweitgrößte Suchmaschine der Welt ist YouTube ideal, um Video-Content zu verbreiten und Ihre Markenbekanntheit nachhaltig zu stärken. Wir erstellen hochwertige Videos, optimieren Titel, Beschreibungen und Tags für die Suche und positionieren Sie mit informativem und unterhaltsamem Content als Experte Ihrer Branche.",
+    items: [
+      "Video-Content für Markenbekanntheit",
+      "YouTube-SEO (Titel, Tags, Beschreibung)",
+      "Branding durch Tutorials & Einblicke",
+    ],
+  },
+];
+
+const leistungen = [
+  {
+    icon: "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z",
+    title: "Content-Erstellung",
+    desc: "Hochwertiger Content für alle Plattformen – Bilder, Videos, Reels und Texte, exakt auf Plattform und Zielgruppe zugeschnitten.",
+  },
+  {
+    icon: "M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l3.586-3.586z",
+    title: "Community Management",
+    desc: "Wir beantworten Kommentare und Nachrichten, fördern den Dialog und bauen eine loyale Community rund um Ihre Marke auf.",
+  },
+  {
+    icon: "M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z",
+    title: "Social Media Ads",
+    desc: "Zielgerichtete Werbekampagnen auf Facebook, Instagram & Co. – wir konzipieren, steuern und optimieren für maximale Leads.",
+  },
+  {
+    icon: "M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z",
+    title: "Social Media Recruiting",
+    desc: "Moderne Personalgewinnung: Wir erreichen passive Kandidaten über Employer Branding und gewinnen qualifizierte Bewerber für Sie.",
+  },
+];
+
+const arbeitsschritte = [
+  {
+    step: "1",
+    title: "Strategie & Redaktionsplan",
+    desc: "Wir analysieren Zielgruppe, Ziele und Wettbewerb in Regensburg und entwickeln einen Redaktionsplan mit Content-Formaten, Posting-Zeiten und Plattformen.",
+  },
+  {
+    step: "2",
+    title: "Content-Produktion",
+    desc: "Kreativität trifft Strategie: Bilder, Videos für YouTube und Reels für Instagram und TikTok – hochwertig und plattformgerecht produziert.",
+  },
+  {
+    step: "3",
+    title: "Reporting & Optimierung",
+    desc: "Wir messen den Erfolg laufend anhand relevanter Kennzahlen, liefern transparente Reports und optimieren die Strategie kontinuierlich.",
+  },
+];
+
+const kanaele = [
+  { kuerzel: "f", name: "Facebook", bg: "bg-blue-600" },
+  {
+    kuerzel: "IG",
+    name: "Instagram",
+    bg: "bg-gradient-to-br from-purple-500 to-pink-500",
+  },
+  { kuerzel: "TT", name: "TikTok", bg: "bg-gray-900" },
+  { kuerzel: "YT", name: "YouTube", bg: "bg-red-600" },
+  { kuerzel: "Li", name: "LinkedIn", bg: "bg-blue-700" },
+  { kuerzel: "X", name: "Twitter/X", bg: "bg-gray-900" },
+];
 ---
 
 <Layout
@@ -114,15 +214,11 @@ const faqSchema = {
   canonical="https://ixone.de/social-media-marketing-regensburg"
   structuredData={[breadcrumbs, serviceSchema, faqSchema]}
 >
-  <main class="pt-14 sm:pt-16 md:pt-18 lg:pt-20 xl:pt-22 bg-white">
-    <!-- ═══════════════════════════════════════════════════
-         HERO – Pink/Purple, einheitlich mit Countern
-    ════════════════════════════════════════════════════ -->
+  <div class="pt-14 sm:pt-16 md:pt-18 lg:pt-20 xl:pt-22 bg-white">
     <section
       class="relative overflow-hidden bg-gradient-to-br from-pink-900 via-purple-800 to-indigo-900 text-white"
       aria-label="Social Media Marketing Agentur Regensburg Hero"
     >
-      <!-- Hintergrund-Akzente -->
       <div class="absolute inset-0 opacity-20" aria-hidden="true">
         <div
           class="absolute -top-24 -left-24 w-96 h-96 bg-pink-400 rounded-full blur-3xl"
@@ -140,7 +236,6 @@ const faqSchema = {
         <div
           class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
         >
-          <!-- Linke Spalte: Text -->
           <div class="text-center lg:text-left">
             <span
               class="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full bg-white/10 border border-white/20 text-sm font-medium backdrop-blur-md"
@@ -172,12 +267,14 @@ const faqSchema = {
               class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <a
-                href="#"
+                href={CALENDLY}
+                target="_blank"
+                rel="noopener"
+                data-calendly-popup-url={CALENDLY}
                 class="cta-button-primary text-center"
                 aria-label="Kostenlose Erstberatung Social Media Marketing"
-                data-calendly-popup-url="https://calendly.com/senerbayram-info/30min?primary_color=ff8b00"
               >
-                Kostenlose Erstberatung
+                <span>Kostenlose Erstberatung</span>
               </a>
               <a
                 href="#plattformen"
@@ -188,64 +285,26 @@ const faqSchema = {
             </div>
           </div>
 
-          <!-- Rechte Spalte: Counter-Karten -->
           <div class="grid grid-cols-2 gap-4 sm:gap-6">
-            <div
-              class="bg-white/10 backdrop-blur-md rounded-2xl p-6 lg:p-8 border border-white/20 text-center"
-            >
-              <div
-                class="counter text-4xl md:text-5xl font-bold gradient-text-brand"
-                data-target="4"
-                data-suffix=""
-              >
-                0
-              </div>
-              <p class="mt-3 text-sm text-gray-300">Haupt-Plattformen</p>
-            </div>
-            <div
-              class="bg-white/10 backdrop-blur-md rounded-2xl p-6 lg:p-8 border border-white/20 text-center"
-            >
-              <div
-                class="counter text-4xl md:text-5xl font-bold gradient-text-brand"
-                data-target="500"
-                data-suffix="+"
-              >
-                0+
-              </div>
-              <p class="mt-3 text-sm text-gray-300">Projekte umgesetzt</p>
-            </div>
-            <div
-              class="bg-white/10 backdrop-blur-md rounded-2xl p-6 lg:p-8 border border-white/20 text-center"
-            >
-              <div
-                class="counter text-4xl md:text-5xl font-bold gradient-text-brand"
-                data-target="15"
-                data-suffix="+"
-              >
-                0+
-              </div>
-              <p class="mt-3 text-sm text-gray-300">Jahre Erfahrung</p>
-            </div>
-            <div
-              class="bg-white/10 backdrop-blur-md rounded-2xl p-6 lg:p-8 border border-white/20 text-center"
-            >
-              <div
-                class="counter text-4xl md:text-5xl font-bold gradient-text-brand"
-                data-target="100"
-                data-suffix="%"
-              >
-                0%
-              </div>
-              <p class="mt-3 text-sm text-gray-300">lokaler Fokus</p>
-            </div>
+            {
+              counters.map((c) => (
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 lg:p-8 border border-white/20 text-center">
+                  <div
+                    class="counter text-4xl md:text-5xl font-bold gradient-text-brand"
+                    data-target={c.target}
+                    data-suffix={c.suffix}
+                  >
+                    0{c.suffix}
+                  </div>
+                  <p class="mt-3 text-sm text-gray-300">{c.label}</p>
+                </div>
+              ))
+            }
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         INTRO
-    ════════════════════════════════════════════════════ -->
     <section
       class="py-20 md:py-28 lg:py-32 bg-white"
       aria-labelledby="intro-heading"
@@ -291,9 +350,6 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         PLATTFORM-SEKTIONEN (je eigene h2 für Ranking)
-    ════════════════════════════════════════════════════ -->
     <section
       id="plattformen"
       class="py-20 md:py-28 lg:py-32 bg-gray-50"
@@ -314,231 +370,51 @@ const faqSchema = {
         </div>
 
         <div class="max-w-6xl mx-auto space-y-12 md:space-y-16">
-          <!-- FACEBOOK -->
-          <article
-            class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
-          >
-            <div
-              class="relative rounded-2xl overflow-hidden aspect-[4/3] border border-gray-200 order-1 lg:order-none"
-            >
-              <!-- PLATZHALTER: hero-digitalagentur-regensburg.webp
-                   TODO: ersetzen durch /assets/social-media/facebook-marketing-regensburg.webp
-                   Alt-Text beibehalten. -->
-              <img
-                src="/assets/hero-digitalagentur-regensburg.webp"
-                alt="Facebook Marketing Regensburg – Reichweite und Community-Aufbau durch iXone"
-                class="w-full h-full object-cover"
-                loading="lazy"
-                decoding="async"
-                width="1000"
-                height="750"
-              />
-            </div>
-            <div>
-              <div
-                class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-blue-600 text-white text-sm font-semibold"
-              >
-                <span class="font-bold">f</span> Facebook
-              </div>
-              <h3 class="text-2xl font-bold text-gray-900 mb-4">
-                Facebook Marketing Regensburg
-              </h3>
-              <p class="text-gray-600 leading-relaxed mb-4">
-                Facebook bietet Unternehmen aus Regensburg exzellente
-                Möglichkeiten, Reichweite aufzubauen und eine engagierte
-                Community zu pflegen. Mit gezielten Postings, strategischem
-                Community Management und performancestarken Facebook Ads
-                sprechen wir genau Ihre lokale Zielgruppe an – ob zur
-                Neukundengewinnung oder fürs Employer Branding.
-              </p>
-              <ul class="text-gray-600 text-sm space-y-2">
-                <li class="flex items-center gap-2">
-                  <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                  Reichweite & Community-Aufbau
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                  Zielgerichtete Facebook Ads
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                  Transparentes Reporting
-                </li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- INSTAGRAM -->
-          <article
-            class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
-          >
-            <div class="lg:order-2">
-              <div
-                class="relative rounded-2xl overflow-hidden aspect-[4/3] border border-gray-200"
-              >
-                <!-- PLATZHALTER: hero-digitalagentur-regensburg.webp
-                   TODO: ersetzen durch /assets/social-media/instagram-marketing-regensburg.webp
-                   Alt-Text beibehalten. -->
-                <img
-                  src="/assets/hero-digitalagentur-regensburg.webp"
-                  alt="Instagram Marketing Regensburg – visuelles Storytelling mit Reels und Stories"
-                  class="w-full h-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                  width="1000"
-                  height="750"
-                />
-              </div>
-            </div>
-            <div class="lg:order-1">
-              <div
-                class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white text-sm font-semibold"
-              >
-                <span class="font-bold">IG</span> Instagram
-              </div>
-              <h3 class="text-2xl font-bold text-gray-900 mb-4">
-                Instagram Marketing Regensburg
-              </h3>
-              <p class="text-gray-600 leading-relaxed mb-4">
-                Instagram ist die Bühne für visuelles Storytelling. Wir erwecken
-                Ihre Marke mit ästhetisch ansprechendem Content zum Leben, bauen
-                über Reels und Stories Reichweite auf und nutzen Instagram
-                Shopping, damit Ihre Produkte direkt verkaufen. So entsteht eine
-                starke emotionale Verbindung zu Ihrer Zielgruppe in Regensburg.
-              </p>
-              <ul class="text-gray-600 text-sm space-y-2">
-                <li class="flex items-center gap-2">
-                  <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                  Visuelles Storytelling & Feed-Design
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                  Reels & Stories
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                  Instagram Shopping
-                </li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- TIKTOK -->
-          <article
-            class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
-          >
-            <div
-              class="relative rounded-2xl overflow-hidden aspect-[4/3] border border-gray-200 order-1 lg:order-none"
-            >
-              <!-- PLATZHALTER: hero-digitalagentur-regensburg.webp
-                   TODO: ersetzen durch /assets/social-media/tiktok-marketing-regensburg.webp
-                   Alt-Text beibehalten. -->
-              <img
-                src="/assets/hero-digitalagentur-regensburg.webp"
-                alt="TikTok Marketing Regensburg – virale Reichweite für junge Zielgruppen"
-                class="w-full h-full object-cover"
-                loading="lazy"
-                decoding="async"
-                width="1000"
-                height="750"
-              />
-            </div>
-            <div>
-              <div
-                class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-gray-900 text-white text-sm font-semibold"
-              >
-                <span class="font-bold">TT</span> TikTok
-              </div>
-              <h3 class="text-2xl font-bold text-gray-900 mb-4">
-                TikTok Marketing Regensburg
-              </h3>
-              <p class="text-gray-600 leading-relaxed mb-4">
-                TikTok bietet Unternehmen aus Regensburg eine einzigartige
-                Chance auf virale Reichweite – besonders bei jüngeren
-                Zielgruppen, die anderswo schwer erreichbar sind. Mit kreativem,
-                trendorientiertem Content, strategischen Posting-Plänen und
-                aktivem Community Management steigern wir Ihre Markenbekanntheit
-                und Interaktion.
-              </p>
-              <ul class="text-gray-600 text-sm space-y-2">
-                <li class="flex items-center gap-2">
-                  <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                  Virale Reichweite & junge Zielgruppen
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                  Trend-basierter Content
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                  Community Management
-                </li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- YOUTUBE -->
-          <article
-            class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
-          >
-            <div class="lg:order-2">
-              <div
-                class="relative rounded-2xl overflow-hidden aspect-[4/3] border border-gray-200"
-              >
-                <!-- PLATZHALTER: hero-digitalagentur-regensburg.webp
-                   TODO: ersetzen durch /assets/social-media/youtube-marketing-regensburg.webp
-                   Alt-Text beibehalten. -->
-                <img
-                  src="/assets/hero-digitalagentur-regensburg.webp"
-                  alt="YouTube Marketing Regensburg – Video-Content und Branding über die zweitgrößte Suchmaschine"
-                  class="w-full h-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                  width="1000"
-                  height="750"
-                />
-              </div>
-            </div>
-            <div class="lg:order-1">
-              <div
-                class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-red-600 text-white text-sm font-semibold"
-              >
-                <span class="font-bold">YT</span> YouTube
-              </div>
-              <h3 class="text-2xl font-bold text-gray-900 mb-4">
-                YouTube Marketing Regensburg
-              </h3>
-              <p class="text-gray-600 leading-relaxed mb-4">
-                Als zweitgrößte Suchmaschine der Welt ist YouTube ideal, um
-                Video-Content zu verbreiten und Ihre Markenbekanntheit
-                nachhaltig zu stärken. Wir erstellen hochwertige Videos,
-                optimieren Titel, Beschreibungen und Tags für die Suche und
-                positionieren Sie mit informativem und unterhaltsamem Content
-                als Experte Ihrer Branche.
-              </p>
-              <ul class="text-gray-600 text-sm space-y-2">
-                <li class="flex items-center gap-2">
-                  <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                  Video-Content für Markenbekanntheit
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                  YouTube-SEO (Titel, Tags, Beschreibung)
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                  Branding durch Tutorials & Einblicke
-                </li>
-              </ul>
-            </div>
-          </article>
+          {
+            plattformen.map((p, i) => (
+              <article class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <div class={i % 2 === 1 ? "lg:order-2" : ""}>
+                  <div class="relative rounded-2xl overflow-hidden aspect-[4/3] border border-gray-200">
+                    <img
+                      src={p.image}
+                      alt={p.alt}
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                      width="1000"
+                      height="750"
+                    />
+                  </div>
+                </div>
+                <div class={i % 2 === 1 ? "lg:order-1" : ""}>
+                  <div
+                    class={`inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full text-white text-sm font-semibold ${p.badgeClass}`}
+                  >
+                    <span class="font-bold">{p.kuerzel}</span> {p.name}
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-900 mb-4">
+                    {p.title}
+                  </h3>
+                  <p class="text-gray-600 leading-relaxed mb-4">{p.text}</p>
+                  <ul class="text-gray-600 text-sm space-y-2">
+                    {p.items.map((item) => (
+                      <li class="flex items-center gap-2">
+                        <span
+                          class="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"
+                          aria-hidden="true"
+                        />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         WEITERE LEISTUNGEN
-    ════════════════════════════════════════════════════ -->
     <section
       class="py-20 md:py-28 lg:py-32 bg-white"
       aria-labelledby="leistungen-heading"
@@ -560,132 +436,32 @@ const faqSchema = {
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto"
         >
-          <!-- Content-Erstellung -->
-          <article
-            class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-8 border border-gray-100"
-          >
-            <div
-              class="w-12 h-12 rounded-xl border border-brand-orange/30 flex items-center justify-center mb-6"
-            >
-              <svg
-                class="w-6 h-6 text-brand-orange"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.75"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                ></path>
-              </svg>
-            </div>
-            <h3 class="text-lg font-bold text-gray-900 mb-3">
-              Content-Erstellung
-            </h3>
-            <p class="text-gray-600 leading-relaxed text-sm">
-              Hochwertiger Content für alle Plattformen – Bilder, Videos, Reels
-              und Texte, exakt auf Plattform und Zielgruppe zugeschnitten.
-            </p>
-          </article>
-
-          <!-- Community Management -->
-          <article
-            class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-8 border border-gray-100"
-          >
-            <div
-              class="w-12 h-12 rounded-xl border border-brand-orange/30 flex items-center justify-center mb-6"
-            >
-              <svg
-                class="w-6 h-6 text-brand-orange"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.75"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l3.586-3.586z"
-                ></path>
-              </svg>
-            </div>
-            <h3 class="text-lg font-bold text-gray-900 mb-3">
-              Community Management
-            </h3>
-            <p class="text-gray-600 leading-relaxed text-sm">
-              Wir beantworten Kommentare und Nachrichten, fördern den Dialog und
-              bauen eine loyale Community rund um Ihre Marke auf.
-            </p>
-          </article>
-
-          <!-- Social Media Ads -->
-          <article
-            class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-8 border border-gray-100"
-          >
-            <div
-              class="w-12 h-12 rounded-xl border border-brand-orange/30 flex items-center justify-center mb-6"
-            >
-              <svg
-                class="w-6 h-6 text-brand-orange"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.75"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"
-                ></path>
-              </svg>
-            </div>
-            <h3 class="text-lg font-bold text-gray-900 mb-3">
-              Social Media Ads
-            </h3>
-            <p class="text-gray-600 leading-relaxed text-sm">
-              Zielgerichtete Werbekampagnen auf Facebook, Instagram & Co. – wir
-              konzipieren, steuern und optimieren für maximale Leads.
-            </p>
-          </article>
-
-          <!-- Social Media Recruiting -->
-          <article
-            class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-8 border border-gray-100"
-          >
-            <div
-              class="w-12 h-12 rounded-xl border border-brand-orange/30 flex items-center justify-center mb-6"
-            >
-              <svg
-                class="w-6 h-6 text-brand-orange"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.75"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
-                ></path>
-              </svg>
-            </div>
-            <h3 class="text-lg font-bold text-gray-900 mb-3">
-              Social Media Recruiting
-            </h3>
-            <p class="text-gray-600 leading-relaxed text-sm">
-              Moderne Personalgewinnung: Wir erreichen passive Kandidaten über
-              Employer Branding und gewinnen qualifizierte Bewerber für Sie.
-            </p>
-          </article>
+          {
+            leistungen.map((l) => (
+              <article class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-8 border border-gray-100">
+                <div class="w-12 h-12 rounded-xl border border-brand-orange/30 flex items-center justify-center mb-6">
+                  <svg
+                    class="w-6 h-6 text-brand-orange"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d={l.icon}
+                    />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">{l.title}</h3>
+                <p class="text-gray-600 leading-relaxed text-sm">{l.desc}</p>
+              </article>
+            ))
+          }
         </div>
 
-        <!-- Influencer Marketing als breiter Hinweis -->
         <div
           class="max-w-4xl mx-auto mt-12 bg-gradient-to-br from-pink-50 to-purple-50 rounded-2xl p-8 md:p-10 border border-pink-100"
         >
@@ -703,9 +479,6 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         TERMIN-BUCHUNG (Conversion-Box, Pink/Purple)
-    ════════════════════════════════════════════════════ -->
     <section
       class="py-20 md:py-28 lg:py-32 bg-gray-50"
       aria-labelledby="termin-heading"
@@ -741,16 +514,18 @@ const faqSchema = {
               class="text-lg text-gray-200 leading-relaxed mb-10 max-w-2xl mx-auto"
             >
               Lassen Sie uns über Ihre Social-Media-Ziele sprechen – persönlich
-              bei uns vor Ort in Regensburg oder bequem per Videokonferenz. Sie
-              wählen den Termin, wir bringen die Ideen mit.
+              bei uns vor Ort in Regensburg oder Neutraubling, oder bequem per
+              Videokonferenz. Sie wählen den Termin, wir bringen die Ideen mit.
             </p>
 
             <div class="flex justify-center">
               <a
-                href="#"
+                href={CALENDLY}
+                target="_blank"
+                rel="noopener"
+                data-calendly-popup-url={CALENDLY}
                 class="group inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl bg-white text-gray-900 font-bold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
                 aria-label="Jetzt Termin vereinbaren – vor Ort oder per Videokonferenz"
-                data-calendly-popup-url="https://calendly.com/senerbayram-info/30min?primary_color=ff8b00"
               >
                 <svg
                   class="w-6 h-6 text-brand-orange flex-shrink-0"
@@ -769,23 +544,11 @@ const faqSchema = {
                 Jetzt Termin vereinbaren
               </a>
             </div>
-
-            <p class="mt-8 text-sm text-gray-300">
-              Lieber schreiben? Nutzen Sie unser
-              <a
-                href="/kontakt"
-                class="font-semibold text-white hover:underline"
-                >Kontaktformular</a
-              > – wir melden uns zeitnah bei Ihnen.
-            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         WIE WIR ARBEITEN
-    ════════════════════════════════════════════════════ -->
     <section
       class="py-20 md:py-28 lg:py-32 bg-white"
       aria-labelledby="ansatz-heading"
@@ -806,60 +569,24 @@ const faqSchema = {
         <div
           class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 max-w-5xl mx-auto"
         >
-          <div class="text-center">
-            <div
-              class="w-14 h-14 rounded-2xl bg-brand-orange text-white flex items-center justify-center mx-auto mb-6 text-xl font-bold"
-            >
-              1
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">
-              Strategie & Redaktionsplan
-            </h3>
-            <p class="text-gray-600 leading-relaxed">
-              Wir analysieren Zielgruppe, Ziele und Wettbewerb in Regensburg und
-              entwickeln einen Redaktionsplan mit Content-Formaten,
-              Posting-Zeiten und Plattformen.
-            </p>
-          </div>
-
-          <div class="text-center">
-            <div
-              class="w-14 h-14 rounded-2xl bg-brand-orange text-white flex items-center justify-center mx-auto mb-6 text-xl font-bold"
-            >
-              2
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">
-              Content-Produktion
-            </h3>
-            <p class="text-gray-600 leading-relaxed">
-              Kreativität trifft Strategie: Bilder, Videos für YouTube und Reels
-              für Instagram und TikTok – hochwertig und plattformgerecht
-              produziert.
-            </p>
-          </div>
-
-          <div class="text-center">
-            <div
-              class="w-14 h-14 rounded-2xl bg-brand-orange text-white flex items-center justify-center mx-auto mb-6 text-xl font-bold"
-            >
-              3
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">
-              Reporting & Optimierung
-            </h3>
-            <p class="text-gray-600 leading-relaxed">
-              Wir messen den Erfolg laufend anhand relevanter Kennzahlen,
-              liefern transparente Reports und optimieren die Strategie
-              kontinuierlich.
-            </p>
-          </div>
+          {
+            arbeitsschritte.map((s) => (
+              <div class="text-center">
+                <div
+                  class="w-14 h-14 rounded-2xl bg-brand-orange text-white flex items-center justify-center mx-auto mb-6 text-xl font-bold"
+                  aria-hidden="true"
+                >
+                  {s.step}
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">{s.title}</h3>
+                <p class="text-gray-600 leading-relaxed">{s.desc}</p>
+              </div>
+            ))
+          }
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         WARUM iXONE
-    ════════════════════════════════════════════════════ -->
     <section
       class="py-20 md:py-28 lg:py-32 bg-gray-50"
       aria-labelledby="warum-heading"
@@ -930,7 +657,7 @@ const faqSchema = {
               </svg>
             </div>
             <h3 class="text-xl font-bold text-gray-900 mb-3">
-              15+ Jahre Erfahrung
+              Seit 2007 am Markt
             </h3>
             <p class="text-gray-600 leading-relaxed">
               Seit 2007 kennen wir den lokalen Markt in Regensburg und Umgebung
@@ -982,9 +709,6 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         PLATTFORM-ÜBERSICHT (Icons)
-    ════════════════════════════════════════════════════ -->
     <section
       class="py-20 md:py-28 lg:py-32 bg-white"
       aria-labelledby="kanaele-heading"
@@ -1005,90 +729,26 @@ const faqSchema = {
         <div
           class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 max-w-5xl mx-auto"
         >
-          <div class="text-center">
-            <div
-              class="w-20 h-20 bg-gray-50 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm"
-            >
-              <div
-                class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center"
-              >
-                <span class="text-white font-bold">f</span>
+          {
+            kanaele.map((k) => (
+              <div class="text-center">
+                <div class="w-20 h-20 bg-gray-50 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm">
+                  <div
+                    class={`w-10 h-10 rounded-full flex items-center justify-center ${k.bg}`}
+                  >
+                    <span class="text-white font-bold text-sm">
+                      {k.kuerzel}
+                    </span>
+                  </div>
+                </div>
+                <p class="font-semibold text-gray-900">{k.name}</p>
               </div>
-            </div>
-            <p class="font-semibold text-gray-900">Facebook</p>
-          </div>
-
-          <div class="text-center">
-            <div
-              class="w-20 h-20 bg-gray-50 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm"
-            >
-              <div
-                class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center"
-              >
-                <span class="text-white font-bold">IG</span>
-              </div>
-            </div>
-            <p class="font-semibold text-gray-900">Instagram</p>
-          </div>
-
-          <div class="text-center">
-            <div
-              class="w-20 h-20 bg-gray-50 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm"
-            >
-              <div
-                class="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center"
-              >
-                <span class="text-white font-bold">TT</span>
-              </div>
-            </div>
-            <p class="font-semibold text-gray-900">TikTok</p>
-          </div>
-
-          <div class="text-center">
-            <div
-              class="w-20 h-20 bg-gray-50 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm"
-            >
-              <div
-                class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center"
-              >
-                <span class="text-white font-bold text-xs">YT</span>
-              </div>
-            </div>
-            <p class="font-semibold text-gray-900">YouTube</p>
-          </div>
-
-          <div class="text-center">
-            <div
-              class="w-20 h-20 bg-gray-50 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm"
-            >
-              <div
-                class="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center"
-              >
-                <span class="text-white font-bold">Li</span>
-              </div>
-            </div>
-            <p class="font-semibold text-gray-900">LinkedIn</p>
-          </div>
-
-          <div class="text-center">
-            <div
-              class="w-20 h-20 bg-gray-50 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-sm"
-            >
-              <div
-                class="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center"
-              >
-                <span class="text-white font-bold">X</span>
-              </div>
-            </div>
-            <p class="font-semibold text-gray-900">Twitter/X</p>
-          </div>
+            ))
+          }
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         FAQ
-    ════════════════════════════════════════════════════ -->
     <section
       class="py-20 md:py-28 lg:py-32 bg-gray-50"
       aria-labelledby="faq-heading"
@@ -1109,11 +769,11 @@ const faqSchema = {
 
           <div class="space-y-4">
             {
-              faqSchema.mainEntity.map((item) => (
+              faqs.map((item) => (
                 <details class="faq-item bg-white rounded-lg shadow-sm overflow-hidden group border border-gray-200">
-                  <summary class="px-6 py-5 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center gap-4">
-                    <h3 class="text-lg font-semibold text-gray-900">
-                      {item.name}
+                  <summary class="px-6 py-5 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center gap-4 list-none">
+                    <h3 class="text-lg font-semibold text-gray-900 text-left">
+                      {item.q}
                     </h3>
                     <svg
                       class="w-5 h-5 text-brand-orange flex-shrink-0 group-open:rotate-180 transition-transform duration-200"
@@ -1130,8 +790,8 @@ const faqSchema = {
                       />
                     </svg>
                   </summary>
-                  <div class="px-6 pb-5 text-gray-600 leading-relaxed">
-                    <p>{item.acceptedAnswer.text}</p>
+                  <div class="faq-body px-6 pb-5 text-gray-600 leading-relaxed">
+                    <p>{item.a}</p>
                   </div>
                 </details>
               ))
@@ -1141,38 +801,41 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         CTA
-    ════════════════════════════════════════════════════ -->
     <section
-      class="py-20 md:py-28 lg:py-32 bg-gradient-to-r from-brand-orange to-yellow-500"
+      class="py-20 md:py-28 lg:py-32 bg-gradient-to-r from-pink-900 via-purple-800 to-indigo-900 relative overflow-hidden"
+      aria-labelledby="cta-heading"
     >
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="absolute inset-0 opacity-20" aria-hidden="true">
+        <div
+          class="absolute -top-24 -left-24 w-96 h-96 bg-pink-400 rounded-full blur-3xl"
+        >
+        </div>
+        <div
+          class="absolute -bottom-24 -right-24 w-96 h-96 bg-purple-400 rounded-full blur-3xl"
+        >
+        </div>
+      </div>
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-4xl mx-auto text-center text-white">
-          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          <h2 id="cta-heading" class="text-3xl md:text-4xl font-bold mb-6">
             Bereit für Social Media Erfolg?
           </h2>
-          <p class="text-xl mb-10 opacity-90">
+          <p class="text-xl mb-10 opacity-90 leading-relaxed">
             Lassen Sie uns gemeinsam Ihre Social-Media-Präsenz aufbauen und Ihre
             Community vergrößern. Kostenlose Strategieberatung – Preis
             individuell je nach Projekt, ohne versteckte Kosten.
           </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <div class="flex justify-center">
             <a
-              href="#"
-              class="bg-white text-brand-orange hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              href={CALENDLY}
+              target="_blank"
+              rel="noopener"
+              data-calendly-popup-url={CALENDLY}
+              class="inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl bg-white text-gray-900 font-bold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
               aria-label="Termin vereinbaren – vor Ort oder per Videokonferenz"
-              data-calendly-popup-url="https://calendly.com/senerbayram-info/30min?primary_color=ff8b00"
-            >
-              Termin vereinbaren
-            </a>
-            <a
-              href="/kontakt"
-              class="border-2 border-white text-white hover:bg-white hover:text-brand-orange px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2"
-              aria-label="Zum Kontaktformular"
             >
               <svg
-                class="w-5 h-5"
+                class="w-6 h-6 text-brand-orange flex-shrink-0"
                 fill="none"
                 stroke="currentColor"
                 stroke-width="1.75"
@@ -1182,21 +845,18 @@ const faqSchema = {
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                 ></path>
               </svg>
-              Zum Kontaktformular
+              Termin vereinbaren
             </a>
           </div>
         </div>
       </div>
     </section>
-  </main>
+  </div>
 </Layout>
 
-<!-- ═══════════════════════════════════════════════════
-     COUNTER-ANIMATION (Intersection Observer)
-════════════════════════════════════════════════════ -->
 <script>
   function animateCounters() {
     const counters = document.querySelectorAll<HTMLElement>(".counter");
