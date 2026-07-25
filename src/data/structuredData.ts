@@ -1,13 +1,33 @@
 // ═══════════════════════════════════════════════════════════════
 // src/data/structuredData.ts
 //
-// GLOBAL  → Layout.astro einbinden:
+// GLOBAL  → in Layout.astro / Head.astro:
 //   organizationSchema, websiteSchema,
 //   localBusinessSchema, localBusinessRegensburgSchema
 //
 // PRO SEITE → direkt in der jeweiligen .astro Page:
 //   breadcrumbSchema(items), serviceSchema, faqSchema
 // ═══════════════════════════════════════════════════════════════
+
+// Einsatzgebiet – zentral gepflegt, damit alle Schemas identisch bleiben
+export const areaServedFull = [
+  { "@type": "City", name: "Regensburg" },
+  { "@type": "City", name: "Neutraubling" },
+  { "@type": "City", name: "Obertraubling" },
+  { "@type": "City", name: "Lappersdorf" },
+  { "@type": "City", name: "Pentling" },
+  { "@type": "City", name: "Barbing" },
+  { "@type": "City", name: "Sinzing" },
+  { "@type": "City", name: "Zeitlarn" },
+  { "@type": "City", name: "Wenzenbach" },
+  { "@type": "City", name: "Nittendorf" },
+  { "@type": "City", name: "Bad Abbach" },
+  { "@type": "City", name: "Kelheim" },
+  { "@type": "City", name: "Straubing" },
+  { "@type": "City", name: "Landshut" },
+  { "@type": "State", name: "Bayern" },
+  { "@type": "Country", name: "Deutschland" },
+];
 
 // ─────────────────────────────────────────────────────────────
 // 1. ORGANIZATION
@@ -17,7 +37,11 @@ export const organizationSchema = {
   "@type": "Organization",
   "@id": "https://ixone.de/#organization",
   name: "iXone Digitalagentur",
-  alternateName: ["iXone", "Digitalagentur Regensburg", "Webdesign Agentur Regensburg"],
+  alternateName: [
+    "iXone",
+    "Digitalagentur Regensburg",
+    "Webdesign Agentur Regensburg",
+  ],
   description:
     "Professionelle Digitalagentur aus Regensburg für Webdesign, SEO und Online-Marketing seit 2007",
   url: "https://ixone.de",
@@ -40,7 +64,7 @@ export const organizationSchema = {
         itemOffered: {
           "@type": "Service",
           name: "Webdesign Regensburg",
-          url: "https://ixone.de/webdesign",
+          url: "https://ixone.de/webdesign-regensburg",
           description:
             "Professionelle Website-Entwicklung und responsives Webdesign aus Regensburg",
         },
@@ -49,8 +73,8 @@ export const organizationSchema = {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "SEO Regensburg",
-          url: "https://ixone.de/seo-agentur",
+          name: "SEO Agentur Regensburg",
+          url: "https://ixone.de/seo-regensburg",
           description: "Suchmaschinenoptimierung für bessere Google Rankings",
         },
       },
@@ -58,8 +82,8 @@ export const organizationSchema = {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Online-Marketing Regensburg",
-          url: "https://ixone.de/online-marketing",
+          name: "Online Marketing Regensburg",
+          url: "https://ixone.de/online-marketing-regensburg",
           description: "Strategisches digitales Marketing für messbare Erfolge",
         },
       },
@@ -67,10 +91,10 @@ export const organizationSchema = {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Social Media Marketing",
-          url: "https://ixone.de/social-media",
+          name: "Social Media Marketing Regensburg",
+          url: "https://ixone.de/social-media-marketing-regensburg",
           description:
-            "Zielgruppengerechte Social Media Strategien für Facebook, Instagram und LinkedIn",
+            "Zielgruppengerechte Social Media Strategien für Facebook, Instagram, TikTok und YouTube",
         },
       },
     ],
@@ -84,7 +108,6 @@ export const organizationSchema = {
 
 // ─────────────────────────────────────────────────────────────
 // 2. LOCAL BUSINESS – Hauptstandort Neutraubling
-//    Eigenständiges Schema (stärker als department-Verschachtelung)
 // ─────────────────────────────────────────────────────────────
 export const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -127,14 +150,7 @@ export const localBusinessSchema = {
       closes: "18:00",
     },
   ],
-  areaServed: [
-    { "@type": "City", name: "Regensburg" },
-    { "@type": "City", name: "Neutraubling" },
-    { "@type": "City", name: "Straubing" },
-    { "@type": "City", name: "Landshut" },
-    { "@type": "State", name: "Bayern" },
-    { "@type": "Country", name: "Deutschland" },
-  ],
+  areaServed: areaServedFull,
   hasMap: "https://maps.google.com/?q=iXone+Digitalagentur+Neutraubling",
   parentOrganization: { "@id": "https://ixone.de/#organization" },
 };
@@ -149,10 +165,18 @@ export const localBusinessRegensburgSchema = {
   name: "iXone Digitalagentur Regensburg",
   description:
     "Webdesign Agentur und SEO Agentur direkt in Regensburg. Persönliche Beratung vor Ort für Unternehmen in Regensburg und Bayern.",
-  url: "https://ixone.de",
-  telephone: "+4915228970613",
+  url: "https://ixone.de/kontakt",
+  telephone: "+4994015338873",
   email: "info@ixone.de",
+  image: "https://ixone.de/assets/ixone-online-marketing-regensburg.webp",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://ixone.de/assets/ixone-logo.webp",
+    width: 512,
+    height: 512,
+  },
   priceRange: "€€",
+  currenciesAccepted: "EUR",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Humboldtstr. 48",
@@ -174,10 +198,8 @@ export const localBusinessRegensburgSchema = {
       closes: "18:00",
     },
   ],
-  areaServed: [
-    { "@type": "City", name: "Regensburg" },
-    { "@type": "State", name: "Bayern" },
-  ],
+  areaServed: areaServedFull,
+  hasMap: "https://maps.google.com/?q=iXone+Digitalagentur+Humboldtstr.+48+93053+Regensburg",
   parentOrganization: { "@id": "https://ixone.de/#organization" },
 };
 
@@ -190,7 +212,8 @@ export const websiteSchema = {
   "@id": "https://ixone.de/#website",
   url: "https://ixone.de",
   name: "iXone Digitalagentur",
-  description: "Digitalagentur aus Regensburg für Webdesign, SEO und Online-Marketing",
+  description:
+    "Digitalagentur aus Regensburg für Webdesign, SEO und Online-Marketing",
   publisher: { "@id": "https://ixone.de/#organization" },
   inLanguage: "de-DE",
 };
@@ -198,16 +221,16 @@ export const websiteSchema = {
 // ─────────────────────────────────────────────────────────────
 // 5. BREADCRUMB – Funktion, pro Seite aufrufen
 //
-//  VERWENDUNG in jeder .astro Page:
-//
 //  import { breadcrumbSchema } from "../data/structuredData";
-//  const crumbs = breadcrumbSchema([
+//  const breadcrumbs = breadcrumbSchema([
 //    { name: "Home",      url: "https://ixone.de/" },
-//    { name: "Webdesign", url: "https://ixone.de/webdesign" },
+//    { name: "Webdesign", url: "https://ixone.de/webdesign-regensburg" },
 //  ]);
-//  → dann in Layout: structuredData={[crumbs, serviceSchema, faqSchema]}
+//  → structuredData={[breadcrumbs, serviceSchema, faqSchema]}
 // ─────────────────────────────────────────────────────────────
-export const breadcrumbSchema = (items: Array<{ name: string; url: string }>) => ({
+export const breadcrumbSchema = (
+  items: Array<{ name: string; url: string }>,
+) => ({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: items.map((item, index) => ({
@@ -219,24 +242,9 @@ export const breadcrumbSchema = (items: Array<{ name: string; url: string }>) =>
 });
 
 // ═══════════════════════════════════════════════════════════════
-// IN Layout.astro einbinden (alle 4 globalen Schemas):
+// VORLAGE für eine neue Service-Page
 //
-//  import {
-//    organizationSchema,
-//    websiteSchema,
-//    localBusinessSchema,
-//    localBusinessRegensburgSchema,
-//  } from "../data/structuredData";
-//
-//  <script type="application/ld+json" set:html={JSON.stringify([
-//    organizationSchema,
-//    websiteSchema,
-//    localBusinessSchema,
-//    localBusinessRegensburgSchema,
-//  ])} />
-//
-// ─────────────────────────────────────────────────────────────
-// SEITENSPEZIFISCH (Vorlage für jede neue Service-Page):
+//  import { areaServedFull } from "../data/structuredData";
 //
 //  const serviceSchema = {
 //    "@context": "https://schema.org",
@@ -244,16 +252,22 @@ export const breadcrumbSchema = (items: Array<{ name: string; url: string }>) =>
 //    "@id": "https://ixone.de/SLUG#service",
 //    name: "SERVICE NAME Regensburg",
 //    provider: { "@id": "https://ixone.de/#organization" },
-//    areaServed: [
-//      { "@type": "City", name: "Regensburg" },
-//      { "@type": "State", name: "Bayern" },
-//    ],
+//    areaServed: areaServedFull,
+//    serviceType: "…",
+//    url: "https://ixone.de/SLUG",
 //    offers: {
 //      "@type": "Offer",
-//      priceRange: "€€",
-//      priceCurrency: "EUR",
 //      availability: "https://schema.org/InStock",
 //      url: "https://ixone.de/SLUG",
+//      priceSpecification: {
+//        "@type": "PriceSpecification",
+//        minPrice: 0,
+//        priceCurrency: "EUR",
+//        valueAddedTaxIncluded: false,
+//      },
 //    },
 //  };
+//
+//  WICHTIG: priceRange gehört zu LocalBusiness, NICHT in ein Offer.
+//  Im Offer stattdessen priceSpecification verwenden.
 // ═══════════════════════════════════════════════════════════════

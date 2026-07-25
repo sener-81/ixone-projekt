@@ -1,7 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { breadcrumbSchema } from "../data/structuredData";
 
-// Dein manueller HTML-Text direkt von eRecht24
+const breadcrumbs = breadcrumbSchema([
+  { name: "Home", url: "https://ixone.de/" },
+  { name: "Impressum", url: "https://ixone.de/impressum" },
+]);
+
 const impressumHtml = `
   <h1>Impressum</h1>
 
@@ -27,47 +32,16 @@ const impressumHtml = `
 ---
 
 <Layout
-  title="Impressum | iXone – Digitalagentur"
-  description="Impressum und rechtliche Angaben der iXone Digitalagentur."
+  title="Impressum | iXone – Digitalagentur Regensburg"
+  description="Impressum und rechtliche Angaben der iXone Digitalagentur aus Neutraubling und Regensburg."
   canonical="https://ixone.de/impressum"
+  structuredData={[breadcrumbs]}
 >
-  <main class="pt-24 sm:pt-28 md:pt-32 pb-20 bg-white">
+  <div class="pt-24 sm:pt-28 md:pt-32 pb-20 bg-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto legal-content">
-        {
-          /* set:html sorgt dafür, dass die Umlaute und Formatierungen korrekt gerendert werden */
-        }
         <article set:html={impressumHtml} />
       </div>
     </div>
-  </main>
+  </div>
 </Layout>
-
-<style is:global>
-  /* Styling passt sich perfekt dem iXone-Design an */
-  .legal-content article h1 {
-    font-size: 2.25rem;
-    font-weight: 900;
-    color: #111827;
-    margin-bottom: 2rem;
-  }
-  .legal-content article h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #111827;
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  .legal-content article p {
-    color: #4b5563;
-    line-height: 1.7;
-    margin-bottom: 1.25rem;
-  }
-  .legal-content article a {
-    color: var(--brand-orange, #ff8b00);
-    text-decoration: underline;
-  }
-  .legal-content article a:hover {
-    opacity: 0.8;
-  }
-</style>

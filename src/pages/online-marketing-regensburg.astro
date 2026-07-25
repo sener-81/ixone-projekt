@@ -1,7 +1,9 @@
 ---
-// src/pages/online-marketing-regensburg.astro
 import Layout from "../layouts/Layout.astro";
 import { breadcrumbSchema } from "../data/structuredData";
+
+const CALENDLY =
+  "https://calendly.com/senerbayram-info/30min?primary_color=ff8b00";
 
 const breadcrumbs = breadcrumbSchema([
   { name: "Home", url: "https://ixone.de/" },
@@ -11,7 +13,6 @@ const breadcrumbs = breadcrumbSchema([
   },
 ]);
 
-// Service Schema für Online Marketing (ohne Preisangaben)
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
@@ -20,12 +21,28 @@ const serviceSchema = {
   description:
     "Online Marketing Agentur aus Regensburg. Google Ads, SEA, Social Media Ads, Content Marketing, E-Mail Marketing und Conversion-Optimierung für messbare Erfolge und maximalen ROI.",
   provider: { "@id": "https://ixone.de/#organization" },
-  areaServed: ["Regensburg", "Bayern", "Deutschland"],
+  areaServed: [
+    "Regensburg",
+    "Neutraubling",
+    "Obertraubling",
+    "Lappersdorf",
+    "Pentling",
+    "Barbing",
+    "Sinzing",
+    "Zeitlarn",
+    "Wenzenbach",
+    "Nittendorf",
+    "Bad Abbach",
+    "Kelheim",
+    "Straubing",
+    "Landshut",
+    "Bayern",
+    "Deutschland",
+  ],
   serviceType: "Online Marketing",
   url: "https://ixone.de/online-marketing-regensburg",
 };
 
-// FAQ Schema – aus NeuronWriter-Content
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -96,6 +113,66 @@ const faqSchema = {
     },
   ],
 };
+
+const services = [
+  {
+    title: "Google Ads / SEA",
+    icon: "M13 10V3L4 14h7v7l9-11h-7z",
+    desc: "Professionelle Google Ads Kampagnen für sofortige Sichtbarkeit – Search, Shopping, Display und YouTube Ads, optimiert auf niedrige Klickpreise und maximalen ROI.",
+    items: ["Search & Shopping Ads", "Display & YouTube Ads", "Remarketing"],
+  },
+  {
+    title: "Social Media Ads",
+    icon: "M7 20l4-16m2 16l4-16M6 9h14M4 15h14",
+    desc: "Zielgerichtete Kampagnen auf Facebook, Instagram, LinkedIn und TikTok. Präzises Targeting für maximale Reichweite und Engagement Ihrer Zielgruppe in Regensburg und Umgebung.",
+    items: ["Facebook & Instagram Ads", "LinkedIn Ads", "TikTok Ads"],
+  },
+  {
+    title: "Content Marketing",
+    icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
+    desc: "Hochwertige Inhalte, die Ihre Zielgruppe ansprechen, informieren und zur Conversion anregen – Blogartikel, Landingpages und Videos, die Ihre Expertise zeigen und Kunden binden.",
+    items: ["Content-Strategie", "Blog & SEO-Texte", "Video-Content"],
+  },
+  {
+    title: "E-Mail Marketing",
+    icon: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+    desc: "Personalisierte E-Mail-Kampagnen für nachhaltige Kundenbindung. Newsletter, Marketing Automation und segmentierte Customer Journeys, die Ihren Umsatz steigern.",
+    items: ["Newsletter", "Marketing Automation", "Segmentierung"],
+  },
+  {
+    title: "Conversion-Optimierung",
+    icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6",
+    desc: "Mehr aus Ihrem bestehenden Traffic herausholen: durch A/B-Testing, Funnel-Optimierung und bessere Landingpages verwandeln wir Besucher effektiver in Kunden.",
+    items: ["A/B-Testing", "Funnel-Optimierung", "Landingpages"],
+  },
+  {
+    title: "Analytics & Reporting",
+    icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+    desc: "Transparente Insights statt Bauchgefühl: Mit Google Analytics, Tag Manager und individuellen Dashboards verfolgen wir die Performance und treffen datengetriebene Entscheidungen.",
+    items: ["Google Analytics 4", "Individuelle Dashboards", "KPI-Tracking"],
+  },
+];
+
+const qualityFactors = [
+  {
+    label: "Faktor 1",
+    title: "Anzeigenrelevanz",
+    desc: "Je besser Ihre Anzeigeninhalte zur Suchanfrage passen, desto höher der Qualitätsfaktor – und desto niedriger die Kosten pro Klick. Wir stimmen Keywords und Anzeigentexte präzise aufeinander ab.",
+    webdesignLink: false,
+  },
+  {
+    label: "Faktor 2",
+    title: "Erwartete CTR",
+    desc: "Eine hohe erwartete Klickrate signalisiert Google, dass Ihre Anzeige relevant ist. Durch durchdachte Anzeigentexte und passendes Targeting steigern wir die CTR nachhaltig.",
+    webdesignLink: false,
+  },
+  {
+    label: "Faktor 3",
+    title: "Landingpage-Erfahrung",
+    desc: "Eine schnelle, relevante Landingpage erhöht den Qualitätsfaktor und steigert gleichzeitig die Conversion-Rate.",
+    webdesignLink: true,
+  },
+];
 ---
 
 <Layout
@@ -104,15 +181,11 @@ const faqSchema = {
   canonical="https://ixone.de/online-marketing-regensburg"
   structuredData={[breadcrumbs, serviceSchema, faqSchema]}
 >
-  <main class="pt-14 sm:pt-16 md:pt-18 lg:pt-20 xl:pt-22 bg-white">
-    <!-- ═══════════════════════════════════════════════════
-         HERO – zweispaltig: links Text, rechts Bild, farbiger BG
-    ════════════════════════════════════════════════════ -->
+  <div class="pt-14 sm:pt-16 md:pt-18 lg:pt-20 xl:pt-22 bg-white">
     <section
       class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 text-white"
       aria-label="Online Marketing Agentur Regensburg Hero"
     >
-      <!-- Hintergrund-Akzente -->
       <div class="absolute inset-0 opacity-20" aria-hidden="true">
         <div
           class="absolute -top-24 -left-24 w-96 h-96 bg-brand-orange rounded-full blur-3xl"
@@ -130,7 +203,6 @@ const faqSchema = {
         <div
           class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
         >
-          <!-- Linke Spalte: Text -->
           <div class="text-center lg:text-left">
             <span
               class="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full bg-white/10 border border-white/20 text-sm font-medium backdrop-blur-md"
@@ -161,10 +233,12 @@ const faqSchema = {
               class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <a
-                href="#"
+                href={CALENDLY}
+                target="_blank"
+                rel="noopener"
                 class="cta-button-primary text-center"
                 aria-label="Kostenlose Erstberatung Online Marketing"
-                data-calendly-popup-url="https://calendly.com/senerbayram-info/30min?primary_color=ff8b00"
+                data-calendly-popup-url={CALENDLY}
               >
                 Kostenlose Erstberatung
               </a>
@@ -177,29 +251,22 @@ const faqSchema = {
             </div>
           </div>
 
-          <!-- Rechte Spalte: Bild -->
           <div class="relative">
-            <!-- PLATZHALTER: hero-digitalagentur-regensburg.webp
-                 TODO: später ersetzen durch eigenes Online-Marketing-Motiv, z.B.
-                 /assets/online-marketing-agentur-regensburg.webp
-                 (Team / Büro / Marketing-Dashboard). Alt-Text beibehalten. -->
             <img
               src="/assets/hero-digitalagentur-regensburg.webp"
               alt="Online Marketing Agentur Regensburg – iXone Team bei der Kampagnenplanung"
               class="w-full h-auto rounded-3xl shadow-2xl"
               loading="eager"
-              decoding="async"
-              width="800"
-              height="600"
+              fetchpriority="high"
+              decoding="sync"
+              width="1200"
+              height="900"
             />
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         INTRO – Was umfasst Online Marketing (NeuronWriter)
-    ════════════════════════════════════════════════════ -->
     <section
       class="py-20 md:py-28 lg:py-32 bg-white"
       aria-labelledby="intro-heading"
@@ -241,9 +308,6 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         LEISTUNGEN (ohne Preise)
-    ════════════════════════════════════════════════════ -->
     <section
       id="marketing-services"
       class="py-20 md:py-28 lg:py-32 bg-gray-50"
@@ -268,285 +332,44 @@ const faqSchema = {
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
         >
-          <!-- Google Ads / SEA -->
-          <article
-            class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-8 border border-gray-100"
-          >
-            <div
-              class="w-12 h-12 rounded-xl border border-brand-orange/30 flex items-center justify-center mb-6"
-            >
-              <svg
-                class="w-6 h-6 text-brand-orange"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.75"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">
-              Google Ads / SEA
-            </h3>
-            <p class="text-gray-600 leading-relaxed mb-4">
-              Professionelle Google Ads Kampagnen für sofortige Sichtbarkeit –
-              Search, Shopping, Display und YouTube Ads, optimiert auf niedrige
-              Klickpreise und maximalen ROI.
-            </p>
-            <ul class="text-gray-600 text-sm space-y-2">
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                Search & Shopping Ads
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                Display & YouTube Ads
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                Remarketing
-              </li>
-            </ul>
-          </article>
-
-          <!-- Social Media Ads -->
-          <article
-            class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-8 border border-gray-100"
-          >
-            <div
-              class="w-12 h-12 rounded-xl border border-brand-orange/30 flex items-center justify-center mb-6"
-            >
-              <svg
-                class="w-6 h-6 text-brand-orange"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.75"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">
-              Social Media Ads
-            </h3>
-            <p class="text-gray-600 leading-relaxed mb-4">
-              Zielgerichtete Kampagnen auf Facebook, Instagram, LinkedIn und
-              TikTok. Präzises Targeting für maximale Reichweite und Engagement
-              Ihrer Zielgruppe in Regensburg und Umgebung.
-            </p>
-            <ul class="text-gray-600 text-sm space-y-2">
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                Facebook & Instagram Ads
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                LinkedIn Ads
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                TikTok Ads
-              </li>
-            </ul>
-          </article>
-
-          <!-- Content Marketing -->
-          <article
-            class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-8 border border-gray-100"
-          >
-            <div
-              class="w-12 h-12 rounded-xl border border-brand-orange/30 flex items-center justify-center mb-6"
-            >
-              <svg
-                class="w-6 h-6 text-brand-orange"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.75"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                ></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">
-              Content Marketing
-            </h3>
-            <p class="text-gray-600 leading-relaxed mb-4">
-              Hochwertige Inhalte, die Ihre Zielgruppe ansprechen, informieren
-              und zur Conversion anregen – Blogartikel, Landingpages und Videos,
-              die Ihre Expertise zeigen und Kunden binden.
-            </p>
-            <ul class="text-gray-600 text-sm space-y-2">
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                Content-Strategie
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                Blog & SEO-Texte
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                Video-Content
-              </li>
-            </ul>
-          </article>
-
-          <!-- E-Mail Marketing -->
-          <article
-            class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-8 border border-gray-100"
-          >
-            <div
-              class="w-12 h-12 rounded-xl border border-brand-orange/30 flex items-center justify-center mb-6"
-            >
-              <svg
-                class="w-6 h-6 text-brand-orange"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.75"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                ></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">
-              E-Mail Marketing
-            </h3>
-            <p class="text-gray-600 leading-relaxed mb-4">
-              Personalisierte E-Mail-Kampagnen für nachhaltige Kundenbindung.
-              Newsletter, Marketing Automation und segmentierte Customer
-              Journeys, die Ihren Umsatz steigern.
-            </p>
-            <ul class="text-gray-600 text-sm space-y-2">
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                Newsletter
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                Marketing Automation
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                Segmentierung
-              </li>
-            </ul>
-          </article>
-
-          <!-- Conversion-Optimierung -->
-          <article
-            class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-8 border border-gray-100"
-          >
-            <div
-              class="w-12 h-12 rounded-xl border border-brand-orange/30 flex items-center justify-center mb-6"
-            >
-              <svg
-                class="w-6 h-6 text-brand-orange"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.75"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">
-              Conversion-Optimierung
-            </h3>
-            <p class="text-gray-600 leading-relaxed mb-4">
-              Mehr aus Ihrem bestehenden Traffic herausholen: durch A/B-Testing,
-              Funnel-Optimierung und bessere Landingpages verwandeln wir
-              Besucher effektiver in Kunden.
-            </p>
-            <ul class="text-gray-600 text-sm space-y-2">
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                A/B-Testing
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                Funnel-Optimierung
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                Landingpages
-              </li>
-            </ul>
-          </article>
-
-          <!-- Analytics & Reporting -->
-          <article
-            class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-8 border border-gray-100"
-          >
-            <div
-              class="w-12 h-12 rounded-xl border border-brand-orange/30 flex items-center justify-center mb-6"
-            >
-              <svg
-                class="w-6 h-6 text-brand-orange"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.75"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                ></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">
-              Analytics & Reporting
-            </h3>
-            <p class="text-gray-600 leading-relaxed mb-4">
-              Transparente Insights statt Bauchgefühl: Mit Google Analytics, Tag
-              Manager und individuellen Dashboards verfolgen wir die Performance
-              und treffen datengetriebene Entscheidungen.
-            </p>
-            <ul class="text-gray-600 text-sm space-y-2">
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                Google Analytics 4
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                Individuelle Dashboards
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 bg-brand-orange rounded-full"></span>
-                KPI-Tracking
-              </li>
-            </ul>
-          </article>
+          {
+            services.map((service) => (
+              <article class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-8 border border-gray-100">
+                <div class="w-12 h-12 rounded-xl border border-brand-orange/30 flex items-center justify-center mb-6">
+                  <svg
+                    class="w-6 h-6 text-brand-orange"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d={service.icon}
+                    />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">
+                  {service.title}
+                </h3>
+                <p class="text-gray-600 leading-relaxed mb-4">{service.desc}</p>
+                <ul class="text-gray-600 text-sm space-y-2">
+                  {service.items.map((item) => (
+                    <li class="flex items-center gap-2">
+                      <span class="w-1.5 h-1.5 bg-brand-orange rounded-full" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         GOOGLE ADS & QUALITÄTSFAKTOR (eigene Section)
-    ════════════════════════════════════════════════════ -->
     <section
       class="py-20 md:py-28 lg:py-32 bg-white"
       aria-labelledby="qualitaetsfaktor-heading"
@@ -571,59 +394,34 @@ const faqSchema = {
         <div
           class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12"
         >
-          <!-- Anzeigenrelevanz -->
-          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
-            <div
-              class="text-brand-orange font-bold text-sm mb-3 tracking-wide uppercase"
-            >
-              Faktor 1
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">
-              Anzeigenrelevanz
-            </h3>
-            <p class="text-gray-600 leading-relaxed">
-              Je besser Ihre Anzeigeninhalte zur Suchanfrage passen, desto höher
-              der Qualitätsfaktor – und desto niedriger die Kosten pro Klick.
-              Wir stimmen Keywords und Anzeigentexte präzise aufeinander ab.
-            </p>
-          </div>
-
-          <!-- Erwartete CTR -->
-          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
-            <div
-              class="text-brand-orange font-bold text-sm mb-3 tracking-wide uppercase"
-            >
-              Faktor 2
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">Erwartete CTR</h3>
-            <p class="text-gray-600 leading-relaxed">
-              Eine hohe erwartete Klickrate signalisiert Google, dass Ihre
-              Anzeige relevant ist. Durch durchdachte Anzeigentexte und
-              passendes Targeting steigern wir die CTR nachhaltig.
-            </p>
-          </div>
-
-          <!-- Landingpage-Erfahrung -->
-          <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
-            <div
-              class="text-brand-orange font-bold text-sm mb-3 tracking-wide uppercase"
-            >
-              Faktor 3
-            </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">
-              Landingpage-Erfahrung
-            </h3>
-            <p class="text-gray-600 leading-relaxed">
-              Eine schnelle, relevante Landingpage erhöht den Qualitätsfaktor
-              und steigert gleichzeitig die Conversion-Rate. Hier zahlt sich
-              unser
-              <a
-                href="/webdesign-regensburg"
-                class="text-brand-orange font-semibold hover:underline"
-                >Webdesign</a
-              > direkt aus.
-            </p>
-          </div>
+          {
+            qualityFactors.map((factor) => (
+              <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                <div class="text-brand-orange font-bold text-sm mb-3 tracking-wide uppercase">
+                  {factor.label}
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">
+                  {factor.title}
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                  {factor.desc}
+                  {factor.webdesignLink && (
+                    <>
+                      {" "}
+                      Hier zahlt sich unser{" "}
+                      <a
+                        href="/webdesign-regensburg"
+                        class="text-brand-orange font-semibold hover:underline"
+                      >
+                        Webdesign
+                      </a>{" "}
+                      direkt aus.
+                    </>
+                  )}
+                </p>
+              </div>
+            ))
+          }
         </div>
 
         <div
@@ -648,9 +446,6 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         TERMIN-BUCHUNG (Conversion-Box mittendrin)
-    ════════════════════════════════════════════════════ -->
     <section
       class="py-20 md:py-28 lg:py-32 bg-gray-50"
       aria-labelledby="termin-heading"
@@ -659,7 +454,6 @@ const faqSchema = {
         <div
           class="relative max-w-5xl mx-auto rounded-3xl overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 text-white"
         >
-          <!-- Hintergrund-Akzente -->
           <div class="absolute inset-0 opacity-20" aria-hidden="true">
             <div
               class="absolute -top-20 -right-20 w-72 h-72 bg-brand-orange rounded-full blur-3xl"
@@ -687,16 +481,19 @@ const faqSchema = {
               class="text-lg text-gray-200 leading-relaxed mb-10 max-w-2xl mx-auto"
             >
               Lassen Sie uns über Ihre Ziele sprechen – ganz wie es Ihnen passt:
-              persönlich bei uns vor Ort in Regensburg oder bequem per
-              Videokonferenz. Sie wählen den Termin, wir bringen die Ideen mit.
+              persönlich bei uns vor Ort in Regensburg oder Neutraubling, oder
+              bequem per Videokonferenz. Sie wählen den Termin, wir bringen die
+              Ideen mit.
             </p>
 
             <div class="flex justify-center">
               <a
-                href="#"
+                href={CALENDLY}
+                target="_blank"
+                rel="noopener"
                 class="group inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl bg-white text-gray-900 font-bold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
                 aria-label="Jetzt Termin vereinbaren – vor Ort oder per Videokonferenz"
-                data-calendly-popup-url="https://calendly.com/senerbayram-info/30min?primary_color=ff8b00"
+                data-calendly-popup-url={CALENDLY}
               >
                 <svg
                   class="w-6 h-6 text-brand-orange flex-shrink-0"
@@ -715,23 +512,11 @@ const faqSchema = {
                 Jetzt Termin vereinbaren
               </a>
             </div>
-
-            <p class="mt-8 text-sm text-gray-300">
-              Lieber schreiben? Nutzen Sie unser
-              <a
-                href="/kontakt"
-                class="font-semibold text-white hover:underline"
-                >Kontaktformular</a
-              > – wir melden uns zeitnah bei Ihnen.
-            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         PERFORMANCE & CONVERSION-OPTIMIERUNG
-    ════════════════════════════════════════════════════ -->
     <section
       class="py-20 md:py-28 lg:py-32 bg-white"
       aria-labelledby="performance-heading"
@@ -740,10 +525,6 @@ const faqSchema = {
         <div
           class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto"
         >
-          <!-- Bild
-               PLATZHALTER: hero-digitalagentur-regensburg.webp
-               TODO: ersetzen durch /assets/online-marketing/conversion-optimierung-regensburg.webp
-               Alt-Text beibehalten. -->
           <div
             class="relative rounded-2xl overflow-hidden aspect-[4/3] border border-gray-200"
           >
@@ -753,12 +534,11 @@ const faqSchema = {
               class="w-full h-full object-cover"
               loading="lazy"
               decoding="async"
-              width="1000"
-              height="750"
+              width="1200"
+              height="900"
             />
           </div>
 
-          <!-- Text -->
           <div>
             <h2
               id="performance-heading"
@@ -827,9 +607,6 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         WARUM iXONE
-    ════════════════════════════════════════════════════ -->
     <section
       class="py-20 md:py-28 lg:py-32 bg-gray-50"
       aria-labelledby="warum-heading"
@@ -901,7 +678,7 @@ const faqSchema = {
               </svg>
             </div>
             <h3 class="text-xl font-bold text-gray-900 mb-3">
-              15+ Jahre Erfahrung
+              Seit 2007 am Markt
             </h3>
             <p class="text-gray-600 leading-relaxed">
               Seit 2007 haben wir zahlreiche Unternehmen aus Regensburg und
@@ -954,9 +731,6 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         FAQ – mit Schema (oben im structuredData)
-    ════════════════════════════════════════════════════ -->
     <section
       class="py-20 md:py-28 lg:py-32 bg-white"
       aria-labelledby="faq-heading"
@@ -979,8 +753,8 @@ const faqSchema = {
             {
               faqSchema.mainEntity.map((item) => (
                 <details class="faq-item bg-white rounded-lg shadow-sm overflow-hidden group border border-gray-200">
-                  <summary class="px-6 py-5 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center gap-4">
-                    <h3 class="text-lg font-semibold text-gray-900">
+                  <summary class="px-6 py-5 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center gap-4 list-none">
+                    <h3 class="text-lg font-semibold text-gray-900 text-left">
                       {item.name}
                     </h3>
                     <svg
@@ -998,7 +772,7 @@ const faqSchema = {
                       />
                     </svg>
                   </summary>
-                  <div class="px-6 pb-5 text-gray-600 leading-relaxed">
+                  <div class="faq-body px-6 pb-5 text-gray-600 leading-relaxed">
                     <p>{item.acceptedAnswer.text}</p>
                   </div>
                 </details>
@@ -1009,15 +783,13 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         CTA
-    ════════════════════════════════════════════════════ -->
     <section
       class="py-20 md:py-28 lg:py-32 bg-gradient-to-r from-brand-orange to-yellow-500"
+      aria-labelledby="cta-heading"
     >
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto text-center text-white">
-          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+          <h2 id="cta-heading" class="text-3xl md:text-4xl font-bold mb-6">
             Bereit für erfolgreiches Online Marketing?
           </h2>
           <p class="text-xl mb-10 opacity-90">
@@ -1027,37 +799,18 @@ const faqSchema = {
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="#"
+              href={CALENDLY}
+              target="_blank"
+              rel="noopener"
               class="bg-white text-brand-orange hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               aria-label="Termin vereinbaren – vor Ort oder per Videokonferenz"
-              data-calendly-popup-url="https://calendly.com/senerbayram-info/30min?primary_color=ff8b00"
+              data-calendly-popup-url={CALENDLY}
             >
               Termin vereinbaren
-            </a>
-            <a
-              href="/kontakt"
-              class="border-2 border-white text-white hover:bg-white hover:text-brand-orange px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2"
-              aria-label="Zum Kontaktformular"
-            >
-              <svg
-                class="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.75"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                ></path>
-              </svg>
-              Zum Kontaktformular
             </a>
           </div>
         </div>
       </div>
     </section>
-  </main>
+  </div>
 </Layout>

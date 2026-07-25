@@ -1,7 +1,9 @@
 ---
-// src/pages/seo-regensburg.astro
 import Layout from "../layouts/Layout.astro";
 import { breadcrumbSchema } from "../data/structuredData";
+
+const CALENDLY =
+  "https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b";
 
 const breadcrumbs = breadcrumbSchema([
   { name: "Home", url: "https://ixone.de/" },
@@ -19,6 +21,19 @@ const serviceSchema = {
   telephone: "+4994015338873",
   areaServed: [
     { "@type": "City", name: "Regensburg" },
+    { "@type": "City", name: "Neutraubling" },
+    { "@type": "City", name: "Obertraubling" },
+    { "@type": "City", name: "Lappersdorf" },
+    { "@type": "City", name: "Pentling" },
+    { "@type": "City", name: "Barbing" },
+    { "@type": "City", name: "Sinzing" },
+    { "@type": "City", name: "Zeitlarn" },
+    { "@type": "City", name: "Wenzenbach" },
+    { "@type": "City", name: "Nittendorf" },
+    { "@type": "City", name: "Bad Abbach" },
+    { "@type": "City", name: "Kelheim" },
+    { "@type": "City", name: "Straubing" },
+    { "@type": "City", name: "Landshut" },
     { "@type": "State", name: "Bayern" },
     { "@type": "Country", name: "Deutschland" },
   ],
@@ -32,83 +47,201 @@ const serviceSchema = {
   ],
   offers: {
     "@type": "Offer",
-    priceRange: "€€",
-    priceCurrency: "EUR",
     availability: "https://schema.org/InStock",
     url: "https://ixone.de/seo-regensburg",
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      minPrice: 499,
+      priceCurrency: "EUR",
+      valueAddedTaxIncluded: false,
+    },
   },
 };
+
+const faqs = [
+  {
+    q: "Was macht eine SEO Agentur in Regensburg?",
+    a: "Eine professionelle SEO Agentur in Regensburg übernimmt die ganzheitliche Suchmaschinenoptimierung: technisches SEO, OnPage-Optimierung, Content-Erstellung, Linkaufbau und Local SEO. iXone entwickelt individuelle Strategien für mehr Sichtbarkeit bei Google und messbar mehr qualifizierte Anfragen.",
+  },
+  {
+    q: "Wie lange dauert SEO bis erste Ergebnisse sichtbar sind?",
+    a: "Erste Verbesserungen bei Rankings und Traffic sind nach 3–6 Monaten messbar. Nachhaltige, signifikante Ergebnisse zeigen sich nach 6–12 Monaten. SEO ist eine langfristige Investition – im Gegensatz zu Google Ads bleibt der Effekt auch ohne laufendes Budget bestehen.",
+  },
+  {
+    q: "Was kostet professionelle SEO-Betreuung in Regensburg?",
+    a: "Die Kosten hängen von Umfang, Branche und Wettbewerb ab. Eine monatliche SEO-Betreuung startet bei iXone ab 499 €. Nach einer kostenlosen Erstberatung erhalten Sie ein transparentes Angebot ohne versteckte Kosten und ohne Mindestlaufzeiten.",
+  },
+  {
+    q: "Was ist der Unterschied zwischen SEO und Google Ads?",
+    a: "Google Ads liefert sofortige Sichtbarkeit durch bezahlte Anzeigen – aber nur solange das Budget läuft. SEO baut nachhaltige organische Rankings auf, die dauerhaft Traffic generieren. Langfristig ist SEO die kosteneffizientere Strategie, kurzfristig ergänzen sich beide Kanäle optimal.",
+  },
+  {
+    q: "Was ist Local SEO und warum ist es für Regensburger Unternehmen wichtig?",
+    a: "Local SEO optimiert Ihre Sichtbarkeit bei lokalen Suchanfragen wie 'Steuerberater Regensburg' oder 'Handwerker in meiner Nähe'. Dazu gehören Google Business Profile Optimierung, lokale Keywords, Bewertungsmanagement und lokale Backlinks. Für Unternehmen mit regionalem Kundenstamm ist Local SEO oft der effektivste SEO-Hebel.",
+  },
+  {
+    q: "Was sind Core Web Vitals und warum sind sie für SEO relevant?",
+    a: "Core Web Vitals sind Googles Messgrößen für Nutzererfahrung: Ladegeschwindigkeit (LCP), visuelle Stabilität (CLS) und Interaktivität (INP). Seit 2021 sind sie offizieller Google-Rankingfaktor. iXone nutzt moderne Technologien wie Astro für Scores über 90 im grünen Bereich.",
+  },
+  {
+    q: "Wie messe ich den Erfolg von SEO-Maßnahmen?",
+    a: "Wichtige SEO-KPIs: organischer Traffic, Keyword-Rankings, Sichtbarkeitsindex, Conversion-Rate und Kosten pro Lead. iXone richtet professionelles Tracking ein und liefert monatliche Reports mit klaren Zahlen – transparent und nachvollziehbar.",
+  },
+  {
+    q: "Kann iXone auch einen Website-Relaunch SEO-sicher begleiten?",
+    a: "Ja. Ein Relaunch ohne SEO-Begleitung kann zu massiven Traffic-Verlusten führen. iXone sorgt für korrekte URL-Weiterleitungen, Erhalt bestehender Rankings und technisch saubere Migration – damit Ihr Relaunch Ihre SEO-Performance verbessert statt beschädigt.",
+  },
+];
 
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Was macht eine SEO Agentur in Regensburg?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Eine professionelle SEO Agentur in Regensburg übernimmt die ganzheitliche Suchmaschinenoptimierung Ihrer Website: technisches SEO, OnPage-Optimierung, Content-Erstellung, Linkaufbau und Local SEO für mehr Sichtbarkeit bei Google und mehr qualifizierte Anfragen.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Wie lange dauert SEO bis erste Ergebnisse sichtbar sind?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Erste Verbesserungen bei Rankings und Traffic sind nach 3–6 Monaten messbar. Nachhaltige, signifikante Ergebnisse zeigen sich nach 6–12 Monaten. SEO ist eine langfristige Investition – im Gegensatz zu Google Ads bleibt der Effekt auch ohne laufendes Budget bestehen.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Was kostet professionelle SEO-Betreuung in Regensburg?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Die Kosten für SEO-Betreuung hängen von Umfang, Branche und Wettbewerb ab. iXone erstellt individuelle Angebote ohne versteckte Kosten und ohne Mindestlaufzeiten. Eine monatliche Betreuung startet ab 499 €. Nach einer kostenlosen Erstberatung erhalten Sie ein transparentes Angebot.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Was ist der Unterschied zwischen SEO und Google Ads?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Google Ads liefert sofortige Sichtbarkeit durch bezahlte Anzeigen – aber nur solange das Budget läuft. SEO baut nachhaltige organische Rankings auf, die dauerhaft Traffic generieren. Langfristig ist SEO die kosteneffizientere Strategie, kurzfristig ergänzen sich beide Kanäle optimal.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Was ist Local SEO und warum ist es für Regensburger Unternehmen wichtig?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Local SEO optimiert Ihre Sichtbarkeit bei lokalen Suchanfragen wie 'Steuerberater Regensburg' oder 'Handwerker in meiner Nähe'. Dazu gehören Google Business Profile Optimierung, lokale Keywords, Bewertungsmanagement und lokale Backlinks. Für Unternehmen mit regionalem Kundenstamm ist Local SEO oft der effektivste SEO-Hebel.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Was sind Core Web Vitals und warum sind sie für SEO relevant?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Core Web Vitals sind Googles Messgrößen für Nutzererfahrung: Ladegeschwindigkeit (LCP), visuelle Stabilität (CLS) und Interaktivität (INP). Seit 2021 sind sie offizieller Google-Rankingfaktor. iXone optimiert alle technischen Parameter für Scores im grünen Bereich.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Wie messe ich den Erfolg von SEO-Maßnahmen?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Wichtige SEO-KPIs sind: organischer Traffic, Keyword-Rankings, Sichtbarkeitsindex, Conversion-Rate und Kosten pro Lead. iXone richtet professionelles Tracking ein und liefert monatliche Reports mit klaren Zahlen – kein Agentur-Blabla, sondern messbare Ergebnisse.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Kann iXone auch einen Website-Relaunch SEO-sicher begleiten?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ja. Ein Relaunch ohne SEO-Begleitung kann zu massiven Traffic-Verlusten führen. iXone sorgt für korrekte URL-Weiterleitungen, Erhalt bestehender Rankings, technisch saubere Implementierung und nahtlose Migration – damit Ihr Relaunch Ihre SEO-Performance verbessert statt beschädigt.",
-      },
-    },
-  ],
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
 };
+
+const services = [
+  {
+    color: "from-blue-500 to-cyan-500",
+    icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+    title: "OnPage SEO",
+    desc: "<strong>Optimierung direkt auf Ihrer Website</strong> – Content, Struktur, Meta-Tags, interne Verlinkung und Ladezeiten. Das Fundament für nachhaltige Rankings.",
+    items: [
+      "Keyword-Optimierung",
+      "Content-Erstellung",
+      "Meta-Tags & Headlines",
+      "Interne Verlinkung",
+    ],
+  },
+  {
+    color: "from-green-500 to-emerald-500",
+    icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1",
+    title: "OffPage SEO & Linkaufbau",
+    desc: "<strong>Hochwertige Backlinks</strong> von relevanten Websites stärken Ihre Domain-Autorität und verbessern dauerhaft Ihre Positionen bei Google.",
+    items: [
+      "Strategischer Linkaufbau",
+      "Domain Authority",
+      "Digitale PR",
+      "Konkurrenz-Analyse",
+    ],
+  },
+  {
+    color: "from-purple-500 to-pink-500",
+    icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z",
+    title: "Local SEO Regensburg",
+    desc: "<strong>Sichtbarkeit bei lokalen Suchanfragen</strong> – Google Business Profile, lokale Keywords und Bewertungsmanagement für mehr regionale Kunden.",
+    items: [
+      "Google Business Profile",
+      "Lokale Keywords",
+      "Bewertungsmanagement",
+      "Maps-Optimierung",
+    ],
+  },
+  {
+    color: "from-orange-500 to-yellow-500",
+    icon: "M13 10V3L4 14h7v7l9-11h-7z",
+    title: "Technisches SEO",
+    desc: "<strong>Core Web Vitals, PageSpeed und Crawlbarkeit</strong> – technische Perfektion als Basis für Top-Rankings. Moderne Technologie, sauberer Code.",
+    items: [
+      "Core Web Vitals",
+      "PageSpeed 90+",
+      "Schema.org Markup",
+      "Mobile-Optimierung",
+    ],
+  },
+  {
+    color: "from-yellow-500 to-orange-500",
+    icon: "M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z",
+    title: "Keyword-Strategie",
+    desc: "<strong>Professionelle Keyword-Recherche</strong> – Suchvolumen, Kaufintention und Wettbewerb analysieren, um die wertvollsten Rankings zu gewinnen.",
+    items: [
+      "Keyword-Recherche",
+      "Search Intent Analyse",
+      "Content-Mapping",
+      "Long-Tail Keywords",
+    ],
+  },
+  {
+    color: "from-indigo-500 to-purple-500",
+    icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+    title: "SEO Audit & Monitoring",
+    desc: "<strong>Umfassende Analyse und laufende Überwachung</strong> – technischer Audit, Ranking-Tracking und monatliche Reports mit klaren Handlungsempfehlungen.",
+    items: [
+      "Technischer SEO-Audit",
+      "Ranking-Tracking",
+      "Traffic-Analyse",
+      "Monatliche Reports",
+    ],
+  },
+];
+
+const prozessSchritte = [
+  {
+    step: "1",
+    title: "SEO Audit & Analyse",
+    desc: "Umfassende Bestandsaufnahme: technische Fehler, Keyword-Gaps, Backlink-Profil und Konkurrenz-Analyse. Das Ergebnis ist eine klare Prioritätenliste mit den größten Hebeln für Ihre Rankings.",
+  },
+  {
+    step: "2",
+    title: "Strategie & Keyword-Planung",
+    desc: "Basierend auf dem Audit entwickeln wir eine maßgeschneiderte SEO-Strategie. Welche Keywords haben das beste Potenzial? Welcher Content fehlt? Wo sind die Quick Wins?",
+  },
+  {
+    step: "3",
+    title: "Umsetzung & Optimierung",
+    desc: "OnPage-Optimierung, technische Fixes, Content-Erstellung und Linkaufbau laufen parallel. Jede Maßnahme wird dokumentiert und auf ihre Wirkung überprüft.",
+  },
+  {
+    step: "4",
+    title: "Monitoring & Weiterentwicklung",
+    desc: "Monatliche Reports mit Rankings, Traffic und Conversion-Daten. Wir analysieren was funktioniert, passen die Strategie an und entwickeln Ihren SEO-Erfolg kontinuierlich weiter.",
+  },
+];
+
+const preisPakete = [
+  {
+    title: "SEO-Audit",
+    price: "ab 499 €*",
+    desc: "Einmalige Analyse Ihrer aktuellen SEO-Performance mit konkretem Maßnahmenplan.",
+    items: [
+      "Technischer Audit",
+      "Keyword-Analyse",
+      "Konkurrenz-Check",
+      "Handlungsempfehlungen",
+    ],
+    color: "from-blue-500 to-cyan-500",
+    badge: "Einmalig",
+  },
+  {
+    title: "SEO-Betreuung",
+    price: "ab 499 €/Monat*",
+    desc: "Laufende SEO-Optimierung mit monatlichem Reporting und persönlichem Ansprechpartner.",
+    items: [
+      "OnPage-Optimierung",
+      "Content-Erstellung",
+      "Linkaufbau",
+      "Monatliche Reports",
+    ],
+    color: "from-brand-orange to-yellow-500",
+    badge: "Empfohlen",
+  },
+  {
+    title: "Local SEO",
+    price: "ab 499 €/Monat*",
+    desc: "Speziell für lokale Unternehmen in Regensburg und Bayern – mehr Sichtbarkeit vor Ort.",
+    items: [
+      "Google Business Profile",
+      "Lokale Keywords",
+      "Bewertungsmanagement",
+      "Citation Building",
+    ],
+    color: "from-purple-500 to-pink-500",
+    badge: "Lokal",
+  },
+];
 ---
 
 <Layout
@@ -118,14 +251,10 @@ const faqSchema = {
   structuredData={[breadcrumbs, serviceSchema, faqSchema]}
 >
   <div class="pt-14 sm:pt-16 md:pt-18 lg:pt-20 xl:pt-22 bg-white">
-    <!-- ═══════════════════════════════════════════════════
-         HERO – Zweispaltig mit animierten Countern
-    ════════════════════════════════════════════════════ -->
     <section
       class="relative bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-900 text-white overflow-hidden"
       aria-label="SEO Agentur Regensburg Hero"
     >
-      <!-- Animated Background Blobs -->
       <div class="absolute inset-0 opacity-20" aria-hidden="true">
         <div
           class="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full filter blur-3xl animate-blob"
@@ -141,7 +270,6 @@ const faqSchema = {
         </div>
       </div>
 
-      <!-- Grid Pattern -->
       <div class="absolute inset-0 opacity-5" aria-hidden="true">
         <div
           class="h-full w-full"
@@ -149,6 +277,7 @@ const faqSchema = {
         >
         </div>
       </div>
+
       <div
         class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-24 md:py-32 lg:py-36 relative z-10"
       >
@@ -156,50 +285,47 @@ const faqSchema = {
           <div
             class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center"
           >
-            <!-- ── LINKS: Text & CTAs ─────────────────────── -->
             <div class="lg:col-span-6 text-center lg:text-left">
-              <div
-                class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 text-sm font-medium text-white/90 mb-6"
+              <span
+                class="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full bg-white/10 border border-white/20 text-sm font-medium backdrop-blur-md"
               >
                 <span
                   class="w-2 h-2 bg-green-400 rounded-full animate-pulse"
                   aria-hidden="true"></span>
                 SEO Agentur Regensburg – White-Hat & nachhaltig
-              </div>
+              </span>
 
-              <header class="mb-6">
-                <h1
-                  class="text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-5"
+              <h1
+                class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+              >
+                <span class="block text-white">SEO Agentur</span>
+                <span class="gradient-text-brand">Regensburg</span>
+                <span
+                  class="block text-white/80 text-2xl md:text-3xl font-normal mt-2"
                 >
-                  <span class="block text-white">SEO Agentur</span>
-                  <span class="gradient-text-brand">Regensburg</span>
-                  <span
-                    class="block text-white/80 text-xl sm:text-2xl md:text-3xl font-normal mt-2"
-                  >
-                    Nachhaltige Suchmaschinenoptimierung
-                  </span>
-                </h1>
-                <p
-                  class="text-base sm:text-lg md:text-xl text-white/80 leading-relaxed max-w-xl mx-auto lg:mx-0"
-                >
-                  Mehr <strong class="text-white">organischer Traffic</strong>,
-                  bessere <strong class="text-white">Google-Rankings</strong> und
-                  <em class="text-brand-orange">messbar mehr Anfragen</em> – durch
-                  SEO-Strategien die wirklich funktionieren. Seit 2007, über 500 Projekte.
-                </p>
-              </header>
+                  Nachhaltige Suchmaschinenoptimierung
+                </span>
+              </h1>
 
-              <!-- Trust Badges -->
+              <p
+                class="text-lg md:text-xl text-gray-200 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0"
+              >
+                Mehr <strong class="text-white">organischer Traffic</strong>,
+                bessere <strong class="text-white">Google-Rankings</strong> und
+                <em class="text-brand-orange">messbar mehr Anfragen</em> – durch SEO-Strategien
+                die wirklich funktionieren. Seit 2007, über 500 Projekte.
+              </p>
+
               <div
-                class="flex flex-wrap justify-center lg:justify-start gap-2 md:gap-3 mb-7"
+                class="flex flex-wrap justify-center lg:justify-start gap-2 md:gap-3 mb-8"
               >
                 {
                   [
-                    { label: "White-Hat SEO" },
-                    { label: "Nachweisbare Erfolge" },
-                    { label: "Local SEO" },
-                    { label: "Keine Mindestlaufzeit" },
-                  ].map((badge) => (
+                    "White-Hat SEO",
+                    "Nachweisbare Erfolge",
+                    "Local SEO",
+                    "Keine Mindestlaufzeit",
+                  ].map((label) => (
                     <span class="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-3 py-1.5 text-xs font-medium text-white/90">
                       <svg
                         class="w-3.5 h-3.5 text-green-400 flex-shrink-0"
@@ -213,20 +339,22 @@ const faqSchema = {
                           clip-rule="evenodd"
                         />
                       </svg>
-                      {badge.label}
+                      {label}
                     </span>
                   ))
                 }
               </div>
 
-              <!-- CTA Buttons -->
               <div
-                class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
+                class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               >
                 <a
-                  href="/kontakt"
+                  href={CALENDLY}
+                  target="_blank"
+                  rel="noopener"
+                  data-calendly-popup-url={CALENDLY}
                   class="cta-button-primary text-center"
-                  aria-label="Kostenlose SEO-Analyse anfordern"
+                  aria-label="Kostenlose SEO-Analyse – Termin vereinbaren"
                 >
                   <span>Kostenlose SEO-Analyse</span>
                 </a>
@@ -254,10 +382,8 @@ const faqSchema = {
               </div>
             </div>
 
-            <!-- ── RECHTS: Animierte Metriken ──────────────── -->
             <div class="lg:col-span-6">
               <div class="grid grid-cols-2 gap-4">
-                <!-- Metric 1: Traffic -->
                 <div
                   class="seo-metric-card group bg-white/10 backdrop-blur-md rounded-2xl p-5 md:p-6 border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:-translate-y-1"
                 >
@@ -298,7 +424,6 @@ const faqSchema = {
                   </p>
                 </div>
 
-                <!-- Metric 2: Keywords -->
                 <div
                   class="seo-metric-card group bg-white/10 backdrop-blur-md rounded-2xl p-5 md:p-6 border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:-translate-y-1"
                 >
@@ -340,7 +465,6 @@ const faqSchema = {
                   </p>
                 </div>
 
-                <!-- Metric 3: Conversion -->
                 <div
                   class="seo-metric-card group bg-white/10 backdrop-blur-md rounded-2xl p-5 md:p-6 border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:-translate-y-1"
                 >
@@ -381,7 +505,6 @@ const faqSchema = {
                   </p>
                 </div>
 
-                <!-- Metric 4: PageSpeed -->
                 <div
                   class="seo-metric-card group bg-white/10 backdrop-blur-md rounded-2xl p-5 md:p-6 border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:-translate-y-1"
                 >
@@ -420,7 +543,6 @@ const faqSchema = {
                 </div>
               </div>
 
-              <!-- Live Activity -->
               <div
                 class="mt-4 bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20"
               >
@@ -456,7 +578,6 @@ const faqSchema = {
                 </div>
               </div>
 
-              <!-- Kunden-Zitat -->
               <div
                 class="mt-4 bg-gradient-to-r from-brand-orange/20 to-yellow-500/15 backdrop-blur-md rounded-2xl p-4 border border-white/20"
               >
@@ -479,114 +600,36 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         SEO LEISTUNGEN
-    ════════════════════════════════════════════════════ -->
     <section
       id="seo-leistungen"
-      class="py-12 md:py-16 lg:py-24 xl:py-32 bg-white"
+      class="py-20 md:py-28 lg:py-32 bg-white"
       aria-labelledby="leistungen-heading"
     >
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div class="text-center mb-12 md:mb-16 lg:mb-20">
+        <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
           <h2
             id="leistungen-heading"
-            class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4 md:mb-6"
+            class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
           >
             Unsere <span class="gradient-text-brand-inline">SEO</span> Leistungen
           </h2>
-          <p
-            class="text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
-          >
+          <p class="text-xl text-gray-600">
             Ganzheitliche Suchmaschinenoptimierung – von der Strategie bis zur
             Umsetzung
           </p>
         </div>
 
         <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10 max-w-7xl mx-auto"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
         >
           {
-            [
-              {
-                color: "from-blue-500 to-cyan-500",
-                icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
-                title: "OnPage SEO",
-                desc: "<strong>Optimierung direkt auf Ihrer Website</strong> – Content, Struktur, Meta-Tags, interne Verlinkung und Ladezeiten. Das Fundament für nachhaltige Rankings.",
-                items: [
-                  "Keyword-Optimierung",
-                  "Content-Erstellung",
-                  "Meta-Tags & Headlines",
-                  "Interne Verlinkung",
-                ],
-              },
-              {
-                color: "from-green-500 to-emerald-500",
-                icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1",
-                title: "OffPage SEO & Linkaufbau",
-                desc: "<strong>Hochwertige Backlinks</strong> von relevanten Websites stärken Ihre Domain-Autorität und verbessern dauerhaft Ihre Positionen bei Google.",
-                items: [
-                  "Strategischer Linkaufbau",
-                  "Domain Authority",
-                  "Digitale PR",
-                  "Konkurrenz-Analyse",
-                ],
-              },
-              {
-                color: "from-purple-500 to-pink-500",
-                icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z",
-                title: "Local SEO Regensburg",
-                desc: "<strong>Sichtbarkeit bei lokalen Suchanfragen</strong> – Google Business Profile, lokale Keywords und Bewertungsmanagement für mehr regionale Kunden.",
-                items: [
-                  "Google Business Profile",
-                  "Lokale Keywords",
-                  "Bewertungsmanagement",
-                  "Maps-Optimierung",
-                ],
-              },
-              {
-                color: "from-orange-500 to-yellow-500",
-                icon: "M13 10V3L4 14h7v7l9-11h-7z",
-                title: "Technisches SEO",
-                desc: "<strong>Core Web Vitals, PageSpeed und Crawlbarkeit</strong> – technische Perfektion als Basis für Top-Rankings. Moderne Technologie, sauberer Code.",
-                items: [
-                  "Core Web Vitals",
-                  "PageSpeed 90+",
-                  "Schema.org Markup",
-                  "Mobile-Optimierung",
-                ],
-              },
-              {
-                color: "from-yellow-500 to-orange-500",
-                icon: "M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z",
-                title: "Keyword-Strategie",
-                desc: "<strong>Professionelle Keyword-Recherche</strong> – Suchvolumen, Kaufintention und Wettbewerb analysieren, um die wertvollsten Rankings zu gewinnen.",
-                items: [
-                  "Keyword-Recherche",
-                  "Search Intent Analyse",
-                  "Content-Mapping",
-                  "Long-Tail Keywords",
-                ],
-              },
-              {
-                color: "from-indigo-500 to-purple-500",
-                icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
-                title: "SEO Audit & Monitoring",
-                desc: "<strong>Umfassende Analyse und laufende Überwachung</strong> – technischer Audit, Ranking-Tracking und monatliche Reports mit klaren Handlungsempfehlungen.",
-                items: [
-                  "Technischer SEO-Audit",
-                  "Ranking-Tracking",
-                  "Traffic-Analyse",
-                  "Monatliche Reports",
-                ],
-              },
-            ].map((service) => (
-              <article class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 p-6 md:p-8">
+            services.map((service) => (
+              <article class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 p-8">
                 <div
-                  class={`w-14 h-14 md:w-16 md:h-16 bg-gradient-to-r ${service.color} rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300`}
+                  class={`w-14 h-14 bg-gradient-to-r ${service.color} rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
                 >
                   <svg
-                    class="w-7 h-7 md:w-8 md:h-8 text-white"
+                    class="w-7 h-7 text-white"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -600,16 +643,16 @@ const faqSchema = {
                     />
                   </svg>
                 </div>
-                <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3">
+                <h3 class="text-xl font-bold text-gray-900 mb-3">
                   {service.title}
                 </h3>
                 <p
-                  class="text-gray-600 leading-relaxed text-sm md:text-base mb-4"
+                  class="text-gray-600 leading-relaxed mb-4"
                   set:html={service.desc}
                 />
-                <ul class="space-y-1.5">
+                <ul class="text-gray-600 text-sm space-y-2">
                   {service.items.map((item) => (
-                    <li class="flex items-center gap-2 text-sm text-gray-600">
+                    <li class="flex items-center gap-2">
                       <span
                         class={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${service.color} flex-shrink-0`}
                         aria-hidden="true"
@@ -625,30 +668,25 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         WAS IST SEO – NeuronWriter Content Block 1
-    ════════════════════════════════════════════════════ -->
     <section
-      class="py-12 md:py-16 lg:py-24 bg-gray-50"
+      class="py-20 md:py-28 lg:py-32 bg-gray-50"
       aria-labelledby="seo-definition-heading"
     >
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div class="max-w-7xl mx-auto">
           <div
-            class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+            class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
           >
             <div>
               <h2
                 id="seo-definition-heading"
-                class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-6"
+                class="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
               >
                 Was ist <span class="gradient-text-brand-inline"
                   >Suchmaschinenoptimierung</span
                 > – und warum braucht Ihr Unternehmen SEO?
               </h2>
-              <div
-                class="space-y-5 text-gray-600 text-base md:text-lg leading-relaxed"
-              >
+              <div class="space-y-5 text-gray-600 text-lg leading-relaxed">
                 <p>
                   <strong class="text-gray-900"
                     >SEO (Suchmaschinenoptimierung)</strong
@@ -707,7 +745,6 @@ const faqSchema = {
               </ul>
             </div>
 
-            <!-- Stats -->
             <div class="grid grid-cols-2 gap-4 md:gap-6">
               <div
                 class="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl p-6 md:p-8 text-white text-center shadow-lg"
@@ -758,33 +795,30 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         LOCAL SEO – NeuronWriter Content Block 2
-    ════════════════════════════════════════════════════ -->
     <section
-      class="py-12 md:py-16 lg:py-24 bg-white"
+      class="py-20 md:py-28 lg:py-32 bg-white"
       aria-labelledby="local-seo-heading"
     >
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div class="max-w-7xl mx-auto">
-          <div class="text-center mb-12 md:mb-16">
+          <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
             <h2
               id="local-seo-heading"
-              class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
             >
               <span class="gradient-text-brand-inline"
                 >Local SEO Regensburg</span
               > – lokal gefunden werden
             </h2>
-            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+            <p class="text-xl text-gray-600">
               Für Unternehmen mit regionalem Kundenstamm ist Local SEO der
               effektivste SEO-Hebel
             </p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div
-              class="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-md hover:shadow-lg transition-shadow duration-300"
+              class="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-100 shadow-md hover:shadow-lg transition-shadow duration-300"
             >
               <div
                 class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-5"
@@ -804,7 +838,7 @@ const faqSchema = {
                   ></path>
                 </svg>
               </div>
-              <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3">
+              <h3 class="text-xl font-bold text-gray-900 mb-3">
                 Google Business Profile
               </h3>
               <p class="text-gray-600 leading-relaxed">
@@ -817,7 +851,7 @@ const faqSchema = {
             </div>
 
             <div
-              class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-6 md:p-8 border border-blue-100 shadow-md hover:shadow-lg transition-shadow duration-300"
+              class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 border border-blue-100 shadow-md hover:shadow-lg transition-shadow duration-300"
             >
               <div
                 class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mb-5"
@@ -836,7 +870,7 @@ const faqSchema = {
                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                 </svg>
               </div>
-              <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3">
+              <h3 class="text-xl font-bold text-gray-900 mb-3">
                 Lokale Keywords & Content
               </h3>
               <p class="text-gray-600 leading-relaxed">
@@ -849,7 +883,7 @@ const faqSchema = {
             </div>
 
             <div
-              class="bg-gradient-to-br from-green-50 to-white rounded-2xl p-6 md:p-8 border border-green-100 shadow-md hover:shadow-lg transition-shadow duration-300"
+              class="bg-gradient-to-br from-green-50 to-white rounded-2xl p-8 border border-green-100 shadow-md hover:shadow-lg transition-shadow duration-300"
             >
               <div
                 class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mb-5"
@@ -869,7 +903,7 @@ const faqSchema = {
                   ></path>
                 </svg>
               </div>
-              <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3">
+              <h3 class="text-xl font-bold text-gray-900 mb-3">
                 Bewertungsmanagement
               </h3>
               <p class="text-gray-600 leading-relaxed">
@@ -882,11 +916,9 @@ const faqSchema = {
             </div>
           </div>
 
-          <!-- Bild-Platzhalter Local SEO -->
           <div
             class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-blue-900 to-indigo-900 aspect-[16/6] flex items-center justify-center shadow-2xl"
           >
-            <!-- TODO: <img src="/assets/seo/local-seo-regensburg-google-maps.webp" alt="Local SEO Regensburg – Google Maps Optimierung für lokale Unternehmen" loading="lazy" width="1200" height="450" class="w-full h-full object-cover" /> -->
             <div class="text-center text-white p-8">
               <svg
                 class="w-12 h-12 mx-auto mb-3 opacity-40"
@@ -914,34 +946,30 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         ONPAGE VS OFFPAGE – NeuronWriter Content Block 3
-    ════════════════════════════════════════════════════ -->
     <section
-      class="py-12 md:py-16 lg:py-24 bg-gray-50"
+      class="py-20 md:py-28 lg:py-32 bg-gray-50"
       aria-labelledby="onpage-offpage-heading"
     >
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div class="max-w-7xl mx-auto">
-          <div class="text-center mb-12 md:mb-16">
+          <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
             <h2
               id="onpage-offpage-heading"
-              class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
             >
               <span class="gradient-text-brand-inline"
                 >OnPage vs. OffPage SEO</span
               > – so wirken sie zusammen
             </h2>
-            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+            <p class="text-xl text-gray-600">
               Beide Disziplinen sind unverzichtbar – und wirken am stärksten in
               Kombination
             </p>
           </div>
 
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10">
-            <!-- OnPage -->
             <div
-              class="bg-white rounded-2xl p-6 md:p-8 border border-blue-100 shadow-md"
+              class="bg-white rounded-2xl p-8 border border-blue-100 shadow-md"
             >
               <div class="flex items-center gap-4 mb-6">
                 <div
@@ -1006,9 +1034,8 @@ const faqSchema = {
               </ul>
             </div>
 
-            <!-- OffPage -->
             <div
-              class="bg-white rounded-2xl p-6 md:p-8 border border-green-100 shadow-md"
+              class="bg-white rounded-2xl p-8 border border-green-100 shadow-md"
             >
               <div class="flex items-center gap-4 mb-6">
                 <div
@@ -1077,23 +1104,18 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         TECHNICAL SEO – NeuronWriter Content Block 4
-    ════════════════════════════════════════════════════ -->
     <section
-      class="py-12 md:py-16 lg:py-24 bg-white"
+      class="py-20 md:py-28 lg:py-32 bg-white"
       aria-labelledby="technical-seo-heading"
     >
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div class="max-w-7xl mx-auto">
           <div
-            class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+            class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
           >
-            <!-- Bild-Platzhalter Technical SEO -->
             <div
               class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-indigo-900 to-blue-900 aspect-square flex items-center justify-center shadow-2xl order-2 lg:order-1"
             >
-              <!-- TODO: <img src="/assets/seo/technisches-seo-core-web-vitals-regensburg.webp" alt="Technisches SEO Regensburg – Core Web Vitals und PageSpeed Optimierung" loading="lazy" width="600" height="600" class="w-full h-full object-cover" /> -->
               <div class="text-center text-white p-8">
                 <svg
                   class="w-16 h-16 mx-auto mb-4 opacity-30"
@@ -1118,14 +1140,12 @@ const faqSchema = {
             <div class="order-1 lg:order-2">
               <h2
                 id="technical-seo-heading"
-                class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-6"
+                class="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
               >
-                <span class="gradient-text-brand-inline">Technisches SEO</span> -
+                <span class="gradient-text-brand-inline">Technisches SEO</span> –
                 die Basis für Top-Rankings
               </h2>
-              <div
-                class="space-y-5 text-gray-600 text-base md:text-lg leading-relaxed"
-              >
+              <div class="space-y-5 text-gray-600 text-lg leading-relaxed">
                 <p>
                   Technisches SEO umfasst alle Maßnahmen, die Google helfen,
                   Ihre Website <strong class="text-gray-900"
@@ -1185,38 +1205,33 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         SEO vs. GOOGLE ADS – NeuronWriter Content Block 5
-    ════════════════════════════════════════════════════ -->
     <section
-      class="py-12 md:py-16 lg:py-24 bg-gray-50"
+      class="py-20 md:py-28 lg:py-32 bg-gray-50"
       aria-labelledby="seo-vs-ads-heading"
     >
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div class="max-w-7xl mx-auto">
-          <div class="text-center mb-12 md:mb-16">
+          <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
             <h2
               id="seo-vs-ads-heading"
-              class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
             >
-              <span class="gradient-text-brand-inline">SEO vs. Google Ads</span> -
+              <span class="gradient-text-brand-inline">SEO vs. Google Ads</span> –
               was ist besser für Ihr Unternehmen?
             </h2>
-            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+            <p class="text-xl text-gray-600">
               Beide haben ihre Berechtigung – die richtige Kombination macht den
               Unterschied
             </p>
           </div>
 
-          <div
-            class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto"
-          >
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <div
-              class="bg-white rounded-2xl p-6 md:p-8 border-2 border-blue-200 shadow-md"
+              class="bg-white rounded-2xl p-8 border-2 border-blue-200 shadow-md"
             >
               <div class="flex items-center gap-3 mb-6">
                 <div
-                  class="w-10 h-10 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center"
+                  class="w-10 h-10 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0"
                 >
                   <svg
                     class="w-5 h-5 text-white"
@@ -1233,7 +1248,7 @@ const faqSchema = {
                   </svg>
                 </div>
                 <div>
-                  <h3 class="text-lg font-bold text-gray-900">
+                  <h3 class="text-xl font-bold text-gray-900">
                     SEO – Organische Sichtbarkeit
                   </h3>
                   <span
@@ -1281,11 +1296,11 @@ const faqSchema = {
             </div>
 
             <div
-              class="bg-white rounded-2xl p-6 md:p-8 border-2 border-orange-200 shadow-md"
+              class="bg-white rounded-2xl p-8 border-2 border-orange-200 shadow-md"
             >
               <div class="flex items-center gap-3 mb-6">
                 <div
-                  class="w-10 h-10 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-xl flex items-center justify-center"
+                  class="w-10 h-10 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-xl flex items-center justify-center flex-shrink-0"
                 >
                   <svg
                     class="w-5 h-5 text-white"
@@ -1303,7 +1318,7 @@ const faqSchema = {
                   </svg>
                 </div>
                 <div>
-                  <h3 class="text-lg font-bold text-gray-900">
+                  <h3 class="text-xl font-bold text-gray-900">
                     Google Ads – Bezahlte Anzeigen
                   </h3>
                   <span
@@ -1355,7 +1370,7 @@ const faqSchema = {
             <div
               class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-100"
             >
-              <p class="text-gray-700 text-base md:text-lg leading-relaxed">
+              <p class="text-gray-700 text-lg leading-relaxed">
                 <strong class="text-gray-900">Empfehlung iXone:</strong> Starten Sie
                 mit
                 <strong class="text-gray-900"
@@ -1375,67 +1390,39 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         SEO PROZESS
-    ════════════════════════════════════════════════════ -->
     <section
-      class="py-12 md:py-16 lg:py-24 bg-white"
+      class="py-20 md:py-28 lg:py-32 bg-white"
       aria-labelledby="prozess-heading"
     >
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div class="text-center mb-12 md:mb-16 lg:mb-20">
+        <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
           <h2
             id="prozess-heading"
-            class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4 md:mb-6"
+            class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
           >
             Unser <span class="gradient-text-brand-inline">SEO</span> Prozess
           </h2>
-          <p
-            class="text-lg md:text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto"
-          >
+          <p class="text-xl text-gray-600">
             Strukturiert, datenbasiert und auf Ihre Ziele ausgerichtet
           </p>
         </div>
         <div
-          class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-12"
+          class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12"
         >
           {
-            [
-              {
-                step: "1",
-                title: "SEO Audit & Analyse",
-                desc: "Umfassende Bestandsaufnahme: technische Fehler, Keyword-Gaps, Backlink-Profil und Konkurrenz-Analyse. Das Ergebnis ist eine klare Prioritätenliste mit den größten Hebeln für Ihre Rankings.",
-              },
-              {
-                step: "2",
-                title: "Strategie & Keyword-Planung",
-                desc: "Basierend auf dem Audit entwickeln wir eine maßgeschneiderte SEO-Strategie. Welche Keywords haben das beste Potenzial? Welcher Content fehlt? Wo sind die Quick Wins?",
-              },
-              {
-                step: "3",
-                title: "Umsetzung & Optimierung",
-                desc: "OnPage-Optimierung, technische Fixes, Content-Erstellung und Linkaufbau laufen parallel. Jede Maßnahme wird dokumentiert und auf ihre Wirkung überprüft.",
-              },
-              {
-                step: "4",
-                title: "Monitoring & Weiterentwicklung",
-                desc: "Monatliche Reports mit Rankings, Traffic und Conversion-Daten. Wir analysieren was funktioniert, passen die Strategie an und entwickeln Ihren SEO-Erfolg kontinuierlich weiter.",
-              },
-            ].map((item) => (
-              <div class="flex items-start space-x-4 lg:space-x-6">
+            prozessSchritte.map((item) => (
+              <div class="flex items-start gap-4 lg:gap-6">
                 <div
-                  class="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-black text-lg md:text-xl shadow-lg"
+                  class="flex-shrink-0 w-14 h-14 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-black text-xl shadow-lg"
                   aria-hidden="true"
                 >
                   {item.step}
                 </div>
                 <div>
-                  <h3 class="text-lg md:text-xl lg:text-2xl font-bold text-gray-900 mb-2 md:mb-3">
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
                     {item.title}
                   </h3>
-                  <p class="text-gray-600 text-sm md:text-base lg:text-lg leading-relaxed">
-                    {item.desc}
-                  </p>
+                  <p class="text-gray-600 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))
@@ -1444,75 +1431,32 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         PRICING – Preis-Orientierung (kein Festpreis)
-    ════════════════════════════════════════════════════ -->
     <section
-      class="py-12 md:py-16 lg:py-24 bg-gray-50"
+      class="py-20 md:py-28 lg:py-32 bg-gray-50"
       aria-labelledby="preise-heading"
     >
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div class="max-w-5xl mx-auto">
-          <div class="text-center mb-12 md:mb-16">
+          <div class="text-center mb-16 md:mb-20">
             <h2
               id="preise-heading"
-              class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
             >
-              <span class="gradient-text-brand-inline">Preis-Orientierung</span> -
+              <span class="gradient-text-brand-inline">Preis-Orientierung</span> –
               damit Sie ein Gefühl bekommen
             </h2>
-            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+            <p class="text-xl text-gray-600">
               Transparente Richtwerte – das finale Angebot richtet sich nach
               Ihrem konkreten Bedarf
             </p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-10">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
             {
-              [
-                {
-                  title: "SEO-Audit",
-                  price: "ab 499 €*",
-                  desc: "Einmalige Analyse Ihrer aktuellen SEO-Performance mit konkretem Maßnahmenplan.",
-                  items: [
-                    "Technischer Audit",
-                    "Keyword-Analyse",
-                    "Konkurrenz-Check",
-                    "Handlungsempfehlungen",
-                  ],
-                  color: "from-blue-500 to-cyan-500",
-                  badge: "Einmalig",
-                },
-                {
-                  title: "SEO-Betreuung",
-                  price: "ab 499 €/Monat*",
-                  desc: "Laufende SEO-Optimierung mit monatlichem Reporting und persönlichem Ansprechpartner.",
-                  items: [
-                    "OnPage-Optimierung",
-                    "Content-Erstellung",
-                    "Linkaufbau",
-                    "Monatliche Reports",
-                  ],
-                  color: "from-brand-orange to-yellow-500",
-                  badge: "Empfohlen",
-                },
-                {
-                  title: "Local SEO",
-                  price: "ab 299 €/Monat*",
-                  desc: "Speziell für lokale Unternehmen in Regensburg und Bayern – mehr Sichtbarkeit vor Ort.",
-                  items: [
-                    "Google Business Profile",
-                    "Lokale Keywords",
-                    "Bewertungsmanagement",
-                    "Citation Building",
-                  ],
-                  color: "from-purple-500 to-pink-500",
-                  badge: "Lokal",
-                },
-              ].map((plan) => (
-                <div class="bg-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 group">
+              preisPakete.map((plan) => (
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 group">
                   <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-lg font-bold text-gray-900">
+                    <h3 class="text-xl font-bold text-gray-900">
                       {plan.title}
                     </h3>
                     <span
@@ -1539,10 +1483,13 @@ const faqSchema = {
                     ))}
                   </ul>
                   <a
-                    href="/kontakt"
+                    href={CALENDLY}
+                    target="_blank"
+                    rel="noopener"
+                    data-calendly-popup-url={CALENDLY}
                     class="block text-center py-2.5 px-4 rounded-xl border-2 border-gray-200 text-gray-700 font-semibold text-sm hover:border-brand-orange hover:text-brand-orange transition-colors duration-200"
                   >
-                    Angebot anfragen
+                    Angebot besprechen
                   </a>
                 </div>
               ))
@@ -1550,9 +1497,9 @@ const faqSchema = {
           </div>
 
           <div
-            class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 md:p-8 border border-blue-100 text-center"
+            class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-100 text-center"
           >
-            <p class="text-gray-700 text-base md:text-lg leading-relaxed mb-2">
+            <p class="text-gray-700 text-lg leading-relaxed mb-2">
               <strong class="text-gray-900"
                 >*Alle Preise sind Richtwerte zzgl. gesetzlicher MwSt.</strong
               >
@@ -1569,31 +1516,28 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         WARUM IXONE
-    ════════════════════════════════════════════════════ -->
     <section
-      class="py-12 md:py-16 lg:py-24 bg-white"
+      class="py-20 md:py-28 lg:py-32 bg-white"
       aria-labelledby="warum-ixone-heading"
     >
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div class="max-w-7xl mx-auto">
-          <div class="text-center mb-12 md:mb-16">
+          <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
             <h2
               id="warum-ixone-heading"
-              class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
             >
               Warum <span class="gradient-text-brand-inline">iXone</span> als SEO
               Agentur wählen?
             </h2>
-            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+            <p class="text-xl text-gray-600">
               Nicht die größte Agentur – aber die mit dem besten
               Preis-Leistungs-Verhältnis in Regensburg
             </p>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div
-              class="relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 group"
+              class="relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 group"
             >
               <div
                 class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"
@@ -1613,7 +1557,7 @@ const faqSchema = {
                   ></path>
                 </svg>
               </div>
-              <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3">
+              <h3 class="text-xl font-bold text-gray-900 mb-3">
                 Lokale Expertise + moderner Tech-Stack
               </h3>
               <p class="text-gray-600 leading-relaxed">
@@ -1625,7 +1569,7 @@ const faqSchema = {
             </div>
 
             <div
-              class="relative bg-gradient-to-br from-orange-50 to-white rounded-2xl p-6 md:p-8 border border-orange-100 shadow-md hover:shadow-xl transition-all duration-300 group"
+              class="relative bg-gradient-to-br from-orange-50 to-white rounded-2xl p-8 border border-orange-100 shadow-md hover:shadow-xl transition-all duration-300 group"
             >
               <div
                 class="w-12 h-12 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"
@@ -1645,7 +1589,7 @@ const faqSchema = {
                   ></path>
                 </svg>
               </div>
-              <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3">
+              <h3 class="text-xl font-bold text-gray-900 mb-3">
                 SEO + Webdesign aus einer Hand
               </h3>
               <p class="text-gray-600 leading-relaxed">
@@ -1657,7 +1601,7 @@ const faqSchema = {
             </div>
 
             <div
-              class="relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 group"
+              class="relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 group"
             >
               <div
                 class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"
@@ -1677,7 +1621,7 @@ const faqSchema = {
                   ></path>
                 </svg>
               </div>
-              <h3 class="text-lg md:text-xl font-bold text-gray-900 mb-3">
+              <h3 class="text-xl font-bold text-gray-900 mb-3">
                 Transparenz statt Agentur-Blabla
               </h3>
               <p class="text-gray-600 leading-relaxed">
@@ -1692,67 +1636,31 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         FAQ
-    ════════════════════════════════════════════════════ -->
     <section
-      class="py-12 md:py-16 lg:py-24 xl:py-32 bg-white"
+      class="py-20 md:py-28 lg:py-32 bg-white"
       aria-labelledby="faq-heading"
     >
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div class="max-w-4xl mx-auto">
-          <div class="text-center mb-12 md:mb-16">
+          <div class="text-center mb-16 md:mb-20">
             <h2
               id="faq-heading"
-              class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 md:mb-6"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
             >
               Häufige Fragen zur <span class="gradient-text-brand-inline"
                 >SEO Agentur Regensburg</span
               >
             </h2>
-            <p class="text-lg md:text-xl text-gray-600">
+            <p class="text-xl text-gray-600">
               Ehrliche Antworten zu SEO, Kosten und Ergebnissen
             </p>
           </div>
           <div class="space-y-4">
             {
-              [
-                {
-                  q: "Was macht eine SEO Agentur in Regensburg?",
-                  a: "Eine professionelle SEO Agentur in Regensburg übernimmt die ganzheitliche Suchmaschinenoptimierung: technisches SEO, OnPage-Optimierung, Content-Erstellung, Linkaufbau und Local SEO. iXone entwickelt individuelle Strategien für mehr Sichtbarkeit bei Google und messbar mehr qualifizierte Anfragen.",
-                },
-                {
-                  q: "Wie lange dauert SEO bis erste Ergebnisse sichtbar sind?",
-                  a: "Erste Verbesserungen bei Rankings und Traffic sind nach 3–6 Monaten messbar. Nachhaltige, signifikante Ergebnisse zeigen sich nach 6–12 Monaten. SEO ist eine langfristige Investition – im Gegensatz zu Google Ads bleibt der Effekt auch ohne laufendes Budget bestehen.",
-                },
-                {
-                  q: "Was kostet professionelle SEO-Betreuung in Regensburg?",
-                  a: "Die Kosten hängen von Umfang, Branche und Wettbewerb ab. Eine monatliche SEO-Betreuung startet bei iXone ab 499 €. Nach einer kostenlosen Erstberatung erhalten Sie ein transparentes Angebot ohne versteckte Kosten und ohne Mindestlaufzeiten.",
-                },
-                {
-                  q: "Was ist der Unterschied zwischen SEO und Google Ads?",
-                  a: "Google Ads liefert sofortige Sichtbarkeit durch bezahlte Anzeigen – aber nur solange das Budget läuft. SEO baut nachhaltige organische Rankings auf, die dauerhaft Traffic generieren. Langfristig ist SEO die kosteneffizientere Strategie, kurzfristig ergänzen sich beide Kanäle optimal.",
-                },
-                {
-                  q: "Was ist Local SEO und warum ist es für Regensburger Unternehmen wichtig?",
-                  a: "Local SEO optimiert Ihre Sichtbarkeit bei lokalen Suchanfragen wie 'Steuerberater Regensburg' oder 'Handwerker in meiner Nähe'. Dazu gehören Google Business Profile Optimierung, lokale Keywords, Bewertungsmanagement und lokale Backlinks. Für Unternehmen mit regionalem Kundenstamm ist Local SEO oft der effektivste SEO-Hebel.",
-                },
-                {
-                  q: "Was sind Core Web Vitals und warum sind sie für SEO relevant?",
-                  a: "Core Web Vitals sind Googles Messgrößen für Nutzererfahrung: Ladegeschwindigkeit (LCP), visuelle Stabilität (CLS) und Interaktivität (INP). Seit 2021 sind sie offizieller Google-Rankingfaktor. iXone nutzt moderne Technologien wie Astro für Scores über 90 im grünen Bereich.",
-                },
-                {
-                  q: "Wie messe ich den Erfolg von SEO-Maßnahmen?",
-                  a: "Wichtige SEO-KPIs: organischer Traffic, Keyword-Rankings, Sichtbarkeitsindex, Conversion-Rate und Kosten pro Lead. iXone richtet professionelles Tracking ein und liefert monatliche Reports mit klaren Zahlen – transparent und nachvollziehbar.",
-                },
-                {
-                  q: "Kann iXone auch einen Website-Relaunch SEO-sicher begleiten?",
-                  a: "Ja. Ein Relaunch ohne SEO-Begleitung kann zu massiven Traffic-Verlusten führen. iXone sorgt für korrekte URL-Weiterleitungen, Erhalt bestehender Rankings und technisch saubere Migration – damit Ihr Relaunch Ihre SEO-Performance verbessert statt beschädigt.",
-                },
-              ].map((item) => (
+              faqs.map((item) => (
                 <details class="faq-item bg-white rounded-xl shadow-sm overflow-hidden group border border-gray-200 transition-colors duration-200">
                   <summary class="px-6 py-5 cursor-pointer hover:bg-gray-50 transition-colors duration-200 flex justify-between items-center gap-4 list-none">
-                    <h3 class="text-base md:text-lg font-semibold text-gray-900 text-left">
+                    <h3 class="text-lg font-semibold text-gray-900 text-left">
                       {item.q}
                     </h3>
                     <span
@@ -1774,7 +1682,7 @@ const faqSchema = {
                       </svg>
                     </span>
                   </summary>
-                  <div class="faq-body px-6 pb-5 text-gray-600 leading-relaxed text-sm md:text-base border-t border-gray-100 pt-4">
+                  <div class="faq-body px-6 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
                     <p>{item.a}</p>
                   </div>
                 </details>
@@ -1785,11 +1693,8 @@ const faqSchema = {
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════
-         CTA
-    ════════════════════════════════════════════════════ -->
     <section
-      class="py-12 md:py-16 lg:py-24 xl:py-32 bg-gradient-to-r from-blue-700 to-indigo-700 relative overflow-hidden"
+      class="py-20 md:py-28 lg:py-32 bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-900 relative overflow-hidden"
       aria-labelledby="cta-heading"
     >
       <div class="absolute inset-0 opacity-10" aria-hidden="true">
@@ -1802,49 +1707,39 @@ const faqSchema = {
       <div
         class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10"
       >
-        <div class="max-w-5xl mx-auto text-center text-white">
-          <h2
-            id="cta-heading"
-            class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 lg:mb-8"
-          >
+        <div class="max-w-4xl mx-auto text-center text-white">
+          <h2 id="cta-heading" class="text-3xl md:text-4xl font-bold mb-6">
             Bereit für Top-Rankings bei Google?
           </h2>
-          <p
-            class="text-base md:text-lg lg:text-xl xl:text-2xl mb-6 md:mb-8 lg:mb-12 opacity-90 leading-relaxed max-w-3xl mx-auto"
-          >
+          <p class="text-xl mb-10 opacity-90 leading-relaxed">
             Kostenlose SEO-Analyse, transparentes Angebot, persönlicher
             Ansprechpartner. Starten Sie jetzt mit iXone – der SEO Agentur aus
             Regensburg.
           </p>
-          <div
-            class="flex flex-col sm:flex-row gap-3 md:gap-4 lg:gap-6 justify-center"
-          >
+          <div class="flex justify-center">
             <a
-              href="/kontakt"
-              class="bg-white text-blue-700 hover:bg-gray-100 px-6 py-3 md:px-8 md:py-4 lg:px-10 lg:py-5 rounded-xl font-bold text-base md:text-lg lg:text-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-            >
-              Kostenlose SEO-Analyse anfordern
-            </a>
-            <a
-              href="/kontakt"
-              class="border-2 border-white text-white hover:bg-white hover:text-blue-700 px-6 py-3 md:px-8 md:py-4 lg:px-10 lg:py-5 rounded-xl font-semibold text-base md:text-lg lg:text-xl transition-all duration-300 flex items-center justify-center gap-2"
-              aria-label="Zum Kontaktformular der iXone SEO Agentur Regensburg"
+              href={CALENDLY}
+              target="_blank"
+              rel="noopener"
+              data-calendly-popup-url={CALENDLY}
+              class="group inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl bg-white text-indigo-800 font-bold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
+              aria-label="Termin vereinbaren – vor Ort oder per Videokonferenz"
             >
               <svg
-                class="w-5 h-5"
+                class="w-6 h-6 flex-shrink-0"
                 fill="none"
                 stroke="currentColor"
+                stroke-width="1.75"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                 ></path>
               </svg>
-              Zum Kontaktformular
+              Termin vereinbaren
             </a>
           </div>
         </div>
@@ -1854,7 +1749,6 @@ const faqSchema = {
 </Layout>
 
 <script>
-  // ── Animierte SEO-Metriken Counter ────────────────────
   function animateCounter(
     id: string,
     target: number,
@@ -1866,7 +1760,7 @@ const faqSchema = {
     const start = performance.now();
     const update = (now: number) => {
       const progress = Math.min((now - start) / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+      const ease = 1 - Math.pow(1 - progress, 3);
       const value = ease * target;
       el.textContent =
         decimals > 0 ? value.toFixed(decimals) : Math.floor(value).toString();
@@ -1875,7 +1769,10 @@ const faqSchema = {
     requestAnimationFrame(update);
   }
 
-  // Intersection Observer – Counter starten wenn Hero sichtbar
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
   const heroSection = document.querySelector(
     '[aria-label="SEO Agentur Regensburg Hero"]',
   );
@@ -1884,10 +1781,11 @@ const faqSchema = {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            animateCounter("traffic-counter", 147, 2000);
-            animateCounter("keywords-counter", 89, 2200);
-            animateCounter("conversion-counter", 3.2, 1800, 1);
-            animateCounter("speed-counter", 94, 2400);
+            const d = prefersReducedMotion ? 0 : 1;
+            animateCounter("traffic-counter", 147, 2000 * d);
+            animateCounter("keywords-counter", 89, 2200 * d);
+            animateCounter("conversion-counter", 3.2, 1800 * d, 1);
+            animateCounter("speed-counter", 94, 2400 * d);
             observer.disconnect();
           }
         });
@@ -1897,9 +1795,8 @@ const faqSchema = {
     observer.observe(heroSection);
   }
 
-  // Live Audits Zahl zufällig wechseln
   const auditsEl = document.getElementById("active-audits");
-  if (auditsEl) {
+  if (auditsEl && !prefersReducedMotion) {
     setInterval(() => {
       const next = Math.floor(Math.random() * 3) + 2;
       if (next.toString() !== auditsEl.textContent) {
@@ -1912,6 +1809,7 @@ const faqSchema = {
     }, 8000);
     auditsEl.style.transition = "opacity 0.3s ease";
   }
+
   document.querySelectorAll(".faq-item").forEach((details) => {
     const body = details.querySelector(".faq-body") as HTMLElement | null;
     if (!body) return;
@@ -1926,8 +1824,7 @@ const faqSchema = {
     }
     details.addEventListener("toggle", () => {
       if ((details as HTMLDetailsElement).open) {
-        const h = body.scrollHeight;
-        body.style.maxHeight = `${h}px`;
+        body.style.maxHeight = `${body.scrollHeight}px`;
         body.style.opacity = "1";
         const onEnd = (e: TransitionEvent) => {
           if (e.propertyName === "max-height") {
