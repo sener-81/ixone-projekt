@@ -1,5 +1,4 @@
 ---
-// src/layouts/Layout.astro
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import BackTop from "../components/BackTop.astro";
@@ -31,83 +30,95 @@ const { title, description, canonical, ogImage, noindex, structuredData } =
       noindex={noindex}
       structuredData={structuredData}
     />
-    <link
-      rel="stylesheet"
-      href="https://assets.calendly.com/assets/external/widget.css"
-      data-calendly-stylesheet
-    />
   </head>
 
   <body class="bg-white text-gray-900 antialiased">
-    <!-- Skip Link für Accessibility -->
     <a href="#main-content" class="skip-to-main">Zum Hauptinhalt springen</a>
 
-    <!-- Header -->
     <Header />
 
-    <!-- Main Content -->
     <main id="main-content">
       <slot />
     </main>
 
-    <!-- Footer -->
     <Footer />
 
-    <!-- BackTop Button -->
     <BackTop />
 
-    <!-- Calendly Popup Script -->
-    <script
-      src="https://assets.calendly.com/assets/external/widget.js"
-      type="text/javascript"
-      async
-      data-calendly-script></script>
     <script is:inline>
       (() => {
-        const CALENDLY_SRC =
+        const CALENDLY_JS =
           "https://assets.calendly.com/assets/external/widget.js";
+        const CALENDLY_CSS =
+          "https://assets.calendly.com/assets/external/widget.css";
 
-        // Ensure script is present (in case async load was blocked)
-        function ensureCalendlyScript() {
-          if (window.Calendly) return Promise.resolve();
+        let assetsRequested = false;
 
+        function loadAssets() {
+          if (assetsRequested) return;
+          assetsRequested = true;
+
+          const link = document.createElement("link");
+          link.rel = "stylesheet";
+          link.href = CALENDLY_CSS;
+          document.head.appendChild(link);
+
+          const script = document.createElement("script");
+          script.src = CALENDLY_JS;
+          script.async = true;
+          script.setAttribute("data-calendly-script", "");
+          document.body.appendChild(script);
+        }
+
+        function whenReady() {
           return new Promise((resolve) => {
-            const existing = document.querySelector(
-              "script[data-calendly-script]",
-            );
-            if (existing) {
-              existing.addEventListener("load", () => resolve());
-              existing.addEventListener("error", () => resolve());
+            if (window.Calendly && window.Calendly.initPopupWidget) {
+              resolve();
               return;
             }
-
-            const script = document.createElement("script");
-            script.src = CALENDLY_SRC;
-            script.async = true;
-            script.setAttribute("data-calendly-script", "");
+            loadAssets();
+            const script = document.querySelector(
+              "script[data-calendly-script]",
+            );
+            if (!script) {
+              resolve();
+              return;
+            }
             script.addEventListener("load", () => resolve());
             script.addEventListener("error", () => resolve());
-            document.body.appendChild(script);
           });
         }
 
         async function openCalendlyPopup(url) {
-          await ensureCalendlyScript();
-          if (window.Calendly?.initPopupWidget) {
+          await whenReady();
+          if (window.Calendly && window.Calendly.initPopupWidget) {
             window.Calendly.initPopupWidget({ url });
+          } else {
+            window.open(url, "_blank", "noopener");
           }
         }
 
         document.addEventListener("click", (event) => {
+          if (
+            event.button !== 0 ||
+            event.metaKey ||
+            event.ctrlKey ||
+            event.shiftKey ||
+            event.altKey
+          ) {
+            return;
+          }
+
           const target =
             event.target instanceof Element
               ? event.target.closest("[data-calendly-popup-url]")
               : null;
           if (!target) return;
 
-          event.preventDefault();
           const url = target.getAttribute("data-calendly-popup-url");
           if (!url) return;
+
+          event.preventDefault();
           openCalendlyPopup(url);
         });
       })();
