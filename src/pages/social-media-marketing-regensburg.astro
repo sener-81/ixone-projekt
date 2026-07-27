@@ -1,17 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { breadcrumbSchema } from "../data/structuredData";
+import ServiceCrosslinks from "../components/ServiceCrosslinks.astro";
 
 const CALENDLY =
   "https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b";
-
-const breadcrumbs = breadcrumbSchema([
-  { name: "Home", url: "https://ixone.de/" },
-  {
-    name: "Social Media Marketing",
-    url: "https://ixone.de/social-media-marketing-regensburg",
-  },
-]);
 
 const serviceSchema = {
   "@context": "https://schema.org",
@@ -209,12 +201,12 @@ const kanaele = [
 ---
 
 <Layout
-  title="Social Media Marketing Regensburg | Facebook, Instagram & TikTok | iXone"
-  description="Social Media Marketing Agentur aus Regensburg: Facebook, Instagram, TikTok & YouTube Marketing, Content & Ads für mehr Reichweite, Engagement und Kunden. Jetzt kostenlos beraten lassen."
+  title="Social Media Marketing Regensburg | iXone Digitalagentur"
+  description="Social Media Marketing aus Regensburg: Content und Ads für Instagram, TikTok, Facebook und YouTube – mehr Reichweite, Engagement und neue Kunden."
   canonical="https://ixone.de/social-media-marketing-regensburg"
-  structuredData={[breadcrumbs, serviceSchema, faqSchema]}
+  structuredData={[serviceSchema, faqSchema]}
 >
-  <div class="pt-14 sm:pt-16 md:pt-18 lg:pt-20 xl:pt-22 bg-white">
+  <div class="bg-white">
     <section
       class="relative overflow-hidden bg-gradient-to-br from-pink-900 via-purple-800 to-indigo-900 text-white"
       aria-label="Social Media Marketing Agentur Regensburg Hero"
@@ -800,6 +792,12 @@ const kanaele = [
         </div>
       </div>
     </section>
+
+    <ServiceCrosslinks
+      current="social-media-marketing-regensburg"
+      headline="Das könnte Sie auch interessieren"
+      intro="Social Media wirkt am stärksten, wenn Website, Rankings und Kampagnen zusammenspielen."
+    />
 
     <section
       class="py-20 md:py-28 lg:py-32 bg-gradient-to-r from-pink-900 via-purple-800 to-indigo-900 relative overflow-hidden"

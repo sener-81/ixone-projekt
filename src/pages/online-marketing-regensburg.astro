@@ -1,17 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { breadcrumbSchema } from "../data/structuredData";
+import ServiceCrosslinks from "../components/ServiceCrosslinks.astro";
 
 const CALENDLY =
-  "https://calendly.com/senerbayram-info/30min?primary_color=ff8b00";
-
-const breadcrumbs = breadcrumbSchema([
-  { name: "Home", url: "https://ixone.de/" },
-  {
-    name: "Online Marketing",
-    url: "https://ixone.de/online-marketing-regensburg",
-  },
-]);
+  "https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b";
 
 const serviceSchema = {
   "@context": "https://schema.org",
@@ -22,22 +14,20 @@ const serviceSchema = {
     "Online Marketing Agentur aus Regensburg. Google Ads, SEA, Social Media Ads, Content Marketing, E-Mail Marketing und Conversion-Optimierung für messbare Erfolge und maximalen ROI.",
   provider: { "@id": "https://ixone.de/#organization" },
   areaServed: [
-    "Regensburg",
-    "Neutraubling",
-    "Obertraubling",
-    "Lappersdorf",
-    "Pentling",
-    "Barbing",
-    "Sinzing",
-    "Zeitlarn",
-    "Wenzenbach",
-    "Nittendorf",
-    "Bad Abbach",
-    "Kelheim",
-    "Straubing",
-    "Landshut",
-    "Bayern",
-    "Deutschland",
+    { "@type": "City", name: "Regensburg" },
+    { "@type": "City", name: "Neutraubling" },
+    { "@type": "City", name: "Obertraubling" },
+    { "@type": "City", name: "Lappersdorf" },
+    { "@type": "City", name: "Pentling" },
+    { "@type": "City", name: "Barbing" },
+    { "@type": "City", name: "Sinzing" },
+    { "@type": "City", name: "Zeitlarn" },
+    { "@type": "City", name: "Wenzenbach" },
+    { "@type": "City", name: "Nittendorf" },
+    { "@type": "City", name: "Regenstauf" },
+    { "@type": "City", name: "Donaustauf" },
+    { "@type": "State", name: "Bayern" },
+    { "@type": "Country", name: "Deutschland" },
   ],
   serviceType: "Online Marketing",
   url: "https://ixone.de/online-marketing-regensburg",
@@ -176,12 +166,12 @@ const qualityFactors = [
 ---
 
 <Layout
-  title="Online Marketing Agentur Regensburg | Google Ads & Performance | iXone"
-  description="Online Marketing Agentur aus Regensburg: Google Ads, Social Media Ads, Content Marketing & Conversion-Optimierung für messbare Erfolge und maximalen ROI. Jetzt kostenlos beraten lassen."
+  title="Online Marketing Agentur Regensburg | Google Ads | iXone"
+  description="Online Marketing Agentur aus Regensburg: Google Ads, Social Ads und Conversion-Optimierung für messbare Ergebnisse und mehr qualifizierte Anfragen."
   canonical="https://ixone.de/online-marketing-regensburg"
-  structuredData={[breadcrumbs, serviceSchema, faqSchema]}
+  structuredData={[serviceSchema, faqSchema]}
 >
-  <div class="pt-14 sm:pt-16 md:pt-18 lg:pt-20 xl:pt-22 bg-white">
+  <div class="bg-white">
     <section
       class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 text-white"
       aria-label="Online Marketing Agentur Regensburg Hero"
@@ -783,29 +773,59 @@ const qualityFactors = [
       </div>
     </section>
 
+    <ServiceCrosslinks
+      current="online-marketing-regensburg"
+      headline="Das könnte Sie auch interessieren"
+      intro="Kampagnen wirken am stärksten, wenn Website, Rankings und Social Media zusammenspielen."
+    />
+
     <section
-      class="py-20 md:py-28 lg:py-32 bg-gradient-to-r from-brand-orange to-yellow-500"
+      class="py-20 md:py-28 lg:py-32 bg-gradient-to-r from-slate-900 via-slate-800 to-gray-900 relative overflow-hidden"
       aria-labelledby="cta-heading"
     >
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="absolute inset-0 opacity-20" aria-hidden="true">
+        <div
+          class="absolute -top-24 -left-24 w-96 h-96 bg-brand-orange rounded-full blur-3xl"
+        >
+        </div>
+        <div
+          class="absolute -bottom-24 -right-24 w-96 h-96 bg-amber-500 rounded-full blur-3xl"
+        >
+        </div>
+      </div>
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-4xl mx-auto text-center text-white">
           <h2 id="cta-heading" class="text-3xl md:text-4xl font-bold mb-6">
             Bereit für erfolgreiches Online Marketing?
           </h2>
-          <p class="text-xl mb-10 opacity-90">
+          <p class="text-xl mb-10 opacity-90 leading-relaxed">
             Lassen Sie uns Ihre Strategie gemeinsam entwickeln. Kostenlose
             Erstberatung – Preis individuell je nach Projekt, ohne versteckte
             Kosten.
           </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <div class="flex justify-center">
             <a
               href={CALENDLY}
               target="_blank"
               rel="noopener"
-              class="bg-white text-brand-orange hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-              aria-label="Termin vereinbaren – vor Ort oder per Videokonferenz"
               data-calendly-popup-url={CALENDLY}
+              class="inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl bg-white text-gray-900 font-bold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
+              aria-label="Termin vereinbaren – vor Ort oder per Videokonferenz"
             >
+              <svg
+                class="w-6 h-6 text-brand-orange flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                ></path>
+              </svg>
               Termin vereinbaren
             </a>
           </div>

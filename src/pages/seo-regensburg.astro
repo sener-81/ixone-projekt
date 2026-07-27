@@ -1,14 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { breadcrumbSchema } from "../data/structuredData";
+import ServiceCrosslinks from "../components/ServiceCrosslinks.astro";
 
 const CALENDLY =
   "https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b";
-
-const breadcrumbs = breadcrumbSchema([
-  { name: "Home", url: "https://ixone.de/" },
-  { name: "SEO Agentur", url: "https://ixone.de/seo-regensburg" },
-]);
 
 const serviceSchema = {
   "@context": "https://schema.org",
@@ -230,7 +225,7 @@ const preisPakete = [
   },
   {
     title: "Local SEO",
-    price: "ab 499 €/Monat*",
+    price: "ab 299 €/Monat*",
     desc: "Speziell für lokale Unternehmen in Regensburg und Bayern – mehr Sichtbarkeit vor Ort.",
     items: [
       "Google Business Profile",
@@ -248,9 +243,9 @@ const preisPakete = [
   title="SEO Agentur Regensburg | Nachhaltige Suchmaschinenoptimierung | iXone"
   description="SEO Agentur Regensburg: Nachhaltige Suchmaschinenoptimierung für Ihre Sichtbarkeit bei Google. Steigern Sie Ihren Umsatz mit Local SEO. Jetzt unverbindlich anfragen!"
   canonical="https://ixone.de/seo-regensburg"
-  structuredData={[breadcrumbs, serviceSchema, faqSchema]}
+  structuredData={[serviceSchema, faqSchema]}
 >
-  <div class="pt-14 sm:pt-16 md:pt-18 lg:pt-20 xl:pt-22 bg-white">
+  <div class="bg-white">
     <section
       class="relative bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-900 text-white overflow-hidden"
       aria-label="SEO Agentur Regensburg Hero"
@@ -1692,6 +1687,8 @@ const preisPakete = [
         </div>
       </div>
     </section>
+
+    <ServiceCrosslinks current="seo-regensburg" />
 
     <section
       class="py-20 md:py-28 lg:py-32 bg-gradient-to-r from-blue-900 via-indigo-800 to-purple-900 relative overflow-hidden"

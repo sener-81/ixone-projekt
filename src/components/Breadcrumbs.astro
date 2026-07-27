@@ -1,0 +1,126 @@
+---
+export interface Props {
+  label?: string;
+  overlay?: boolean;
+}
+
+const { label, overlay = true } = Astro.props as Props;
+
+const SITE = "https://ixone.de";
+
+const LABELS: Record<string, string> = {
+  "webdesign-regensburg": "Webdesign",
+  "seo-regensburg": "SEO Agentur",
+  "online-marketing-regensburg": "Online Marketing",
+  "social-media-marketing-regensburg": "Social Media Marketing",
+  kontakt: "Kontakt",
+  impressum: "Impressum",
+  datenschutz: "Datenschutz",
+  blog: "Blog",
+  standorte: "Standorte",
+  branchen: "Branchen",
+  referenzen: "Referenzen",
+};
+
+const segmente = Astro.url.pathname
+  .split("/")
+  .filter(Boolean)
+  .map((s) => decodeURIComponent(s));
+
+const labelFor = (slug: string) =>
+  LABELS[slug] ??
+  slug
+    .split("-")
+    .map((wort) => wort.charAt(0).toUpperCase() + wort.slice(1))
+    .join(" ");
+
+const crumbs = [
+  { name: "Startseite", url: `${SITE}/` },
+  ...segmente.map((slug, i) => ({
+    name: label && i === segmente.length - 1 ? label : labelFor(slug),
+    url: `${SITE}/${segmente.slice(0, i + 1).join("/")}`,
+  })),
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: crumbs.map((crumb, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: crumb.name,
+    item: crumb.url,
+  })),
+};
+
+const anzeigen = segmente.length > 0;
+const pfadVon = (url: string) => url.replace(SITE, "") || "/";
+
+const stil = overlay
+  ? {
+      nav: "absolute top-0 left-0 right-0 z-20 bg-black/20 backdrop-blur-sm border-b border-white/10",
+      liste: "text-white/70",
+      link: "hover:text-white",
+      aktuell: "text-white",
+      pfeil: "text-white/40",
+    }
+  : {
+      nav: "bg-gray-50 border-b border-gray-100",
+      liste: "text-gray-500",
+      link: "hover:text-brand-orange",
+      aktuell: "text-gray-900",
+      pfeil: "text-gray-300",
+    };
+---
+
+{
+  anzeigen && (
+    <nav aria-label="Breadcrumb" class={stil.nav}>
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <ol
+          class={`flex flex-wrap items-center gap-2 py-3 text-sm ${stil.liste}`}
+        >
+          {crumbs.map((crumb, index) => {
+            const istLetzter = index === crumbs.length - 1;
+            return (
+              <li class="flex items-center gap-2">
+                {index > 0 && (
+                  <svg
+                    class={`w-4 h-4 flex-shrink-0 ${stil.pfeil}`}
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                )}
+                {istLetzter ? (
+                  <span
+                    class={`font-medium ${stil.aktuell}`}
+                    aria-current="page"
+                  >
+                    {crumb.name}
+                  </span>
+                ) : (
+                  <a
+                    href={pfadVon(crumb.url)}
+                    class={`transition-colors duration-200 ${stil.link}`}
+                  >
+                    {crumb.name}
+                  </a>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    </nav>
+  )
+}

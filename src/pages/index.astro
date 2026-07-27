@@ -5,20 +5,12 @@ import Services from "../components/Services.astro";
 import WhyChooseUs from "../components/WhyChooseUs.astro";
 import Testimonials from "../components/Testimonials.astro";
 import CTA from "../components/CTA.astro";
-import {
-  breadcrumbSchema,
-  organizationSchema,
-  websiteSchema,
-} from "../data/structuredData";
+import { organizationSchema, websiteSchema } from "../data/structuredData";
 import { Image } from "astro:assets";
 import aboutImage from "../assets/ixone-online-marketing-regensburg.webp";
 
 const CALENDLY =
   "https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b";
-
-const breadcrumbs = breadcrumbSchema([
-  { name: "Home", url: "https://ixone.de/" },
-]);
 
 const faqs = [
   {
@@ -93,9 +85,9 @@ const vorteile = [
   title="iXone – Digitalagentur Regensburg | Webdesign, SEO & Online-Marketing"
   description="Ihre Digitalagentur aus Regensburg – Webdesign, SEO & Online-Marketing. Seit 2007 über 500 Projekte. Kostenlose Erstberatung sichern."
   canonical="https://ixone.de/"
-  structuredData={[breadcrumbs, organizationSchema, websiteSchema, faqSchema]}
+  structuredData={[organizationSchema, websiteSchema, faqSchema]}
 >
-  <div class="pt-14 sm:pt-16 md:pt-18 lg:pt-20 xl:pt-22 bg-white">
+  <div class="bg-white">
     <Hero />
   </div>
 

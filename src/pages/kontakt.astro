@@ -1,11 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { breadcrumbSchema } from "../data/structuredData";
-
-const breadcrumbs = breadcrumbSchema([
-  { name: "Home", url: "https://ixone.de/" },
-  { name: "Kontakt", url: "https://ixone.de/kontakt" },
-]);
+import ServiceCrosslinks from "../components/ServiceCrosslinks.astro";
 
 const contactSchema = {
   "@context": "https://schema.org",
@@ -57,11 +52,11 @@ const CALENDLY =
 
 <Layout
   title="Kontakt | iXone Digitalagentur Regensburg & Neutraubling"
-  description="Kontakt zu iXone, Ihrer Digitalagentur aus Regensburg und Neutraubling. Termin online oder vor Ort vereinbaren oder per E-Mail schreiben. Im Umkreis Regensburg kommen wir auch zu Ihnen."
+  description="Kontakt zu iXone, Ihrer Digitalagentur aus Regensburg und Neutraubling. Termin online oder vor Ort vereinbaren – oder schreiben Sie uns eine E-Mail."
   canonical="https://ixone.de/kontakt"
-  structuredData={[breadcrumbs, contactSchema]}
+  structuredData={[contactSchema]}
 >
-  <div class="pt-14 sm:pt-16 md:pt-18 lg:pt-20 xl:pt-22 bg-white">
+  <div class="bg-white">
     <section
       class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 text-white"
       aria-label="Kontakt iXone Digitalagentur Regensburg Hero"
@@ -429,6 +424,11 @@ const CALENDLY =
         </div>
       </div>
     </section>
+
+    <ServiceCrosslinks
+      headline="Womit können wir helfen?"
+      intro="Unsere Leistungen für Unternehmen in Regensburg und dem Landkreis."
+    />
 
     <section
       class="py-20 md:py-28 lg:py-32 bg-gradient-to-r from-slate-900 via-slate-800 to-gray-900 relative overflow-hidden"

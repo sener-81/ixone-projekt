@@ -1,0 +1,120 @@
+---
+export interface Props {
+  current?: string;
+  headline?: string;
+  intro?: string;
+}
+
+const {
+  current = "",
+  headline = "Alles aus einer Hand",
+  intro = "Unsere Leistungen greifen ineinander – jede einzelne wirkt stärker im Zusammenspiel.",
+} = Astro.props as Props;
+
+const services = [
+  {
+    slug: "webdesign-regensburg",
+    title: "Webdesign Regensburg",
+    desc: "Schnelle, responsive Websites mit PageSpeed 90+ und technischem SEO von Anfang an.",
+    anchor: "Webdesign entdecken",
+    icon: "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z",
+  },
+  {
+    slug: "seo-regensburg",
+    title: "SEO Agentur Regensburg",
+    desc: "Nachhaltige Suchmaschinenoptimierung für bessere Rankings und mehr organischen Traffic.",
+    anchor: "SEO entdecken",
+    icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z",
+  },
+  {
+    slug: "online-marketing-regensburg",
+    title: "Online Marketing Regensburg",
+    desc: "Google Ads, Performance Marketing und Conversion-Optimierung für messbaren ROI.",
+    anchor: "Online Marketing entdecken",
+    icon: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6",
+  },
+  {
+    slug: "social-media-marketing-regensburg",
+    title: "Social Media Marketing",
+    desc: "Facebook, Instagram, TikTok und YouTube – Content und Ads für mehr Reichweite.",
+    anchor: "Social Media entdecken",
+    icon: "M7 20l4-16m2 16l4-16M6 9h14M4 15h14",
+  },
+];
+
+const gezeigt = services.filter((s) => s.slug !== current);
+const spalten = gezeigt.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3";
+---
+
+<section
+  class="py-20 md:py-28 lg:py-32 bg-gray-50"
+  aria-labelledby="crosslinks-heading"
+>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+    <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+      <h2
+        id="crosslinks-heading"
+        class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+      >
+        {headline}
+      </h2>
+      <p class="text-xl text-gray-600">{intro}</p>
+    </div>
+
+    <div
+      class={`grid grid-cols-1 md:grid-cols-2 ${spalten} gap-8 max-w-7xl mx-auto`}
+    >
+      {
+        gezeigt.map((s) => (
+          <a
+            href={`/${s.slug}`}
+            class="group flex flex-col bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-xl hover:border-brand-orange/30 transition-all duration-300 hover:-translate-y-1"
+          >
+            <div class="w-12 h-12 rounded-xl border border-brand-orange/30 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <svg
+                class="w-6 h-6 text-brand-orange"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d={s.icon}
+                />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">{s.title}</h3>
+            <p class="text-gray-600 leading-relaxed mb-6 flex-grow">{s.desc}</p>
+            <span class="inline-flex items-center gap-2 text-brand-orange font-semibold group-hover:gap-3 transition-all duration-300">
+              {s.anchor}
+              <svg
+                class="w-5 h-5 flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+
+    <p class="text-center text-gray-600 mt-12">
+      Nicht sicher, was zu Ihnen passt?{" "}
+      <a href="/kontakt" class="font-semibold text-brand-orange hover:underline"
+        >Sprechen Sie uns an</a
+      > – wir beraten Sie ehrlich.
+    </p>
+  </div>
+</section>

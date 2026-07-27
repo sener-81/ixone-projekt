@@ -3,6 +3,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import BackTop from "../components/BackTop.astro";
 import Head from "../components/Head.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
 import "../styles/global.css";
 import "../styles/fonts.css";
 
@@ -13,10 +14,20 @@ export interface Props {
   ogImage?: string;
   noindex?: boolean;
   structuredData?: object[];
+  breadcrumbLabel?: string;
+  breadcrumbOverlay?: boolean;
 }
 
-const { title, description, canonical, ogImage, noindex, structuredData } =
-  Astro.props as Props;
+const {
+  title,
+  description,
+  canonical,
+  ogImage,
+  noindex,
+  structuredData,
+  breadcrumbLabel,
+  breadcrumbOverlay = true,
+} = Astro.props as Props;
 ---
 
 <!doctype html>
@@ -37,8 +48,11 @@ const { title, description, canonical, ogImage, noindex, structuredData } =
 
     <Header />
 
-    <main id="main-content">
-      <slot />
+    <main id="main-content" class="pt-14 sm:pt-16 md:pt-18 lg:pt-20 xl:pt-22">
+      <div class="relative">
+        <Breadcrumbs label={breadcrumbLabel} overlay={breadcrumbOverlay} />
+        <slot />
+      </div>
     </main>
 
     <Footer />

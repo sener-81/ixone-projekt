@@ -1,12 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { breadcrumbSchema } from "../data/structuredData";
-
-const breadcrumbs = breadcrumbSchema([
-  { name: "Home", url: "https://ixone.de/" },
-  { name: "Datenschutz", url: "https://ixone.de/datenschutz" },
-]);
-
 const datenschutzHtml = `
 <h1>Datenschutz&shy;erkl&auml;rung</h1>
 <h2>1. Datenschutz auf einen Blick</h2>
@@ -81,9 +74,9 @@ E-Mail: info@ixone.de</p>
   title="Datenschutzerklärung | iXone – Digitalagentur Regensburg"
   description="Datenschutzerklärung der iXone Digitalagentur: Informationen zur Verarbeitung Ihrer Daten, zu eingesetzten Diensten und zu Ihren Rechten."
   canonical="https://ixone.de/datenschutz"
-  structuredData={[breadcrumbs]}
+  breadcrumbOverlay={false}
 >
-  <div class="pt-24 sm:pt-28 md:pt-32 pb-20 bg-white">
+  <div class="pt-10 md:pt-14 pb-20 bg-white">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto legal-content">
         <article set:html={datenschutzHtml} />
