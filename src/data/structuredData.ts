@@ -64,7 +64,7 @@ export const organizationSchema = {
         itemOffered: {
           "@type": "Service",
           name: "Webdesign Regensburg",
-          url: "https://ixone.de/webdesign-regensburg",
+          url: "https://ixone.de/webdesign-regensburg/",
           description:
             "Professionelle Website-Entwicklung und responsives Webdesign aus Regensburg",
         },
@@ -74,7 +74,7 @@ export const organizationSchema = {
         itemOffered: {
           "@type": "Service",
           name: "SEO Agentur Regensburg",
-          url: "https://ixone.de/seo-regensburg",
+          url: "https://ixone.de/seo-regensburg/",
           description: "Suchmaschinenoptimierung für bessere Google Rankings",
         },
       },
@@ -83,7 +83,7 @@ export const organizationSchema = {
         itemOffered: {
           "@type": "Service",
           name: "Online Marketing Regensburg",
-          url: "https://ixone.de/online-marketing-regensburg",
+          url: "https://ixone.de/online-marketing-regensburg/",
           description: "Strategisches digitales Marketing für messbare Erfolge",
         },
       },
@@ -92,7 +92,7 @@ export const organizationSchema = {
         itemOffered: {
           "@type": "Service",
           name: "Social Media Marketing Regensburg",
-          url: "https://ixone.de/social-media-marketing-regensburg",
+          url: "https://ixone.de/social-media-marketing-regensburg/",
           description:
             "Zielgruppengerechte Social Media Strategien für Facebook, Instagram, TikTok und YouTube",
         },
@@ -165,7 +165,7 @@ export const localBusinessRegensburgSchema = {
   name: "iXone Digitalagentur Regensburg",
   description:
     "Webdesign Agentur und SEO Agentur direkt in Regensburg. Persönliche Beratung vor Ort für Unternehmen in Regensburg und Bayern.",
-  url: "https://ixone.de/kontakt",
+  url: "https://ixone.de/kontakt/",
   telephone: "+4994015338873",
   email: "info@ixone.de",
   image: "https://ixone.de/assets/ixone-online-marketing-regensburg.webp",

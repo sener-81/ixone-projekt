@@ -5,11 +5,11 @@ import ServiceCrosslinks from "../components/ServiceCrosslinks.astro";
 const contactSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  "@id": "https://ixone.de/kontakt#contactpage",
+  "@id": "https://ixone.de/kontakt/#contactpage",
   name: "Kontakt – iXone Digitalagentur Regensburg",
   description:
     "Kontaktieren Sie iXone, Ihre Digitalagentur aus Regensburg und Neutraubling. Termin online oder vor Ort vereinbaren oder per E-Mail schreiben – im Umkreis Regensburg kommen wir auch zu Ihnen.",
-  url: "https://ixone.de/kontakt",
+  url: "https://ixone.de/kontakt/",
   isPartOf: { "@id": "https://ixone.de/#website" },
   about: { "@id": "https://ixone.de/#organization" },
   mainEntity: [
@@ -43,7 +43,7 @@ const standorte = [
   },
 ];
 
-const TELEFON_ANZEIGE = "+49 9401 5338873";
+const TELEFON_ANZEIGE = "+49 (0) 9401 - 533 88 73";
 const TELEFON_LINK = "+4994015338873";
 const EMAIL = "info@ixone.de";
 const CALENDLY =
@@ -53,7 +53,7 @@ const CALENDLY =
 <Layout
   title="Kontakt | iXone Digitalagentur Regensburg & Neutraubling"
   description="Kontakt zu iXone, Ihrer Digitalagentur aus Regensburg und Neutraubling. Termin online oder vor Ort vereinbaren – oder schreiben Sie uns eine E-Mail."
-  canonical="https://ixone.de/kontakt"
+  canonical="https://ixone.de/kontakt/"
   structuredData={[contactSchema]}
 >
   <div class="bg-white">
@@ -310,7 +310,7 @@ const CALENDLY =
     </section>
 
     <section
-      class="py-20 md:py-28 bg-white"
+      class="py-20 md:py-28 lg:py-32 bg-white"
       aria-labelledby="kontaktdaten-heading"
     >
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">

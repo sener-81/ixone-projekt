@@ -52,9 +52,7 @@ export const footerLinks = {
     { label: 'Online-Marketing', href: '/online-marketing-regensburg' },
     { label: 'Social Media Marketing', href: '/social-media-marketing-regensburg' }
   ],
-  // "Unternehmen"-Spalte: Kontakt + rechtliche Pflichtseiten zusammengefasst,
-  // damit die Spalte nicht leer wirkt.
-  // TODO: impressum.astro und datenschutz.astro in src/pages/ anlegen, bevor live!
+  // "Unternehmen"-Spalte: Kontakt + rechtliche Pflichtseiten zusammengefasst.
   company: [
     { label: 'Kontakt', href: '/kontakt' },
     { label: 'Impressum', href: '/impressum' },
