@@ -15,9 +15,6 @@
     "astro": "^7.1.4",
     "tailwindcss": "^4.1.18"
   },
-  "overrides": {
-    "vite": "^7"
-  },
   "allowScripts": {
     "fsevents@2.3.3": true,
     "esbuild@0.28.1": true

@@ -2,6 +2,9 @@
 import { navItems } from '../data/navigation';
 import Logo from './Logo.astro';
 import MobileMenu from './MobileMenu.astro';
+
+const CALENDLY_URL =
+  'https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b';
 ---
 
 <!-- FIXED: Komplett weißer Header ohne Transparenz -->
@@ -33,10 +36,10 @@ import MobileMenu from './MobileMenu.astro';
       <!-- Enhanced CTA Button -->
       <div class="hidden lg:flex">
         <a 
-          href="#"
+          href={CALENDLY_URL}
           class="group relative px-4 lg:px-6 xl:px-8 py-2.5 lg:py-3 xl:py-4 bg-gradient-to-r from-brand-orange to-yellow-500 text-white font-semibold text-sm lg:text-base xl:text-lg rounded-lg xl:rounded-xl shadow-lg hover:shadow-brand-orange/25 transition-all duration-300 transform hover:-translate-y-0.5 hover:scale-105 outline-none overflow-hidden"
           aria-label="Kostenloses Beratungsgespräch vereinbaren"
-          data-calendly-popup-url="https://calendly.com/senerbayram-info/30min?primary_color=ff8b00"
+          data-calendly-popup-url={CALENDLY_URL}
         >
           <!-- Shimmer Effect -->
           <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>

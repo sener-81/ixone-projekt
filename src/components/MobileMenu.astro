@@ -1,5 +1,8 @@
 ---
 import { navItems } from '../data/navigation';
+
+const CALENDLY_URL =
+  'https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b';
 ---
 
 <div class="lg:hidden relative z-50">
@@ -92,10 +95,10 @@ import { navItems } from '../data/navigation';
       <div class="p-6 border-t border-gray-100 bg-gray-50">
         <!-- Hauptaktion -->
         <a 
-          href="#"
+          href={CALENDLY_URL}
           class="block w-full bg-gradient-to-r from-brand-orange to-yellow-500 hover:from-yellow-500 hover:to-brand-orange text-white px-6 py-4 rounded-xl font-semibold text-center transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 mb-4"
           aria-label="Kostenloses Beratungsgespräch vereinbaren"
-          data-calendly-popup-url="https://calendly.com/senerbayram-info/30min?primary_color=ff8b00"
+          data-calendly-popup-url={CALENDLY_URL}
         >
           Kostenlose Beratung
         </a>
