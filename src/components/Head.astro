@@ -1,4 +1,4 @@
----
+﻿---
 // src/components/Head.astro
 
 export interface Props {
@@ -29,9 +29,9 @@ import {
 const canonicalURL = (
   canonical ?? new URL(Astro.url.pathname, Astro.site!)
 ).toString();
-const fullTitle = title.includes("iXone")
+const fullTitle = title.includes("ixOne")
   ? title
-  : `${title} | iXone Digitalagentur Regensburg`;
+  : `${title} | ixOne Digitalagentur Regensburg`;
 const fullOgImage = new URL(ogImage, Astro.site).href;
 ---
 
@@ -55,8 +55,8 @@ const fullOgImage = new URL(ogImage, Astro.site).href;
 />
 
 <!-- Author & Brand -->
-<meta name="author" content="iXone Digitalagentur Regensburg" />
-<meta name="copyright" content="© 2026 iXone Digitalagentur Regensburg" />
+<meta name="author" content="ixOne Digitalagentur Regensburg" />
+<meta name="copyright" content="Copyright 2026 ixOne Digitalagentur Regensburg" />
 
 <!-- Favicons -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -67,7 +67,7 @@ const fullOgImage = new URL(ogImage, Astro.site).href;
 <link rel="preconnect" href="https://cloud.ccm19.de" crossorigin />
 <link rel="preconnect" href="https://assets.calendly.com" crossorigin />
 
-<!-- Font Preloads für bessere Performance -->
+<!-- Font Preloads fuer bessere Performance -->
 <link
   rel="preload"
   href="/fonts/inter-v19-latin-regular.woff2"
@@ -95,7 +95,7 @@ const fullOgImage = new URL(ogImage, Astro.site).href;
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="iXone Digitalagentur Regensburg" />
+<meta property="og:site_name" content="ixOne Digitalagentur Regensburg" />
 <meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={fullOgImage} />

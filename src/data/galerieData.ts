@@ -33,8 +33,8 @@ export const galerieData: GalerieItem[] = [
   // ─────────────────────────────────────────────────────────────
   {
     file: "hero-digitalagentur-regensburg.webp",
-    alt: "iXone Digitalagentur Regensburg – Professionelles Webdesign und SEO für Unternehmen in Bayern",
-    caption: "iXone Digitalagentur",
+    alt: "ixOne Digitalagentur Regensburg – Professionelles Webdesign und SEO für Unternehmen in Bayern",
+    caption: "ixOne Digitalagentur",
   },
   {
     file: "hero-digitalagentur-regensburg.webp",

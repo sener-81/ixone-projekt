@@ -36,9 +36,9 @@ export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": "https://ixone.de/#organization",
-  name: "iXone Digitalagentur",
+  name: "ixOne Digitalagentur",
   alternateName: [
-    "iXone",
+    "ixOne",
     "Digitalagentur Regensburg",
     "Webdesign Agentur Regensburg",
   ],
@@ -128,7 +128,7 @@ export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": "https://ixone.de/#localbusiness",
-  name: "iXone Digitalagentur",
+  name: "ixOne Digitalagentur",
   description:
     "Professionelle Webdesign Agentur und SEO Agentur in Regensburg. Moderne Websites, SEO und Online-Marketing für Unternehmen in Bayern.",
   url: "https://ixone.de",
@@ -158,7 +158,7 @@ export const localBusinessSchema = {
     longitude: "12.20109",
   },
   areaServed: areaServedFull,
-  hasMap: "https://maps.google.com/?q=iXone+Digitalagentur+Neutraubling",
+  hasMap: "https://maps.google.com/?q=ixOne+Digitalagentur+Neutraubling",
   parentOrganization: { "@id": "https://ixone.de/#organization" },
 };
 
@@ -169,7 +169,7 @@ export const localBusinessRegensburgSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": "https://ixone.de/#localbusiness-regensburg",
-  name: "iXone Digitalagentur Regensburg",
+  name: "ixOne Digitalagentur Regensburg",
   description:
     "Webdesign Agentur und SEO Agentur direkt in Regensburg. Persönliche Beratung vor Ort für Unternehmen in Regensburg und Bayern.",
   url: "https://ixone.de/kontakt/",
@@ -198,7 +198,7 @@ export const localBusinessRegensburgSchema = {
     longitude: "12.105524",
   },
   areaServed: areaServedFull,
-  hasMap: "https://maps.google.com/?q=iXone+Digitalagentur+Humboldtstr.+48+93053+Regensburg",
+  hasMap: "https://maps.google.com/?q=ixOne+Digitalagentur+Humboldtstr.+48+93053+Regensburg",
   parentOrganization: { "@id": "https://ixone.de/#organization" },
 };
 
@@ -210,7 +210,7 @@ export const websiteSchema = {
   "@type": "WebSite",
   "@id": "https://ixone.de/#website",
   url: "https://ixone.de",
-  name: "iXone Digitalagentur",
+  name: "ixOne Digitalagentur",
   description:
     "Digitalagentur aus Regensburg für Webdesign, SEO und Online-Marketing",
   publisher: { "@id": "https://ixone.de/#organization" },

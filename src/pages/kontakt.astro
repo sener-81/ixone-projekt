@@ -6,9 +6,9 @@ const contactSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   "@id": "https://ixone.de/kontakt/#contactpage",
-  name: "Kontakt – iXone Digitalagentur Regensburg",
+  name: "Kontakt – ixOne Digitalagentur Regensburg",
   description:
-    "Kontaktieren Sie iXone, Ihre Digitalagentur aus Regensburg und Neutraubling. Termin online oder vor Ort vereinbaren oder per E-Mail schreiben – im Umkreis Regensburg kommen wir auch zu Ihnen.",
+    "Kontaktieren Sie ixOne, Ihre Digitalagentur aus Regensburg und Neutraubling. Termin online oder vor Ort vereinbaren oder per E-Mail schreiben – im Umkreis Regensburg kommen wir auch zu Ihnen.",
   url: "https://ixone.de/kontakt/",
   isPartOf: { "@id": "https://ixone.de/#website" },
   about: { "@id": "https://ixone.de/#organization" },
@@ -43,7 +43,7 @@ const standorte = [
   },
 ];
 
-const TELEFON_ANZEIGE = "+49 (0) 9401 - 533 88 73";
+const TELEFON_ANZEIGE = "+49 9401 5338873";
 const TELEFON_LINK = "+4994015338873";
 const EMAIL = "info@ixone.de";
 const CALENDLY =
@@ -51,15 +51,15 @@ const CALENDLY =
 ---
 
 <Layout
-  title="Kontakt | iXone Digitalagentur Regensburg & Neutraubling"
-  description="Kontakt zu iXone, Ihrer Digitalagentur aus Regensburg und Neutraubling. Termin online oder vor Ort vereinbaren – oder schreiben Sie uns eine E-Mail."
+  title="Kontakt | ixOne Digitalagentur Regensburg & Neutraubling"
+  description="Kontakt zu ixOne, Ihrer Digitalagentur aus Regensburg und Neutraubling. Termin online oder vor Ort vereinbaren – oder schreiben Sie uns eine E-Mail."
   canonical="https://ixone.de/kontakt/"
   structuredData={[contactSchema]}
 >
   <div class="bg-white">
     <section
       class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 text-white"
-      aria-label="Kontakt iXone Digitalagentur Regensburg Hero"
+      aria-label="Kontakt ixOne Digitalagentur Regensburg Hero"
     >
       <div class="absolute inset-0 opacity-20" aria-hidden="true">
         <div
@@ -110,7 +110,7 @@ const CALENDLY =
     >
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <h2 id="kontaktwege-heading" class="sr-only">
-          Kontaktmöglichkeiten zu iXone
+          Kontaktmöglichkeiten zu ixOne
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <a
@@ -264,7 +264,7 @@ const CALENDLY =
                 <div class="p-6 md:p-8">
                   <div class="flex items-center gap-3 mb-4">
                     <h3 class="text-xl font-bold text-gray-900">
-                      iXone {ort.name}
+                      ixOne {ort.name}
                     </h3>
                     <span
                       class={`text-xs font-semibold px-2.5 py-1 rounded-full text-white bg-gradient-to-r ${ort.accent}`}
