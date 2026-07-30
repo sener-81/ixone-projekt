@@ -118,7 +118,6 @@ export const organizationSchema = {
   sameAs: [
     "https://www.facebook.com/ixone.de",
     "https://www.instagram.com/ixone.de",
-    "https://www.linkedin.com/company/ixone",
   ],
 };
 
