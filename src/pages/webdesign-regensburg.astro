@@ -4,6 +4,7 @@ import ServiceCrosslinks from "../components/ServiceCrosslinks.astro";
 import TechStack from "../components/TechStack.astro";
 import { Image } from "astro:assets";
 import { galerieData } from "../data/galerieData";
+import { areaServedFull } from "../data/structuredData";
 
 const CALENDLY =
   "https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b";
@@ -17,24 +18,7 @@ const serviceSchema = {
     "Professionelles Webdesign aus Regensburg. Moderne, responsive Websites die konvertieren und bei Google ranken.",
   provider: { "@id": "https://ixone.de/#organization" },
   telephone: "+4994015338873",
-  areaServed: [
-    { "@type": "City", name: "Regensburg" },
-    { "@type": "City", name: "Neutraubling" },
-    { "@type": "City", name: "Obertraubling" },
-    { "@type": "City", name: "Lappersdorf" },
-    { "@type": "City", name: "Pentling" },
-    { "@type": "City", name: "Barbing" },
-    { "@type": "City", name: "Sinzing" },
-    { "@type": "City", name: "Zeitlarn" },
-    { "@type": "City", name: "Wenzenbach" },
-    { "@type": "City", name: "Nittendorf" },
-    { "@type": "City", name: "Bad Abbach" },
-    { "@type": "City", name: "Kelheim" },
-    { "@type": "City", name: "Straubing" },
-    { "@type": "City", name: "Landshut" },
-    { "@type": "State", name: "Bayern" },
-    { "@type": "Country", name: "Deutschland" },
-  ],
+  areaServed: areaServedFull,
   serviceType: [
     "Webdesign",
     "Webentwicklung",
@@ -127,15 +111,6 @@ const galerieItems = galerieData
   index: number;
 }[];
 
-const clientLogos = [
-  { name: "ProvenExpert", initials: "PE" },
-  { name: "Kunde 2", initials: "K2" },
-  { name: "Kunde 3", initials: "K3" },
-  { name: "Kunde 4", initials: "K4" },
-  { name: "Kunde 5", initials: "K5" },
-  { name: "Kunde 6", initials: "K6" },
-];
-
 const heroBadges = [
   {
     icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
@@ -217,8 +192,8 @@ const prozessSchritte = [
 ---
 
 <Layout
-  title="Webdesign Regensburg | Moderne Websites die ranken | iXone Digitalagentur"
-  description="Professionelles Webdesign aus Regensburg. Responsive, SEO-optimierte Websites ab 2.500 €. Mobile-first, schnell ladend, conversion-fokussiert. Jetzt kostenlos beraten lassen."
+  title="Webdesign Regensburg | Websites die ranken | iXone"
+  description="Professionelles Webdesign aus Regensburg: responsive, SEO-optimierte Websites ab 2.500 €. Mobile-first und schnell. Jetzt beraten lassen."
   canonical="https://ixone.de/webdesign-regensburg/"
   structuredData={[serviceSchema, faqSchema]}
 >
@@ -356,35 +331,6 @@ const prozessSchritte = [
               ))
             }
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section
-      class="py-10 md:py-12 bg-gray-50 border-y border-gray-100"
-      aria-label="Unsere Kunden"
-    >
-      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <p
-          class="text-center text-sm font-semibold uppercase tracking-widest text-gray-400 mb-8"
-        >
-          Vertrauen von Unternehmen in Regensburg & Bayern
-        </p>
-        <div
-          class="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16"
-        >
-          {
-            clientLogos.map((client) => (
-              <div
-                class="flex items-center justify-center w-32 h-14 md:w-36 md:h-16 bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 group"
-                title={client.name}
-              >
-                <span class="text-gray-400 group-hover:text-brand-orange font-bold text-lg tracking-wide transition-colors duration-300">
-                  {client.initials}
-                </span>
-              </div>
-            ))
-          }
         </div>
       </div>
     </section>
@@ -819,6 +765,13 @@ const prozessSchritte = [
           </h2>
           <p class="text-xl text-gray-600">
             Vier Phasen. Klare Meilensteine. Keine Überraschungen.
+            Nach dem Launch verbinden wir Ihre Website auf Wunsch mit
+            <a
+              href="/social-media-marketing-regensburg"
+              class="text-brand-orange font-semibold hover:underline"
+              >Social Media Marketing</a
+            >
+            und SEO, damit aus der neuen Website ein aktiver Vertriebskanal wird.
           </p>
         </div>
         <div

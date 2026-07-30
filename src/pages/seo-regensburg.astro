@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ServiceCrosslinks from "../components/ServiceCrosslinks.astro";
+import { areaServedFull } from "../data/structuredData";
 
 const CALENDLY =
   "https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b";
@@ -14,24 +15,7 @@ const serviceSchema = {
     "Professionelle SEO Agentur aus Regensburg. Suchmaschinenoptimierung, OnPage SEO, OffPage SEO und Technical SEO für bessere Google Rankings und mehr organischen Traffic.",
   provider: { "@id": "https://ixone.de/#organization" },
   telephone: "+4994015338873",
-  areaServed: [
-    { "@type": "City", name: "Regensburg" },
-    { "@type": "City", name: "Neutraubling" },
-    { "@type": "City", name: "Obertraubling" },
-    { "@type": "City", name: "Lappersdorf" },
-    { "@type": "City", name: "Pentling" },
-    { "@type": "City", name: "Barbing" },
-    { "@type": "City", name: "Sinzing" },
-    { "@type": "City", name: "Zeitlarn" },
-    { "@type": "City", name: "Wenzenbach" },
-    { "@type": "City", name: "Nittendorf" },
-    { "@type": "City", name: "Bad Abbach" },
-    { "@type": "City", name: "Kelheim" },
-    { "@type": "City", name: "Straubing" },
-    { "@type": "City", name: "Landshut" },
-    { "@type": "State", name: "Bayern" },
-    { "@type": "Country", name: "Deutschland" },
-  ],
+  areaServed: areaServedFull,
   serviceType: [
     "Suchmaschinenoptimierung",
     "OnPage SEO",
@@ -240,8 +224,8 @@ const preisPakete = [
 ---
 
 <Layout
-  title="SEO Agentur Regensburg | Nachhaltige Suchmaschinenoptimierung | iXone"
-  description="SEO Agentur Regensburg: Nachhaltige Suchmaschinenoptimierung für Ihre Sichtbarkeit bei Google. Steigern Sie Ihren Umsatz mit Local SEO. Jetzt unverbindlich anfragen!"
+  title="SEO Agentur Regensburg | Suchmaschinenoptimierung | iXone"
+  description="SEO Agentur Regensburg: nachhaltige Suchmaschinenoptimierung für bessere Google-Rankings und mehr Anfragen. Local SEO inklusive."
   canonical="https://ixone.de/seo-regensburg/"
   structuredData={[serviceSchema, faqSchema]}
 >
@@ -1373,6 +1357,13 @@ const preisPakete = [
                   class="text-brand-orange font-semibold hover:underline ml-1"
                   >Mehr zu Google Ads →</a
                 >
+                <span class="mx-1">Auch</span>
+                <a
+                  href="/social-media-marketing-regensburg"
+                  class="text-brand-orange font-semibold hover:underline"
+                  >Social Media Marketing</a
+                >
+                kann SEO sinnvoll ergänzen, wenn Inhalte aktiv verteilt werden sollen.
               </p>
             </div>
           </div>

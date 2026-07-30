@@ -1,11 +1,13 @@
 ---
 // src/components/Hero.astro
+import { Image } from "astro:assets";
+import heroImage from "../assets/hero-digitalagentur-regensburg.webp";
 ---
 
 <section class="hero-section relative min-h-[80vh] text-white overflow-hidden">
   <!-- FIX 1: fetchpriority="high" + loading="eager" + decoding="sync" für optimalen LCP -->
-  <img
-    src="/assets/hero-digitalagentur-regensburg.webp"
+  <Image
+    src={heroImage}
     alt=""
     aria-hidden="true"
     fetchpriority="high"

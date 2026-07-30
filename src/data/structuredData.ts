@@ -6,7 +6,7 @@
 //   localBusinessSchema, localBusinessRegensburgSchema
 //
 // PRO SEITE → direkt in der jeweiligen .astro Page:
-//   breadcrumbSchema(items), serviceSchema, faqSchema
+//   serviceSchema, faqSchema
 // ═══════════════════════════════════════════════════════════════
 
 // Einsatzgebiet – zentral gepflegt, damit alle Schemas identisch bleiben
@@ -47,6 +47,22 @@ export const organizationSchema = {
   url: "https://ixone.de",
   telephone: "+4994015338873",
   email: "info@ixone.de",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Oder-Neisse-Str. 1",
+    addressLocality: "Neutraubling",
+    addressRegion: "Bayern",
+    postalCode: "93073",
+    addressCountry: "DE",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+4994015338873",
+    contactType: "customer service",
+    email: "info@ixone.de",
+    areaServed: "DE",
+    availableLanguage: ["de"],
+  },
   logo: {
     "@type": "ImageObject",
     url: "https://ixone.de/assets/ixone-logo.webp",
@@ -142,14 +158,6 @@ export const localBusinessSchema = {
     latitude: "48.99002",
     longitude: "12.20109",
   },
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "18:00",
-    },
-  ],
   areaServed: areaServedFull,
   hasMap: "https://maps.google.com/?q=iXone+Digitalagentur+Neutraubling",
   parentOrganization: { "@id": "https://ixone.de/#organization" },
@@ -190,14 +198,6 @@ export const localBusinessRegensburgSchema = {
     latitude: "48.996183",
     longitude: "12.105524",
   },
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "18:00",
-    },
-  ],
   areaServed: areaServedFull,
   hasMap: "https://maps.google.com/?q=iXone+Digitalagentur+Humboldtstr.+48+93053+Regensburg",
   parentOrganization: { "@id": "https://ixone.de/#organization" },
@@ -221,26 +221,8 @@ export const websiteSchema = {
 // ─────────────────────────────────────────────────────────────
 // 5. BREADCRUMB – Funktion, pro Seite aufrufen
 //
-//  import { breadcrumbSchema } from "../data/structuredData";
-//  const breadcrumbs = breadcrumbSchema([
-//    { name: "Home",      url: "https://ixone.de/" },
-//    { name: "Webdesign", url: "https://ixone.de/webdesign-regensburg" },
-//  ]);
-//  → structuredData={[breadcrumbs, serviceSchema, faqSchema]}
+// BreadcrumbList wird in Breadcrumbs.astro erzeugt.
 // ─────────────────────────────────────────────────────────────
-export const breadcrumbSchema = (
-  items: Array<{ name: string; url: string }>,
-) => ({
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: items.map((item, index) => ({
-    "@type": "ListItem",
-    position: index + 1,
-    name: item.name,
-    item: item.url,
-  })),
-});
-
 // ═══════════════════════════════════════════════════════════════
 // VORLAGE für eine neue Service-Page
 //

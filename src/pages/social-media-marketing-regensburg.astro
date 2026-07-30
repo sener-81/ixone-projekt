@@ -1,6 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ServiceCrosslinks from "../components/ServiceCrosslinks.astro";
+import { Image } from "astro:assets";
+import platformImage from "../assets/webdesigner-aus-regensburg.webp";
+import { areaServedFull } from "../data/structuredData";
 
 const CALENDLY =
   "https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b";
@@ -14,22 +17,7 @@ const serviceSchema = {
     "Social Media Marketing aus Regensburg: Facebook, Instagram, TikTok und YouTube Marketing, Content-Erstellung, Social Media Ads, Recruiting und Influencer Marketing für mehr Reichweite, Engagement und Kunden.",
   provider: { "@id": "https://ixone.de/#organization" },
   telephone: "+4994015338873",
-  areaServed: [
-    { "@type": "City", name: "Regensburg" },
-    { "@type": "City", name: "Neutraubling" },
-    { "@type": "City", name: "Obertraubling" },
-    { "@type": "City", name: "Lappersdorf" },
-    { "@type": "City", name: "Pentling" },
-    { "@type": "City", name: "Barbing" },
-    { "@type": "City", name: "Sinzing" },
-    { "@type": "City", name: "Zeitlarn" },
-    { "@type": "City", name: "Wenzenbach" },
-    { "@type": "City", name: "Nittendorf" },
-    { "@type": "City", name: "Regenstauf" },
-    { "@type": "City", name: "Donaustauf" },
-    { "@type": "State", name: "Bayern" },
-    { "@type": "Country", name: "Deutschland" },
-  ],
+  areaServed: areaServedFull,
   serviceType: "Social Media Marketing",
   url: "https://ixone.de/social-media-marketing-regensburg/",
 };
@@ -92,7 +80,7 @@ const plattformen = [
     name: "Facebook",
     badgeClass: "bg-blue-600",
     title: "Facebook Marketing Regensburg",
-    image: "/assets/hero-digitalagentur-regensburg.webp",
+    image: platformImage,
     alt: "Facebook Marketing Regensburg – Reichweite und Community-Aufbau durch iXone",
     text: "Facebook bietet Unternehmen aus Regensburg exzellente Möglichkeiten, Reichweite aufzubauen und eine engagierte Community zu pflegen. Mit gezielten Postings, strategischem Community Management und performancestarken Facebook Ads sprechen wir genau Ihre lokale Zielgruppe an – ob zur Neukundengewinnung oder fürs Employer Branding.",
     items: [
@@ -106,7 +94,7 @@ const plattformen = [
     name: "Instagram",
     badgeClass: "bg-gradient-to-r from-pink-500 to-purple-600",
     title: "Instagram Marketing Regensburg",
-    image: "/assets/hero-digitalagentur-regensburg.webp",
+    image: platformImage,
     alt: "Instagram Marketing Regensburg – visuelles Storytelling mit Reels und Stories",
     text: "Instagram ist die Bühne für visuelles Storytelling. Wir erwecken Ihre Marke mit ästhetisch ansprechendem Content zum Leben, bauen über Reels und Stories Reichweite auf und nutzen Instagram Shopping, damit Ihre Produkte direkt verkaufen. So entsteht eine starke emotionale Verbindung zu Ihrer Zielgruppe in Regensburg.",
     items: [
@@ -120,7 +108,7 @@ const plattformen = [
     name: "TikTok",
     badgeClass: "bg-gray-900",
     title: "TikTok Marketing Regensburg",
-    image: "/assets/hero-digitalagentur-regensburg.webp",
+    image: platformImage,
     alt: "TikTok Marketing Regensburg – virale Reichweite für junge Zielgruppen",
     text: "TikTok bietet Unternehmen aus Regensburg eine einzigartige Chance auf virale Reichweite – besonders bei jüngeren Zielgruppen, die anderswo schwer erreichbar sind. Mit kreativem, trendorientiertem Content, strategischen Posting-Plänen und aktivem Community Management steigern wir Ihre Markenbekanntheit und Interaktion.",
     items: [
@@ -134,7 +122,7 @@ const plattformen = [
     name: "YouTube",
     badgeClass: "bg-red-600",
     title: "YouTube Marketing Regensburg",
-    image: "/assets/hero-digitalagentur-regensburg.webp",
+    image: platformImage,
     alt: "YouTube Marketing Regensburg – Video-Content und Branding über die zweitgrößte Suchmaschine",
     text: "Als zweitgrößte Suchmaschine der Welt ist YouTube ideal, um Video-Content zu verbreiten und Ihre Markenbekanntheit nachhaltig zu stärken. Wir erstellen hochwertige Videos, optimieren Titel, Beschreibungen und Tags für die Suche und positionieren Sie mit informativem und unterhaltsamem Content als Experte Ihrer Branche.",
     items: [
@@ -367,7 +355,7 @@ const kanaele = [
               <article class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                 <div class={i % 2 === 1 ? "lg:order-2" : ""}>
                   <div class="relative rounded-2xl overflow-hidden aspect-[4/3] border border-gray-200">
-                    <img
+                    <Image
                       src={p.image}
                       alt={p.alt}
                       class="w-full h-full object-cover"
