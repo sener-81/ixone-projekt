@@ -1,0 +1,11 @@
+# Plattform-Subdomain auf die Hauptdomain
+https://ixone-projekt.pages.dev/* https://ixone.de/:splat 301!
+
+# Canonical Slash-Weiterleitungen
+/datenschutz /datenschutz/ 301
+/impressum /impressum/ 301
+/kontakt /kontakt/ 301
+/online-marketing-regensburg /online-marketing-regensburg/ 301
+/seo-regensburg /seo-regensburg/ 301
+/social-media-marketing-regensburg /social-media-marketing-regensburg/ 301
+/webdesign-regensburg /webdesign-regensburg/ 301

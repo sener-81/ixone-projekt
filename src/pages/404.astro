@@ -1,0 +1,80 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ServiceCrosslinks from "../components/ServiceCrosslinks.astro";
+
+const CALENDLY =
+  "https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b";
+---
+
+<Layout
+  title="Seite nicht gefunden | ixOne Digitalagentur Regensburg"
+  description="Diese Seite existiert nicht mehr. Hier finden Sie unsere Leistungen und den direkten Weg zum Kontakt."
+  noindex={true}
+  breadcrumbOverlay={false}
+>
+  <div class="bg-white">
+    <section
+      class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 text-white"
+      aria-labelledby="fehler-heading"
+    >
+      <div class="absolute inset-0 opacity-20" aria-hidden="true">
+        <div
+          class="absolute -top-24 -left-24 w-96 h-96 bg-brand-orange rounded-full blur-3xl"
+        >
+        </div>
+        <div
+          class="absolute -bottom-24 -right-24 w-96 h-96 bg-amber-500 rounded-full blur-3xl"
+        >
+        </div>
+      </div>
+
+      <div
+        class="container mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 relative z-10"
+      >
+        <div class="max-w-2xl mx-auto text-center">
+          <p
+            class="text-7xl md:text-8xl font-bold text-brand-orange mb-6 leading-none"
+          >
+            404
+          </p>
+
+          <h1
+            id="fehler-heading"
+            class="text-3xl md:text-4xl font-bold mb-6 leading-tight"
+          >
+            Diese Seite gibt es nicht mehr
+          </h1>
+
+          <p class="text-lg md:text-xl text-gray-200 leading-relaxed mb-10">
+            Der Link ist veraltet oder enthält einen Tippfehler. Unten finden
+            Sie unsere Leistungen oder Sie sprechen uns direkt an.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/"
+              class="inline-flex items-center justify-center px-8 py-4 bg-brand-orange text-white font-semibold rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
+            >
+              Zur Startseite
+            </a>
+            <a
+              href={CALENDLY}
+              target="_blank"
+              rel="noopener"
+              data-calendly-popup-url={CALENDLY}
+              class="inline-flex items-center justify-center px-8 py-4 rounded-full font-semibold text-white border border-white/30 bg-white/5 backdrop-blur-md hover:bg-white/15 transition-all duration-300"
+              aria-label="Termin vereinbaren - online oder vor Ort"
+            >
+              Termin vereinbaren
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ServiceCrosslinks
+      headline="Vielleicht suchen Sie das hier"
+      intro="Unsere Leistungen für Unternehmen in Regensburg und dem Landkreis."
+    />
+  </div>
+</Layout>
