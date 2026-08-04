@@ -1,5 +1,10 @@
 ﻿---
-// src/components/Head.astro
+import {
+  organizationSchema,
+  websiteSchema,
+  localBusinessSchema,
+  localBusinessRegensburgSchema,
+} from "../data/structuredData";
 
 export interface Props {
   title: string;
@@ -19,33 +24,24 @@ const {
   structuredData = [],
 } = Astro.props;
 
-import {
-  organizationSchema,
-  websiteSchema,
-  localBusinessSchema,
-  localBusinessRegensburgSchema,
-} from "../data/structuredData";
-
 const canonicalURL = (
   canonical ?? new URL(Astro.url.pathname, Astro.site!)
 ).toString();
-const fullTitle = title.includes("ixOne")
+const fullTitle = title.toLowerCase().includes("ixone")
   ? title
   : `${title} | ixOne Digitalagentur Regensburg`;
 const fullOgImage = new URL(ogImage, Astro.site).href;
+const aktuellesJahr = new Date().getFullYear();
 ---
 
-<!-- Basic Meta Tags -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="generator" content={Astro.generator} />
 
-<!-- SEO Meta Tags -->
 <title>{fullTitle}</title>
 <meta name="title" content={fullTitle} />
 <meta name="description" content={description} />
 
-<!-- Canonical & Robots -->
 <link rel="canonical" href={canonicalURL} />
 <meta
   name="robots"
@@ -54,30 +50,22 @@ const fullOgImage = new URL(ogImage, Astro.site).href;
     : "index, follow, max-image-preview:large"}
 />
 
-<!-- Author & Brand -->
 <meta name="author" content="ixOne Digitalagentur Regensburg" />
-<meta name="copyright" content="Copyright 2026 ixOne Digitalagentur Regensburg" />
+<meta
+  name="copyright"
+  content={`Copyright ${aktuellesJahr} ixOne Digitalagentur Regensburg`}
+/>
 
-<!-- Favicons -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
 
-<!-- Resource Hints -->
 <link rel="preconnect" href="https://cloud.ccm19.de" crossorigin />
-<link rel="preconnect" href="https://assets.calendly.com" crossorigin />
+<link rel="dns-prefetch" href="https://assets.calendly.com" />
 
-<!-- Font Preloads für bessere Performance -->
 <link
   rel="preload"
   href="/fonts/inter-v19-latin-regular.woff2"
-  as="font"
-  type="font/woff2"
-  crossorigin="anonymous"
-/>
-<link
-  rel="preload"
-  href="/fonts/inter-v19-latin-600.woff2"
   as="font"
   type="font/woff2"
   crossorigin="anonymous"
@@ -90,10 +78,8 @@ const fullOgImage = new URL(ogImage, Astro.site).href;
   crossorigin="anonymous"
 />
 
-<!-- Theme Color -->
 <meta name="theme-color" content="#ec6a1b" />
 
-<!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="ixOne Digitalagentur Regensburg" />
 <meta property="og:title" content={fullTitle} />
@@ -106,13 +92,11 @@ const fullOgImage = new URL(ogImage, Astro.site).href;
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:locale" content="de_DE" />
 
-<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={fullOgImage} />
 
-<!-- Structured Data (global: Organization, Website, beide LocalBusiness-Standorte) -->
 <script
   type="application/ld+json"
   set:html={JSON.stringify([
@@ -130,7 +114,7 @@ const fullOgImage = new URL(ogImage, Astro.site).href;
     />
   )
 }
-<!-- CCM19 Cookie Consent Manager -->
+
 <script
   src="https://cloud.ccm19.de/app.js?apiKey=cd91644fa3e910ee0f774ea303536cb1db52a15b0230993c&domain=6981bbb44c4198d66e0e8642"
   referrerpolicy="origin"
