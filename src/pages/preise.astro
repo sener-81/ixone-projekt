@@ -1,0 +1,832 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ServiceCrosslinks from "../components/ServiceCrosslinks.astro";
+import { areaServedFull } from "../data/structuredData";
+
+const CALENDLY =
+  "https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b";
+
+const B2B_HINWEIS =
+  "Unsere Angebote richten sich ausschließlich an Unternehmer im Sinne des § 14 BGB, also an Gewerbetreibende, Freiberufler, juristische Personen und öffentliche Einrichtungen – nicht an Verbraucher. Alle Preisangaben verstehen sich daher als Nettopreise zzgl. der gesetzlichen Umsatzsteuer.";
+
+const einmalig = [
+  {
+    leistung: "Onepager",
+    beschreibung: "Eine Seite, alle wichtigen Informationen. Ideal für Selbstständige und kleine Betriebe.",
+    preis: "ab 1.200 €",
+    href: "/webdesign-regensburg/",
+  },
+  {
+    leistung: "Unternehmenswebsite",
+    beschreibung: "Mehrere Seiten mit Leistungen, Referenzen und Kontakt. Der Standard für die meisten Betriebe.",
+    preis: "ab 2.500 €",
+    href: "/webdesign-regensburg/",
+  },
+  {
+    leistung: "Online-Shop",
+    beschreibung: "WooCommerce oder Shopsystem nach Wahl. Umfang und Produktzahl bestimmen den Aufwand.",
+    preis: "individuell",
+    href: "/webdesign-regensburg/",
+  },
+];
+
+const laufend = [
+  {
+    leistung: "SEO-Betreuung",
+    beschreibung: "Laufende Optimierung, Content, Local SEO und monatliches Reporting.",
+    preis: "ab 499 €",
+    zeitraum: "pro Monat",
+    href: "/seo-regensburg/",
+  },
+  {
+    leistung: "Google Ads Betreuung",
+    beschreibung: "Einrichtung, Optimierung und Reporting. Das Werbebudget zahlen Sie direkt an Google.",
+    preis: "ab 499 €",
+    zeitraum: "pro Monat",
+    href: "/online-marketing-regensburg/",
+  },
+  {
+    leistung: "Social Media Betreuung",
+    beschreibung: "Redaktionsplan, Inhalte und Community-Betreuung für Facebook, Instagram und TikTok.",
+    preis: "ab 499 €",
+    zeitraum: "pro Monat",
+    href: "/social-media-marketing-regensburg/",
+  },
+  {
+    leistung: "Websitepflege",
+    beschreibung: "Updates, Backups, Sicherheits-Monitoring und kleinere Inhaltsänderungen.",
+    preis: "ab 49,95 €",
+    zeitraum: "pro Monat",
+    href: "/websitepflege-regensburg/",
+  },
+];
+
+const faktoren = [
+  {
+    titel: "Umfang",
+    text: "Fünf Seiten oder fünfzig? Jede zusätzliche Seite bedeutet Konzept, Text, Layout und Optimierung.",
+  },
+  {
+    titel: "Funktionen",
+    text: "Terminbuchung, Mehrsprachigkeit, Kundenbereich, Shop-Anbindung – jede Funktion braucht Entwicklung und Tests.",
+  },
+  {
+    titel: "Inhalte",
+    text: "Liefern Sie Texte und Bilder selbst, oder erstellen wir sie? Redaktion und Fotografie machen einen spürbaren Unterschied.",
+  },
+  {
+    titel: "Individualität",
+    text: "Ein angepasstes Template kostet weniger als ein Design, das von Grund auf für Ihre Marke entwickelt wird.",
+  },
+  {
+    titel: "Technik",
+    text: "Anbindungen an Warenwirtschaft, CRM oder Buchungssysteme erhöhen den Aufwand deutlich.",
+  },
+  {
+    titel: "Wettbewerb",
+    text: "Bei SEO und Google Ads bestimmt die Konkurrenz in Ihrer Branche, wie viel Aufwand nötig ist.",
+  },
+];
+
+const ablauf = [
+  {
+    schritt: "01",
+    titel: "Kostenloses Erstgespräch",
+    text: "Wir sprechen über Ihr Ziel, Ihre Zielgruppe und Ihr Budget. Etwa 30 Minuten, unverbindlich, ohne Verkaufsdruck.",
+  },
+  {
+    schritt: "02",
+    titel: "Konzept & Angebot",
+    text: "Sie erhalten ein schriftliches Angebot mit klarem Leistungsumfang und Zeitplan. Keine versteckten Posten.",
+  },
+  {
+    schritt: "03",
+    titel: "Umsetzung",
+    text: "Wir setzen um und halten Sie auf dem Laufenden. Änderungswünsche während der Entwicklung sind eingeplant.",
+  },
+  {
+    schritt: "04",
+    titel: "Übergabe & Betreuung",
+    text: "Nach dem Launch entscheiden Sie, ob wir die Website weiter betreuen oder Sie selbst übernehmen.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Warum nennen Sie keine Festpreise?",
+    a: "Weil die Anforderungen zu unterschiedlich sind. Ein Handwerksbetrieb mit fünf Seiten und ein Onlineshop mit dreihundert Artikeln haben nichts gemeinsam außer dem Wort Website. Ein Pauschalpreis wäre für den einen zu teuer und für den anderen unrealistisch niedrig. Die genannten Richtwerte geben Ihnen eine Orientierung – das verbindliche Angebot folgt nach dem Erstgespräch.",
+  },
+  {
+    q: "Was kostet eine Website bei ixOne ungefähr?",
+    a: "Ein Onepager startet bei etwa 1.200 €, eine mehrseitige Unternehmenswebsite bei rund 2.500 €. Nach oben ist die Spanne offen, je nach Funktionsumfang und Individualität. Für Onlineshops kalkulieren wir grundsätzlich individuell.",
+  },
+  {
+    q: "Ist das Werbebudget bei Google Ads inbegriffen?",
+    a: "Nein. Die Betreuungspauschale ab 499 € pro Monat deckt Einrichtung, laufende Optimierung und Reporting ab. Das Werbebudget zahlen Sie direkt an Google. Wie hoch es sein sollte, hängt von Branche und Wettbewerb ab – in ländlichen Regionen wie dem Landkreis Regensburg liegen die Klickpreise deutlich unter denen von Großstädten.",
+  },
+  {
+    q: "Bieten Sie auch Kombi-Pakete an?",
+    a: "Ja. Die meisten Kunden buchen mehrere Bausteine zusammen, etwa Website mit Pflege oder SEO mit Google Ads. Solche Kombinationen kalkulieren wir günstiger als die Einzelleistungen, weil Abstimmung und Einarbeitung nur einmal anfallen. Da sich Umfang und Zielsetzung stark unterscheiden, stellen wir jedes Paket im persönlichen Gespräch individuell zusammen.",
+  },
+  {
+    q: "Sind die Preise netto oder brutto?",
+    a: "Alle genannten Beträge sind Nettopreise zzgl. der gesetzlichen Umsatzsteuer. Unsere Angebote richten sich ausschließlich an Unternehmer im Sinne des § 14 BGB – also an Gewerbetreibende, Freiberufler, juristische Personen und öffentliche Einrichtungen. Ein Vertragsschluss mit Verbrauchern ist ausgeschlossen.",
+  },
+  {
+    q: "Sind die genannten Preise verbindlich?",
+    a: "Nein. Die Angaben auf dieser Seite sind unverbindliche Richtwerte und stellen kein rechtsverbindliches Angebot dar. Verbindlich ist ausschließlich das schriftliche Angebot, das Sie nach dem Erstgespräch von uns erhalten. Darin stehen Leistungsumfang, Preis und Zeitplan im Detail.",
+  },
+  {
+    q: "Gibt es versteckte Kosten?",
+    a: "Nein. Im Angebot steht, was enthalten ist und was extra berechnet wird. Laufende Kosten wie Hosting, Domain und Lizenzen Dritter weisen wir separat aus, damit Sie wissen, was jährlich anfällt. Wenn während des Projekts Wünsche dazukommen, die über den vereinbarten Umfang hinausgehen, besprechen wir den Mehraufwand vorher und halten ihn schriftlich fest.",
+  },
+  {
+    q: "Gibt es eine Mindestlaufzeit bei laufenden Leistungen?",
+    a: "Nein. SEO, Google Ads, Social Media und Websitepflege sind monatlich kündbar. Bei SEO sollten Sie allerdings mit sechs bis zwölf Monaten rechnen, bis sich Ergebnisse zeigen – das ist keine Vertragsbindung, sondern die Natur der Sache.",
+  },
+  {
+    q: "Ist mein Budget zu klein für Sie?",
+    a: "Sagen Sie uns einfach, was möglich ist. Manchmal ist ein schlanker Onepager der bessere Start als eine große Website, die das Budget sprengt. Wenn wir nicht der richtige Partner sind, sagen wir das offen – auch das gehört zu ehrlicher Beratung.",
+  },
+];
+
+const offerCatalogSchema = {
+  "@context": "https://schema.org",
+  "@type": "OfferCatalog",
+  name: "Leistungen und Preise der ixOne Digitalagentur Regensburg",
+  description:
+    "Unverbindliche Richtpreise für Unternehmer im Sinne des § 14 BGB, alle Beträge netto zzgl. gesetzlicher Umsatzsteuer.",
+  itemListElement: [
+    {
+      "@type": "Offer",
+      name: "Onepager Webdesign",
+      url: "https://ixone.de/webdesign-regensburg/",
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        minPrice: 1200,
+        priceCurrency: "EUR",
+        valueAddedTaxIncluded: false,
+      },
+    },
+    {
+      "@type": "Offer",
+      name: "Unternehmenswebsite",
+      url: "https://ixone.de/webdesign-regensburg/",
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        minPrice: 2500,
+        priceCurrency: "EUR",
+        valueAddedTaxIncluded: false,
+      },
+    },
+    {
+      "@type": "Offer",
+      name: "SEO-Betreuung",
+      url: "https://ixone.de/seo-regensburg/",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        minPrice: 499,
+        priceCurrency: "EUR",
+        valueAddedTaxIncluded: false,
+        unitCode: "MON",
+      },
+    },
+    {
+      "@type": "Offer",
+      name: "Google Ads Betreuung",
+      url: "https://ixone.de/online-marketing-regensburg/",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        minPrice: 499,
+        priceCurrency: "EUR",
+        valueAddedTaxIncluded: false,
+        unitCode: "MON",
+      },
+    },
+    {
+      "@type": "Offer",
+      name: "Social Media Betreuung",
+      url: "https://ixone.de/social-media-marketing-regensburg/",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        minPrice: 499,
+        priceCurrency: "EUR",
+        valueAddedTaxIncluded: false,
+        unitCode: "MON",
+      },
+    },
+    {
+      "@type": "Offer",
+      name: "Websitepflege",
+      url: "https://ixone.de/websitepflege-regensburg/",
+      priceSpecification: {
+        "@type": "UnitPriceSpecification",
+        price: 49.95,
+        priceCurrency: "EUR",
+        valueAddedTaxIncluded: false,
+        unitCode: "MON",
+      },
+    },
+  ],
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://ixone.de/preise/#service",
+  name: "Preise Digitalagentur Regensburg",
+  description:
+    "Richtwerte für Webdesign, SEO, Google Ads, Social Media und Websitepflege bei ixOne in Regensburg. Individuelle Angebote nach kostenlosem Erstgespräch.",
+  provider: { "@id": "https://ixone.de/#organization" },
+  telephone: "+4994015338873",
+  areaServed: areaServedFull,
+};
+---
+
+<Layout
+  title="Preise | Was kostet eine Website? | ixOne Regensburg"
+  description="Grobe Preisorientierung für Webdesign, SEO, Google Ads und Websitepflege aus Regensburg. Onepager ab 1.200 € netto. Kostenloses Erstgespräch."
+  canonical="https://ixone.de/preise/"
+  structuredData={[serviceSchema, offerCatalogSchema, faqSchema]}
+>
+  <div class="bg-white">
+    <section
+      class="relative bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-900 text-white overflow-hidden"
+      aria-label="Preise Digitalagentur Regensburg Hero"
+    >
+      <div class="absolute inset-0 opacity-20" aria-hidden="true">
+        <div
+          class="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full filter blur-3xl animate-blob"
+        >
+        </div>
+        <div
+          class="absolute bottom-0 right-0 w-96 h-96 bg-purple-400 rounded-full filter blur-3xl animate-blob animation-delay-2000"
+        >
+        </div>
+        <div
+          class="absolute top-1/2 left-1/4 w-72 h-72 bg-indigo-400 rounded-full filter blur-3xl animate-blob animation-delay-4000"
+        >
+        </div>
+      </div>
+
+      <div class="absolute inset-0 opacity-5" aria-hidden="true">
+        <div
+          class="h-full w-full"
+          style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 60px 60px;"
+        >
+        </div>
+      </div>
+
+      <div
+        class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-24 md:py-32 lg:py-36 relative z-10"
+      >
+        <div class="max-w-4xl mx-auto text-center">
+          <span
+            class="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full bg-white/10 border border-white/20 text-sm font-medium backdrop-blur-md"
+          >
+            <span
+              class="w-2 h-2 bg-green-400 rounded-full animate-pulse"
+              aria-hidden="true"></span>
+            Grobe Preisorientierung – transparent von Anfang an
+          </span>
+
+          <h1
+            class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+          >
+            <span class="block text-white">Was kostet eine</span>
+            <span class="gradient-text-brand">Website?</span>
+            <span
+              class="block text-white/80 text-2xl md:text-3xl font-normal mt-2"
+            >
+              Eine grobe Orientierung für Ihr Projekt
+            </span>
+          </h1>
+
+          <p
+            class="text-lg md:text-xl text-gray-200 leading-relaxed mb-8 max-w-2xl mx-auto"
+          >
+            Ehrliche Antwort: pauschal lässt sich das nicht sagen. Aber wir
+            lassen Sie nicht im Dunkeln – hier finden Sie eine <strong
+              class="text-white">grobe Preisorientierung</strong
+            >, damit Sie einschätzen können, ob wir zusammenpassen.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href={CALENDLY}
+              target="_blank"
+              rel="noopener"
+              data-calendly-popup-url={CALENDLY}
+              class="cta-button-primary"
+              aria-label="Kostenloses Erstgespräch vereinbaren"
+            >
+              <span>Termin vereinbaren</span>
+            </a>
+            <a
+              href="#preisorientierung"
+              class="group px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl font-semibold text-lg text-white hover:bg-white/20 transition-all duration-300 text-center"
+            >
+              <span class="flex items-center justify-center gap-2">
+                Preisorientierung ansehen
+                <svg
+                  class="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-20 md:py-28 bg-white"
+      aria-labelledby="warum-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2
+            id="warum-heading"
+            class="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
+          >
+            Warum wir keine <span class="gradient-text-brand-inline"
+              >Pauschalpreise</span
+            > nennen
+          </h2>
+          <div class="space-y-5 text-gray-600 text-lg leading-relaxed">
+            <p>
+              Jedes Projekt ist anders. Manche Kunden brauchen eine schlanke
+              Infoseite, andere ein System mit Shop, Buchung und laufender
+              Kampagnenbetreuung. Ein einziger Preis wäre für den einen zu hoch
+              und für den anderen unrealistisch niedrig.
+            </p>
+            <p>
+              Deshalb kalkulieren wir nach Ziel, Umfang, Funktionen und
+              Aufwand – und besprechen jedes Projekt persönlich. Damit Sie
+              trotzdem eine Vorstellung bekommen, finden Sie unten eine grobe
+              Orientierung aus typischen Projekten.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="preisorientierung"
+      class="py-20 md:py-28 lg:py-32 bg-gray-50"
+      aria-labelledby="einmalig-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+            <h2
+              id="einmalig-heading"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            >
+              Grobe Preisorientierung: Website
+            </h2>
+            <p class="text-xl text-gray-600">
+              Einmalige Investition in Ihre digitale Basis
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {
+              einmalig.map((posten) => (
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-md flex flex-col">
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    {posten.leistung}
+                  </h3>
+                  <p class="text-gray-600 leading-relaxed mb-6 flex-grow">
+                    {posten.beschreibung}
+                  </p>
+                  <p class="text-3xl font-bold text-brand-orange mb-4">
+                    {posten.preis}
+                  </p>
+                  <a
+                    href={posten.href}
+                    class="inline-flex items-center gap-1 font-medium text-brand-orange hover:underline"
+                  >
+                    Mehr zur Leistung
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-white"
+      aria-labelledby="laufend-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+            <h2
+              id="laufend-heading"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            >
+              Grobe Preisorientierung: Laufende Betreuung
+            </h2>
+            <p class="text-xl text-gray-600">
+              Monatlich kündbar, ohne Mindestlaufzeit – einzeln oder kombiniert
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {
+              laufend.map((posten) => (
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 flex flex-col">
+                  <div class="flex items-start justify-between gap-4 mb-3">
+                    <h3 class="text-xl font-bold text-gray-900">
+                      {posten.leistung}
+                    </h3>
+                    <div class="text-right shrink-0">
+                      <span class="text-2xl font-bold text-brand-orange block">
+                        {posten.preis}
+                      </span>
+                      {posten.zeitraum && (
+                        <span class="text-gray-500 text-xs">
+                          {posten.zeitraum}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <p class="text-gray-600 leading-relaxed mb-6 flex-grow">
+                    {posten.beschreibung}
+                  </p>
+                  <a
+                    href={posten.href}
+                    class="inline-flex items-center gap-1 font-medium text-brand-orange hover:underline"
+                  >
+                    Mehr zur Leistung
+                    <svg
+                      class="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              ))
+            }
+          </div>
+
+          <div
+            class="mt-12 rounded-2xl border-2 border-brand-orange bg-white p-8 md:p-10 shadow-xl"
+          >
+            <div
+              class="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12"
+            >
+              <div class="flex-grow">
+                <span
+                  class="inline-flex items-center px-3 py-1 mb-4 rounded-full bg-brand-orange text-white text-xs font-semibold"
+                >
+                  Kombi-Pakete
+                </span>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">
+                  Mehrere Leistungen zusammen? Dann wird es günstiger.
+                </h3>
+                <p class="text-gray-600 leading-relaxed mb-4">
+                  Website, SEO und Google Ads greifen ineinander. Wer mehrere
+                  Bausteine kombiniert, spart nicht nur Abstimmungsaufwand –
+                  wir kalkulieren Kombi-Pakete auch günstiger als die Summe der
+                  Einzelleistungen.
+                </p>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700">
+                  {
+                    [
+                      "Website + Websitepflege",
+                      "Website + SEO + Pflege",
+                      "SEO + Google Ads",
+                      "Rundum-Betreuung aller Kanäle",
+                    ].map((kombi) => (
+                      <li class="flex items-start gap-2">
+                        <svg
+                          class="w-5 h-5 flex-shrink-0 mt-0.5 text-brand-orange"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2.5"
+                            d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <span>{kombi}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+
+              <div class="lg:w-64 shrink-0 text-center lg:text-left">
+                <p class="text-3xl font-bold text-gray-900 mb-2">
+                  Auf Anfrage
+                </p>
+                <p class="text-gray-500 text-sm mb-6">
+                  Der Preis richtet sich nach Leistungsumfang und Zielsetzung
+                </p>
+                <a
+                  href={CALENDLY}
+                  target="_blank"
+                  rel="noopener"
+                  data-calendly-popup-url={CALENDLY}
+                  class="inline-flex items-center justify-center w-full px-6 py-3 bg-brand-orange text-white font-semibold rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                  aria-label="Beratungstermin für ein Kombi-Paket vereinbaren"
+                >
+                  Paket zusammenstellen
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-center text-gray-500 text-sm mt-10 max-w-3xl mx-auto">
+            Alle Angaben sind unverbindliche Richtwerte zur Orientierung und
+            stellen kein rechtsverbindliches Angebot im Sinne des § 145 BGB dar.
+            Die endgültigen Kosten richten sich nach Umfang, Zielsetzung und
+            individueller Beratung und werden ausschließlich im schriftlichen
+            Angebot verbindlich festgelegt. Bei Google Ads kommt das Werbebudget
+            hinzu, das Sie direkt an Google zahlen. Hosting, Domain und Lizenzen
+            Dritter sind in den genannten Beträgen nicht enthalten.
+            {" "}
+            {B2B_HINWEIS}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-gray-50"
+      aria-labelledby="faktoren-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+            <h2
+              id="faktoren-heading"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            >
+              Was den <span class="gradient-text-brand-inline">Preis</span> bestimmt
+            </h2>
+            <p class="text-xl text-gray-600">
+              Sechs Faktoren, die erklären, warum eine Website 2.500 € und eine
+              andere 8.000 € kostet
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {
+              faktoren.map((faktor) => (
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-md">
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    {faktor.titel}
+                  </h3>
+                  <p class="text-gray-600 leading-relaxed">{faktor.text}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-white"
+      aria-labelledby="ablauf-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+            <h2
+              id="ablauf-heading"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            >
+              So kommen Sie zu Ihrem Angebot
+            </h2>
+            <p class="text-xl text-gray-600">
+              Vom ersten Gespräch bis zur Übergabe
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {
+              ablauf.map((stufe) => (
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                  <span class="text-4xl font-bold text-brand-orange/30 block mb-3">
+                    {stufe.schritt}
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    {stufe.titel}
+                  </h3>
+                  <p class="text-gray-600 leading-relaxed">{stufe.text}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-gray-50"
+      aria-labelledby="fair-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2
+            id="fair-heading"
+            class="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
+          >
+            Ein Angebot, das wirklich zu Ihnen passt
+          </h2>
+          <div class="space-y-5 text-gray-600 text-lg leading-relaxed">
+            <p>
+              Ob kleines Budget oder große Vision – wir beraten Sie ehrlich,
+              planen gemeinsam Ihr Projekt und erstellen ein maßgeschneidertes
+              Angebot. Wenn eine Leistung für Ihr Ziel nicht sinnvoll ist, sagen
+              wir das, statt sie zu verkaufen.
+            </p>
+            <p>
+              Welche Kanäle sich für Ihren Betrieb rechnen, hängt stark von der
+              Branche ab. Einen Überblick finden Sie bei den <a
+                href="/branchen/"
+                class="font-medium text-brand-orange hover:underline"
+                >Branchen, die wir betreuen</a
+              >.
+            </p>
+            <p class="text-base text-gray-500">
+              Verbindlich wird ein Preis erst mit dem schriftlichen Angebot. Bis
+              dahin entstehen Ihnen keinerlei Kosten oder Verpflichtungen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-white"
+      aria-labelledby="faq-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-16 md:mb-20">
+            <h2
+              id="faq-heading"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            >
+              Häufige Fragen zu Preisen
+            </h2>
+            <p class="text-xl text-gray-600">
+              Was Interessenten vor dem Erstgespräch wissen wollen
+            </p>
+          </div>
+
+          <div class="space-y-3">
+            {
+              faqs.map((faq) => (
+                <details class="faq-item bg-gray-50 rounded-2xl border border-gray-100 shadow-sm overflow-hidden group">
+                  <summary class="flex items-center justify-between p-5 md:p-6 cursor-pointer list-none gap-4">
+                    <h3 class="text-lg font-semibold text-gray-900 text-left">
+                      {faq.q}
+                    </h3>
+                    <svg
+                      class="w-5 h-5 flex-shrink-0 text-brand-orange transition-transform duration-300 group-open:rotate-180"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </summary>
+                  <div class="faq-body px-5 md:px-6 pb-5 md:pb-6 border-t border-gray-100 pt-4">
+                    <p class="text-gray-600 leading-relaxed">{faq.a}</p>
+                  </div>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ServiceCrosslinks />
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white"
+      aria-labelledby="cta-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 id="cta-heading" class="text-3xl md:text-4xl font-bold mb-6">
+            Was kostet Ihr Projekt konkret?
+          </h2>
+          <p class="text-xl text-gray-300 leading-relaxed mb-10">
+            In einem kostenlosen Erstgespräch klären wir Ihr Ziel und Ihren
+            Rahmen. Danach erhalten Sie ein schriftliches Angebot – transparent,
+            ohne versteckte Posten und ohne Verpflichtung.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href={CALENDLY}
+              target="_blank"
+              rel="noopener"
+              data-calendly-popup-url={CALENDLY}
+              class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-orange text-white font-semibold rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
+              aria-label="Kostenloses Erstgespräch vereinbaren"
+            >
+              Termin vereinbaren
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+            <a
+              href="tel:+4994015338873"
+              class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/10 transition-all duration-300"
+              aria-label="ixOne Digitalagentur Regensburg anrufen"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                ></path>
+              </svg>
+              09401 5338873
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

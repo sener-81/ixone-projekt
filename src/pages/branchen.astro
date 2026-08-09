@@ -1,0 +1,709 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ServiceCrosslinks from "../components/ServiceCrosslinks.astro";
+import { areaServedFull } from "../data/structuredData";
+
+const CALENDLY =
+  "https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b";
+
+const PROVENEXPERT =
+  "https://www.provenexpert.com/ixone-onlinemarketing-seo-werbeagentur/";
+
+interface Branche {
+  name: string;
+  href?: string;
+}
+
+interface BranchenGruppe {
+  titel: string;
+  schwerpunkt: string;
+  beschreibung: string;
+  branchen: Branche[];
+}
+
+const branchenGruppen: BranchenGruppe[] = [
+  {
+    titel: "Bau, Sanierung & Energie",
+    schwerpunkt: "Google Ads & Local SEO",
+    beschreibung:
+      "Bei Auftragswerten im vier- bis fünfstelligen Bereich lohnt sich jede einzelne Anfrage. Entscheidend sind echte Referenzobjekte aus der Region, ein gepflegtes Google Business Profile und Anzeigen, die laufen, wenn geplant wird.",
+    branchen: [
+      { name: "Photovoltaik & Wärmepumpen" },
+      { name: "Bauunternehmen" },
+      { name: "Sanierung & Renovierung" },
+      { name: "Trockenbau" },
+      { name: "Dachdecker & Zimmerei" },
+    ],
+  },
+  {
+    titel: "Handwerk & Fachbetriebe",
+    schwerpunkt: "Local SEO & Google Business Profile",
+    beschreibung:
+      "Handwerksbetriebe in Regensburg gewinnen Aufträge über lokale Suchanfragen. Echte Projektfotos statt Stockbildern und eine Website, die auf dem Handy sofort lädt, entscheiden über den Anruf.",
+    branchen: [
+      { name: "Elektro, Heizung & Sanitär" },
+      { name: "Maler & Lackierer" },
+      { name: "Fliesenleger & Bodenleger" },
+      { name: "Schreiner & Tischlereien" },
+      { name: "Schweißtechnik & Metallbau" },
+      { name: "Garten- & Landschaftsbau" },
+    ],
+  },
+  {
+    titel: "Notdienste & Soforthilfe",
+    schwerpunkt: "Google Ads mit Anruferweiterung",
+    beschreibung:
+      "Wer nachts einen Rohrbruch hat, sucht am Handy und ruft die erste seriöse Nummer an. Hier zählen Ladezeit, sofort sichtbare Telefonnummer und Anzeigen zur richtigen Uhrzeit – SEO allein reicht nicht.",
+    branchen: [
+      { name: "Rohr- & Kanalreinigung" },
+      { name: "Schlüsseldienst" },
+      { name: "Schädlingsbekämpfung" },
+      { name: "Abschleppdienste" },
+    ],
+  },
+  {
+    titel: "Reinigung & Gebäudeservice",
+    schwerpunkt: "B2B-Anfragen & Wartungsverträge",
+    beschreibung:
+      "Hausverwaltungen und Firmen vergleichen Anbieter, bevor sie anfragen. Referenzobjekte und ein professioneller Auftritt entscheiden über die Einladung zum Angebot – und über Verträge, die Jahre laufen.",
+    branchen: [
+      { name: "Gebäudereinigung" },
+      { name: "Entrümpelung & Haushaltsauflösung" },
+      { name: "Umzugsunternehmen" },
+    ],
+  },
+  {
+    titel: "Immobilien & Architektur",
+    schwerpunkt: "Hochwertige Darstellung & Leads",
+    beschreibung:
+      "Bei hochpreisigen Entscheidungen zählt der erste Eindruck doppelt. Professionelle Objektdarstellung, klare Kontaktwege und Vertrauenssignale entscheiden darüber, wer überhaupt angefragt wird.",
+    branchen: [
+      { name: "Immobilienmakler" },
+      { name: "Hausverwaltungen" },
+      { name: "Architekten & Ingenieurbüros" },
+      { name: "Interior & Einrichtung" },
+    ],
+  },
+  {
+    titel: "Kfz & Fahrzeugservice",
+    schwerpunkt: "Bewertungen & Sichtbarkeit vor Ort",
+    beschreibung:
+      "Autofahrer suchen Werkstätten in der Nähe und lesen Bewertungen, bevor sie anrufen. Ein optimiertes Google Business Profile mit aktuellen Fotos bringt hier oft mehr als jede bezahlte Anzeige.",
+    branchen: [
+      { name: "Kfz-Werkstätten & Autohäuser" },
+      { name: "Autoaufbereitung & Fahrzeugpflege" },
+      { name: "Reifenservice" },
+      { name: "Motorradwerkstätten" },
+    ],
+  },
+  {
+    titel: "Medizin, Praxen & Pflege",
+    schwerpunkt: "Local SEO & Terminvergabe",
+    beschreibung:
+      "Patienten suchen wohnortnah und entscheiden nach Bewertungen und Erreichbarkeit. Wichtig sind korrekte Sprechzeiten, barrierefreie Darstellung und Werbung, die dem Heilmittelwerbegesetz entspricht.",
+    branchen: [
+      { name: "Ärzte & Facharztpraxen" },
+      { name: "Zahnärzte" },
+      { name: "Physiotherapie & Ergotherapie" },
+      { name: "Heilpraktiker" },
+      { name: "Pflegedienste" },
+      { name: "Tierärzte" },
+    ],
+  },
+  {
+    titel: "Beratung, Recht & Finanzen",
+    schwerpunkt: "Kompetenz zeigen & Vertrauen aufbauen",
+    beschreibung:
+      "Mandanten und Klienten prüfen gründlich, bevor sie Kontakt aufnehmen. Fachbeiträge, klare Spezialisierung und ein seriöser Auftritt wirken hier stärker als jede Anzeige – die Klickpreise sind entsprechend hoch.",
+    branchen: [
+      { name: "Rechtsanwälte & Kanzleien" },
+      { name: "Steuerberater" },
+      { name: "Versicherungsmakler" },
+      { name: "Unternehmensberater" },
+      { name: "Energieberatung" },
+    ],
+  },
+  {
+    titel: "Beauty, Wellness & Fitness",
+    schwerpunkt: "Instagram & Online-Terminbuchung",
+    beschreibung:
+      "In diesen Branchen verkauft das Bild. Regelmäßige Posts mit echten Arbeiten und eine Terminbuchung ohne Umwege verwandeln Interesse direkt in gebuchte Termine – ohne Telefonat und ohne teure Anzeigen.",
+    branchen: [
+      { name: "Friseursalons & Barbershops" },
+      { name: "Kosmetik- & Nagelstudios" },
+      { name: "Massagestudios" },
+      { name: "Fitnessstudios & Personal Trainer" },
+    ],
+  },
+  {
+    titel: "Gastronomie & Hotellerie",
+    schwerpunkt: "Google Maps & aktuelle Inhalte",
+    beschreibung:
+      "Gäste entscheiden in der Google-Suche und auf Maps. Aktuelle Öffnungszeiten, gute Fotos vom Essen und eine mobile Speisekarte ohne PDF-Download bringen Gäste ins Haus.",
+    branchen: [
+      { name: "Restaurants & Cafés" },
+      { name: "Hotels & Pensionen" },
+      { name: "Catering & Partyservice" },
+      { name: "Bäckereien & Metzgereien" },
+    ],
+  },
+  {
+    titel: "Einzelhandel & E-Commerce",
+    schwerpunkt: "Lokale Sichtbarkeit & Online-Verkauf",
+    beschreibung:
+      "Der stationäre Handel konkurriert mit dem Onlinehandel – gewinnt aber über Nähe und Beratung. Sortiment sichtbar machen, Verfügbarkeit zeigen und den Weg ins Geschäft ebnen.",
+    branchen: [
+      { name: "Feinkost & Lebensmittel" },
+      { name: "Schuh- & Modegeschäfte" },
+      { name: "Optiker & Hörakustiker" },
+      { name: "Online-Shops" },
+    ],
+  },
+  {
+    titel: "Selbstständige, KMU & Creator",
+    schwerpunkt: "Solide Basis statt Baukasten",
+    beschreibung:
+      "Vom Einzelunternehmer bis zum mittelständischen Betrieb: eine Website, die Kompetenz zeigt, gefunden wird und Anfragen bringt – ohne monatliche Abhängigkeit von einem Baukastensystem.",
+    branchen: [
+      { name: "Einzelunternehmer & Kleinunternehmen" },
+      { name: "Mittelständische Betriebe" },
+      { name: "Coaches & Trainer" },
+      { name: "Fotografen & Videografen" },
+      { name: "Blogger & Instagram-Creator" },
+    ],
+  },
+];
+
+const weitereBranchen = [
+  "Fahrschulen",
+  "Musikschulen",
+  "Apotheken",
+  "Bestattungsunternehmen",
+  "Sicherheitsdienste",
+  "Reisebüros",
+  "Winzer & Getränkehändler",
+  "Möbelhäuser",
+  "Tattoo- & Piercingstudios",
+  "Hundesalons & Tierpensionen",
+  "Vereine & Verbände",
+  "Startups",
+  "Kindertagesstätten",
+  "Schlossereien",
+  "Landwirtschaft & Direktvermarkter",
+  "Eventlocations",
+];
+
+const arbeitsweise = [
+  {
+    titel: "Website als Basis",
+    text: "Schnell, mobil optimiert und auf Anfragen ausgerichtet – abgestimmt darauf, wie Ihre Kunden suchen.",
+    href: "/webdesign-regensburg/",
+    linkText: "Webdesign Regensburg",
+  },
+  {
+    titel: "Gefunden werden",
+    text: "Local SEO für Ihre Branche und Region, damit Sie bei den Suchanfragen erscheinen, die zu Aufträgen führen.",
+    href: "/seo-regensburg/",
+    linkText: "SEO Agentur Regensburg",
+  },
+  {
+    titel: "Kunden gewinnen",
+    text: "Google Ads dort, wo sofort Bedarf besteht – mit Budgets, die sich an messbaren Anfragen orientieren.",
+    href: "/online-marketing-regensburg/",
+    linkText: "Google Ads & Online-Marketing",
+  },
+  {
+    titel: "Sichtbar bleiben",
+    text: "Facebook, Instagram und TikTok für Branchen, in denen Bilder verkaufen – mit Inhalten, die zu Ihrem Betrieb passen.",
+    href: "/social-media-marketing-regensburg/",
+    linkText: "Social Media Marketing",
+  },
+  {
+    titel: "Messbar machen",
+    text: "Tracking und Reporting, damit Sie sehen, welcher Kanal Anfragen bringt – und welcher nur Budget kostet.",
+    href: "/online-marketing-regensburg/",
+    linkText: "Tracking & Reporting",
+  },
+  {
+    titel: "Gepflegt halten",
+    text: "Updates, Backups, Sicherheit und laufende Inhaltspflege. Damit die Website nach dem Launch nicht veraltet.",
+    href: "/websitepflege-regensburg/",
+    linkText: "Websitepflege Regensburg",
+  },
+];
+
+const faqs = [
+  {
+    q: "Warum braucht meine Branche eine eigene Online-Strategie?",
+    a: "Weil sich das Suchverhalten unterscheidet. Ein Notdienst wird spontan am Handy gesucht, ein Friseurtermin wird geplant, eine Gebäudereinigung wird im Angebotsvergleich ausgewählt. Wer für alle drei dieselbe Website und dasselbe Werbebudget einsetzt, verschenkt Anfragen.",
+  },
+  {
+    q: "Lohnt sich Google Ads für jede Branche?",
+    a: "Nein, und das sagen wir auch offen. Eine qualifizierte Anfrage kostet über Google Ads meist 60 bis 80 €. Bei Photovoltaik, Sanierung oder Immobilien rechnet sich das sofort. Bei einem Friseurbesuch für 40 € nicht – dort bringen Local SEO und Instagram deutlich mehr für dasselbe Geld.",
+  },
+  {
+    q: "Was kostet Online-Marketing für einen Betrieb in Regensburg?",
+    a: "Eine Unternehmenswebsite startet ab etwa 2.500 €. Laufende Betreuung für SEO oder Google Ads beginnt im niedrigen dreistelligen Bereich pro Monat. Wir arbeiten ohne Mindestlaufzeit – Sie entscheiden nach den Ergebnissen, ob es weitergeht.",
+  },
+  {
+    q: "Ist Werbung in Regensburg günstiger als in München?",
+    a: "Ja, deutlich. Klickpreise in ländlicheren Regionen liegen typischerweise 20 bis 40 Prozent unter denen von Ballungsräumen. Für Betriebe aus Regensburg und dem Landkreis bedeutet das: dasselbe Budget bringt spürbar mehr Anfragen als in einer Großstadt.",
+  },
+  {
+    q: "Betreuen Sie auch Betriebe außerhalb der Stadt Regensburg?",
+    a: "Ja. Unser Einzugsgebiet umfasst den gesamten Landkreis Regensburg – von Neutraubling und Barbing über Wenzenbach und Nittendorf bis Regenstauf und Bad Abbach. Der persönliche Kontakt vor Ort ist uns wichtig, viele Kunden besuchen wir direkt im Betrieb.",
+  },
+  {
+    q: "Übernehmen Sie auch die laufende Betreuung nach dem Launch?",
+    a: "Ja. Die meisten unserer Kunden buchen im Anschluss einen Wartungsvertrag: CMS-Updates, Backups, Sicherheitsprüfungen und Inhaltspflege laufen dann im Hintergrund. Details dazu finden Sie unter Websitepflege Regensburg. Wer zusätzlich Werbung schaltet, bekommt monatlich einen kurzen Bericht über Anfragen und Kosten.",
+  },
+  {
+    q: "Meine Branche steht nicht auf der Liste – arbeiten Sie trotzdem mit mir?",
+    a: "Ja. Die aufgeführten Branchen sind unsere Schwerpunkte aus über 500 Projekten seit 2007. Die Prinzipien lassen sich auf nahezu jeden Betrieb übertragen. Im kostenlosen Erstgespräch schauen wir uns Ihren Markt konkret an.",
+  },
+];
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://ixone.de/branchen/#service",
+  name: "Branchenspezifisches Online-Marketing Regensburg",
+  description:
+    "Webdesign, SEO, Google Ads, Social Media Marketing und Websitepflege für Bau, Handwerk, Notdienste, Gebäudeservice, Immobilien, Kfz, Medizin, Beratung, Beauty, Gastronomie, Handel und KMU aus Regensburg und dem Landkreis.",
+  provider: { "@id": "https://ixone.de/#organization" },
+  telephone: "+4994015338873",
+  areaServed: areaServedFull,
+  serviceType: branchenGruppen.map((gruppe) => gruppe.titel),
+};
+
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Branchen der ixOne Digitalagentur Regensburg",
+  numberOfItems: branchenGruppen.flatMap((gruppe) => gruppe.branchen).length,
+  itemListElement: branchenGruppen
+    .flatMap((gruppe) => gruppe.branchen)
+    .map((branche, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: branche.name,
+      ...(branche.href ? { url: `https://ixone.de${branche.href}` } : {}),
+    })),
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+---
+
+<Layout
+  title="Branchen | Online-Marketing für Ihre Branche | ixOne"
+  description="Komplettes Online-Marketing für Handwerk, Bau, Notdienste, Praxen, Handel und KMU in Regensburg: Website, SEO, Google Ads, Social Media und Pflege."
+  canonical="https://ixone.de/branchen/"
+  structuredData={[serviceSchema, itemListSchema, faqSchema]}
+>
+  <div class="bg-white">
+    <section
+      class="relative bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-900 text-white overflow-hidden"
+      aria-label="Branchen Digitalagentur Regensburg Hero"
+    >
+      <div class="absolute inset-0 opacity-20" aria-hidden="true">
+        <div
+          class="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full filter blur-3xl animate-blob"
+        >
+        </div>
+        <div
+          class="absolute bottom-0 right-0 w-96 h-96 bg-purple-400 rounded-full filter blur-3xl animate-blob animation-delay-2000"
+        >
+        </div>
+        <div
+          class="absolute top-1/2 left-1/4 w-72 h-72 bg-indigo-400 rounded-full filter blur-3xl animate-blob animation-delay-4000"
+        >
+        </div>
+      </div>
+
+      <div class="absolute inset-0 opacity-5" aria-hidden="true">
+        <div
+          class="h-full w-full"
+          style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 60px 60px;"
+        >
+        </div>
+      </div>
+
+      <div
+        class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-24 md:py-32 lg:py-36 relative z-10"
+      >
+        <div class="max-w-4xl mx-auto text-center">
+          <span
+            class="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full bg-white/10 border border-white/20 text-sm font-medium backdrop-blur-md"
+          >
+            <span
+              class="w-2 h-2 bg-green-400 rounded-full animate-pulse"
+              aria-hidden="true"></span>
+            Über 500 Projekte seit 2007
+          </span>
+
+          <h1
+            class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+          >
+            <span class="block text-white">Digitalagentur für Ihre</span>
+            <span class="gradient-text-brand">Branche</span>
+            <span
+              class="block text-white/80 text-2xl md:text-3xl font-normal mt-2"
+            >
+              Regensburg und Landkreis
+            </span>
+          </h1>
+
+          <p
+            class="text-lg md:text-xl text-gray-200 leading-relaxed mb-8 max-w-2xl mx-auto"
+          >
+            Ein Rohrreiniger braucht etwas anderes als ein Friseursalon. Wir
+            kennen den Unterschied – aus <strong class="text-white"
+              >echten Projekten</strong
+            > in Regensburg und Umgebung.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+            <a
+              href={CALENDLY}
+              target="_blank"
+              rel="noopener"
+              data-calendly-popup-url={CALENDLY}
+              class="cta-button-primary"
+              aria-label="Kostenlosen Beratungstermin vereinbaren"
+            >
+              <span>Termin vereinbaren</span>
+            </a>
+            <a
+              href="#branchen-uebersicht"
+              class="group px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl font-semibold text-lg text-white hover:bg-white/20 transition-all duration-300 text-center"
+            >
+              <span class="flex items-center justify-center gap-2">
+                Branchen ansehen
+                <svg
+                  class="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+              </span>
+            </a>
+          </div>
+
+          <a
+            href={PROVENEXPERT}
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-white/10 border border-white/20 backdrop-blur-md text-sm text-white/90 hover:bg-white/20 transition-colors duration-300"
+          >
+            <span class="flex text-yellow-400" aria-hidden="true">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.367 2.446a1 1 0 00-.363 1.118l1.286 3.958c.3.922-.755 1.688-1.539 1.118l-3.366-2.446a1 1 0 00-1.176 0l-3.367 2.446c-.783.57-1.838-.196-1.538-1.118l1.286-3.958a1 1 0 00-.363-1.118L2.063 9.385c-.783-.57-.38-1.81.588-1.81h4.161a1 1 0 00.951-.69l1.286-3.958z"
+                ></path>
+              </svg>
+            </span>
+            166 Bewertungen auf ProvenExpert
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="branchen-uebersicht"
+      class="py-20 md:py-28 lg:py-32 bg-gray-50"
+      aria-labelledby="branchen-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+            <h2
+              id="branchen-heading"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            >
+              Branchen, die wir betreuen
+            </h2>
+            <p class="text-xl text-gray-600">
+              Zwölf Schwerpunkte, gewachsen aus echten Kundenprojekten in
+              Regensburg und dem Landkreis
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {
+              branchenGruppen.map((gruppe) => (
+                <article class="bg-white rounded-2xl p-8 border border-gray-100 shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    {gruppe.titel}
+                  </h3>
+
+                  <span class="inline-flex items-center self-start gap-2 px-3 py-1.5 mb-4 rounded-full bg-brand-orange/10 border border-brand-orange/20 text-brand-orange text-xs font-semibold">
+                    {gruppe.schwerpunkt}
+                  </span>
+
+                  <p class="text-gray-600 leading-relaxed mb-6 flex-grow">
+                    {gruppe.beschreibung}
+                  </p>
+
+                  <ul class="space-y-2 pt-6 border-t border-gray-100">
+                    {gruppe.branchen.map((branche) => (
+                      <li class="flex items-start gap-3 text-gray-700">
+                        <svg
+                          class="w-5 h-5 flex-shrink-0 mt-0.5 text-brand-orange"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2.5"
+                            d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        {branche.href ? (
+                          <a
+                            href={branche.href}
+                            class="font-medium text-brand-orange hover:underline"
+                          >
+                            {branche.name}
+                          </a>
+                        ) : (
+                          <span>{branche.name}</span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-white"
+      aria-labelledby="weitere-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-5xl mx-auto text-center">
+          <h2
+            id="weitere-heading"
+            class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+          >
+            Auch außerhalb dieser Schwerpunkte
+          </h2>
+          <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
+            Die Prinzipien funktionieren branchenübergreifend. Diese Betriebe
+            begleiten wir ebenfalls:
+          </p>
+
+          <ul class="flex flex-wrap justify-center gap-3">
+            {
+              weitereBranchen.map((branche) => (
+                <li class="px-4 py-2 rounded-full bg-gray-50 border border-gray-200 text-gray-700 text-sm font-medium">
+                  {branche}
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-gray-50"
+      aria-labelledby="arbeitsweise-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+            <h2
+              id="arbeitsweise-heading"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            >
+              Was wir für jede Branche umsetzen
+            </h2>
+            <p class="text-xl text-gray-600">
+              Website, SEO, Google Ads, Social Media und Pflege – die Gewichtung
+              ändert sich je nach Branche, die Bausteine bleiben
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {
+              arbeitsweise.map((schritt) => (
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-md">
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    {schritt.titel}
+                  </h3>
+                  <p class="text-gray-600 leading-relaxed mb-4">
+                    {schritt.text}
+                  </p>
+                  {schritt.href && (
+                    <a
+                      href={schritt.href}
+                      class="inline-flex items-center gap-1 font-medium text-brand-orange hover:underline"
+                    >
+                      {schritt.linkText}
+                      <svg
+                        class="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </a>
+                  )}
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-white"
+      aria-labelledby="faq-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-16 md:mb-20">
+            <h2
+              id="faq-heading"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            >
+              Häufige Fragen
+            </h2>
+            <p class="text-xl text-gray-600">
+              Was Betriebe vor der Zusammenarbeit wissen wollen
+            </p>
+          </div>
+
+          <div class="space-y-3">
+            {
+              faqs.map((faq) => (
+                <details class="faq-item bg-gray-50 rounded-2xl border border-gray-100 shadow-sm overflow-hidden group">
+                  <summary class="flex items-center justify-between p-5 md:p-6 cursor-pointer list-none gap-4">
+                    <h3 class="text-lg font-semibold text-gray-900 text-left">
+                      {faq.q}
+                    </h3>
+                    <svg
+                      class="w-5 h-5 flex-shrink-0 text-brand-orange transition-transform duration-300 group-open:rotate-180"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </summary>
+                  <div class="faq-body px-5 md:px-6 pb-5 md:pb-6 border-t border-gray-100 pt-4">
+                    <p class="text-gray-600 leading-relaxed">{faq.a}</p>
+                  </div>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ServiceCrosslinks />
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white"
+      aria-labelledby="cta-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 id="cta-heading" class="text-3xl md:text-4xl font-bold mb-6">
+            Ihre Branche ist nicht dabei?
+          </h2>
+          <p class="text-xl text-gray-300 leading-relaxed mb-10">
+            Kein Problem. In einem kostenlosen Erstgespräch schauen wir uns Ihren
+            Markt an und sagen Ihnen ehrlich, welcher Kanal für Ihren Betrieb
+            Sinn ergibt – und welcher nicht.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href={CALENDLY}
+              target="_blank"
+              rel="noopener"
+              data-calendly-popup-url={CALENDLY}
+              class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-orange text-white font-semibold rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
+              aria-label="Kostenlosen Beratungstermin vereinbaren"
+            >
+              Termin vereinbaren
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+            <a
+              href="tel:+4994015338873"
+              class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/10 transition-all duration-300"
+              aria-label="ixOne Digitalagentur Regensburg anrufen"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                ></path>
+              </svg>
+              09401 5338873
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
