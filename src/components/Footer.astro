@@ -1,5 +1,7 @@
 ---
 import { footerLinks } from "../data/navigation";
+
+const aktuellesJahr = new Date().getFullYear();
 ---
 
 <footer class="bg-gray-900 text-white">
@@ -91,7 +93,7 @@ import { footerLinks } from "../data/navigation";
       class="border-t border-gray-800 mt-6 sm:mt-8 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0"
     >
       <p class="text-gray-400 text-xs sm:text-sm text-center sm:text-left">
-        © 2026 ixOne Digitalagentur. Alle Rechte vorbehalten.
+        © {aktuellesJahr} ixOne Digitalagentur. Alle Rechte vorbehalten.
       </p>
       <div
         class="flex flex-wrap justify-center sm:justify-end space-x-4 sm:space-x-6"

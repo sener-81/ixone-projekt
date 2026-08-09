@@ -113,11 +113,43 @@ export const organizationSchema = {
             "Zielgruppengerechte Social Media Strategien für Facebook, Instagram, TikTok und YouTube",
         },
       },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Websitepflege Regensburg",
+          url: "https://ixone.de/websitepflege-regensburg/",
+          description:
+            "Wartung, CMS-Updates, Backups und Sicherheits-Monitoring für Websites und Onlineshops",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "KI-Agentur Regensburg",
+          url: "https://ixone.de/ki-agentur-regensburg/",
+          description:
+            "KI-Chatbots, Agenten, Prozessautomatisierung und KI-gestützte Analyse für Unternehmen",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Grafikdesign Regensburg",
+          url: "https://ixone.de/grafikdesign-regensburg/",
+          description:
+            "Visitenkarten, Stempel, Logo und Geschäftsausstattung inklusive Druck und NFC-Metallkarten",
+        },
+      },
     ],
   },
   sameAs: [
-    "https://www.facebook.com/ixone.de",
-    "https://www.instagram.com/ixone.de",
+    "https://www.facebook.com/ixonemarketing",
+    "https://www.instagram.com/ixone.werbeagentur/",
+    "https://www.youtube.com/@ixone-onlinemarketing",
+    "https://www.provenexpert.com/ixone-onlinemarketing-seo-werbeagentur/",
   ],
 };
 
