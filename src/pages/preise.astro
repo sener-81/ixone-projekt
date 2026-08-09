@@ -12,19 +12,22 @@ const B2B_HINWEIS =
 const einmalig = [
   {
     leistung: "Onepager",
-    beschreibung: "Eine Seite, alle wichtigen Informationen. Ideal für Selbstständige und kleine Betriebe.",
+    beschreibung:
+      "Eine Seite, alle wichtigen Informationen. Ideal für Selbstständige und kleine Betriebe.",
     preis: "ab 1.200 €",
     href: "/webdesign-regensburg/",
   },
   {
     leistung: "Unternehmenswebsite",
-    beschreibung: "Mehrere Seiten mit Leistungen, Referenzen und Kontakt. Der Standard für die meisten Betriebe.",
+    beschreibung:
+      "Mehrere Seiten mit Leistungen, Referenzen und Kontakt. Der Standard für die meisten Betriebe.",
     preis: "ab 2.500 €",
     href: "/webdesign-regensburg/",
   },
   {
     leistung: "Online-Shop",
-    beschreibung: "WooCommerce oder Shopsystem nach Wahl. Umfang und Produktzahl bestimmen den Aufwand.",
+    beschreibung:
+      "WooCommerce oder Shopsystem nach Wahl. Umfang und Produktzahl bestimmen den Aufwand.",
     preis: "individuell",
     href: "/webdesign-regensburg/",
   },
@@ -33,28 +36,32 @@ const einmalig = [
 const laufend = [
   {
     leistung: "SEO-Betreuung",
-    beschreibung: "Laufende Optimierung, Content, Local SEO und monatliches Reporting.",
+    beschreibung:
+      "Laufende Optimierung, Content, Local SEO und monatliches Reporting.",
     preis: "ab 499 €",
     zeitraum: "pro Monat",
     href: "/seo-regensburg/",
   },
   {
     leistung: "Google Ads Betreuung",
-    beschreibung: "Einrichtung, Optimierung und Reporting. Das Werbebudget zahlen Sie direkt an Google.",
+    beschreibung:
+      "Einrichtung, Optimierung und Reporting. Das Werbebudget zahlen Sie direkt an Google.",
     preis: "ab 499 €",
     zeitraum: "pro Monat",
     href: "/online-marketing-regensburg/",
   },
   {
     leistung: "Social Media Betreuung",
-    beschreibung: "Redaktionsplan, Inhalte und Community-Betreuung für Facebook, Instagram und TikTok.",
+    beschreibung:
+      "Redaktionsplan, Inhalte und Community-Betreuung für Facebook, Instagram und TikTok.",
     preis: "ab 499 €",
     zeitraum: "pro Monat",
     href: "/social-media-marketing-regensburg/",
   },
   {
     leistung: "Websitepflege",
-    beschreibung: "Updates, Backups, Sicherheits-Monitoring und kleinere Inhaltsänderungen.",
+    beschreibung:
+      "Updates, Backups, Sicherheits-Monitoring und kleinere Inhaltsänderungen.",
     preis: "ab 49,95 €",
     zeitraum: "pro Monat",
     href: "/websitepflege-regensburg/",
@@ -358,10 +365,7 @@ const serviceSchema = {
       </div>
     </section>
 
-    <section
-      class="py-20 md:py-28 bg-white"
-      aria-labelledby="warum-heading"
-    >
+    <section class="py-20 md:py-28 bg-white" aria-labelledby="warum-heading">
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div class="max-w-3xl mx-auto text-center">
           <h2
@@ -380,10 +384,10 @@ const serviceSchema = {
               und für den anderen unrealistisch niedrig.
             </p>
             <p>
-              Deshalb kalkulieren wir nach Ziel, Umfang, Funktionen und
-              Aufwand – und besprechen jedes Projekt persönlich. Damit Sie
-              trotzdem eine Vorstellung bekommen, finden Sie unten eine grobe
-              Orientierung aus typischen Projekten.
+              Deshalb kalkulieren wir nach Ziel, Umfang, Funktionen und Aufwand
+              – und besprechen jedes Projekt persönlich. Damit Sie trotzdem eine
+              Vorstellung bekommen, finden Sie unten eine grobe Orientierung aus
+              typischen Projekten.
             </p>
           </div>
         </div>
@@ -532,8 +536,8 @@ const serviceSchema = {
                 </h3>
                 <p class="text-gray-600 leading-relaxed mb-4">
                   Website, SEO und Google Ads greifen ineinander. Wer mehrere
-                  Bausteine kombiniert, spart nicht nur Abstimmungsaufwand –
-                  wir kalkulieren Kombi-Pakete auch günstiger als die Summe der
+                  Bausteine kombiniert, spart nicht nur Abstimmungsaufwand – wir
+                  kalkulieren Kombi-Pakete auch günstiger als die Summe der
                   Einzelleistungen.
                 </p>
                 <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700">
@@ -567,9 +571,7 @@ const serviceSchema = {
               </div>
 
               <div class="lg:w-64 shrink-0 text-center lg:text-left">
-                <p class="text-3xl font-bold text-gray-900 mb-2">
-                  Auf Anfrage
-                </p>
+                <p class="text-3xl font-bold text-gray-900 mb-2">Auf Anfrage</p>
                 <p class="text-gray-500 text-sm mb-6">
                   Der Preis richtet sich nach Leistungsumfang und Zielsetzung
                 </p>
@@ -762,7 +764,10 @@ const serviceSchema = {
       </div>
     </section>
 
-    <ServiceCrosslinks />
+    <ServiceCrosslinks
+      headline={"Wofür Sie bezahlen"}
+      intro={"Ein Blick auf die Leistungen, für die die Richtwerte gelten."}
+    />
 
     <section
       class="py-20 md:py-28 lg:py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white"
