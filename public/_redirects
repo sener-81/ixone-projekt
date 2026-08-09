@@ -1,11 +1,143 @@
-# Plattform-Subdomain auf die Hauptdomain
+# ══════════════════════════════════════════════════════════════
+# ixOne – Weiterleitungen (Cloudflare Pages)
+# Reihenfolge zählt: die erste passende Regel gewinnt.
+# ══════════════════════════════════════════════════════════════
+
+# ── Plattform-Subdomain auf die Hauptdomain ──
 https://ixone-projekt.pages.dev/* https://ixone.de/:splat 301!
 
-# Canonical Slash-Weiterleitungen
-/datenschutz /datenschutz/ 301
-/impressum /impressum/ 301
-/kontakt /kontakt/ 301
-/online-marketing-regensburg /online-marketing-regensburg/ 301
-/seo-regensburg /seo-regensburg/ 301
-/social-media-marketing-regensburg /social-media-marketing-regensburg/ 301
+# ══════════════════════════════════════════════════════════════
+# 1. AKTUELLE SEITEN – Slash-Varianten
+# ══════════════════════════════════════════════════════════════
 /webdesign-regensburg /webdesign-regensburg/ 301
+/seo-regensburg /seo-regensburg/ 301
+/online-marketing-regensburg /online-marketing-regensburg/ 301
+/social-media-marketing-regensburg /social-media-marketing-regensburg/ 301
+/websitepflege-regensburg /websitepflege-regensburg/ 301
+/ki-agentur-regensburg /ki-agentur-regensburg/ 301
+/grafikdesign-regensburg /grafikdesign-regensburg/ 301
+/branchen /branchen/ 301
+/referenzen /referenzen/ 301
+/preise /preise/ 301
+/ueber-uns /ueber-uns/ 301
+/faq /faq/ 301
+/kontakt /kontakt/ 301
+/impressum /impressum/ 301
+/datenschutz /datenschutz/ 301
+
+# ══════════════════════════════════════════════════════════════
+# 2. ALTE LEISTUNGSSEITEN (WordPress, ohne -regensburg)
+# ══════════════════════════════════════════════════════════════
+/webdesign/* /webdesign-regensburg/ 301
+/screendesign/* /webdesign-regensburg/ 301
+/ux-design/* /webdesign-regensburg/ 301
+/onlineshop/* /webdesign-regensburg/ 301
+/e-commerce-regensburg/* /webdesign-regensburg/ 301
+
+/suchmaschinenoptimierung/* /seo-regensburg/ 301
+/onpage-optimierung/* /seo-regensburg/ 301
+/monitoring/* /seo-regensburg/ 301
+
+/online-marketing/* /online-marketing-regensburg/ 301
+/digital-marketing/* /online-marketing-regensburg/ 301
+/suchmaschinenmarketing-google-ads/* /online-marketing-regensburg/ 301
+/guerilla-marketing/* /online-marketing-regensburg/ 301
+
+/social-media-marketing-smm/* /social-media-marketing-regensburg/ 301
+
+/websitepflege/* /websitepflege-regensburg/ 301
+/grafikdesign/* /grafikdesign-regensburg/ 301
+
+# ══════════════════════════════════════════════════════════════
+# 3. NICHT MEHR ANGEBOTENE LEISTUNGEN
+# ══════════════════════════════════════════════════════════════
+/nfc-metallgravur-regensburg/* /grafikdesign-regensburg/#nfc-metallkarten 301
+/360-grad-regensburg/* /grafikdesign-regensburg/#360-grad-rundgang 301
+
+# ══════════════════════════════════════════════════════════════
+# 4. SEO-UNTERSEITEN
+# ══════════════════════════════════════════════════════════════
+/seo-regensburg/onpage-optimierung/* /seo-regensburg/ 301
+/seo-regensburg/offpage-optimierung/* /seo-regensburg/ 301
+/seo-regensburg/technical-seo/* /seo-regensburg/ 301
+/seo-regensburg/content-seo/* /seo-regensburg/ 301
+/seo-regensburg/local-seo/* /seo-regensburg/ 301
+/seo-regensburg/keyword-strategie/* /seo-regensburg/ 301
+/seo-regensburg/seo-audit/* /seo-regensburg/ 301
+/seo-regensburg/seo-monitoring/* /seo-regensburg/ 301
+
+# ══════════════════════════════════════════════════════════════
+# 5. ONLINE-MARKETING-UNTERSEITEN
+# ══════════════════════════════════════════════════════════════
+/online-marketing-regensburg/sea-kampagnen/* /online-marketing-regensburg/ 301
+/online-marketing-regensburg/google-ads/* /online-marketing-regensburg/ 301
+/online-marketing-regensburg/conversion-optimierung/* /online-marketing-regensburg/ 301
+/online-marketing-regensburg/leadgenerierung/* /online-marketing-regensburg/ 301
+/online-marketing-regensburg/tracking-reporting/* /online-marketing-regensburg/ 301
+/online-marketing-regensburg/remarketing-retargeting/* /online-marketing-regensburg/ 301
+/online-marketing-regensburg/performance-marketing/* /online-marketing-regensburg/ 301
+/online-marketing-regensburg/display-ads/* /online-marketing-regensburg/ 301
+/online-marketing-regensburg/shopping-ads/* /online-marketing-regensburg/ 301
+/online-marketing-regensburg/content-marketing/* /online-marketing-regensburg/ 301
+/online-marketing-regensburg/brand-marketing/* /online-marketing-regensburg/ 301
+/online-marketing-regensburg/guerilla-marketing/* /online-marketing-regensburg/ 301
+
+# ══════════════════════════════════════════════════════════════
+# 6. SOCIAL-MEDIA-UNTERSEITEN
+# ══════════════════════════════════════════════════════════════
+/social-media-marketing-regensburg/facebook-instagram-marketing/* /social-media-marketing-regensburg/ 301
+/social-media-marketing-regensburg/tiktok-marketing/* /social-media-marketing-regensburg/ 301
+/social-media-marketing-regensburg/youtube-marketing/* /social-media-marketing-regensburg/ 301
+/social-media-marketing-regensburg/social-media-ads/* /social-media-marketing-regensburg/ 301
+/social-media-marketing-regensburg/social-media-kampagnen/* /social-media-marketing-regensburg/ 301
+/social-media-marketing-regensburg/social-media-leads/* /social-media-marketing-regensburg/ 301
+/social-media-marketing-regensburg/social-media-recruiting/* /social-media-marketing-regensburg/ 301
+/social-media-marketing-regensburg/influencer-marketing/* /social-media-marketing-regensburg/ 301
+
+# ══════════════════════════════════════════════════════════════
+# 7. ALTE ÜBERSICHTS- UND SYSTEMSEITEN
+# ══════════════════════════════════════════════════════════════
+/galerie/* /referenzen/ 301
+/leistungen/* / 301
+/leistung/* / 301
+/danke-kontaktseite/* /kontakt/ 301
+/author/* / 301
+/category/* / 301
+/locations/* / 301
+/project/* / 301
+/blog/* / 301
+
+# ══════════════════════════════════════════════════════════════
+# 8. EINZUGSGEBIETE & STÄDTESEITEN
+# ══════════════════════════════════════════════════════════════
+/einzugsgebiete/* / 301
+/standorte/* / 301
+
+/regensburg/* / 301
+/neutraubling/* / 301
+/barbing/* / 301
+/wenzenbach/* / 301
+/nittendorf/* / 301
+/nittenau/* / 301
+/regenstauf/* / 301
+/bad-abbach/* / 301
+/parsberg/* / 301
+/burglengenfeld/* / 301
+/teublitz/* / 301
+/langquaid/* / 301
+/abensberg/* / 301
+/kelheim/* / 301
+/roding/* / 301
+/cham/* / 301
+/schwandorf/* / 301
+/amberg/* / 301
+/weiden/* / 301
+/neumarkt-in-der-oberpfalz/* / 301
+/straubing/* / 301
+/deggendorf/* / 301
+/plattling/* / 301
+/landshut/* / 301
+/passau/* / 301
+/nuernberg/* / 301
+/augsburg/* / 301
+/muenchen/* / 301
