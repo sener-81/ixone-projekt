@@ -48,7 +48,7 @@ const faqs = [
   },
   {
     q: "Was kostet professionelle SEO-Betreuung in Regensburg?",
-    a: "Die Kosten hängen von Umfang, Branche und Wettbewerb ab. Eine monatliche SEO-Betreuung startet bei ixOne ab 499 €. Nach einer kostenlosen Erstberatung erhalten Sie ein transparentes Angebot ohne versteckte Kosten und ohne Mindestlaufzeiten.",
+    a: "Die Kosten hängen von Umfang, Branche und Wettbewerb ab. Eine monatliche SEO-Betreuung startet bei ixOne ab 499 € netto, ebenso die reine Local-SEO-Betreuung. Ein separater SEO-Audit wird nach Aufwand kalkuliert – meist ist er in der laufenden Betreuung bereits enthalten. Eine Übersicht über alle Leistungen finden Sie auf unserer Preisseite. Wir arbeiten ohne Mindestlaufzeit.",
   },
   {
     q: "Was ist der Unterschied zwischen SEO und Google Ads?",
@@ -182,19 +182,6 @@ const prozessSchritte = [
 
 const preisPakete = [
   {
-    title: "SEO-Audit",
-    price: "ab 499 €*",
-    desc: "Einmalige Analyse Ihrer aktuellen SEO-Performance mit konkretem Maßnahmenplan.",
-    items: [
-      "Technischer Audit",
-      "Keyword-Analyse",
-      "Konkurrenz-Check",
-      "Handlungsempfehlungen",
-    ],
-    color: "from-blue-500 to-cyan-500",
-    badge: "Einmalig",
-  },
-  {
     title: "SEO-Betreuung",
     price: "ab 499 €/Monat*",
     desc: "Laufende SEO-Optimierung mit monatlichem Reporting und persönlichem Ansprechpartner.",
@@ -209,8 +196,8 @@ const preisPakete = [
   },
   {
     title: "Local SEO",
-    price: "ab 299 €/Monat*",
-    desc: "Speziell für lokale Unternehmen in Regensburg und Bayern – mehr Sichtbarkeit vor Ort.",
+    price: "ab 499 €/Monat*",
+    desc: "Speziell für lokale Unternehmen in Regensburg und Umgebung – mehr Sichtbarkeit vor Ort.",
     items: [
       "Google Business Profile",
       "Lokale Keywords",
@@ -219,6 +206,19 @@ const preisPakete = [
     ],
     color: "from-purple-500 to-pink-500",
     badge: "Lokal",
+  },
+  {
+    title: "SEO-Audit",
+    price: "Auf Anfrage",
+    desc: "Einmalige Analyse Ihrer SEO-Performance – nur wenn Sie sie separat benötigen, etwa vor einem Relaunch.",
+    items: [
+      "Technischer Audit",
+      "Keyword-Analyse",
+      "Konkurrenzanalyse",
+      "Handlungsempfehlungen",
+    ],
+    color: "from-blue-500 to-cyan-500",
+    badge: "Einmalig",
   },
 ];
 ---
@@ -1431,8 +1431,8 @@ const preisPakete = [
               damit Sie ein Gefühl bekommen
             </h2>
             <p class="text-xl text-gray-600">
-              Transparente Richtwerte – das finale Angebot richtet sich nach
-              Ihrem konkreten Bedarf
+              Grobe Orientierung – das finale Angebot richtet sich nach Ihrem
+              konkreten Bedarf
             </p>
           </div>
 
@@ -1484,17 +1484,29 @@ const preisPakete = [
           <div
             class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-100 text-center"
           >
-            <p class="text-gray-700 text-lg leading-relaxed mb-2">
+            <p class="text-gray-700 text-lg leading-relaxed mb-3">
               <strong class="text-gray-900"
-                >*Alle Preise sind Richtwerte zzgl. gesetzlicher MwSt.</strong
-              >{" "}
-              Das finale Angebot richtet sich nach Umfang, Branche und Zielsetzung.
+                >*Unverbindliche Richtwerte, netto zzgl. gesetzlicher
+                Umsatzsteuer.</strong
+              >{" "} Das finale Angebot richtet sich nach Umfang, Branche und Zielsetzung.
+              Eine Übersicht aller Leistungen finden Sie bei den{" "}
+              <a
+                href="/preise/"
+                class="text-brand-orange font-semibold hover:underline"
+                >Preisen</a
+              >.
             </p>
-            <p class="text-gray-600 text-sm">
+            <p class="text-gray-600 text-sm mb-3">
               Ob kleines Budget oder große Vision – wir beraten Sie ehrlich und
-              erstellen ein Angebot das wirklich zu Ihnen passt. <strong
-                >Keine Mindestlaufzeiten, keine versteckten Kosten.</strong
+              erstellen ein Angebot, das wirklich zu Ihnen passt.{" "}
+              <strong>Keine Mindestlaufzeiten, keine versteckten Kosten.</strong
               >
+            </p>
+            <p class="text-gray-500 text-xs leading-relaxed">
+              Unsere Angebote richten sich ausschließlich an Unternehmer im
+              Sinne des § 14 BGB. Die Angaben stellen kein rechtsverbindliches
+              Angebot dar – verbindlich ist ausschließlich das schriftliche
+              Angebot nach dem Erstgespräch.
             </p>
           </div>
         </div>
