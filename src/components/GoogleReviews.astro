@@ -51,6 +51,10 @@ if (API_KEY && PLACE_ID) {
   } catch (err) {
     console.warn("GoogleReviews: Fetch fehlgeschlagen", err);
   }
+} else {
+  console.warn(
+    "GoogleReviews: GOOGLE_PLACES_API_KEY oder GOOGLE_PLACE_ID fehlt – .env im Projektstamm vorhanden und Dev-Server neu gestartet?",
+  );
 }
 ---
 
@@ -192,6 +196,13 @@ if (API_KEY && PLACE_ID) {
 <style>
   .reviews-track {
     scrollbar-width: none;
+    cursor: grab;
+  }
+  .reviews-track.dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+    user-select: none;
   }
   .reviews-track::-webkit-scrollbar {
     display: none;
@@ -223,5 +234,30 @@ if (API_KEY && PLACE_ID) {
       ?.addEventListener("click", () =>
         track.scrollBy({ left: step(), behavior: "smooth" }),
       );
+
+    // Maus-Drag: greifen und schieben (Touch läuft nativ über Scroll-Snap)
+    let isDown = false;
+    let startX = 0;
+    let startScroll = 0;
+
+    track.addEventListener("pointerdown", (e) => {
+      if (e.pointerType !== "mouse" || e.button !== 0) return;
+      isDown = true;
+      startX = e.clientX;
+      startScroll = track.scrollLeft;
+      track.classList.add("dragging");
+    });
+
+    window.addEventListener("pointermove", (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      track.scrollLeft = startScroll - (e.clientX - startX);
+    });
+
+    window.addEventListener("pointerup", () => {
+      if (!isDown) return;
+      isDown = false;
+      track.classList.remove("dragging");
+    });
   });
 </script>
