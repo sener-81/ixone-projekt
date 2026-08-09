@@ -1,0 +1,643 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ServiceCrosslinks from "../components/ServiceCrosslinks.astro";
+import { areaServedFull } from "../data/structuredData";
+
+const CALENDLY =
+  "https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b";
+
+const printprodukte = [
+  {
+    titel: "Visitenkarten",
+    text: "Der erste Eindruck, den man in die Hand nimmt. Wir gestalten und drucken – von der klassischen Karte bis zu Sonderformaten mit Veredelung.",
+  },
+  {
+    titel: "Stempel",
+    text: "Firmenstempel, Adressstempel, Eingangsstempel. Sauber gesetzt, klar lesbar und passend zu Ihrem übrigen Auftritt.",
+  },
+  {
+    titel: "Logo & Corporate Design",
+    text: "Ein Logo, das auf der Visitenkarte genauso funktioniert wie auf dem Firmenwagen. Mit Farb- und Schriftvorgaben für alles Weitere.",
+  },
+  {
+    titel: "Flyer & Broschüren",
+    text: "Vom einfachen Handzettel bis zur mehrseitigen Broschüre. Layout, Reinzeichnung und Druckabwicklung aus einer Hand.",
+  },
+  {
+    titel: "Briefpapier & Geschäftsausstattung",
+    text: "Briefbogen, Umschläge, Blöcke und Mappen im einheitlichen Erscheinungsbild. Damit alles aus Ihrem Haus zusammenpasst.",
+  },
+  {
+    titel: "Aufkleber & Beschilderung",
+    text: "Fenster- und Fahrzeugaufkleber, Schilder und Banner. Formate und Materialien passend zum Einsatzort.",
+  },
+];
+
+const ablauf = [
+  {
+    schritt: "01",
+    titel: "Briefing",
+    text: "Wir klären, wofür das Produkt gebraucht wird, welche Vorgaben es gibt und ob bereits ein Corporate Design existiert.",
+  },
+  {
+    schritt: "02",
+    titel: "Entwurf",
+    text: "Sie erhalten Gestaltungsvorschläge zur Auswahl. Änderungswünsche sind eingeplant, bis das Ergebnis passt.",
+  },
+  {
+    schritt: "03",
+    titel: "Reinzeichnung",
+    text: "Wir bereiten die Datei druckfertig auf: Farbraum, Beschnitt, Auflösung, Schriften eingebettet. Damit die Druckerei nicht zurückfragt.",
+  },
+  {
+    schritt: "04",
+    titel: "Druck & Lieferung",
+    text: "Auf Wunsch wickeln wir den Druck komplett ab. Sie bekommen das fertige Produkt, ohne sich um Anbieter kümmern zu müssen.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Könnt ihr ein Logo drucken, das ich mit KI erstellt habe?",
+    a: "In der Regel nicht direkt – aber wir machen es druckfähig. KI-Werkzeuge liefern Pixelbilder, oft mit weichen Kanten und Bildrauschen. Für Druck braucht es eine Vektordatei, die sich beliebig skalieren lässt. Wir zeichnen Ihr Logo sauber nach, bereinigen Kanten, legen Farben im richtigen Farbraum an und liefern die Datei in allen gängigen Formaten.",
+  },
+  {
+    q: "Was kostet die Vektorisierung eines Logos?",
+    a: "Das hängt von der Komplexität ab. Ein klares Logo mit wenigen Formen ist schnell nachgezeichnet, ein detailreiches Motiv mit Verläufen und feinen Strukturen braucht deutlich länger. Schicken Sie uns die Datei – wir schauen sie an und nennen Ihnen einen Preis, bevor wir loslegen.",
+  },
+  {
+    q: "Übernehmt ihr auch den Druck oder nur die Gestaltung?",
+    a: "Beides, ganz wie Sie möchten. Wir liefern druckfertige Dateien, wenn Sie eine eigene Druckerei haben. Oder wir wickeln den Druck komplett ab und Sie bekommen das fertige Produkt geliefert – das ist der häufigere Fall, weil es Ihnen die Abstimmung erspart.",
+  },
+  {
+    q: "Was ist eine NFC-Metallkarte?",
+    a: "Eine Visitenkarte aus Metall mit eingebautem Chip. Wer sie ans Smartphone hält, bekommt Ihre Kontaktdaten, Ihre Website oder direkt das Google-Bewertungsformular angezeigt – ohne App. Die Karte wird mit Faserlaser graviert, die hinterlegten Inhalte lassen sich jederzeit ändern, ohne dass Sie neue Karten brauchen.",
+  },
+  {
+    q: "Wie lange dauert ein Auftrag?",
+    a: "Für Gestaltung und Reinzeichnung rechnen wir je nach Umfang mit wenigen Tagen bis zu zwei Wochen. Der Druck kommt danach dazu und hängt vom Produkt ab. Wenn es eilig ist, sagen Sie es gleich – vieles lässt sich beschleunigen.",
+  },
+  {
+    q: "Muss ich schon ein Corporate Design haben?",
+    a: "Nein. Wenn Vorgaben existieren, halten wir uns daran. Wenn nicht, entwickeln wir gemeinsam eines – oft beginnt das mit dem Logo und der Visitenkarte und wächst von dort aus weiter, bis hin zur Website.",
+  },
+];
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://ixone.de/grafikdesign-regensburg/#service",
+  name: "Grafikdesign & Werbemittel Regensburg",
+  description:
+    "Grafikdesign aus Regensburg: Visitenkarten, Stempel, Logo und Geschäftsausstattung inklusive Druck. Dazu Vektorisierung von KI-Logos, NFC-Metallkarten und 360-Grad-Rundgänge.",
+  provider: { "@id": "https://ixone.de/#organization" },
+  telephone: "+4994015338873",
+  areaServed: areaServedFull,
+  serviceType: [
+    "Grafikdesign",
+    "Visitenkarten",
+    "Stempel",
+    "Logodesign",
+    "Printdesign",
+    "Logo vektorisieren",
+    "NFC-Metallkarten",
+    "360-Grad-Rundgang",
+  ],
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+---
+
+<Layout
+  title="Grafikdesign Regensburg | Visitenkarten & Druck | ixOne"
+  description="Visitenkarten, Stempel, Logo und Geschäftsausstattung aus Regensburg – inklusive Druck. Dazu KI-Logos vektorisieren und NFC-Metallkarten."
+  canonical="https://ixone.de/grafikdesign-regensburg/"
+  structuredData={[serviceSchema, faqSchema]}
+>
+  <div class="bg-white">
+    <section
+      class="relative bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-900 text-white overflow-hidden"
+      aria-label="Grafikdesign Regensburg Hero"
+    >
+      <div class="absolute inset-0 opacity-20" aria-hidden="true">
+        <div
+          class="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full filter blur-3xl animate-blob"
+        >
+        </div>
+        <div
+          class="absolute bottom-0 right-0 w-96 h-96 bg-purple-400 rounded-full filter blur-3xl animate-blob animation-delay-2000"
+        >
+        </div>
+        <div
+          class="absolute top-1/2 left-1/4 w-72 h-72 bg-indigo-400 rounded-full filter blur-3xl animate-blob animation-delay-4000"
+        >
+        </div>
+      </div>
+
+      <div class="absolute inset-0 opacity-5" aria-hidden="true">
+        <div
+          class="h-full w-full"
+          style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 60px 60px;"
+        >
+        </div>
+      </div>
+
+      <div
+        class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-24 md:py-32 lg:py-36 relative z-10"
+      >
+        <div class="max-w-7xl mx-auto">
+          <div
+            class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center"
+          >
+            <div class="lg:col-span-7 text-center lg:text-left">
+              <span
+                class="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full bg-white/10 border border-white/20 text-sm font-medium backdrop-blur-md"
+              >
+                <span
+                  class="w-2 h-2 bg-green-400 rounded-full animate-pulse"
+                  aria-hidden="true"></span>
+                Gestaltung und Druck aus einer Hand
+              </span>
+
+              <h1
+                class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+              >
+                <span class="block text-white">Grafikdesign</span>
+                <span class="gradient-text-brand">Regensburg</span>
+                <span
+                  class="block text-white/80 text-2xl md:text-3xl font-normal mt-2"
+                >
+                  Visitenkarten, Stempel & Geschäftsausstattung
+                </span>
+              </h1>
+
+              <p
+                class="text-lg md:text-xl text-gray-200 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0"
+              >
+                Manches muss man in der Hand halten können. Wir gestalten und
+                drucken, was Ihr Unternehmen nach außen zeigt –{" "}<strong
+                  class="text-white">von der Visitenkarte bis zum Schild</strong
+                >, abgestimmt auf Ihren gesamten Auftritt.
+              </p>
+
+              <div
+                class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              >
+                <a
+                  href={CALENDLY}
+                  target="_blank"
+                  rel="noopener"
+                  data-calendly-popup-url={CALENDLY}
+                  class="cta-button-primary"
+                  aria-label="Kostenlose Beratung zu Grafikdesign vereinbaren"
+                >
+                  <span>Termin vereinbaren</span>
+                </a>
+                <a
+                  href="#produkte"
+                  class="group px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl font-semibold text-lg text-white hover:bg-white/20 transition-all duration-300 text-center"
+                >
+                  <span class="flex items-center justify-center gap-2">
+                    Leistungen ansehen
+                    <svg
+                      class="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            <div class="lg:col-span-5">
+              <div
+                class="relative aspect-[4/3] rounded-3xl overflow-hidden border border-white/20 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md flex items-center justify-center"
+                data-bild="visitenkarten-grafikdesign-regensburg.webp"
+                data-alt="Gestaltete Visitenkarten der ixOne Digitalagentur aus Regensburg"
+              >
+                <svg
+                  class="w-24 h-24 text-white/20"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1"
+                    d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="produkte"
+      class="py-20 md:py-28 lg:py-32 bg-white"
+      aria-labelledby="produkte-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+            <h2
+              id="produkte-heading"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            >
+              Was wir gestalten und drucken
+            </h2>
+            <p class="text-xl text-gray-600">
+              Alles im einheitlichen Erscheinungsbild – damit Ihr Betrieb
+              wiedererkannt wird
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {
+              printprodukte.map((produkt) => (
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    {produkt.titel}
+                  </h3>
+                  <p class="text-gray-600 leading-relaxed">{produkt.text}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="ki-logo"
+      class="py-20 md:py-28 lg:py-32 bg-gray-50"
+      aria-labelledby="kilogo-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-7xl mx-auto">
+          <div
+            class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+          >
+            <div>
+              <span
+                class="inline-flex items-center px-3 py-1 mb-4 rounded-full bg-brand-orange/10 border border-brand-orange/20 text-brand-orange text-xs font-semibold"
+              >
+                Häufig gefragt
+              </span>
+              <h2
+                id="kilogo-heading"
+                class="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
+              >
+                KI-Logo erstellt – aber{" "}<span
+                  class="gradient-text-brand-inline">nicht druckbar</span
+                >?
+              </h2>
+              <div class="space-y-5 text-gray-600 text-lg leading-relaxed">
+                <p>
+                  Immer mehr Betriebe erzeugen ihr Logo mit KI-Werkzeugen. Das
+                  Ergebnis sieht auf dem Bildschirm oft gut aus – bis es
+                  gedruckt werden soll. Dann zeigt sich: weiche Kanten,
+                  Bildrauschen, falscher Farbraum, keine saubere Skalierung.
+                </p>
+                <p>
+                  Wir zeichnen Ihr Logo als{" "}<strong class="text-gray-900"
+                    >echte Vektordatei</strong
+                  >{" "} nach. Kanten werden sauber, Farben liegen im richtigen Farbraum,
+                  und die Datei lässt sich vom Briefkopf bis zur Fahrzeugbeschriftung
+                  beliebig vergrößern.
+                </p>
+                <p>
+                  Sie erhalten alle gängigen Formate für Druck und Web – und ein
+                  Logo, das Sie überall einsetzen können, ohne dass es
+                  auseinanderfällt.
+                </p>
+              </div>
+
+              <a
+                href={CALENDLY}
+                target="_blank"
+                rel="noopener"
+                data-calendly-popup-url={CALENDLY}
+                class="inline-flex items-center justify-center mt-8 px-8 py-4 bg-brand-orange text-white font-semibold rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
+                aria-label="Logo prüfen lassen und Termin vereinbaren"
+              >
+                Logo prüfen lassen
+              </a>
+            </div>
+
+            <div
+              class="relative aspect-[4/3] rounded-3xl overflow-hidden bg-gradient-to-br from-gray-100 to-white border border-gray-200 flex items-center justify-center"
+              data-bild="ki-logo-vektorisieren-regensburg.webp"
+              data-alt="Vergleich zwischen KI-generiertem Pixellogo und vektorisierter Druckdatei"
+            >
+              <svg
+                class="w-24 h-24 text-gray-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1"
+                  d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="nfc-metallkarten"
+      class="py-20 md:py-28 lg:py-32 bg-white"
+      aria-labelledby="nfc-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-7xl mx-auto">
+          <div
+            class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+          >
+            <div
+              class="order-2 lg:order-1 relative aspect-[4/3] rounded-3xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50 border border-gray-200 flex items-center justify-center"
+              data-bild="nfc-metallkarte-gravur-regensburg.webp"
+              data-alt="Gravierte NFC-Metallkarte als digitale Visitenkarte aus Regensburg"
+            >
+              <svg
+                class="w-24 h-24 text-gray-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1"
+                  d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"
+                ></path>
+              </svg>
+            </div>
+
+            <div class="order-1 lg:order-2">
+              <h2
+                id="nfc-heading"
+                class="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
+              >
+                NFC-Metallkarten mit{" "}<span
+                  class="gradient-text-brand-inline">Lasergravur</span
+                >
+              </h2>
+              <div class="space-y-5 text-gray-600 text-lg leading-relaxed">
+                <p>
+                  Eine Visitenkarte aus Metall, graviert mit Faserlaser. Wer sie
+                  ans Smartphone hält, bekommt Ihre Kontaktdaten, Ihre Website
+                  oder direkt das Bewertungsformular angezeigt – ohne App, ohne
+                  Umweg.
+                </p>
+                <p>
+                  Erhältlich als Vollmetallkarte, als Aluminiumkarte in mehreren
+                  Farben oder als Kombination aus Metall und Kunststoff. Die
+                  hinterlegten Inhalte ändern Sie jederzeit selbst, ohne neue
+                  Karten zu bestellen.
+                </p>
+                <p>
+                  Beliebt sind auch{" "}<strong class="text-gray-900"
+                    >Bewertungskarten</strong
+                  >{" "} für den Tresen: Karte auflegen, Kunde hält das Handy dran,
+                  landet direkt im Google-Bewertungsformular.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="360-grad-rundgang"
+      class="py-20 md:py-28 lg:py-32 bg-gray-50"
+      aria-labelledby="rundgang-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2
+            id="rundgang-heading"
+            class="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
+          >
+            360-Grad-Rundgang für Google
+          </h2>
+          <div class="space-y-5 text-gray-600 text-lg leading-relaxed">
+            <p>
+              Für Betriebe mit Ladenlokal, Praxis oder Ausstellungsraum
+              erstellen wir virtuelle Rundgänge, die sich direkt in Google Maps
+              und Ihr Google Business Profile einbinden lassen.
+            </p>
+            <p>
+              Besucher sehen vorab, wie es bei Ihnen aussieht – das schafft
+              Vertrauen und stärkt gleichzeitig Ihre lokale Sichtbarkeit. Wie
+              stark das für Ihre Branche wirkt, besprechen wir im{" "}
+              <a
+                href="/kontakt/"
+                class="font-medium text-brand-orange hover:underline"
+                >persönlichen Gespräch</a
+              >.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-white"
+      aria-labelledby="ablauf-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+            <h2
+              id="ablauf-heading"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            >
+              So läuft ein Auftrag
+            </h2>
+            <p class="text-xl text-gray-600">Vom Briefing bis zur Lieferung</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {
+              ablauf.map((stufe) => (
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                  <span class="text-4xl font-bold text-brand-orange/30 block mb-3">
+                    {stufe.schritt}
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    {stufe.titel}
+                  </h3>
+                  <p class="text-gray-600 leading-relaxed">{stufe.text}</p>
+                </div>
+              ))
+            }
+          </div>
+
+          <p
+            class="text-center text-gray-600 mt-12 max-w-3xl mx-auto leading-relaxed"
+          >
+            Viele Kunden kommen wegen einer Visitenkarte und bleiben für den
+            gesamten Auftritt. Wenn daraus mehr werden soll, sind{" "}
+            <a
+              href="/webdesign-regensburg/"
+              class="font-semibold text-brand-orange hover:underline">Website</a
+            >{" "} und{" "}
+            <a
+              href="/online-marketing-regensburg/"
+              class="font-semibold text-brand-orange hover:underline"
+              >Online-Marketing</a
+            >{" "} der nächste Schritt.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-gray-50"
+      aria-labelledby="faq-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-16 md:mb-20">
+            <h2
+              id="faq-heading"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            >
+              Häufige Fragen
+            </h2>
+            <p class="text-xl text-gray-600">
+              Was Kunden vor einem Druckauftrag wissen wollen
+            </p>
+          </div>
+
+          <div class="space-y-3">
+            {
+              faqs.map((faq) => (
+                <details class="faq-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden group">
+                  <summary class="flex items-center justify-between p-5 md:p-6 cursor-pointer list-none gap-4">
+                    <h3 class="text-lg font-semibold text-gray-900 text-left">
+                      {faq.q}
+                    </h3>
+                    <svg
+                      class="w-5 h-5 flex-shrink-0 text-brand-orange transition-transform duration-300 group-open:rotate-180"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </summary>
+                  <div class="faq-body px-5 md:px-6 pb-5 md:pb-6 border-t border-gray-100 pt-4">
+                    <p class="text-gray-600 leading-relaxed">{faq.a}</p>
+                  </div>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ServiceCrosslinks />
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white"
+      aria-labelledby="cta-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 id="cta-heading" class="text-3xl md:text-4xl font-bold mb-6">
+            Womit sollen wir anfangen?
+          </h2>
+          <p class="text-xl text-gray-300 leading-relaxed mb-10">
+            Ob Visitenkarte, Stempel oder komplette Geschäftsausstattung –
+            schicken Sie uns, was Sie haben, und wir sagen Ihnen, was möglich
+            ist. Auch ein KI-Logo dürfen Sie einfach vorbeischicken.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href={CALENDLY}
+              target="_blank"
+              rel="noopener"
+              data-calendly-popup-url={CALENDLY}
+              class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-orange text-white font-semibold rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
+              aria-label="Kostenlosen Beratungstermin vereinbaren"
+            >
+              Termin vereinbaren
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+            <a
+              href="mailto:info@ixone.de"
+              class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/10 transition-all duration-300"
+              aria-label="E-Mail an ixOne Digitalagentur Regensburg schreiben"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                ></path>
+              </svg>
+              info@ixone.de
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

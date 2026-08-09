@@ -1,0 +1,654 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ServiceCrosslinks from "../components/ServiceCrosslinks.astro";
+import { areaServedFull } from "../data/structuredData";
+
+const CALENDLY =
+  "https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b";
+
+const leistungen = [
+  {
+    titel: "KI-Chatbots für Ihre Website",
+    text: "Ein Assistent, der Ihre Leistungen kennt und Besucherfragen rund um die Uhr beantwortet. Trainiert auf Ihre Inhalte, nicht auf Allgemeinplätze – und mit klarer Übergabe an einen Menschen, wenn es konkret wird.",
+  },
+  {
+    titel: "KI-Agenten für wiederkehrende Aufgaben",
+    text: "Anfragen vorqualifizieren, Termine koordinieren, Daten aus Formularen ins System übertragen. Überall dort sinnvoll, wo heute jemand dieselbe Handbewegung zum hundertsten Mal macht.",
+  },
+  {
+    titel: "Content-Erstellung mit KI",
+    text: "Schneller zu Entwürfen für Produkttexte, Blogbeiträge und Social-Media-Inhalte. Die fachliche Prüfung bleibt bei uns – veröffentlicht wird nichts, was niemand gelesen hat.",
+  },
+  {
+    titel: "KI-gestützte SEO-Analyse",
+    text: "Keyword-Recherche, Wettbewerbsvergleich und Themenplanung mit KI-Werkzeugen. Dadurch sehen wir Muster in Daten, für die manuelle Auswertung Wochen bräuchte.",
+  },
+  {
+    titel: "Prozessautomatisierung",
+    text: "Angebote aus Vorlagen erzeugen, Bewertungen auswerten, Reportings zusammenstellen. Wir schauen uns Ihren Ablauf an und automatisieren die Stellen, an denen es sich rechnet.",
+  },
+  {
+    titel: "KI-Integration & Begleitung",
+    text: "Wir prüfen, welche Werkzeuge zu Ihrem Betrieb passen, richten sie ein und binden sie in bestehende Abläufe ein. Anschließend schulen wir Ihr Team, damit die Lösung auch genutzt wird.",
+  },
+];
+
+const anwendungsfaelle = [
+  {
+    branche: "Notdienste & Handwerk",
+    text: "Ein Chatbot nimmt außerhalb der Geschäftszeiten Anfragen auf, klärt Ort und Dringlichkeit und leitet Notfälle sofort weiter. Am nächsten Morgen liegt eine sortierte Liste vor statt zwanzig Rückrufwünsche.",
+  },
+  {
+    branche: "Praxen & Dienstleister",
+    text: "Wiederkehrende Fragen zu Öffnungszeiten, Anfahrt und Leistungen beantwortet der Assistent selbst. Das Telefon bleibt frei für die Gespräche, die wirklich einen Menschen brauchen.",
+  },
+  {
+    branche: "Handel & Onlineshops",
+    text: "Produkttexte für große Sortimente entstehen in einem Bruchteil der Zeit. Bewertungen werden automatisch ausgewertet, sodass Sie sehen, worüber Kunden tatsächlich sprechen.",
+  },
+];
+
+const grenzen = [
+  {
+    titel: "KI ersetzt keine Beratung",
+    text: "Ein Sprachmodell kennt Ihren Markt nicht und trägt keine Verantwortung für das Ergebnis. Strategische Entscheidungen treffen weiterhin Menschen.",
+  },
+  {
+    titel: "KI erfindet Fakten",
+    text: "Modelle geben auch dann eine Antwort, wenn sie nichts wissen. Ohne fachliche Prüfung landen Fehler auf Ihrer Website – deshalb prüfen wir jeden Text vor der Veröffentlichung.",
+  },
+  {
+    titel: "Nicht jeder Prozess lohnt sich",
+    text: "Automatisierung kostet Einrichtungsaufwand. Bei Abläufen, die zehnmal im Jahr vorkommen, rechnet sich das nicht. Wir sagen Ihnen, wann es sich lohnt und wann nicht.",
+  },
+];
+
+const ablauf = [
+  {
+    schritt: "01",
+    titel: "Bestandsaufnahme",
+    text: "Wir schauen uns an, wo in Ihrem Betrieb Zeit verloren geht und welche Anfragen sich wiederholen. Daraus ergibt sich, ob und wo KI sinnvoll ist.",
+  },
+  {
+    schritt: "02",
+    titel: "Auswahl & Konzept",
+    text: "Sie erhalten einen konkreten Vorschlag mit Aufwand, Kosten und erwartetem Nutzen – inklusive der Einschätzung, was sich nicht lohnt.",
+  },
+  {
+    schritt: "03",
+    titel: "Einrichtung & Training",
+    text: "Wir richten die Lösung ein, trainieren sie auf Ihre Inhalte und testen sie, bevor sie auf Kunden trifft.",
+  },
+  {
+    schritt: "04",
+    titel: "Betrieb & Nachjustierung",
+    text: "Nach dem Start beobachten wir, welche Fragen offen bleiben, und schärfen nach. KI-Systeme werden mit der Zeit besser, wenn sie gepflegt werden.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Sind KI-Chatbots DSGVO-konform einsetzbar?",
+    a: "Ja, wenn die Rahmenbedingungen stimmen. Entscheidend sind die Wahl des Anbieters, der Serverstandort, ein Auftragsverarbeitungsvertrag und eine transparente Information der Nutzer. Wir setzen bevorzugt auf Lösungen mit Verarbeitung innerhalb der EU und binden den Chatbot so ein, dass er erst nach Einwilligung über den Cookie-Banner lädt. Die datenschutzrechtliche Prüfung im Einzelfall gehört in die Hände Ihres Datenschutzbeauftragten oder Anwalts.",
+  },
+  {
+    q: "Was kostet ein KI-Chatbot für meine Website?",
+    a: "Das hängt vom Umfang ab. Ein Assistent, der auf Basis Ihrer bestehenden Website-Inhalte Fragen beantwortet, ist deutlich schneller eingerichtet als ein Agent, der an Warenwirtschaft oder Terminsystem angebunden wird. Dazu kommen laufende Kosten für den Betrieb, die sich nach der Nutzung richten. Im Erstgespräch schätzen wir das konkret ein.",
+  },
+  {
+    q: "Schreibt die KI meine Texte komplett allein?",
+    a: "Nein. Wir nutzen KI für Recherche, Struktur und Entwürfe – die fachliche Prüfung, die Tonalität und die Verantwortung bleiben bei uns. Reine KI-Texte ohne Überarbeitung erkennen Leser, und Google bewertet Inhalte danach, ob sie erkennbaren Mehrwert bieten. Unbearbeitete Massenware schadet dem Ranking eher, als dass sie hilft.",
+  },
+  {
+    q: "Lohnt sich KI auch für kleine Betriebe?",
+    a: "Oft ja, aber nicht überall. Bei Betrieben mit vielen gleichartigen Anfragen – Notdienste, Praxen, Dienstleister mit Terminvergabe – ist der Nutzen schnell spürbar. Bei Betrieben mit wenigen, dafür sehr individuellen Aufträgen lohnt der Einrichtungsaufwand häufig nicht. Wir sagen Ihnen ehrlich, in welche Kategorie Sie fallen.",
+  },
+  {
+    q: "Verliere ich den persönlichen Kontakt zu meinen Kunden?",
+    a: "Das ist eine berechtigte Sorge, und sie hängt davon ab, wie das System eingerichtet wird. Wir bauen Assistenten so, dass sie einfache Fragen abfangen und bei allem anderen zügig an einen Menschen übergeben. Ziel ist, dass Sie mehr Zeit für die wichtigen Gespräche haben – nicht weniger Gespräche führen.",
+  },
+  {
+    q: "Seit wann arbeitet ixOne mit KI?",
+    a: "Seit 2022 setzen wir KI-Werkzeuge produktiv ein – zunächst in der eigenen Arbeit für Analyse und Content, seit einiger Zeit auch als Lösung für Kunden. Wir empfehlen nur, was wir selbst im Einsatz haben.",
+  },
+];
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://ixone.de/ki-agentur-regensburg/#service",
+  name: "KI-Agentur Regensburg",
+  description:
+    "KI-Integration aus Regensburg: Beratung, Chatbots, KI-Agenten, Prozessautomatisierung und KI-gestützte Analyse für kleine und mittelständische Betriebe.",
+  provider: { "@id": "https://ixone.de/#organization" },
+  telephone: "+4994015338873",
+  areaServed: areaServedFull,
+  serviceType: [
+    "KI-Beratung",
+    "KI-Integration",
+    "KI-Chatbot",
+    "KI-Agenten",
+    "Prozessautomatisierung",
+    "KI-gestützte Suchmaschinenoptimierung",
+    "Künstliche Intelligenz für Unternehmen",
+  ],
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+---
+
+<Layout
+  title="KI-Agentur Regensburg | Chatbots & Automatisierung | ixOne"
+  description="KI-Integration für Betriebe aus Regensburg: Beratung, Chatbots, Automatisierung und KI-gestützte Analyse. Seit 2022 im Einsatz, DSGVO-konform eingebunden."
+  canonical="https://ixone.de/ki-agentur-regensburg/"
+  structuredData={[serviceSchema, faqSchema]}
+>
+  <div class="bg-white">
+    <section
+      class="relative bg-gradient-to-br from-blue-900 via-indigo-800 to-purple-900 text-white overflow-hidden"
+      aria-label="KI-Agentur Regensburg Hero"
+    >
+      <div class="absolute inset-0 opacity-20" aria-hidden="true">
+        <div
+          class="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full filter blur-3xl animate-blob"
+        >
+        </div>
+        <div
+          class="absolute bottom-0 right-0 w-96 h-96 bg-purple-400 rounded-full filter blur-3xl animate-blob animation-delay-2000"
+        >
+        </div>
+        <div
+          class="absolute top-1/2 left-1/4 w-72 h-72 bg-indigo-400 rounded-full filter blur-3xl animate-blob animation-delay-4000"
+        >
+        </div>
+      </div>
+
+      <div class="absolute inset-0 opacity-5" aria-hidden="true">
+        <div
+          class="h-full w-full"
+          style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 60px 60px;"
+        >
+        </div>
+      </div>
+
+      <div
+        class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-24 md:py-32 lg:py-36 relative z-10"
+      >
+        <div class="max-w-7xl mx-auto">
+          <div
+            class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center"
+          >
+            <div class="lg:col-span-7 text-center lg:text-left">
+              <span
+                class="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full bg-white/10 border border-white/20 text-sm font-medium backdrop-blur-md"
+              >
+                <span
+                  class="w-2 h-2 bg-green-400 rounded-full animate-pulse"
+                  aria-hidden="true"></span>
+                KI im produktiven Einsatz seit 2022
+              </span>
+
+              <h1
+                class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+              >
+                <span class="block text-white">KI-Agentur</span>
+                <span class="gradient-text-brand">Regensburg</span>
+                <span
+                  class="block text-white/80 text-2xl md:text-3xl font-normal mt-2"
+                >
+                  Chatbots, Agenten & Automatisierung
+                </span>
+              </h1>
+
+              <p
+                class="text-lg md:text-xl text-gray-200 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0"
+              >
+                Wir setzen auf Zukunftstechnologien und begleiten Betriebe aus
+                Regensburg bei der <strong class="text-white"
+                  >Einführung von KI</strong
+                >{" "} – von der ersten Einschätzung über die Einrichtung bis zum
+                laufenden Betrieb.
+              </p>
+
+              <div
+                class="flex flex-wrap justify-center lg:justify-start gap-2 md:gap-3 mb-8"
+              >
+                {
+                  [
+                    "DSGVO-konform eingebunden",
+                    "Verarbeitung in der EU",
+                    "Übergabe an echte Menschen",
+                  ].map((label) => (
+                    <span class="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-3 py-1.5 text-xs font-medium text-white/90">
+                      <svg
+                        class="w-3.5 h-3.5 text-green-400 flex-shrink-0"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                      {label}
+                    </span>
+                  ))
+                }
+              </div>
+
+              <div
+                class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              >
+                <a
+                  href={CALENDLY}
+                  target="_blank"
+                  rel="noopener"
+                  data-calendly-popup-url={CALENDLY}
+                  class="cta-button-primary"
+                  aria-label="Kostenloses Erstgespräch zu KI-Lösungen vereinbaren"
+                >
+                  <span>Termin vereinbaren</span>
+                </a>
+                <a
+                  href="#leistungen"
+                  class="group px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl font-semibold text-lg text-white hover:bg-white/20 transition-all duration-300 text-center"
+                >
+                  <span class="flex items-center justify-center gap-2">
+                    Leistungen ansehen
+                    <svg
+                      class="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            <div class="lg:col-span-5">
+              <div
+                class="relative aspect-[4/3] rounded-3xl overflow-hidden border border-white/20 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md flex items-center justify-center"
+                data-bild="ki-agentur-regensburg-chatbot.webp"
+                data-alt="KI-Chatbot der ixOne Digitalagentur Regensburg im Einsatz auf einer Unternehmenswebsite"
+              >
+                <svg
+                  class="w-24 h-24 text-white/20"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1"
+                    d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="leistungen"
+      class="py-20 md:py-28 lg:py-32 bg-white"
+      aria-labelledby="leistungen-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+            <h2
+              id="leistungen-heading"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            >
+              Unsere Leistungen rund um <span class="gradient-text-brand-inline"
+                >KI</span
+              >
+            </h2>
+            <p class="text-xl text-gray-600">
+              Von der einzelnen Anwendung bis zur durchgängigen Integration in
+              Ihre Abläufe
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {
+              leistungen.map((leistung) => (
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    {leistung.titel}
+                  </h3>
+                  <p class="text-gray-600 leading-relaxed">{leistung.text}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-gray-50"
+      aria-labelledby="anwendung-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+            <h2
+              id="anwendung-heading"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            >
+              Wie das konkret aussieht
+            </h2>
+            <p class="text-xl text-gray-600">
+              Drei Beispiele aus Branchen, die wir betreuen
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {
+              anwendungsfaelle.map((fall) => (
+                <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-md">
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    {fall.branche}
+                  </h3>
+                  <p class="text-gray-600 leading-relaxed">{fall.text}</p>
+                </div>
+              ))
+            }
+          </div>
+
+          <p class="text-center text-gray-600 mt-12">
+            Weitere Branchen und ihre digitalen Schwerpunkte finden Sie in der{
+              " "
+            }
+            <a
+              href="/branchen/"
+              class="font-semibold text-brand-orange hover:underline"
+              >Branchenübersicht</a
+            >.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-white"
+      aria-labelledby="grenzen-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+            <h2
+              id="grenzen-heading"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            >
+              Was KI <span class="gradient-text-brand-inline">nicht</span> kann
+            </h2>
+            <p class="text-xl text-gray-600">
+              Damit Sie wissen, worauf Sie sich einlassen
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {
+              grenzen.map((grenze) => (
+                <div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-100 shadow-md">
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    {grenze.titel}
+                  </h3>
+                  <p class="text-gray-600 leading-relaxed">{grenze.text}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-gray-50"
+      aria-labelledby="dsgvo-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-7xl mx-auto">
+          <div
+            class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+          >
+            <div
+              class="relative aspect-[4/3] rounded-3xl overflow-hidden bg-gradient-to-br from-gray-100 to-white border border-gray-200 flex items-center justify-center"
+              data-bild="ki-datenschutz-dsgvo-regensburg.webp"
+              data-alt="DSGVO-konforme Einbindung von KI-Lösungen durch ixOne in Regensburg"
+            >
+              <svg
+                class="w-24 h-24 text-gray-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                ></path>
+              </svg>
+            </div>
+
+            <div>
+              <h2
+                id="dsgvo-heading"
+                class="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
+              >
+                Datenschutz von Anfang an <span
+                  class="gradient-text-brand-inline">mitgedacht</span
+                >
+              </h2>
+              <div class="space-y-5 text-gray-600 text-lg leading-relaxed">
+                <p>
+                  Die häufigste Frage zu KI im Mittelstand ist nicht, was sie
+                  kann – sondern ob man sie überhaupt einsetzen darf. Zu Recht:
+                  Wenn Kundendaten an einen Dienst außerhalb der EU fließen,
+                  wird es schnell heikel.
+                </p>
+                <p>
+                  Wir setzen deshalb bevorzugt auf Anbieter mit{" "}
+                  <strong class="text-gray-900"
+                    >Verarbeitung innerhalb der EU</strong
+                  >, schließen Auftragsverarbeitungsverträge ab und binden
+                  Chatbots so ein, dass sie erst nach Einwilligung über den
+                  Cookie-Banner laden.
+                </p>
+                <p>
+                  Was in Ihre Datenschutzerklärung gehört, sagen wir Ihnen
+                  konkret. Die rechtliche Prüfung im Einzelfall gehört
+                  allerdings in die Hände Ihres Datenschutzbeauftragten oder
+                  Anwalts – wir sind Techniker, keine Juristen.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-white"
+      aria-labelledby="ablauf-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+            <h2
+              id="ablauf-heading"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            >
+              So gehen wir vor
+            </h2>
+            <p class="text-xl text-gray-600">
+              Vom ersten Blick auf Ihre Abläufe bis zum laufenden Betrieb
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {
+              ablauf.map((stufe) => (
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                  <span class="text-4xl font-bold text-brand-orange/30 block mb-3">
+                    {stufe.schritt}
+                  </span>
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    {stufe.titel}
+                  </h3>
+                  <p class="text-gray-600 leading-relaxed">{stufe.text}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-gray-50"
+      aria-labelledby="faq-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-16 md:mb-20">
+            <h2
+              id="faq-heading"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            >
+              Häufige Fragen zu KI
+            </h2>
+            <p class="text-xl text-gray-600">
+              Was Betriebe vor dem Einstieg wissen wollen
+            </p>
+          </div>
+
+          <div class="space-y-3">
+            {
+              faqs.map((faq) => (
+                <details class="faq-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden group">
+                  <summary class="flex items-center justify-between p-5 md:p-6 cursor-pointer list-none gap-4">
+                    <h3 class="text-lg font-semibold text-gray-900 text-left">
+                      {faq.q}
+                    </h3>
+                    <svg
+                      class="w-5 h-5 flex-shrink-0 text-brand-orange transition-transform duration-300 group-open:rotate-180"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </summary>
+                  <div class="faq-body px-5 md:px-6 pb-5 md:pb-6 border-t border-gray-100 pt-4">
+                    <p class="text-gray-600 leading-relaxed">{faq.a}</p>
+                  </div>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <ServiceCrosslinks />
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white"
+      aria-labelledby="cta-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 id="cta-heading" class="text-3xl md:text-4xl font-bold mb-6">
+            Lohnt sich KI für Ihren Betrieb?
+          </h2>
+          <p class="text-xl text-gray-300 leading-relaxed mb-10">
+            Das lässt sich in einem Gespräch schnell klären. Wir schauen uns
+            Ihre Abläufe an, zeigen Ihnen konkrete Einsatzmöglichkeiten und
+            begleiten Sie Schritt für Schritt bei der Umsetzung – oder raten ab,
+            wenn sich der Aufwand nicht lohnt.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href={CALENDLY}
+              target="_blank"
+              rel="noopener"
+              data-calendly-popup-url={CALENDLY}
+              class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-orange text-white font-semibold rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
+              aria-label="Kostenloses Erstgespräch zu KI-Lösungen vereinbaren"
+            >
+              Termin vereinbaren
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
+            <a
+              href="mailto:info@ixone.de"
+              class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/10 transition-all duration-300"
+              aria-label="E-Mail an ixOne Digitalagentur Regensburg schreiben"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                ></path>
+              </svg>
+              info@ixone.de
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
