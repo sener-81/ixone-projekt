@@ -17,7 +17,6 @@ const serviceSchema = {
   description:
     "Professionelles Webdesign aus Regensburg. Moderne, responsive Websites die konvertieren und bei Google ranken.",
   provider: { "@id": "https://ixone.de/#organization" },
-  telephone: "+4994015338873",
   areaServed: areaServedFull,
   serviceType: [
     "Webdesign",
@@ -31,7 +30,7 @@ const serviceSchema = {
     url: "https://ixone.de/webdesign-regensburg/",
     priceSpecification: {
       "@type": "PriceSpecification",
-      minPrice: 2500,
+      minPrice: 1200,
       priceCurrency: "EUR",
       valueAddedTaxIncluded: false,
     },
@@ -41,11 +40,11 @@ const serviceSchema = {
 const faqs = [
   {
     q: "Was kostet professionelles Webdesign in Regensburg?",
-    a: "Eine Unternehmenswebsite startet ab 2.500 €, ein Onepager ab 1.200 €. Der genaue Preis hängt von Funktionsumfang, Seitenanzahl und gewünschten Integrationen ab. Eine vollständige Übersicht mit Richtwerten für alle Leistungen finden Sie auf unserer Preisseite. Nach einem kostenlosen Erstgespräch erhalten Sie ein verbindliches Angebot ohne versteckte Kosten.",
+    a: "Ein Onepager startet ab 1.200 €, eine mehrseitige Unternehmenswebsite ab 2.500 €. Der genaue Preis hängt von Funktionsumfang, Seitenanzahl und gewünschten Integrationen ab. Eine vollständige Übersicht mit Richtwerten für alle Leistungen finden Sie auf unserer Preisseite. Nach einem kostenlosen Erstgespräch erhalten Sie ein verbindliches Angebot ohne versteckte Kosten.",
   },
   {
     q: "Wie lange dauert ein Webdesign-Projekt bei ixOne?",
-    a: "Standard-Websites: 4–6 Wochen. Komplexere Projekte mit Shop, Buchungssystem oder individuellen Funktionen: 8–12 Wochen. Nach dem Kickoff erhalten Sie einen detaillierten Projektplan mit klaren Meilensteinen.",
+    a: "Je nach Komplexität rechnen Sie mit 3–6 Wochen. Umfangreichere Projekte mit Shop, Buchungssystem oder individuellen Funktionen brauchen entsprechend länger. Nach dem Kickoff erhalten Sie einen detaillierten Projektplan mit klaren Meilensteinen.",
   },
   {
     q: "Ist das Webdesign responsive und mobile-optimiert?",
@@ -128,8 +127,8 @@ const heroBadges = [
 ];
 
 const heroStats = [
-  { value: "ab 2.500 €", label: "Unternehmenswebsite" },
-  { value: "4–8 Wochen", label: "Bis zum Launch" },
+  { value: "ab 1.200 €", label: "Onepager" },
+  { value: "3–6 Wochen", label: "Bis zum Launch" },
   { value: "90+ Score", label: "PageSpeed Ziel" },
   { value: "seit 2007", label: "Erfahrung" },
 ];
@@ -193,7 +192,7 @@ const prozessSchritte = [
 
 <Layout
   title="Webdesign Regensburg | Websites die ranken | ixOne"
-  description="Professionelles Webdesign aus Regensburg: responsive, SEO-optimierte Websites ab 2.500 €. Mobile-first und schnell. Jetzt beraten lassen."
+  description="Professionelles Webdesign aus Regensburg: responsive, SEO-optimierte Websites ab 1.200 €. Mobile-first und schnell. Jetzt beraten lassen."
   canonical="https://ixone.de/webdesign-regensburg/"
   structuredData={[serviceSchema, faqSchema]}
 >
@@ -467,7 +466,7 @@ const prozessSchritte = [
                 class="bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl p-6 md:p-8 text-white text-center shadow-lg"
               >
                 <div class="text-3xl md:text-4xl font-bold leading-none mb-1">
-                  4–8<span class="text-base font-bold opacity-80 ml-1">Wo.</span
+                  3–6<span class="text-base font-bold opacity-80 ml-1">Wo.</span
                   >
                 </div>
                 <div class="text-sm md:text-base opacity-90 font-medium mt-2">
@@ -489,12 +488,12 @@ const prozessSchritte = [
                 class="bg-gradient-to-br from-green-500 to-teal-600 rounded-2xl p-6 md:p-8 text-white text-center shadow-lg"
               >
                 <div class="text-2xl md:text-3xl font-bold leading-none mb-1">
-                  ab 2.500<span class="text-base font-bold opacity-80 ml-1"
+                  ab 1.200<span class="text-base font-bold opacity-80 ml-1"
                     >€</span
                   >
                 </div>
                 <div class="text-sm md:text-base opacity-90 font-medium mt-2">
-                  Unternehmenswebsite
+                  Onepager
                 </div>
               </div>
               <div
