@@ -22,9 +22,6 @@ export const areaServedFull = [
   { "@type": "City", name: "Wenzenbach" },
   { "@type": "City", name: "Nittendorf" },
   { "@type": "City", name: "Bad Abbach" },
-  { "@type": "City", name: "Kelheim" },
-  { "@type": "City", name: "Straubing" },
-  { "@type": "City", name: "Landshut" },
   { "@type": "State", name: "Bayern" },
   { "@type": "Country", name: "Deutschland" },
 ];
