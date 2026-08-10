@@ -16,6 +16,7 @@ export interface Props {
   structuredData?: object[];
   breadcrumbLabel?: string;
   breadcrumbOverlay?: boolean;
+  breadcrumbs?: boolean;
 }
 
 const {
@@ -27,6 +28,7 @@ const {
   structuredData,
   breadcrumbLabel,
   breadcrumbOverlay = true,
+  breadcrumbs = true,
 } = Astro.props as Props;
 ---
 
@@ -50,7 +52,11 @@ const {
 
     <main id="main-content" class="pt-14 sm:pt-16 md:pt-18 lg:pt-20 xl:pt-22">
       <div class="relative">
-        <Breadcrumbs label={breadcrumbLabel} overlay={breadcrumbOverlay} />
+        {
+          breadcrumbs && (
+            <Breadcrumbs label={breadcrumbLabel} overlay={breadcrumbOverlay} />
+          )
+        }
         <slot />
       </div>
     </main>
