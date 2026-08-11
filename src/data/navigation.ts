@@ -3,6 +3,8 @@ export interface NavItem {
   href?: string;
   description?: string;
   icon?: string;
+  /** true = Punkt erscheint nur im Mobile-Menü, nicht in der Desktop-Navigation */
+  nurMobil?: boolean;
   children?: NavItem[];
 }
 
@@ -127,12 +129,10 @@ export const footerLinks = {
     { label: 'Über uns', href: '/ueber-uns/' },
     { label: 'Branchen', href: '/branchen/' },
     { label: 'Referenzen', href: '/referenzen/' },
-    { label: 'Häufige Fragen', href: '/faq/' },
     { label: 'Preise', href: '/preise/' },
     { label: 'Standorte', href: '/standorte/' },
-    { label: 'Kontakt', href: '/kontakt/' },
-    { label: 'Impressum', href: '/impressum/' },
-    { label: 'Datenschutz', href: '/datenschutz/' }
+    { label: 'Häufige Fragen', href: '/faq/' },
+    { label: 'Kontakt', href: '/kontakt/' }
   ],
   legal: [
     { label: 'Impressum', href: '/impressum/' },
