@@ -18,43 +18,65 @@ const contactSchema = {
   ],
 };
 
-const standorte = [
-  {
-    name: "Neutraubling",
-    badge: "Hauptstandort",
-    strasse: "Oder-Neisse-Str. 1",
-    plz: "93073 Neutraubling",
-    mapsEmbed:
-      "https://www.google.com/maps?q=Oder-Neisse-Str.+1,+93073+Neutraubling&output=embed",
-    mapsLink:
-      "https://www.google.com/maps/dir/?api=1&destination=Oder-Neisse-Str.+1,+93073+Neutraubling",
-    accent: "from-brand-orange to-yellow-500",
-  },
-  {
-    name: "Regensburg",
-    badge: "Zweigstelle",
-    strasse: "Humboldtstr. 48",
-    plz: "93053 Regensburg",
-    mapsEmbed:
-      "https://www.google.com/maps?q=Humboldtstr.+48,+93053+Regensburg&output=embed",
-    mapsLink:
-      "https://www.google.com/maps/dir/?api=1&destination=Humboldtstr.+48,+93053+Regensburg",
-    accent: "from-cyan-500 to-blue-600",
-  },
-];
-
 const TELEFON_ANZEIGE = "+49 9401 5338873";
 const TELEFON_LINK = "+4994015338873";
 const EMAIL = "info@ixone.de";
 const CALENDLY =
   "https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b";
+
+const ablauf = [
+  {
+    schritt: "01",
+    titel: "Sie melden sich",
+    text: "Per Terminkalender, E-Mail oder Telefon – ganz wie es Ihnen passt. Schildern Sie kurz, worum es geht.",
+  },
+  {
+    schritt: "02",
+    titel: "Wir sprechen",
+    text: "Etwa 30 Minuten über Ihr Ziel, Ihre Zielgruppe und Ihren Rahmen. Per Video, bei uns im Büro oder bei Ihnen vor Ort.",
+  },
+  {
+    schritt: "03",
+    titel: "Sie erhalten ein Angebot",
+    text: "Schriftlich, mit klarem Leistungsumfang und Zeitplan. Bis dahin entstehen Ihnen keine Kosten.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Was kostet ein Erstgespräch?",
+    a: "Nichts. Das Erstgespräch ist kostenlos und unverbindlich. Wir schauen gemeinsam, ob und wie wir Ihnen helfen können – und sagen offen, wenn wir nicht der richtige Partner sind.",
+  },
+  {
+    q: "Wie schnell bekomme ich eine Antwort?",
+    a: "Auf E-Mails antworten wir in der Regel innerhalb eines Werktags. Wenn Sie einen Termin über den Kalender buchen, erhalten Sie die Bestätigung sofort.",
+  },
+  {
+    q: "Muss ich zu Ihnen kommen?",
+    a: "Nein. Viele Gespräche führen wir per Videocall. Innerhalb von Stadt und Landkreis Regensburg kommen wir auch gerne zu Ihnen ins Unternehmen. Und wenn Sie uns besuchen möchten, sind Sie in Neutraubling herzlich willkommen.",
+  },
+  {
+    q: "Was sollte ich zum ersten Gespräch mitbringen?",
+    a: "Nichts Bestimmtes. Hilfreich ist, wenn Sie grob wissen, was Sie erreichen möchten und welchen Rahmen Sie sich vorstellen. Alles Weitere klären wir gemeinsam im Gespräch.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
 ---
 
 <Layout
   title="Kontakt | ixOne Digitalagentur Regensburg & Neutraubling"
   description="Kontakt zu ixOne, Ihrer Digitalagentur aus Regensburg und Neutraubling. Termin online oder vor Ort vereinbaren – oder schreiben Sie uns eine E-Mail."
   canonical="https://ixone.de/kontakt/"
-  structuredData={[contactSchema]}
+  structuredData={[contactSchema, faqSchema]}
 >
   <div class="bg-white">
     <section
@@ -109,27 +131,36 @@ const CALENDLY =
       aria-labelledby="kontaktwege-heading"
     >
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-        <h2 id="kontaktwege-heading" class="sr-only">
-          Kontaktmöglichkeiten zu ixOne
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="text-center mb-16 max-w-3xl mx-auto">
+          <h2
+            id="kontaktwege-heading"
+            class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+          >
+            Drei Wege zu <span class="gradient-text-brand-inline">uns</span>
+          </h2>
+          <p class="text-xl text-gray-600">
+            Suchen Sie sich aus, was Ihnen am liebsten ist
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <a
             href={CALENDLY}
             target="_blank"
             rel="noopener"
             data-calendly-popup-url={CALENDLY}
-            class="group relative bg-white rounded-2xl p-8 border-2 border-brand-orange shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 text-center"
+            class="group relative flex flex-col bg-white rounded-2xl p-8 border-2 border-brand-orange shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
             aria-label="Termin vereinbaren – online oder vor Ort"
           >
             <span
-              class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-brand-orange text-white text-xs font-bold tracking-wide uppercase"
+              class="absolute -top-3 left-8 px-3 py-1 rounded-full bg-brand-orange text-white text-xs font-bold tracking-wide uppercase"
               >Am schnellsten</span
             >
             <div
-              class="w-14 h-14 mx-auto mb-5 rounded-2xl bg-gradient-to-r from-brand-orange to-yellow-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+              class="w-12 h-12 mb-5 rounded-xl bg-gradient-to-r from-brand-orange to-yellow-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
             >
               <svg
-                class="w-7 h-7 text-white"
+                class="w-6 h-6 text-white"
                 fill="none"
                 stroke="currentColor"
                 stroke-width="1.75"
@@ -143,13 +174,12 @@ const CALENDLY =
                 ></path>
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">
+            <h3 class="text-xl font-bold text-gray-900 mb-3">
               Termin vereinbaren
             </h3>
-            <p class="text-gray-600 mb-4 leading-relaxed">
-              Online per Videokonferenz oder persönlich bei Ihnen vor Ort. Sie
-              wählen einen freien Slot, wir bestätigen sofort – kostenlos und
-              unverbindlich.
+            <p class="text-gray-600 leading-relaxed mb-6 flex-grow">
+              Freien Slot im Kalender wählen, Bestätigung kommt sofort. Das
+              Gespräch findet per Video, bei uns im Büro oder bei Ihnen statt.
             </p>
             <span class="text-brand-orange font-semibold group-hover:underline"
               >Freien Termin wählen →</span
@@ -158,13 +188,13 @@ const CALENDLY =
 
           <a
             href={`mailto:${EMAIL}`}
-            class="group bg-white rounded-2xl p-8 border border-gray-200 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-center"
+            class="group flex flex-col bg-gray-50 rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
           >
             <div
-              class="w-14 h-14 mx-auto mb-5 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+              class="w-12 h-12 mb-5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
             >
               <svg
-                class="w-7 h-7 text-white"
+                class="w-6 h-6 text-white"
                 fill="none"
                 stroke="currentColor"
                 stroke-width="1.75"
@@ -178,10 +208,10 @@ const CALENDLY =
                 ></path>
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-2">
+            <h3 class="text-xl font-bold text-gray-900 mb-3">
               E-Mail schreiben
             </h3>
-            <p class="text-gray-600 mb-4 leading-relaxed">
+            <p class="text-gray-600 leading-relaxed mb-6 flex-grow">
               Schildern Sie uns Ihr Anliegen in Ruhe. Wir lesen jede Nachricht
               persönlich und antworten in der Regel innerhalb eines Werktags.
             </p>
@@ -189,15 +219,53 @@ const CALENDLY =
               >{EMAIL}</span
             >
           </a>
+
+          <a
+            href={`tel:${TELEFON_LINK}`}
+            class="group flex flex-col bg-gray-50 rounded-2xl p-8 border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+          >
+            <div
+              class="w-12 h-12 mb-5 rounded-xl bg-gradient-to-r from-green-500 to-teal-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+            >
+              <svg
+                class="w-6 h-6 text-white"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">Anrufen</h3>
+            <p class="text-gray-600 leading-relaxed mb-6 flex-grow">
+              Kurze Frage, kurze Antwort. Wir sind viel bei Kunden unterwegs –
+              hinterlassen Sie sonst kurz eine Nachricht, wir melden uns zurück.
+            </p>
+            <span class="text-brand-orange font-semibold group-hover:underline"
+              >{TELEFON_ANZEIGE}</span
+            >
+          </a>
         </div>
 
         <div
-          class="max-w-4xl mx-auto mt-10 bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-8 border border-orange-100 text-center"
+          class="max-w-4xl mx-auto mt-12 bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-8 border border-orange-100 text-center"
         >
           <p class="text-gray-700 text-lg leading-relaxed">
             <strong class="text-gray-900">Persönlich vor Ort:</strong> In Regensburg,
             Neutraubling und im gesamten Umkreis besuchen wir Sie gerne in Ihrem Unternehmen
-            – oder Sie kommen zu uns ins Büro. So wie es für Sie am besten passt.
+            – oder Sie kommen zu uns ins Büro. Adressen und Anfahrt finden Sie bei
+            den{" "}
+            <a
+              href="/standorte/"
+              class="font-semibold text-brand-orange hover:underline"
+              >Standorten</a
+            >.
           </p>
         </div>
       </div>
@@ -205,231 +273,100 @@ const CALENDLY =
 
     <section
       class="py-20 md:py-28 lg:py-32 bg-gray-50"
-      aria-labelledby="standorte-heading"
+      aria-labelledby="ablauf-heading"
     >
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+        <div class="text-center mb-14 max-w-3xl mx-auto">
           <h2
-            id="standorte-heading"
+            id="ablauf-heading"
             class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
           >
-            Unsere <span class="gradient-text-brand">Standorte</span>
+            Was nach Ihrer Nachricht passiert
           </h2>
           <p class="text-xl text-gray-600">
-            Zwei Standorte in der Region Regensburg – immer in Ihrer Nähe.
+            Kein Verkaufsdruck, keine Vertragsfalle – so läuft es bei uns ab
           </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
           {
-            standorte.map((ort) => (
-              <div class="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-md">
-                <div
-                  class="map-placeholder relative aspect-[16/9] bg-gradient-to-br from-slate-100 to-gray-200 cursor-pointer group"
-                  data-map-src={ort.mapsEmbed}
-                  data-map-title={`Karte ${ort.name}`}
-                  role="button"
-                  tabindex="0"
-                  aria-label={`Google-Karte für ${ort.name} laden`}
-                >
-                  <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
-                    <div
-                      class={`w-14 h-14 mb-4 rounded-2xl bg-gradient-to-r ${ort.accent} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      <svg
-                        class="w-7 h-7 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.75"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                      </svg>
-                    </div>
-                    <p class="text-gray-700 font-semibold text-sm">
-                      Karte für {ort.name} anzeigen
-                    </p>
-                    <p class="text-gray-500 text-xs mt-1 max-w-xs">
-                      Beim Klick wird Google Maps geladen. Dabei werden Daten an
-                      Google übertragen.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="p-6 md:p-8">
-                  <div class="flex items-center gap-3 mb-4">
-                    <h3 class="text-xl font-bold text-gray-900">
-                      ixOne {ort.name}
-                    </h3>
-                    <span
-                      class={`text-xs font-semibold px-2.5 py-1 rounded-full text-white bg-gradient-to-r ${ort.accent}`}
-                    >
-                      {ort.badge}
-                    </span>
-                  </div>
-                  <address class="not-italic text-gray-600 leading-relaxed mb-6">
-                    <span class="font-semibold text-gray-900">Anschrift:</span>
-                    <br />
-                    {ort.strasse}
-                    <br />
-                    {ort.plz}
-                  </address>
-                  <a
-                    href={ort.mapsLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border-2 border-gray-200 text-gray-700 font-semibold text-sm hover:border-brand-orange hover:text-brand-orange transition-colors duration-200"
-                  >
-                    <svg
-                      class="w-4 h-4 flex-shrink-0"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="1.75"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
-                      />
-                    </svg>
-                    Route planen
-                  </a>
-                </div>
+            ablauf.map((stufe) => (
+              <div class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
+                <span class="block text-4xl font-bold text-brand-orange/30 mb-4">
+                  {stufe.schritt}
+                </span>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">
+                  {stufe.titel}
+                </h3>
+                <p class="text-gray-600 leading-relaxed">{stufe.text}</p>
               </div>
             ))
           }
         </div>
+
+        <p class="text-center text-gray-600 mt-12 max-w-2xl mx-auto">
+          Eine erste Kostenorientierung finden Sie bei den{" "}
+          <a
+            href="/preise/"
+            class="font-semibold text-brand-orange hover:underline">Preisen</a
+          >, viele weitere Antworten in den{" "}
+          <a
+            href="/faq/"
+            class="font-semibold text-brand-orange hover:underline"
+            >häufigen Fragen</a
+          >.
+        </p>
       </div>
     </section>
 
     <section
       class="py-20 md:py-28 lg:py-32 bg-white"
-      aria-labelledby="kontaktdaten-heading"
+      aria-labelledby="faq-heading"
     >
       <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-        <div
-          class="max-w-4xl mx-auto rounded-2xl border border-gray-200 bg-gray-50 p-8 md:p-10"
-        >
-          <h2
-            id="kontaktdaten-heading"
-            class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center"
-          >
-            So kontaktieren Sie uns
-          </h2>
-          <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-10">
-            Alle Wege zu uns auf einen Blick. Viele Fragen beantworten wir vorab
-            in den{" "}
-            <a
-              href="/faq/"
-              class="font-medium text-brand-orange hover:underline"
-              >häufigen Fragen</a
-            >, eine erste Kostenorientierung finden Sie bei den{" "}
-            <a
-              href="/preise/"
-              class="font-medium text-brand-orange hover:underline">Preisen</a
-            >.
-          </p>
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-14">
+            <h2
+              id="faq-heading"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            >
+              Fragen vor der Kontaktaufnahme
+            </h2>
+          </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="text-center md:text-left">
-              <div
-                class="w-11 h-11 rounded-xl bg-white border border-gray-200 flex items-center justify-center mb-4 mx-auto md:mx-0"
-              >
-                <svg
-                  class="w-5 h-5 text-gray-500"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.75"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                  ></path>
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-2">Telefon</h3>
-              <a
-                href={`tel:${TELEFON_LINK}`}
-                class="text-gray-700 font-semibold hover:text-brand-orange transition-colors duration-200"
-                >{TELEFON_ANZEIGE}</a
-              >
-              <p class="text-gray-600 text-sm leading-relaxed mt-2">
-                Wir sind viel bei Kunden unterwegs. Hinterlassen Sie eine
-                Nachricht mit Ihrem Anliegen – wir melden uns zurück.
-              </p>
-            </div>
-
-            <div class="text-center md:text-left">
-              <div
-                class="w-11 h-11 rounded-xl bg-white border border-gray-200 flex items-center justify-center mb-4 mx-auto md:mx-0"
-              >
-                <svg
-                  class="w-5 h-5 text-gray-500"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.75"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  ></path>
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-2">E-Mail</h3>
-              <a
-                href={`mailto:${EMAIL}`}
-                class="text-gray-700 font-semibold hover:text-brand-orange transition-colors duration-200"
-                >{EMAIL}</a
-              >
-              <p class="text-gray-600 text-sm leading-relaxed mt-2">
-                Wir lesen jede Nachricht persönlich und antworten in der Regel
-                innerhalb eines Werktags.
-              </p>
-            </div>
-
-            <div class="text-center md:text-left">
-              <div
-                class="w-11 h-11 rounded-xl bg-white border border-gray-200 flex items-center justify-center mb-4 mx-auto md:mx-0"
-              >
-                <svg
-                  class="w-5 h-5 text-gray-500"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.75"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                  ></path>
-                </svg>
-              </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-2">Anschrift</h3>
-              <address class="not-italic text-gray-700 font-semibold">
-                Oder-Neisse-Str. 1
-                <br />
-                93073 Neutraubling
-              </address>
-              <p class="text-gray-600 text-sm leading-relaxed mt-2">
-                Hauptstandort. Besuche bitte vorher kurz abstimmen, damit wir
-                Zeit für Sie haben.
-              </p>
-            </div>
+          <div class="space-y-3">
+            {
+              faqs.map((faq) => (
+                <details class="faq-item bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden group">
+                  <summary class="flex items-center justify-between p-5 md:p-6 cursor-pointer list-none gap-4 hover:bg-gray-50 transition-colors duration-200">
+                    <h3 class="text-lg font-semibold text-gray-900 text-left">
+                      {faq.q}
+                    </h3>
+                    <span
+                      class="flex-shrink-0 w-8 h-8 bg-gray-100 group-open:bg-brand-orange rounded-full flex items-center justify-center transition-colors duration-200"
+                      aria-hidden="true"
+                    >
+                      <svg
+                        class="w-4 h-4 text-gray-500 group-open:text-white group-open:rotate-180 transition-all duration-200"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </span>
+                  </summary>
+                  <div class="faq-body px-5 md:px-6 pb-5 md:pb-6 border-t border-gray-100 pt-4">
+                    <p class="text-gray-600 leading-relaxed">{faq.a}</p>
+                  </div>
+                </details>
+              ))
+            }
           </div>
         </div>
       </div>
@@ -500,30 +437,35 @@ const CALENDLY =
 </Layout>
 
 <script>
-  document.querySelectorAll<HTMLElement>(".map-placeholder").forEach((ph) => {
-    const load = () => {
-      const src = ph.dataset.mapSrc;
-      const title = ph.dataset.mapTitle ?? "Google Maps";
-      if (!src) return;
-      const iframe = document.createElement("iframe");
-      iframe.src = src;
-      iframe.title = title;
-      iframe.loading = "lazy";
-      iframe.referrerPolicy = "no-referrer-when-downgrade";
-      iframe.style.border = "0";
-      iframe.style.width = "100%";
-      iframe.style.height = "100%";
-      iframe.allowFullscreen = true;
-      ph.replaceChildren(iframe);
-      ph.style.cursor = "default";
-      ph.removeAttribute("role");
-      ph.removeAttribute("tabindex");
-    };
-    ph.addEventListener("click", load);
-    ph.addEventListener("keydown", (e: KeyboardEvent) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        load();
+  document.querySelectorAll(".faq-item").forEach((details) => {
+    const body = details.querySelector(".faq-body") as HTMLElement | null;
+    if (!body) return;
+    body.style.overflow = "hidden";
+    body.style.transition = "max-height 0.35s ease, opacity 0.25s ease";
+    if ((details as HTMLDetailsElement).open) {
+      body.style.maxHeight = "none";
+      body.style.opacity = "1";
+    } else {
+      body.style.maxHeight = "0px";
+      body.style.opacity = "0";
+    }
+    details.addEventListener("toggle", () => {
+      if ((details as HTMLDetailsElement).open) {
+        body.style.maxHeight = `${body.scrollHeight}px`;
+        body.style.opacity = "1";
+        const onEnd = (e: TransitionEvent) => {
+          if (e.propertyName === "max-height") {
+            body.style.maxHeight = "none";
+            body.removeEventListener("transitionend", onEnd);
+          }
+        };
+        body.addEventListener("transitionend", onEnd);
+      } else {
+        body.style.maxHeight = `${body.scrollHeight}px`;
+        requestAnimationFrame(() => {
+          body.style.maxHeight = "0px";
+          body.style.opacity = "0";
+        });
       }
     });
   });
