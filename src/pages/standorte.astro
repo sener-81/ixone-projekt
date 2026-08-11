@@ -197,23 +197,9 @@ const faqSchema = {
                 </div>
 
                 <div class="p-8 md:p-10 border-b border-gray-100 bg-gray-50/50">
-                  <h4 class="flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-gray-500 mb-5">
-                    <svg
-                      class="w-4 h-4 text-brand-orange"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
+                  <p class="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-5">
                     Öffnungszeiten
-                  </h4>
+                  </p>
 
                   <dl class="space-y-2.5">
                     {ort.zeiten.map((z) => (
@@ -232,9 +218,9 @@ const faqSchema = {
                 </div>
 
                 <div class="p-8 md:p-10 flex-grow">
-                  <h4 class="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-5">
+                  <p class="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-5">
                     Anfahrt
-                  </h4>
+                  </p>
 
                   <div class="space-y-5 mb-8">
                     {ort.anfahrt.map((weg) => (
@@ -323,26 +309,9 @@ const faqSchema = {
             <div
               class="lg:col-span-3 bg-white rounded-2xl p-8 md:p-10 border-2 border-brand-orange/40 shadow-sm"
             >
-              <div
-                class="w-12 h-12 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-xl flex items-center justify-center mb-5"
-                aria-hidden="true"
+              <h3
+                class="text-xl font-bold text-gray-900 mb-5 pl-4 border-l-4 border-brand-orange"
               >
-                <svg
-                  class="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                  ></path>
-                </svg>
-              </div>
-
-              <h3 class="text-xl font-bold text-gray-900 mb-4">
                 Persönlich vor Ort im Landkreis
               </h3>
               <p class="text-gray-600 leading-relaxed mb-8">
@@ -371,26 +340,9 @@ const faqSchema = {
             <div
               class="lg:col-span-2 bg-white rounded-2xl p-8 md:p-10 border border-gray-200 shadow-sm"
             >
-              <div
-                class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mb-5"
-                aria-hidden="true"
+              <h3
+                class="text-xl font-bold text-gray-900 mb-5 pl-4 border-l-4 border-gray-300"
               >
-                <svg
-                  class="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0zM3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 010 18a15 15 0 010-18z"
-                  ></path>
-                </svg>
-              </div>
-
-              <h3 class="text-xl font-bold text-gray-900 mb-4">
                 Bundesweit und im deutschsprachigen Raum
               </h3>
               <div class="space-y-4 text-gray-600 leading-relaxed">
