@@ -20,6 +20,7 @@ https://ixone-projekt.pages.dev/* https://ixone.de/:splat 301!
 /referenzen /referenzen/ 301
 /preise /preise/ 301
 /ueber-uns /ueber-uns/ 301
+/standorte /standorte/ 301
 /faq /faq/ 301
 /kontakt /kontakt/ 301
 /impressum /impressum/ 301
@@ -103,15 +104,16 @@ https://ixone-projekt.pages.dev/* https://ixone.de/:splat 301!
 /danke-kontaktseite/* /kontakt/ 301
 /author/* / 301
 /category/* / 301
-/locations/* / 301
+/locations/* /standorte/ 301
 /project/* / 301
 /blog/* / 301
 
 # ══════════════════════════════════════════════════════════════
 # 8. EINZUGSGEBIETE & STÄDTESEITEN
+# HINWEIS: /standorte/ existiert jetzt als eigene Seite –
+# hier darf keine Regel darauf zeigen, sonst wird sie blockiert.
 # ══════════════════════════════════════════════════════════════
-/einzugsgebiete/* / 301
-/standorte/* / 301
+/einzugsgebiete/* /standorte/ 301
 
 /regensburg/* / 301
 /neutraubling/* / 301
