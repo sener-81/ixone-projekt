@@ -5,6 +5,8 @@ import TechStack from "../components/TechStack.astro";
 import { Image } from "astro:assets";
 import { galerieData } from "../data/galerieData";
 import { areaServedFull } from "../data/structuredData";
+import ixoneWebdesign from "../assets/webdesign/ixone-webdesign.webp";
+import webdesignerRegensburg from "../assets/webdesign/webdesigner-aus-regensburg.webp";
 
 const CALENDLY =
   "https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b";
@@ -49,6 +51,10 @@ const faqs = [
   {
     q: "Ist das Webdesign responsive und mobile-optimiert?",
     a: "Ja, alle Websites sind responsive und mobile-first entwickelt. Sie funktionieren auf Desktop, Tablet und Smartphone mit optimaler Benutzerfreundlichkeit und schnellen Ladezeiten.",
+  },
+  {
+    q: "Wird meine Website auch von ChatGPT und anderen KI-Diensten gefunden?",
+    a: "Dafür legen wir die technische Basis. KI-Systeme lesen Websites anders als Menschen: Sie brauchen strukturierte Daten nach Schema.org, saubere Überschriften-Hierarchien und eindeutige Fakten wie Adresse, Telefonnummer und Leistungen. All das bauen wir bei jedem Projekt ein. Eine Garantie auf Nennung in KI-Antworten kann seriös niemand geben – aber ohne diese Grundlagen ist die Chance deutlich geringer.",
   },
   {
     q: "Was macht eine professionelle Webdesign Agentur in Regensburg?",
@@ -131,6 +137,31 @@ const heroStats = [
   { value: "3–6 Wochen", label: "Bis zum Launch" },
   { value: "90+ Score", label: "PageSpeed Ziel" },
   { value: "seit 2007", label: "Erfahrung" },
+];
+
+const eigeneSeiteFakten = [
+  "Schlanker Code ohne unnötige Plugins und Skripte",
+  "Bilder automatisch im passenden Format und in der richtigen Größe",
+  "Schriften lokal eingebunden statt über externe Anbieter",
+  "Strukturierte Daten, damit Suchmaschinen die Inhalte einordnen können",
+];
+const kiPunkte = [
+  {
+    titel: "Strukturierte Daten",
+    text: "Adresse, Öffnungszeiten, Leistungen und Preise werden maschinenlesbar hinterlegt – nicht nur als Text, sondern als klar ausgezeichnete Fakten.",
+  },
+  {
+    titel: "Saubere Textstruktur",
+    text: "Klare Überschriften, kurze Absätze, echte Antworten auf echte Fragen. KI-Systeme zitieren bevorzugt, was sie eindeutig zuordnen können.",
+  },
+  {
+    titel: "Konsistente Angaben",
+    text: "Firmenname, Anschrift und Telefonnummer stimmen überall überein – auf der Website, im Google-Profil und in Verzeichnissen.",
+  },
+  {
+    titel: "Technisch erreichbar",
+    text: "Inhalte stehen direkt im HTML statt erst nach dem Laden von JavaScript. Was ein Crawler nicht sieht, kann keine KI zitieren.",
+  },
 ];
 
 const leistungen = [
@@ -329,6 +360,84 @@ const prozessSchritte = [
                 </div>
               ))
             }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-gray-50"
+      aria-labelledby="eigene-seite-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+        <div
+          class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+        >
+          <div>
+            <span
+              class="inline-block px-3 py-1 mb-5 rounded-full bg-brand-orange/10 text-brand-orange text-sm font-semibold"
+            >
+              Aus der Praxis
+            </span>
+            <h2
+              id="eigene-seite-heading"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
+            >
+              Sauber gebaut – vom{" "}
+              <span class="gradient-text-brand-inline"
+                >Konzept bis zum Code</span
+              >
+            </h2>
+            <div class="space-y-5 text-gray-600 text-lg leading-relaxed">
+              <p>
+                Eine Website ist mehr als das, was man sieht. Unter der
+                Oberfläche entscheidet die technische Umsetzung darüber, wie
+                schnell Seiten laden, wie gut Suchmaschinen den Inhalt erfassen
+                und wie einfach sich Inhalte später pflegen lassen.
+              </p>
+              <p>
+                Wir arbeiten mit einem modernen Tech-Stack, halten den Code
+                schlank und binden externe Dienste nur dort ein, wo sie
+                tatsächlich gebraucht werden. Das Ergebnis sind Websites, die
+                auch nach Jahren noch wartbar sind.
+              </p>
+            </div>
+            <ul class="mt-8 space-y-3" role="list">
+              {
+                eigeneSeiteFakten.map((punkt) => (
+                  <li class="flex items-start gap-3">
+                    <span
+                      class="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center mt-0.5"
+                      aria-hidden="true"
+                    >
+                      <svg
+                        class="w-3.5 h-3.5 text-white"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </span>
+                    <span class="text-gray-700">{punkt}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <div class="order-first lg:order-last">
+            <Image
+              src={ixoneWebdesign}
+              alt="Mockup einer von ixOne gestalteten Website auf Desktop und Smartphone"
+              width={900}
+              loading="lazy"
+              decoding="async"
+              class="w-full h-auto rounded-2xl shadow-xl"
+            />
           </div>
         </div>
       </div>
@@ -805,6 +914,95 @@ const prozessSchritte = [
               </div>
             ))
           }
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 text-white relative overflow-hidden"
+      aria-labelledby="ki-suche-heading"
+    >
+      <div class="absolute inset-0 opacity-20" aria-hidden="true">
+        <div
+          class="absolute -top-24 -right-24 w-96 h-96 bg-brand-orange rounded-full blur-3xl"
+        >
+        </div>
+      </div>
+
+      <div
+        class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10"
+      >
+        <div
+          class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+        >
+          <div>
+            <Image
+              src={webdesignerRegensburg}
+              alt="Website-Mockup der Digitalagentur ixOne aus Regensburg"
+              width={900}
+              loading="lazy"
+              decoding="async"
+              class="w-full h-auto rounded-2xl shadow-2xl"
+            />
+          </div>
+
+          <div>
+            <span
+              class="inline-flex items-center gap-2 px-3 py-1 mb-5 rounded-full bg-white/10 border border-white/20 text-sm font-semibold"
+            >
+              <span
+                class="w-2 h-2 bg-brand-orange rounded-full animate-pulse"
+                aria-hidden="true"></span>
+              Neu seit 2025
+            </span>
+            <h2
+              id="ki-suche-heading"
+              class="text-3xl md:text-4xl font-bold mb-6 leading-tight"
+            >
+              Wenn Kunden nicht mehr googeln, sondern{" "}
+              <span class="gradient-text-brand-inline">die KI fragen</span>
+            </h2>
+            <div class="space-y-5 text-gray-300 text-lg leading-relaxed">
+              <p>
+                „Welche Webdesign Agentur in Regensburg könnt ihr empfehlen?" –
+                diese Frage stellen immer mehr Menschen nicht mehr bei Google,
+                sondern bei ChatGPT, Perplexity oder in der KI-Übersicht von
+                Google. Die Antwort kommt als fertiger Text, oft mit nur zwei
+                oder drei genannten Anbietern.
+              </p>
+              <p>
+                Wer dort nicht auftaucht, existiert für diese Kunden nicht.
+                <strong class="text-white">
+                  Und KI-Systeme lesen Websites anders als Menschen
+                </strong> – sie brauchen Fakten, die sie eindeutig zuordnen können,
+                keine schönen Bilder.
+              </p>
+            </div>
+
+            <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {
+                kiPunkte.map((punkt) => (
+                  <div class="bg-white/5 border border-white/10 rounded-xl p-5">
+                    <h3 class="font-bold text-white mb-2">{punkt.titel}</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                      {punkt.text}
+                    </p>
+                  </div>
+                ))
+              }
+            </div>
+
+            <p class="mt-8 text-gray-300 leading-relaxed">
+              Diese Grundlagen bauen wir in jedes Projekt ein – ohne Aufpreis.
+              Wenn Sie KI darüber hinaus aktiv nutzen möchten, etwa als Chatbot
+              auf Ihrer Website, finden Sie mehr dazu bei unserer{" "}
+              <a
+                href="/ki-agentur-regensburg/"
+                class="text-brand-orange font-semibold hover:underline"
+                >KI-Agentur in Regensburg</a
+              >.
+            </p>
+          </div>
         </div>
       </div>
     </section>
