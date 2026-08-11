@@ -4,6 +4,8 @@ export interface Props {
   headline?: string;
   intro?: string;
   limit?: number;
+  /** Optionaler Abschlusstext (HTML erlaubt). Ohne Angabe erscheint der Standardhinweis mit Link zur Kontaktseite. */
+  outro?: string;
 }
 
 const {
@@ -11,6 +13,7 @@ const {
   headline = "Passende Leistungen dazu",
   intro = "Diese Bereiche greifen ineinander – oft ist der nächste Schritt schon der übernächste.",
   limit = 3,
+  outro,
 } = Astro.props as Props;
 
 const services = [
@@ -144,13 +147,21 @@ const spalten =
       }
     </div>
 
-    <p class="text-center text-gray-600 mt-12">
-      Nicht sicher, was zu Ihnen passt?{" "}
-      <a
-        href="/kontakt/"
-        class="font-semibold text-brand-orange hover:underline"
-        >Sprechen Sie uns an</a
-      >{" "} – wir beraten Sie ehrlich.
-    </p>
+    {
+      outro ? (
+        <p class="text-center text-gray-600 mt-12" set:html={outro} />
+      ) : (
+        <p class="text-center text-gray-600 mt-12">
+          Nicht sicher, was zu Ihnen passt?{" "}
+          <a
+            href="/kontakt/"
+            class="font-semibold text-brand-orange hover:underline"
+          >
+            Sprechen Sie uns an
+          </a>{" "}
+          – wir beraten Sie ehrlich.
+        </p>
+      )
+    }
   </div>
 </section>
