@@ -65,6 +65,8 @@ lib-cov
 .env.development.local
 .env.test.local
 .env.production.local
+env.txt
+*.env.txt
 
 # ─────────────────────────────────────────────
 # Astro
