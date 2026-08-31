@@ -3,9 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import Services from "../components/Services.astro";
 import WhyChooseUs from "../components/WhyChooseUs.astro";
+import TextReveal from "../components/TextReveal.astro";
 import ReferenzenCarousel from "../components/ReferenzenCarousel.astro";
 import GoogleReviews from "../components/GoogleReviews.astro";
 import CTA from "../components/CTA.astro";
+import ScrollAnimations from "../components/ScrollAnimations.astro";
 import { Image } from "astro:assets";
 import aboutImage from "../assets/ixone-online-marketing-regensburg.webp";
 
@@ -26,7 +28,7 @@ const faqs = [
   },
   {
     q: "Wie lange dauert die Entwicklung einer neuen Website?",
-    a: "Je nach Umfang dauert es 4 bis 10 Wochen. Nach einer kostenlosen Erstberatung erhalten Sie ein konkretes Angebot mit realistischem Zeitplan – ohne versteckte Kosten.",
+    a: "Je nach Umfang dauert es 3 bis 6 Wochen. Nach einer kostenlosen Erstberatung erhalten Sie ein konkretes Angebot mit realistischem Zeitplan – ohne versteckte Kosten.",
   },
   {
     q: "Bietet ixOne auch Local SEO für Regensburg an?",
@@ -34,7 +36,7 @@ const faqs = [
   },
   {
     q: "Was kostet eine professionelle Website bei ixOne?",
-    a: "Die Kosten hängen vom Funktionsumfang ab. Einfache Unternehmenswebsites starten ab ca. 2.500 €. Wir bieten transparente Preise ohne Mindestlaufzeiten – sprechen Sie uns einfach an.",
+    a: "Die Kosten hängen vom Funktionsumfang ab. Onepager starten ab 1.200 €, mehrseitige Unternehmenswebsites ab 2.500 €. Wir bieten transparente Preise ohne Mindestlaufzeiten – sprechen Sie uns einfach an.",
   },
   {
     q: "Welche Technologien nutzt ixOne – Astro oder WordPress?",
@@ -90,12 +92,12 @@ const vorteile = [
   canonical="https://ixone.de/"
   structuredData={[faqSchema]}
 >
-  <div class="bg-white">
+  <div class="bg-slate-900">
     <Hero />
   </div>
 
   <section
-    class="py-20 md:py-28 lg:py-32 bg-white"
+    class="relative z-10 bg-white py-20 md:py-28 lg:py-32"
     aria-labelledby="about-heading"
   >
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -117,9 +119,15 @@ const vorteile = [
             <div
               class="absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm rounded-2xl px-5 py-4 shadow-xl"
             >
-              <div class="flex items-center gap-4">
+              <div class="flex items-center gap-4" data-stats-box>
                 <div class="text-center">
-                  <p class="text-2xl font-bold text-gray-900">500+</p>
+                  <p
+                    class="text-2xl font-bold text-gray-900"
+                    data-count="500"
+                    data-suffix="+"
+                  >
+                    500+
+                  </p>
                   <p class="text-xs text-gray-500 font-medium">Projekte</p>
                 </div>
                 <div class="w-px h-10 bg-gray-200"></div>
@@ -131,7 +139,12 @@ const vorteile = [
                 </div>
                 <div class="w-px h-10 bg-gray-200"></div>
                 <div class="text-center">
-                  <p class="text-2xl font-bold text-brand-orange">2</p>
+                  <p
+                    class="text-2xl font-bold text-brand-orange"
+                    data-count="2"
+                  >
+                    2
+                  </p>
                   <p class="text-xs text-gray-500 font-medium">Standorte</p>
                 </div>
               </div>
@@ -210,7 +223,7 @@ const vorteile = [
               >.
             </p>
 
-            <ul class="space-y-3 mb-8">
+            <ul class="space-y-3 mb-8" data-stagger>
               {
                 vorteile.map((item) => (
                   <li class="flex items-start gap-3 text-gray-900">
@@ -270,6 +283,8 @@ const vorteile = [
 
   <WhyChooseUs />
 
+  <TextReveal />
+
   <ReferenzenCarousel />
 
   <GoogleReviews />
@@ -300,7 +315,7 @@ const vorteile = [
           </p>
         </div>
 
-        <div class="space-y-3">
+        <div class="space-y-3" data-stagger>
           {
             faqs.map((faq) => (
               <details class="faq-item bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden group">
@@ -341,4 +356,48 @@ const vorteile = [
   </section>
 
   <CTA />
+
+  <ScrollAnimations />
+
+  <script>
+    // ── Counter-Animation für die Stats-Box ───────────────────
+    // Zählt data-count-Elemente hoch, sobald die Box ins Bild
+    // scrollt. Läuft einmalig. RÜCKBAU: dieses <script> löschen
+    // und die data-count/data-suffix-Attribute entfernen.
+    const statsBox = document.querySelector<HTMLElement>("[data-stats-box]");
+    if (
+      statsBox &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      const animateCount = (el: HTMLElement) => {
+        const target = parseInt(el.dataset.count || "0", 10);
+        const suffix = el.dataset.suffix || "";
+        const duration = 1200;
+        const startTime = performance.now();
+
+        const tick = (now: number) => {
+          const progress = Math.min((now - startTime) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3); // ease-out
+          el.textContent = Math.round(eased * target) + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      };
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              statsBox
+                .querySelectorAll<HTMLElement>("[data-count]")
+                .forEach(animateCount);
+              io.disconnect();
+            }
+          });
+        },
+        { threshold: 0.6 },
+      );
+      io.observe(statsBox);
+    }
+  </script>
 </Layout>

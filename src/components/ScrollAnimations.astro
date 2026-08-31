@@ -1,0 +1,95 @@
+---
+// ═══════════════════════════════════════════════════════════════
+// src/components/ScrollAnimations.astro
+//
+// Dezente Fade-ins für alle Sektionen einer Seite:
+// Sektionen unterhalb des sichtbaren Bereichs faden sanft von
+// unten ein, sobald sie ins Bild scrollen. Einmalig, dezent.
+//
+// Extra: Elemente in einem Container mit data-stagger
+// (z.B. Listen, Karten-Grids) erscheinen nacheinander versetzt.
+//
+// EINBAU:   Einmal pro Seite einbinden (am Seitenende).
+// AUSNAHME: Sektionen mit data-no-fade werden übersprungen.
+// SICHER:   Ohne JS oder mit prefers-reduced-motion ist alles
+//           sofort sichtbar. Bereits sichtbare Sektionen (above
+//           the fold) werden nie versteckt → LCP unberührt.
+// RÜCKBAU:  Import + <ScrollAnimations /> entfernen.
+// ═══════════════════════════════════════════════════════════════
+---
+
+<style is:global>
+  .sa-hidden {
+    opacity: 0;
+    transform: translateY(1.5rem) scale(0.9);
+  }
+  .sa-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition:
+      opacity 0.8s ease-out var(--sa-delay, 0ms),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--sa-delay, 0ms);
+  }
+</style>
+
+<script>
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!reduced) {
+    const vh = window.innerHeight;
+
+    // ── Kandidaten einsammeln ─────────────────────────────────
+    const targets: HTMLElement[] = [];
+
+    // 1. Alle Sektionen, die noch unterhalb des Viewports liegen
+    document
+      .querySelectorAll<HTMLElement>("section:not([data-no-fade])")
+      .forEach((sec) => {
+        // Sektionen mit eigener Animation überspringen
+        if (sec.classList.contains("hero-section")) return;
+        if (sec.classList.contains("reveal-section")) return;
+        // Nur verstecken, was wirklich noch nicht sichtbar ist
+        if (sec.getBoundingClientRect().top > vh * 0.9) {
+          targets.push(sec);
+        }
+      });
+
+    // 2. Gestaffelte Kinder (data-stagger auf dem Container)
+    document
+      .querySelectorAll<HTMLElement>("[data-stagger]")
+      .forEach((container) => {
+        const children = Array.from(container.children) as HTMLElement[];
+        children.forEach((child, i) => {
+          if (child.getBoundingClientRect().top > vh * 0.9) {
+            child.style.setProperty("--sa-delay", `${i * 110}ms`);
+            targets.push(child);
+          }
+        });
+      });
+
+    // ── Beobachten & einblenden ───────────────────────────────
+    if (targets.length) {
+      targets.forEach((el) => el.classList.add("sa-hidden"));
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target as HTMLElement;
+              el.classList.add("sa-visible");
+              io.unobserve(el);
+              // Aufräumen nach der Animation
+              el.addEventListener(
+                "transitionend",
+                () => el.classList.remove("sa-hidden", "sa-visible"),
+                { once: true },
+              );
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -5% 0px" },
+      );
+      targets.forEach((el) => io.observe(el));
+    }
+  }
+</script>

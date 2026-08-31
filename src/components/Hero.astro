@@ -4,6 +4,9 @@ import heroImage from "../assets/hero-digitalagentur-regensburg.webp";
 
 const GRUENDUNGSJAHR = 2007;
 const jahreErfahrung = new Date().getFullYear() - GRUENDUNGSJAHR;
+
+const CALENDLY =
+  "https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b";
 ---
 
 <section class="hero-section relative min-h-[80vh] text-white overflow-hidden">
@@ -87,9 +90,12 @@ const jahreErfahrung = new Date().getFullYear() - GRUENDUNGSJAHR;
 
           <div class="flex flex-col sm:flex-row gap-4 mb-8">
             <a
-              href="/kontakt/"
+              href={CALENDLY}
+              target="_blank"
+              rel="noopener"
+              data-calendly-popup-url={CALENDLY}
               class="cta-button-primary"
-              aria-label="Kostenlose Erstberatung bei ixOne Digitalagentur Regensburg starten"
+              aria-label="Kostenlosen Beratungstermin bei ixOne Digitalagentur Regensburg vereinbaren"
             >
               <span>Kostenlose Erstberatung starten</span>
             </a>
@@ -217,3 +223,38 @@ const jahreErfahrung = new Date().getFullYear() - GRUENDUNGSJAHR;
     </div>
   </div>
 </section>
+
+<style>
+  /* ═══════════════════════════════════════════════════════════
+     Hero Scale & Fade (scroll-gebunden, reines CSS)
+
+     Beim Rausscrollen zoomt der Hero leicht raus, dunkelt ab
+     und bekommt runde Ecken – beim Hochscrollen läuft alles
+     rückwärts. Kein JavaScript, kein Einfluss auf den LCP.
+
+     Fallback: Browser ohne animation-timeline (z.B. älterer
+     Firefox) zeigen den Hero ganz normal – nichts geht kaputt.
+
+     RÜCKBAU: Einfach diesen <style>-Block löschen.
+     ═══════════════════════════════════════════════════════════ */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-section {
+        animation: hero-exit linear both;
+        animation-timeline: view();
+        /* läuft nur, während der Hero oben aus dem Viewport wandert */
+        animation-range: exit 0% exit 90%;
+        transform-origin: 50% 20%;
+      }
+
+      @keyframes hero-exit {
+        to {
+          transform: scale(0.92);
+          opacity: 0.35;
+          filter: brightness(0.55) saturate(0.8);
+          border-radius: 2.5rem;
+        }
+      }
+    }
+  }
+</style>

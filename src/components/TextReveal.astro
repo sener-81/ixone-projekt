@@ -1,0 +1,194 @@
+---
+// ═══════════════════════════════════════════════════════════════
+// src/components/TextReveal.astro  (Version 7)
+//
+// - Text erscheint Buchstabe für Buchstabe, sobald die Sektion
+//   ins Bild scrollt (einmalig)
+// - "Mehr Umsatz." im durchgehenden Brand-Gradient wie
+//   "Regensburg" im Hero (Verlauf läuft über das ganze Wort,
+//   nicht pro Buchstabe – per Build-Time-Trick)
+// - Zwei sanft schwebende Glow-Kreise links + rechts
+//
+// SLOGAN ÄNDERN: unten im lines-Array, accent = Gradient.
+// TEMPO: LETTER_DELAY (ms pro Buchstabe).
+// RÜCKBAU: Import + <TextReveal /> aus index.astro entfernen.
+// ═══════════════════════════════════════════════════════════════
+
+const lines = [
+  { text: "\u201EDie Zukunft h\u00E4ngt davon ab,", accent: false },
+  { text: "was wir heute tun.\u201C", accent: false },
+  { text: "\u2014 Mahatma Gandhi", accent: true, small: true },
+];
+
+const LETTER_DELAY = 35; // ms pro Buchstabe
+
+let letterIndex = 0;
+const renderedLines = lines.map((line) => {
+  const chars = [...line.text];
+  const total = chars.length;
+  return {
+    accent: line.accent,
+    small: "small" in line && line.small === true,
+    label: line.text,
+    chars: chars.map((ch, i) => ({
+      ch: ch === " " ? "\u00A0" : ch,
+      delay: letterIndex++ * LETTER_DELAY,
+      // Für den durchgehenden Gradient: jeder Buchstabe zeigt
+      // seinen Ausschnitt aus dem Gesamt-Verlauf der Zeile
+      gsize: `${total * 100}%`,
+      gpos: `${total > 1 ? (i / (total - 1)) * 100 : 0}%`,
+    })),
+  };
+});
+---
+
+<section
+  class="reveal-section relative py-24 md:py-32 lg:py-40 bg-slate-900 overflow-hidden"
+  aria-label="Unser Anspruch"
+>
+  <!-- Zwei schwebende Glow-Kreise -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <div
+      class="glow-left absolute top-1/3 -left-24 w-[24rem] h-[24rem] rounded-full bg-brand-orange/20 blur-3xl"
+    >
+    </div>
+    <div
+      class="glow-right absolute bottom-0 -right-24 w-[22rem] h-[22rem] rounded-full bg-yellow-500/15 blur-3xl"
+    >
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div
+      class="max-w-4xl mx-auto text-center text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+    >
+      {
+        renderedLines.map((line) => (
+          <span
+            class:list={[
+              "block mt-2 first:mt-0",
+              line.accent ? "" : "text-white",
+              line.small ? "text-xl md:text-2xl lg:text-3xl mt-6" : "",
+            ]}
+            aria-label={line.label}
+          >
+            {line.chars.map((c) => (
+              <span
+                class:list={[
+                  "reveal-letter inline-block",
+                  line.accent ? "letter-gradient" : "",
+                ]}
+                style={
+                  line.accent
+                    ? `--delay: ${c.delay}ms; --gsize: ${c.gsize}; --gpos: ${c.gpos}`
+                    : `--delay: ${c.delay}ms`
+                }
+                aria-hidden="true"
+              >
+                {c.ch}
+              </span>
+            ))}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ── Gradient-Schrift wie "Regensburg" im Hero ────────────── */
+  .letter-gradient {
+    background-image: linear-gradient(
+      90deg,
+      var(--color-brand-orange, #ec6a1b),
+      #eab308
+    );
+    background-size: var(--gsize, 100%) 100%;
+    background-position-x: var(--gpos, 0%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* ── Glows: sanftes Schweben auf organischer Bahn ─────────── */
+  @media (prefers-reduced-motion: no-preference) {
+    .glow-left {
+      animation: float-left 14s ease-in-out infinite;
+    }
+    .glow-right {
+      animation: float-right 18s ease-in-out infinite;
+    }
+    @keyframes float-left {
+      0% {
+        opacity: 0.7;
+        transform: translate(0, 0) scale(1);
+      }
+      33% {
+        opacity: 1;
+        transform: translate(2.5rem, -2rem) scale(1.08);
+      }
+      66% {
+        opacity: 0.8;
+        transform: translate(4rem, 1.5rem) scale(0.96);
+      }
+      100% {
+        opacity: 0.7;
+        transform: translate(0, 0) scale(1);
+      }
+    }
+    @keyframes float-right {
+      0% {
+        opacity: 0.6;
+        transform: translate(0, 0) scale(1.05);
+      }
+      33% {
+        opacity: 0.9;
+        transform: translate(-3rem, -1.8rem) scale(0.95);
+      }
+      66% {
+        opacity: 1;
+        transform: translate(-1.5rem, 2.2rem) scale(1.1);
+      }
+      100% {
+        opacity: 0.6;
+        transform: translate(0, 0) scale(1.05);
+      }
+    }
+  }
+
+  /* ── Buchstaben: Startzustand NUR per JS (.reveal-init),
+       damit ohne JS alles sichtbar bleibt ─────────────────────── */
+  .reveal-section.reveal-init .reveal-letter {
+    opacity: 0;
+    transform: translateY(0.5em);
+  }
+  .reveal-section.reveal-init.in-view .reveal-letter {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 0.45s ease-out var(--delay, 0ms),
+      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0ms);
+  }
+</style>
+
+<script>
+  const section = document.querySelector<HTMLElement>(".reveal-section");
+  if (
+    section &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    section.classList.add("reveal-init");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            section.classList.add("in-view");
+            io.disconnect();
+          }
+        });
+      },
+      { threshold: 0.4 },
+    );
+    io.observe(section);
+  }
+</script>
