@@ -1,0 +1,440 @@
+---
+// ═══════════════════════════════════════════════════════════════
+// src/components/ReferenzenCarousel.astro
+//
+// Auto-Loop-Carousel für die Startseite.
+// Liest Bilder + Alt-Texte aus src/data/galerieData.ts –
+// dieselbe Quelle wie die Galerie auf webdesign-regensburg.
+// Neues Projekt = 1 Bild in src/assets/galerie/ + 1 Eintrag
+// in galerieData.ts → erscheint automatisch auf beiden Seiten.
+//
+// Performance:
+// - Thumbnails: 640px WebP, loading="lazy"
+// - Großes Bild: wird erst beim Klick in die Lightbox geladen
+// - Autoplay pausiert bei Hover/Touch, respektiert
+//   prefers-reduced-motion
+// ═══════════════════════════════════════════════════════════════
+import { getImage } from "astro:assets";
+import { galerieData } from "../data/galerieData";
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/galerie/*.{webp,jpg,jpeg,png,avif}",
+);
+
+const slides = await Promise.all(
+  galerieData.map(async (item) => {
+    const path = `../assets/galerie/${item.file}`;
+    const loader = imageModules[path];
+    if (!loader) {
+      throw new Error(
+        `[ReferenzenCarousel] Bild nicht gefunden: src/assets/galerie/${item.file}`,
+      );
+    }
+    const mod = await loader();
+    const thumb = await getImage({
+      src: mod.default,
+      width: 640,
+      format: "webp",
+    });
+    const full = await getImage({
+      src: mod.default,
+      width: 1400,
+      format: "webp",
+    });
+    return { ...item, thumb, full };
+  }),
+);
+---
+
+<section
+  class="py-20 md:py-28 lg:py-32 bg-gray-50 overflow-hidden"
+  aria-labelledby="referenzen-carousel-heading"
+>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12 md:mb-16">
+        <span
+          class="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-brand-orange to-yellow-500 text-white text-sm font-semibold mb-6"
+        >
+          <span class="w-2 h-2 bg-white/60 rounded-full mr-2"></span>
+          Einblicke in unsere Arbeit
+        </span>
+        <h2
+          id="referenzen-carousel-heading"
+          class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+        >
+          Projekte, die für sich<br />
+          <span class="text-brand-orange">sprechen</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Ein Auszug aus über 500 Projekten – Webdesign, Shops und Landingpages
+          für Unternehmen aus Regensburg und Umgebung.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="relative max-w-[100rem] mx-auto" data-carousel>
+    <!-- Track -->
+    <ul
+      class="rc-track flex gap-5 md:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth px-4 sm:px-6 lg:px-8 pb-4 cursor-grab select-none"
+      data-carousel-track
+      aria-label="Referenzen Galerie"
+    >
+      {
+        slides.map((slide, i) => (
+          <li class="snap-center shrink-0 w-[82%] sm:w-[52%] lg:w-[31%] xl:w-[26%]">
+            <button
+              type="button"
+              class="group relative block w-full overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange focus-visible:ring-offset-2"
+              data-lightbox-open
+              data-full={slide.full.src}
+              data-alt={slide.alt}
+              data-caption={slide.caption}
+              aria-label={`${slide.caption} – Bild vergrößern`}
+            >
+              <img
+                src={slide.thumb.src}
+                width={slide.thumb.attributes.width}
+                height={slide.thumb.attributes.height}
+                alt={slide.alt}
+                loading={i < 2 ? "eager" : "lazy"}
+                decoding="async"
+                draggable="false"
+                class="w-full h-auto aspect-[4/3] object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              />
+              <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent px-4 pt-10 pb-3 text-left">
+                <span class="block text-white font-semibold text-sm md:text-base">
+                  {slide.caption}
+                </span>
+              </span>
+              <span
+                class="absolute top-3 right-3 flex items-center justify-center w-9 h-9 rounded-full bg-white/90 text-gray-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                aria-hidden="true"
+              >
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 21l-4.35-4.35M11 8v6m-3-3h6m5 0a8 8 0 11-16 0 8 8 0 0116 0z"
+                  />
+                </svg>
+              </span>
+            </button>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- Pfeile (Desktop) -->
+    <button
+      type="button"
+      class="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 items-center justify-center w-11 h-11 rounded-full bg-white shadow-lg text-gray-700 hover:text-brand-orange transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange"
+      data-carousel-prev
+      aria-label="Vorheriges Projekt"
+    >
+      <svg
+        class="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 19l-7-7 7-7"></path>
+      </svg>
+    </button>
+    <button
+      type="button"
+      class="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 items-center justify-center w-11 h-11 rounded-full bg-white shadow-lg text-gray-700 hover:text-brand-orange transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange"
+      data-carousel-next
+      aria-label="Nächstes Projekt"
+    >
+      <svg
+        class="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5l7 7-7 7"></path>
+      </svg>
+    </button>
+  </div>
+
+  <div class="text-center mt-10">
+    <a
+      href="/referenzen/"
+      class="inline-flex items-center gap-2 font-semibold text-brand-orange hover:underline"
+      aria-label="Alle Referenzen der ixOne Digitalagentur ansehen"
+    >
+      Alle Referenzen ansehen
+      <svg
+        class="w-4 h-4"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+      </svg>
+    </a>
+  </div>
+
+  <!-- Lightbox -->
+  <div
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/85 p-4 md:p-8"
+    data-lightbox
+    role="dialog"
+    aria-modal="true"
+    aria-label="Referenz Großansicht"
+  >
+    <button
+      type="button"
+      class="absolute top-4 right-4 md:top-6 md:right-6 flex items-center justify-center w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+      data-lightbox-close
+      aria-label="Großansicht schließen"
+    >
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <figure class="max-w-5xl w-full max-h-full flex flex-col items-center">
+      <img
+        src=""
+        alt=""
+        class="max-h-[80vh] w-auto max-w-full rounded-xl shadow-2xl"
+        data-lightbox-img
+        decoding="async"
+      />
+      <figcaption
+        class="mt-4 text-white/90 text-sm md:text-base font-medium text-center"
+        data-lightbox-caption
+      >
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .rc-track {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .rc-track::-webkit-scrollbar {
+    display: none;
+  }
+  .rc-track.rc-dragging {
+    cursor: grabbing;
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
+</style>
+
+<script>
+  function initReferenzenCarousel() {
+    const root = document.querySelector<HTMLElement>("[data-carousel]");
+    if (!root) return;
+
+    const track = root.querySelector<HTMLElement>("[data-carousel-track]");
+    const prevBtn = root.querySelector<HTMLElement>("[data-carousel-prev]");
+    const nextBtn = root.querySelector<HTMLElement>("[data-carousel-next]");
+    if (!track) return;
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    // ── Slide-Breite ermitteln ────────────────────────────────
+    const slideStep = () => {
+      const first = track.querySelector<HTMLElement>("li");
+      if (!first) return track.clientWidth;
+      const gap = parseFloat(getComputedStyle(track).columnGap || "0") || 0;
+      return first.offsetWidth + gap;
+    };
+
+    const atEnd = () =>
+      track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
+
+    const goNext = () => {
+      if (atEnd()) {
+        track.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        track.scrollBy({ left: slideStep(), behavior: "smooth" });
+      }
+    };
+    const goPrev = () => {
+      if (track.scrollLeft <= 8) {
+        track.scrollTo({ left: track.scrollWidth, behavior: "smooth" });
+      } else {
+        track.scrollBy({ left: -slideStep(), behavior: "smooth" });
+      }
+    };
+
+    nextBtn?.addEventListener("click", goNext);
+    prevBtn?.addEventListener("click", goPrev);
+
+    // ── Autoplay (Loop) ───────────────────────────────────────
+    let timer: number | undefined;
+    let paused = false;
+
+    const start = () => {
+      if (reducedMotion || timer) return;
+      timer = window.setInterval(() => {
+        if (!paused && !document.hidden) goNext();
+      }, 3500);
+    };
+    const stop = () => {
+      if (timer) {
+        clearInterval(timer);
+        timer = undefined;
+      }
+    };
+
+    ["mouseenter", "focusin", "touchstart", "pointerdown"].forEach((ev) =>
+      track.addEventListener(ev, () => (paused = true), { passive: true }),
+    );
+    ["mouseleave", "focusout"].forEach((ev) =>
+      track.addEventListener(ev, () => (paused = false)),
+    );
+    track.addEventListener(
+      "touchend",
+      () => {
+        window.setTimeout(() => (paused = false), 5000);
+      },
+      { passive: true },
+    );
+
+    // Autoplay erst starten, wenn das Carousel sichtbar ist
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) start();
+          else stop();
+        });
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(root);
+
+    // ── Maus-Drag (Desktop) ───────────────────────────────────
+    let isDown = false;
+    let startX = 0;
+    let startScroll = 0;
+    let dragged = false;
+
+    track.addEventListener("mousedown", (e) => {
+      isDown = true;
+      dragged = false;
+      startX = e.pageX;
+      startScroll = track.scrollLeft;
+      track.classList.add("rc-dragging");
+    });
+    window.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      const dx = e.pageX - startX;
+      if (Math.abs(dx) > 5) dragged = true;
+      track.scrollLeft = startScroll - dx;
+    });
+    window.addEventListener("mouseup", () => {
+      if (!isDown) return;
+      isDown = false;
+      track.classList.remove("rc-dragging");
+      window.setTimeout(() => (paused = false), 4000);
+    });
+    // Klick nach Drag unterdrücken (sonst öffnet die Lightbox)
+    track.addEventListener(
+      "click",
+      (e) => {
+        if (dragged) {
+          e.preventDefault();
+          e.stopPropagation();
+          dragged = false;
+        }
+      },
+      true,
+    );
+
+    // ── Lightbox ──────────────────────────────────────────────
+    const lightbox = root
+      .closest("section")
+      ?.querySelector<HTMLElement>("[data-lightbox]");
+    const lbImg = lightbox?.querySelector<HTMLImageElement>(
+      "[data-lightbox-img]",
+    );
+    const lbCaption = lightbox?.querySelector<HTMLElement>(
+      "[data-lightbox-caption]",
+    );
+    const lbClose = lightbox?.querySelector<HTMLElement>(
+      "[data-lightbox-close]",
+    );
+
+    const openLightbox = (btn: HTMLElement) => {
+      if (!lightbox || !lbImg || !lbCaption) return;
+      lbImg.src = btn.dataset.full || "";
+      lbImg.alt = btn.dataset.alt || "";
+      lbCaption.textContent = btn.dataset.caption || "";
+      lightbox.classList.remove("hidden");
+      lightbox.classList.add("flex");
+      document.body.style.overflow = "hidden";
+      paused = true;
+      (lbClose as HTMLElement | undefined)?.focus();
+    };
+
+    const closeLightbox = () => {
+      if (!lightbox || !lbImg) return;
+      lightbox.classList.add("hidden");
+      lightbox.classList.remove("flex");
+      lbImg.src = "";
+      document.body.style.overflow = "";
+      paused = false;
+    };
+
+    root
+      .querySelectorAll<HTMLElement>("[data-lightbox-open]")
+      .forEach((btn) => btn.addEventListener("click", () => openLightbox(btn)));
+    lbClose?.addEventListener("click", closeLightbox);
+    lightbox?.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (
+        e.key === "Escape" &&
+        lightbox &&
+        !lightbox.classList.contains("hidden")
+      ) {
+        closeLightbox();
+      }
+    });
+  }
+
+  initReferenzenCarousel();
+</script>
