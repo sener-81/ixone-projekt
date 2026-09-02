@@ -32,17 +32,17 @@ export const galerieData: GalerieItem[] = [
   // 3. Alt-Text und Caption anpassen
   // ─────────────────────────────────────────────────────────────
   {
-    file: "hero-digitalagentur-regensburg.webp",
+    file: "teson-service.webp",
     alt: "ixOne Digitalagentur Regensburg – Professionelles Webdesign und SEO für Unternehmen in Bayern",
     caption: "ixOne Digitalagentur",
   },
   {
-    file: "hero-digitalagentur-regensburg.webp",
+    file: "meisterentruempelung.webp",
     alt: "Responsive Unternehmenswebsite Webdesign Regensburg – Mobile-first Design für mehr Anfragen",
     caption: "Unternehmenswebsite",
   },
   {
-    file: "hero-digitalagentur-regensburg.webp",
+    file: "Zoltis-genusswerkstatt.webp",
     alt: "WooCommerce Online-Shop Webdesign Regensburg – Modernes E-Commerce Design für mehr Umsatz",
     caption: "Online-Shop Regensburg",
   },
