@@ -25,70 +25,64 @@ export interface GalerieItem {
 }
 
 export const galerieData: GalerieItem[] = [
-  // ─── PLATZHALTER – ersetze mit echten Projekten ───────────────
-  // Sobald du ein echtes Projektbild hast:
-  // 1. Bild in src/assets/galerie/ ablegen
-  // 2. Dateinamen hier eintragen
-  // 3. Alt-Text und Caption anpassen
-  // ─────────────────────────────────────────────────────────────
   {
-    file: "teson-service.webp",
-    alt: "ixOne Digitalagentur Regensburg – Professionelles Webdesign und SEO für Unternehmen in Bayern",
-    caption: "ixOne Digitalagentur",
+    file: "meisterentruempelung-regensburg.webp",
+    alt: "Website für Meister Entrümpelung Regensburg – lokale SEO-Landingpages für mehr Kundenanfragen",
+    caption: "Entrümpelung Regensburg",
   },
   {
-    file: "meisterentruempelung.webp",
-    alt: "Responsive Unternehmenswebsite Webdesign Regensburg – Mobile-first Design für mehr Anfragen",
-    caption: "Unternehmenswebsite",
+    file: "zoltis-genusswerkstatt.webp",
+    alt: "Zoltis Genusswerkstatt – WordPress-Website mit Rezept-Blog und modernem Food-Design",
+    caption: "Genusswerkstatt & Blog",
   },
   {
-    file: "Zoltis-genusswerkstatt.webp",
-    alt: "WooCommerce Online-Shop Webdesign Regensburg – Modernes E-Commerce Design für mehr Umsatz",
-    caption: "Online-Shop Regensburg",
+    file: "relaxedhair.webp",
+    alt: "Relaxed Hair Kösching – SEO-optimierte Friseursalon-Website mit Online-Terminbuchung",
+    caption: "Friseursalon Website",
   },
   {
-    file: "hero-digitalagentur-regensburg.webp",
-    alt: "Conversion-optimierte Landingpage Webdesign Regensburg – Mehr Leads durch gezieltes UX-Design",
-    caption: "Landingpage",
+    file: "DJkerim-regenstauf.webp",
+    alt: "DJ Kerim Regenstauf – Event-Website mit Musik-Integration und Buchungsanfrage",
+    caption: "Event & DJ Website",
   },
   {
-    file: "hero-digitalagentur-regensburg.webp",
-    alt: "Corporate Website Webdesign Regensburg – Professioneller Unternehmensauftritt für den Mittelstand",
-    caption: "Corporate Website",
+    file: "rohrglanz-berlin.webp",
+    alt: "Rohrglanz Rohrreinigung Berlin – conversion-optimierte Website mit 24/7-Notdienst-Fokus",
+    caption: "Notdienst Website",
   },
   {
-    file: "hero-digitalagentur-regensburg.webp",
-    alt: "SEO-optimiertes Webdesign Regensburg – Technisch saubere Website für bessere Google Rankings",
-    caption: "SEO Webdesign",
-  },
-  {
-    file: "hero-digitalagentur-regensburg.webp",
-    alt: "Handwerker Website Webdesign Regensburg – Lokale Dienstleister online professionell präsentieren",
+    file: "kosic-fussbodenheizung.webp",
+    alt: "Handwerker-Webdesign Regensburg – Website für Fußbodenheizung-Spezialist mit klarer Leistungsübersicht",
     caption: "Handwerker Website",
   },
   {
-    file: "hero-digitalagentur-regensburg.webp",
-    alt: "UX/UI Design Regensburg – Benutzerfreundliche Navigation und intuitives Layout für höhere Conversion",
-    caption: "UX/UI Design",
+    file: "SED-IMMOBILIEN.webp",
+    alt: "SED Immobilien – Immobilien-Website mit Objektpräsentation und benutzerfreundlicher Navigation",
+    caption: "Immobilien Website",
   },
   {
-    file: "hero-digitalagentur-regensburg.webp",
-    alt: "WordPress Website Regensburg – CMS-Integration für einfache Inhaltspflege ohne technisches Wissen",
-    caption: "WordPress Website",
+    file: "hsd-service-regensburg.webp",
+    alt: "HSD Service Regensburg – WordPress-Website für Gebäudereinigung mit lokalen Landingpages",
+    caption: "Gebäudereinigung Website",
   },
   {
-    file: "hero-digitalagentur-regensburg.webp",
-    alt: "Astro Website Regensburg – Blitzschnelle moderne Website mit PageSpeed Score über 90",
-    caption: "Astro Website",
+    file: "minsa.webp",
+    alt: "Minsa Gebäudemanagement – Astro-Website mit blitzschneller Ladezeit und PageSpeed über 90",
+    caption: "Gebäudemanagement Website",
   },
   {
-    file: "hero-digitalagentur-regensburg.webp",
-    alt: "Webdesign für Einzelhandel Regensburg – Lokales Business mit professionellem Online-Auftritt stärken",
-    caption: "Einzelhandel Website",
+    file: "seldafriseur.webp",
+    alt: "Selda Friseur – Webdesign für Friseursalon mit Preisliste und Google-Bewertungen",
+    caption: "Friseur Website",
   },
   {
-    file: "hero-digitalagentur-regensburg.webp",
-    alt: "Google Ads Landingpage Webdesign Regensburg – Conversion-fokussierte Seiten für Online-Marketing Kampagnen",
-    caption: "Google Ads Landingpage",
+    file: "brb-estrichbau.webp",
+    alt: "BRB Estrichbau – Handwerker-Website für Estrich-Fachbetrieb mit Leistungsübersicht und Anfrageformular",
+    caption: "Estrichbau Website",
+  },
+  {
+    file: "zw-ingenieure.webp",
+    alt: "ZW Ingenieure – Corporate Website Webdesign Regensburg für Ingenieurbüro mit Referenzportfolio",
+    caption: "Ingenieurbüro Website",
   },
 ];

@@ -1,0 +1,394 @@
+---
+// ═══════════════════════════════════════════════════════════════
+// src/components/ReferenzenGalerie.astro
+//
+// Große Mockup-Galerie NUR für die Seite /referenzen/.
+// Datenquelle: src/data/referenzenData.ts (unabhängig von
+// galerieData.ts → Startseite und Webdesign-Seite bleiben
+// unberührt).
+//
+// Verhalten:
+// - 3er-Reihen (mobil 2 Spalten), keine rounded corners
+// - Nur Bilder sichtbar, Caption erst in der Lightbox
+// - Start: 1 Reihe sichtbar, beim Scrollen kommt je eine
+//   weitere Reihe dazu (funktioniert bei beliebig vielen Bildern)
+// - Alt-Texte im HTML → voll SEO-wirksam, Noscript-Fallback
+//
+// Einbinden auf der Referenzen-Seite:
+//   import ReferenzenGalerie from "../components/ReferenzenGalerie.astro";
+//   <ReferenzenGalerie />
+// ═══════════════════════════════════════════════════════════════
+import { Image } from "astro:assets";
+import { referenzenData } from "../data/referenzenData";
+
+const imageFiles = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/referenzen/*.{webp,jpg,jpeg,png,avif}",
+  { eager: true },
+);
+
+const galerieItems = referenzenData
+  .map((item, index) => {
+    const path = `/src/assets/referenzen/${item.file}`;
+    const module = imageFiles[path];
+    if (!module) return null;
+    return {
+      image: module.default,
+      alt: item.alt,
+      caption: item.caption,
+      index,
+    };
+  })
+  .filter(Boolean) as {
+  image: ImageMetadata;
+  alt: string;
+  caption: string;
+  index: number;
+}[];
+---
+
+<section
+  class="py-20 md:py-28 lg:py-32 bg-gray-50"
+  aria-labelledby="referenzen-galerie-heading"
+>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+    <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+      <h2
+        id="referenzen-galerie-heading"
+        class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+      >
+        Einblicke: <span class="gradient-text-brand-inline"
+          >Mockups & Designs</span
+        >
+      </h2>
+      <p class="text-xl text-gray-600">
+        Ein Querschnitt aus über 500 Projekten – Websites, Shops und
+        Landingpages. Klicken Sie ein Bild an für die Großansicht.
+      </p>
+    </div>
+
+    <div
+      class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 max-w-7xl mx-auto"
+      role="list"
+      aria-label="Referenz-Mockups ixOne Digitalagentur"
+    >
+      {
+        galerieItems.map((item, i) => (
+          <figure
+            class={`refg-item refg-reveal group relative aspect-[4/3] overflow-hidden bg-gray-200 cursor-pointer shadow-md hover:shadow-xl transition-shadow duration-300 ${i >= 3 ? "refg-pending" : ""}`}
+            role="listitem"
+            data-index={item.index}
+            data-alt={item.alt}
+            data-caption={item.caption}
+            tabindex="0"
+            aria-label={`Bild öffnen: ${item.caption}`}
+          >
+            <Image
+              src={item.image}
+              alt={item.alt}
+              width={800}
+              height={600}
+              loading="lazy"
+              decoding="async"
+              class="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+            />
+          </figure>
+        ))
+      }
+    </div>
+
+    <div class="h-px" data-refg-sentinel aria-hidden="true"></div>
+    <noscript>
+      <style is:global>
+        .refg-reveal {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+        .refg-pending {
+          display: block !important;
+        }
+      </style>
+    </noscript>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div
+  id="refg-lightbox"
+  class="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm hidden items-center justify-center p-4"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Referenz Vollansicht"
+>
+  <button
+    id="refg-lightbox-close"
+    class="absolute top-4 right-4 z-10 w-10 h-10 bg-white/10 hover:bg-white/25 rounded-full flex items-center justify-center transition-colors duration-200"
+    aria-label="Schließen"
+  >
+    <svg
+      class="w-5 h-5 text-white"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      ><path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M6 18L18 6M6 6l12 12"></path></svg
+    >
+  </button>
+  <button
+    id="refg-lightbox-prev"
+    class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-white/10 hover:bg-white/25 rounded-full flex items-center justify-center transition-colors duration-200"
+    aria-label="Vorheriges Bild"
+  >
+    <svg
+      class="w-5 h-5 text-white"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      ><path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M15 19l-7-7 7-7"></path></svg
+    >
+  </button>
+  <button
+    id="refg-lightbox-next"
+    class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 bg-white/10 hover:bg-white/25 rounded-full flex items-center justify-center transition-colors duration-200"
+    aria-label="Nächstes Bild"
+  >
+    <svg
+      class="w-5 h-5 text-white"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      ><path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M9 5l7 7-7 7"></path></svg
+    >
+  </button>
+  <div class="max-w-5xl w-full mx-auto flex flex-col items-center gap-4">
+    <img
+      id="refg-lightbox-img"
+      alt=""
+      class="max-h-[75vh] max-w-full shadow-2xl object-contain"
+      width="1200"
+      height="900"
+    />
+    <div class="text-center">
+      <p
+        id="refg-lightbox-caption"
+        class="text-white font-semibold text-sm md:text-base"
+      >
+      </p>
+      <p id="refg-lightbox-counter" class="text-white/50 text-xs mt-1"></p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .refg-item:focus-visible {
+    outline: 3px solid var(--brand-orange);
+    outline-offset: 2px;
+  }
+  .refg-reveal {
+    opacity: 0;
+    transform: translateY(28px) scale(0.97);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
+  }
+  .refg-reveal.refg-visible {
+    opacity: 1;
+    transform: none;
+  }
+  .refg-pending {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .refg-reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+  #refg-lightbox:not(.hidden) {
+    animation: refg-fade 0.2s ease forwards;
+  }
+  @keyframes refg-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  // ── Lightbox ────────────────────────────────────────────────
+  const lightbox = document.getElementById(
+    "refg-lightbox",
+  ) as HTMLElement | null;
+  const lbImg = document.getElementById(
+    "refg-lightbox-img",
+  ) as HTMLImageElement | null;
+  const lbCaption = document.getElementById("refg-lightbox-caption");
+  const lbCounter = document.getElementById("refg-lightbox-counter");
+  const lbClose = document.getElementById("refg-lightbox-close");
+  const lbPrev = document.getElementById("refg-lightbox-prev");
+  const lbNext = document.getElementById("refg-lightbox-next");
+  const items = Array.from(
+    document.querySelectorAll(".refg-item"),
+  ) as HTMLElement[];
+
+  if (
+    lightbox &&
+    lbImg &&
+    lbCaption &&
+    lbCounter &&
+    lbClose &&
+    lbPrev &&
+    lbNext &&
+    items.length
+  ) {
+    const total = items.length;
+    let current = 0;
+    let lastFocused: HTMLElement | null = null;
+
+    const getSrc = (el: HTMLElement) => el.querySelector("img")?.src ?? "";
+
+    const openLb = (index: number) => {
+      current = index;
+      const el = items[current];
+      lbImg.src = getSrc(el);
+      lbImg.alt = el.dataset.alt ?? "";
+      lbCaption.textContent = el.dataset.caption ?? "";
+      lbCounter.textContent = `${current + 1} / ${total}`;
+      lightbox.classList.remove("hidden");
+      lightbox.classList.add("flex");
+      document.body.style.overflow = "hidden";
+      lbClose.focus();
+    };
+
+    const closeLb = () => {
+      lightbox.classList.add("hidden");
+      lightbox.classList.remove("flex");
+      document.body.style.overflow = "";
+      lastFocused?.focus();
+    };
+
+    const prevLb = () => openLb((current - 1 + total) % total);
+    const nextLb = () => openLb((current + 1) % total);
+
+    items.forEach((el, i) => {
+      el.addEventListener("click", () => {
+        lastFocused = el;
+        openLb(i);
+      });
+      el.addEventListener("keydown", (e: Event) => {
+        const ke = e as KeyboardEvent;
+        if (ke.key === "Enter" || ke.key === " ") {
+          ke.preventDefault();
+          lastFocused = el;
+          openLb(i);
+        }
+      });
+    });
+
+    lbClose.addEventListener("click", closeLb);
+    lbPrev.addEventListener("click", prevLb);
+    lbNext.addEventListener("click", nextLb);
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) closeLb();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (lightbox.classList.contains("hidden")) return;
+      if (e.key === "Escape") closeLb();
+      if (e.key === "ArrowLeft") prevLb();
+      if (e.key === "ArrowRight") nextLb();
+    });
+
+    let touchStartX = 0;
+    lightbox.addEventListener(
+      "touchstart",
+      (e) => {
+        touchStartX = e.touches[0].clientX;
+      },
+      { passive: true },
+    );
+    lightbox.addEventListener("touchend", (e) => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) diff > 0 ? nextLb() : prevLb();
+    });
+  }
+
+  // ── 3 Kacheln vorab, weitere Reihen beim Scrollen ───────────
+  const INITIAL_COUNT = 3; // sofort sichtbare Kacheln (1 Reihe)
+  const BATCH_SIZE = 3; // pro Scroll-Schritt kommt eine Reihe dazu
+  const allTiles = Array.from(
+    document.querySelectorAll<HTMLElement>(".refg-reveal"),
+  );
+  const sentinel = document.querySelector<HTMLElement>("[data-refg-sentinel]");
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  const showTile = (el: HTMLElement, delay: number) => {
+    el.classList.remove("refg-pending");
+    if (reduceMotion) {
+      el.classList.add("refg-visible");
+      return;
+    }
+    el.style.transitionDelay = `${delay}ms`;
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => el.classList.add("refg-visible")),
+    );
+  };
+
+  if (!("IntersectionObserver" in window)) {
+    allTiles.forEach((el) => {
+      el.classList.remove("refg-pending");
+      el.classList.add("refg-visible");
+    });
+  } else if (allTiles.length) {
+    const initial = allTiles.slice(0, INITIAL_COUNT);
+    const firstIO = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          initial.forEach((el, idx) => showTile(el, idx * 120));
+          firstIO.disconnect();
+        });
+      },
+      { threshold: 0.15 },
+    );
+    firstIO.observe(initial[0]);
+
+    let nextIndex = INITIAL_COUNT;
+    if (sentinel && nextIndex < allTiles.length) {
+      const moreIO = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const batch = allTiles.slice(nextIndex, nextIndex + BATCH_SIZE);
+            batch.forEach((el, idx) => showTile(el, idx * 120));
+            nextIndex += batch.length;
+            if (nextIndex >= allTiles.length) {
+              moreIO.disconnect();
+              return;
+            }
+            moreIO.unobserve(sentinel);
+            window.setTimeout(() => moreIO.observe(sentinel), 500);
+          });
+        },
+        { rootMargin: "0px 0px 200px 0px" },
+      );
+      moreIO.observe(sentinel);
+    }
+  }
+</script>

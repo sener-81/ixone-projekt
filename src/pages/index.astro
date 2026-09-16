@@ -7,7 +7,6 @@ import TextReveal from "../components/TextReveal.astro";
 import ReferenzenCarousel from "../components/ReferenzenCarousel.astro";
 import GoogleReviews from "../components/GoogleReviews.astro";
 import CTA from "../components/CTA.astro";
-import ScrollAnimations from "../components/ScrollAnimations.astro";
 import { Image } from "astro:assets";
 import aboutImage from "../assets/ixone-online-marketing-regensburg.webp";
 
@@ -357,13 +356,8 @@ const vorteile = [
 
   <CTA />
 
-  <ScrollAnimations />
-
   <script>
     // ── Counter-Animation für die Stats-Box ───────────────────
-    // Zählt data-count-Elemente hoch, sobald die Box ins Bild
-    // scrollt. Läuft einmalig. RÜCKBAU: dieses <script> löschen
-    // und die data-count/data-suffix-Attribute entfernen.
     const statsBox = document.querySelector<HTMLElement>("[data-stats-box]");
     if (
       statsBox &&
