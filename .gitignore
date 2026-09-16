@@ -92,3 +92,4 @@ ehthumbs.db
 # VSCode (entfernen, falls du Einstellungen im Team teilen willst)
 .vscode/*
 !.vscode/extensions.json
+ixone-projekt.code-workspace
