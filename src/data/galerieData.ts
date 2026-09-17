@@ -50,6 +50,11 @@ export const galerieData: GalerieItem[] = [
     alt: "Rohrglanz Rohrreinigung Berlin – conversion-optimierte Website mit 24/7-Notdienst-Fokus",
     caption: "Notdienst Website",
   },
+   {
+    file: "akosoft.webp",
+    alt: "Handwerker-Webdesign Regensburg – Website für Fußbodenheizung-Spezialist mit klarer Leistungsübersicht",
+    caption: "Handwerker Website",
+  },
   {
     file: "kosic-fussbodenheizung.webp",
     alt: "Handwerker-Webdesign Regensburg – Website für Fußbodenheizung-Spezialist mit klarer Leistungsübersicht",
