@@ -1027,14 +1027,14 @@ const prozessSchritte = [
         </div>
 
         <div
-          class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 max-w-7xl mx-auto"
+          class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 max-w-7xl mx-auto"
           role="list"
           aria-label="Webdesign Referenzen ixOne Regensburg"
         >
           {
-            galerieItems.map((item) => (
+            galerieItems.map((item, i) => (
               <figure
-                class="galerie-item group relative overflow-hidden rounded-xl bg-gray-200 cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                class={`galerie-item metro-reveal group relative aspect-[4/3] overflow-hidden bg-gray-200 cursor-pointer shadow-md hover:shadow-xl transition-shadow duration-300 ${i >= 3 ? "metro-pending" : ""}`}
                 role="listitem"
                 data-index={item.index}
                 data-alt={item.alt}
@@ -1042,42 +1042,32 @@ const prozessSchritte = [
                 tabindex="0"
                 aria-label={`Bild öffnen: ${item.caption}`}
               >
-                <div class="aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={item.image}
-                    alt={item.alt}
-                    width={800}
-                    height={600}
-                    loading="lazy"
-                    decoding="async"
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-3 md:p-4">
-                  <p class="text-white text-xs md:text-sm font-semibold leading-tight">
-                    {item.caption}
-                  </p>
-                  <span class="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center flex-shrink-0">
-                    <svg
-                      class="w-4 h-4 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
-                      />
-                    </svg>
-                  </span>
-                </div>
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  width={800}
+                  height={600}
+                  loading="lazy"
+                  decoding="async"
+                  class="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                />
               </figure>
             ))
           }
         </div>
+
+        <div class="h-px" data-metro-sentinel aria-hidden="true"></div>
+        <noscript>
+          <style is:global>
+            .metro-reveal {
+              opacity: 1 !important;
+              transform: none !important;
+            }
+            .metro-pending {
+              display: block !important;
+            }
+          </style>
+        </noscript>
 
         <div class="text-center mt-12">
           <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
@@ -1568,12 +1558,103 @@ const prozessSchritte = [
       if (Math.abs(diff) > 50) diff > 0 ? nextLb() : prevLb();
     });
   }
+
+  // ── Metro-Galerie: 3 Kacheln vorab, weitere Batches beim Scrollen ──
+  const INITIAL_COUNT = 3; // sofort sichtbare Kacheln (1 Reihe)
+  const BATCH_SIZE = 3; // pro Scroll-Schritt kommt eine Reihe dazu
+  const allTiles = Array.from(
+    document.querySelectorAll<HTMLElement>(".metro-reveal"),
+  );
+  const sentinel = document.querySelector<HTMLElement>("[data-metro-sentinel]");
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  const showTile = (el: HTMLElement, delay: number) => {
+    el.classList.remove("metro-pending");
+    if (reduceMotion) {
+      el.classList.add("metro-visible");
+      return;
+    }
+    el.style.transitionDelay = `${delay}ms`;
+    // Zwei Frames warten, damit die Einblende-Animation greift
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => el.classList.add("metro-visible")),
+    );
+  };
+
+  if (!("IntersectionObserver" in window)) {
+    allTiles.forEach((el) => {
+      el.classList.remove("metro-pending");
+      el.classList.add("metro-visible");
+    });
+  } else if (allTiles.length) {
+    // Erste Kacheln einblenden, sobald die Galerie sichtbar wird
+    const initial = allTiles.slice(0, INITIAL_COUNT);
+    const firstIO = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          initial.forEach((el, idx) => showTile(el, idx * 120));
+          firstIO.disconnect();
+        });
+      },
+      { threshold: 0.15 },
+    );
+    firstIO.observe(initial[0]);
+
+    // Weitere Batches nachladen, wenn das Galerie-Ende naht
+    let nextIndex = INITIAL_COUNT;
+    if (sentinel && nextIndex < allTiles.length) {
+      const moreIO = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const batch = allTiles.slice(nextIndex, nextIndex + BATCH_SIZE);
+            batch.forEach((el, idx) => showTile(el, idx * 120));
+            nextIndex += batch.length;
+            if (nextIndex >= allTiles.length) {
+              moreIO.disconnect();
+              return;
+            }
+            // Auf großen Screens: prüfen ob der Sentinel noch sichtbar
+            // ist und dann direkt den nächsten Batch anstoßen
+            moreIO.unobserve(sentinel);
+            window.setTimeout(() => moreIO.observe(sentinel), 500);
+          });
+        },
+        { rootMargin: "0px 0px 200px 0px" },
+      );
+      moreIO.observe(sentinel);
+    }
+  }
 </script>
 
 <style>
   .galerie-item:focus-visible {
     outline: 3px solid var(--brand-orange);
     outline-offset: 2px;
+  }
+  .metro-reveal {
+    opacity: 0;
+    transform: translateY(28px) scale(0.97);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
+  }
+  .metro-reveal.metro-visible {
+    opacity: 1;
+    transform: none;
+  }
+  .metro-pending {
+    display: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .metro-reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
   }
   #lightbox:not(.hidden) {
     animation: lb-fade 0.2s ease forwards;

@@ -1,0 +1,274 @@
+---
+// ═══════════════════════════════════════════════════════════════
+// src/components/AlteReferenzenCarousel.astro
+//
+// Auto-Loop-Carousel für die ALTEN Referenzen – nur auf der
+// Seite /referenzen/, unterhalb der ReferenzenGalerie.
+//
+// Datenquelle: src/data/alteReferenzenData.ts
+// Bilder:      src/assets/alte-referenzen/
+//
+// Verhalten wie das Startseiten-Carousel (Autoplay, Pfeile,
+// Drag, Snap), aber OHNE Lightbox/Popup – reine Anzeige.
+// Alt-Texte bleiben im HTML → voll SEO-wirksam.
+//
+// Performance:
+// - Thumbnails: 640px WebP, loading="lazy"
+// - Autoplay pausiert bei Hover/Touch, startet erst wenn
+//   sichtbar, respektiert prefers-reduced-motion
+//
+// Einbinden auf /referenzen/ (unter <ReferenzenGalerie />):
+//   import AlteReferenzenCarousel from "../components/AlteReferenzenCarousel.astro";
+//   <AlteReferenzenCarousel />
+// ═══════════════════════════════════════════════════════════════
+import { getImage } from "astro:assets";
+import { alteReferenzenData } from "../data/alteReferenzenData";
+
+const imageModules = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/alte-referenzen/*.{webp,jpg,jpeg,png,avif}",
+);
+
+const slides = await Promise.all(
+  alteReferenzenData.map(async (item) => {
+    const path = `../assets/alte-referenzen/${item.file}`;
+    const loader = imageModules[path];
+    if (!loader) {
+      throw new Error(
+        `[AlteReferenzenCarousel] Bild nicht gefunden: src/assets/alte-referenzen/${item.file}`,
+      );
+    }
+    const mod = await loader();
+    const thumb = await getImage({
+      src: mod.default,
+      width: 640,
+      format: "webp",
+    });
+    return { ...item, thumb };
+  }),
+);
+---
+
+<section
+  class="py-20 md:py-28 lg:py-32 bg-white overflow-hidden"
+  aria-labelledby="alte-referenzen-heading"
+>
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12 md:mb-16">
+        <span
+          class="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-brand-orange to-yellow-500 text-white text-sm font-semibold mb-6"
+        >
+          <span class="w-2 h-2 bg-white/60 rounded-full mr-2"></span>
+          Aus unserem Archiv
+        </span>
+        <h2
+          id="alte-referenzen-heading"
+          class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+        >
+          Projekte aus <span class="text-brand-orange">früheren Jahren</span>
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Seit 2007 sind über 500 Projekte entstanden – ein Rückblick auf
+          Websites, Shops und Landingpages aus unserem Archiv.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="relative max-w-[100rem] mx-auto" data-arc-carousel>
+    <!-- Track -->
+    <ul
+      class="arc-track flex gap-5 md:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth px-4 sm:px-6 lg:px-8 pb-4 cursor-grab select-none"
+      data-arc-track
+      aria-label="Alte Referenzen der ixOne Digitalagentur"
+    >
+      {
+        slides.map((slide) => (
+          <li class="snap-center shrink-0 w-[82%] sm:w-[52%] lg:w-[31%] xl:w-[26%]">
+            <figure class="relative block w-full overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
+              <img
+                src={slide.thumb.src}
+                width={slide.thumb.attributes.width}
+                height={slide.thumb.attributes.height}
+                alt={slide.alt}
+                loading="lazy"
+                decoding="async"
+                draggable="false"
+                class="w-full h-auto aspect-[4/3] object-cover object-top"
+              />
+            </figure>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- Pfeile (Desktop) -->
+    <button
+      type="button"
+      class="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 items-center justify-center w-11 h-11 rounded-full bg-white shadow-lg text-gray-700 hover:text-brand-orange transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange"
+      data-arc-prev
+      aria-label="Vorheriges Projekt"
+    >
+      <svg
+        class="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 19l-7-7 7-7"></path>
+      </svg>
+    </button>
+    <button
+      type="button"
+      class="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 items-center justify-center w-11 h-11 rounded-full bg-white shadow-lg text-gray-700 hover:text-brand-orange transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange"
+      data-arc-next
+      aria-label="Nächstes Projekt"
+    >
+      <svg
+        class="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5l7 7-7 7"></path>
+      </svg>
+    </button>
+  </div>
+</section>
+
+<style>
+  .arc-track {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .arc-track::-webkit-scrollbar {
+    display: none;
+  }
+  .arc-track.arc-dragging {
+    cursor: grabbing;
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
+</style>
+
+<script>
+  function initAlteReferenzenCarousel() {
+    const root = document.querySelector<HTMLElement>("[data-arc-carousel]");
+    if (!root) return;
+
+    const track = root.querySelector<HTMLElement>("[data-arc-track]");
+    const prevBtn = root.querySelector<HTMLElement>("[data-arc-prev]");
+    const nextBtn = root.querySelector<HTMLElement>("[data-arc-next]");
+    if (!track) return;
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    // ── Slide-Breite ermitteln ────────────────────────────────
+    const slideStep = () => {
+      const first = track.querySelector<HTMLElement>("li");
+      if (!first) return track.clientWidth;
+      const gap = parseFloat(getComputedStyle(track).columnGap || "0") || 0;
+      return first.offsetWidth + gap;
+    };
+
+    const atEnd = () =>
+      track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
+
+    const goNext = () => {
+      if (atEnd()) {
+        track.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        track.scrollBy({ left: slideStep(), behavior: "smooth" });
+      }
+    };
+    const goPrev = () => {
+      if (track.scrollLeft <= 8) {
+        track.scrollTo({ left: track.scrollWidth, behavior: "smooth" });
+      } else {
+        track.scrollBy({ left: -slideStep(), behavior: "smooth" });
+      }
+    };
+
+    nextBtn?.addEventListener("click", goNext);
+    prevBtn?.addEventListener("click", goPrev);
+
+    // ── Autoplay (Loop) ───────────────────────────────────────
+    let timer: number | undefined;
+    let paused = false;
+
+    const start = () => {
+      if (reducedMotion || timer) return;
+      timer = window.setInterval(() => {
+        if (!paused && !document.hidden) goNext();
+      }, 3500);
+    };
+    const stop = () => {
+      if (timer) {
+        clearInterval(timer);
+        timer = undefined;
+      }
+    };
+
+    ["mouseenter", "focusin", "touchstart", "pointerdown"].forEach((ev) =>
+      track.addEventListener(ev, () => (paused = true), { passive: true }),
+    );
+    ["mouseleave", "focusout"].forEach((ev) =>
+      track.addEventListener(ev, () => (paused = false)),
+    );
+    track.addEventListener(
+      "touchend",
+      () => {
+        window.setTimeout(() => (paused = false), 5000);
+      },
+      { passive: true },
+    );
+
+    // Autoplay erst starten, wenn das Carousel sichtbar ist
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) start();
+          else stop();
+        });
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(root);
+
+    // ── Maus-Drag (Desktop) ───────────────────────────────────
+    let isDown = false;
+    let startX = 0;
+    let startScroll = 0;
+
+    track.addEventListener("mousedown", (e) => {
+      isDown = true;
+      startX = e.pageX;
+      startScroll = track.scrollLeft;
+      track.classList.add("arc-dragging");
+    });
+    window.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      track.scrollLeft = startScroll - (e.pageX - startX);
+    });
+    window.addEventListener("mouseup", () => {
+      if (!isDown) return;
+      isDown = false;
+      track.classList.remove("arc-dragging");
+      window.setTimeout(() => (paused = false), 4000);
+    });
+  }
+
+  initAlteReferenzenCarousel();
+</script>
