@@ -25,6 +25,49 @@ export interface GalerieItem {
 }
 
 export const galerieData: GalerieItem[] = [
+
+
+    {
+    file: "minsa.webp",
+    alt: "Minsa Gebäudemanagement – Astro-Website mit blitzschneller Ladezeit und PageSpeed über 90",
+    caption: "Gebäudemanagement Website",
+  },
+
+  
+
+    {
+    file: "rohrglanz-berlin.webp",
+    alt: "Rohrglanz Rohrreinigung Berlin – conversion-optimierte Website mit 24/7-Notdienst-Fokus",
+    caption: "Notdienst Website",
+  },
+
+    {
+    file: "hsd-service-regensburg.webp",
+    alt: "HSD Service Regensburg – WordPress-Website für Gebäudereinigung mit lokalen Landingpages",
+    caption: "Gebäudereinigung Website",
+  },
+
+
+
+{
+    file: "seldafriseur.webp",
+    alt: "Selda Friseur – Webdesign für Friseursalon mit Preisliste und Google-Bewertungen",
+    caption: "Friseur Website",
+  },
+  {
+    file: "brb-estrichbau.webp",
+    alt: "BRB Estrichbau – Handwerker-Website für Estrich-Fachbetrieb mit Leistungsübersicht und Anfrageformular",
+    caption: "Estrichbau Website",
+  },
+
+   {
+    file: "kosic-fussbodenheizung.webp",
+    alt: "Kosic Fußbodenheizung – Handwerker-Website für Fußbodenheizung-Spezialist mit klarer Leistungsübersicht",
+    caption: "Handwerker Website",
+  },
+
+  
+
   {
     file: "meisterentruempelung-regensburg.webp",
     alt: "Website für Meister Entrümpelung Regensburg – lokale SEO-Landingpages für mehr Kundenanfragen",
@@ -45,49 +88,13 @@ export const galerieData: GalerieItem[] = [
     alt: "DJ Kerim Regenstauf – Event-Website mit Musik-Integration und Buchungsanfrage",
     caption: "Event & DJ Website",
   },
+
+
   {
-    file: "rohrglanz-berlin.webp",
-    alt: "Rohrglanz Rohrreinigung Berlin – conversion-optimierte Website mit 24/7-Notdienst-Fokus",
-    caption: "Notdienst Website",
+    file: "beautyliner.webp",
+    alt: "Website für Meister Entrümpelung Regensburg – lokale SEO-Landingpages für mehr Kundenanfragen",
+    caption: "Entrümpelung Regensburg",
   },
-   {
-    file: "akosoft.webp",
-    alt: "Handwerker-Webdesign Regensburg – Website für Fußbodenheizung-Spezialist mit klarer Leistungsübersicht",
-    caption: "Handwerker Website",
-  },
-  {
-    file: "kosic-fussbodenheizung.webp",
-    alt: "Handwerker-Webdesign Regensburg – Website für Fußbodenheizung-Spezialist mit klarer Leistungsübersicht",
-    caption: "Handwerker Website",
-  },
-  {
-    file: "SED-IMMOBILIEN.webp",
-    alt: "SED Immobilien – Immobilien-Website mit Objektpräsentation und benutzerfreundlicher Navigation",
-    caption: "Immobilien Website",
-  },
-  {
-    file: "hsd-service-regensburg.webp",
-    alt: "HSD Service Regensburg – WordPress-Website für Gebäudereinigung mit lokalen Landingpages",
-    caption: "Gebäudereinigung Website",
-  },
-  {
-    file: "minsa.webp",
-    alt: "Minsa Gebäudemanagement – Astro-Website mit blitzschneller Ladezeit und PageSpeed über 90",
-    caption: "Gebäudemanagement Website",
-  },
-  {
-    file: "seldafriseur.webp",
-    alt: "Selda Friseur – Webdesign für Friseursalon mit Preisliste und Google-Bewertungen",
-    caption: "Friseur Website",
-  },
-  {
-    file: "brb-estrichbau.webp",
-    alt: "BRB Estrichbau – Handwerker-Website für Estrich-Fachbetrieb mit Leistungsübersicht und Anfrageformular",
-    caption: "Estrichbau Website",
-  },
-  {
-    file: "zw-ingenieure.webp",
-    alt: "ZW Ingenieure – Corporate Website Webdesign Regensburg für Ingenieurbüro mit Referenzportfolio",
-    caption: "Ingenieurbüro Website",
-  },
+
+  
 ];

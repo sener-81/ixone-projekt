@@ -1,40 +1,48 @@
 ---
 // ═══════════════════════════════════════════════════════════════
-// src/components/AlteReferenzenCarousel.astro
+// src/components/WebdesignCarousel.astro
 //
-// Auto-Loop-Carousel für die ALTEN Referenzen – nur auf der
-// Seite /referenzen/, unterhalb der ReferenzenGalerie.
+// Auto-Loop-Carousel OHNE Lightbox für die Seite
+// /webdesign-regensburg/ und optional für Landingpages.
+// Reine Anzeige – kein Popup, keine Klick-Interaktion.
 //
-// Datenquelle: src/data/alteReferenzenData.ts
-// Bilder:      src/assets/alte-referenzen/
+// Datenquelle: src/data/galerieData.ts (NUR Website-Projekte)
+// Bilder:      src/assets/galerie/
+// Neues Website-Projekt = 1 Bild + 1 Eintrag in galerieData.ts
+// → erscheint automatisch im Carousel.
 //
-// Verhalten wie das Startseiten-Carousel (Autoplay, Pfeile,
-// Drag, Snap), aber OHNE Lightbox/Popup – reine Anzeige.
+// Verhalten wie das Archiv-Carousel: Autoplay, Pfeile, Drag,
+// Snap – keine Lightbox, keine Hover-Effekte auf den Bildern.
 // Alt-Texte bleiben im HTML → voll SEO-wirksam.
+// Eigene Selektoren (wdc-) → kollisionsfrei.
 //
 // Performance:
 // - Thumbnails: 640px WebP, loading="lazy"
 // - Autoplay pausiert bei Hover/Touch, startet erst wenn
 //   sichtbar, respektiert prefers-reduced-motion
 //
-// Einbinden auf /referenzen/ (unter <ReferenzenGalerie />):
-//   import AlteReferenzenCarousel from "../components/AlteReferenzenCarousel.astro";
-//   <AlteReferenzenCarousel />
+// Einbinden (id "webdesign-galerie" bleibt Anker für den
+// Hero-Button "Projekte ansehen"):
+//   import WebdesignCarousel from "../components/WebdesignCarousel.astro";
+//   <WebdesignCarousel />
 // ═══════════════════════════════════════════════════════════════
 import { getImage } from "astro:assets";
-import { alteReferenzenData } from "../data/alteReferenzenData";
+import { galerieData } from "../data/galerieData";
+
+const CALENDLY =
+  "https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b";
 
 const imageModules = import.meta.glob<{ default: ImageMetadata }>(
-  "../assets/alte-referenzen/*.{webp,jpg,jpeg,png,avif}",
+  "../assets/galerie/*.{webp,jpg,jpeg,png,avif}",
 );
 
 const slides = await Promise.all(
-  alteReferenzenData.map(async (item) => {
-    const path = `../assets/alte-referenzen/${item.file}`;
+  galerieData.map(async (item) => {
+    const path = `../assets/galerie/${item.file}`;
     const loader = imageModules[path];
     if (!loader) {
       throw new Error(
-        `[AlteReferenzenCarousel] Bild nicht gefunden: src/assets/alte-referenzen/${item.file}`,
+        `[WebdesignCarousel] Bild nicht gefunden: src/assets/galerie/${item.file}`,
       );
     }
     const mod = await loader();
@@ -49,43 +57,38 @@ const slides = await Promise.all(
 ---
 
 <section
+  id="webdesign-galerie"
   class="py-20 md:py-28 lg:py-32 bg-white overflow-hidden"
-  aria-labelledby="alte-referenzen-heading"
+  aria-labelledby="webdesign-carousel-heading"
 >
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-12 md:mb-16">
-        <span
-          class="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-brand-orange to-yellow-500 text-white text-sm font-semibold mb-6"
-        >
-          <span class="w-2 h-2 bg-white/60 rounded-full mr-2"></span>
-          Aus unserem Archiv
-        </span>
         <h2
-          id="alte-referenzen-heading"
+          id="webdesign-carousel-heading"
           class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
         >
-          Projekte aus <span class="text-brand-orange">früheren Jahren</span>
+          Unsere <span class="gradient-text-brand-inline">Webdesign</span> Projekte
         </h2>
         <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-          Seit 2007 sind über 500 Projekte entstanden – ein Rückblick auf
-          Websites, Shops und Landingpages aus unserem Archiv.
+          Ausgewählte Referenzen aus Regensburg und Bayern – performant, modern
+          und conversion-optimiert.
         </p>
       </div>
     </div>
   </div>
 
-  <div class="relative max-w-[100rem] mx-auto" data-arc-carousel>
+  <div class="relative max-w-[100rem] mx-auto" data-wdc-carousel>
     <!-- Track -->
     <ul
-      class="arc-track flex gap-5 md:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth px-4 sm:px-6 lg:px-8 pb-4 cursor-grab select-none"
-      data-arc-track
-      aria-label="Alte Referenzen der ixOne Digitalagentur"
+      class="wdc-track flex gap-5 md:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth px-4 sm:px-6 lg:px-8 pb-4 cursor-grab select-none"
+      data-wdc-track
+      aria-label="Webdesign Referenzen ixOne Regensburg"
     >
       {
         slides.map((slide) => (
           <li class="snap-center shrink-0 w-[82%] sm:w-[52%] lg:w-[31%] xl:w-[26%]">
-            <figure class="relative block w-full overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300">
+            <figure class="relative block w-full overflow-hidden rounded-2xl shadow-md">
               <img
                 src={slide.thumb.src}
                 width={slide.thumb.attributes.width}
@@ -106,7 +109,7 @@ const slides = await Promise.all(
     <button
       type="button"
       class="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 items-center justify-center w-11 h-11 rounded-full bg-white shadow-lg text-gray-700 hover:text-brand-orange transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange"
-      data-arc-prev
+      data-wdc-prev
       aria-label="Vorheriges Projekt"
     >
       <svg
@@ -126,7 +129,7 @@ const slides = await Promise.all(
     <button
       type="button"
       class="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 items-center justify-center w-11 h-11 rounded-full bg-white shadow-lg text-gray-700 hover:text-brand-orange transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange"
-      data-arc-next
+      data-wdc-next
       aria-label="Nächstes Projekt"
     >
       <svg
@@ -144,17 +147,56 @@ const slides = await Promise.all(
       </svg>
     </button>
   </div>
+
+  <div class="text-center mt-12 px-4 sm:px-6 lg:px-8">
+    <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+      Wer hinter diesen Projekten steckt und was genau umgesetzt wurde, finden
+      Sie bei den{" "}
+      <a
+        href="/referenzen/"
+        class="text-brand-orange font-semibold hover:underline">Referenzen</a
+      >. Welche Schwerpunkte in Ihrer Branche zählen, steht in der{" "}
+      <a
+        href="/branchen/"
+        class="text-brand-orange font-semibold hover:underline"
+        >Branchenübersicht</a
+      >.
+    </p>
+    <a
+      href={CALENDLY}
+      target="_blank"
+      rel="noopener"
+      data-calendly-popup-url={CALENDLY}
+      class="cta-button-compact"
+      style="display:inline-flex; align-items:center; gap:0.5rem;"
+    >
+      <span>Ihr Projekt starten</span>
+      <svg
+        class="w-5 h-5"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+      </svg>
+    </a>
+  </div>
 </section>
 
 <style>
-  .arc-track {
+  .wdc-track {
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
-  .arc-track::-webkit-scrollbar {
+  .wdc-track::-webkit-scrollbar {
     display: none;
   }
-  .arc-track.arc-dragging {
+  .wdc-track.wdc-dragging {
     cursor: grabbing;
     scroll-behavior: auto;
     scroll-snap-type: none;
@@ -162,13 +204,13 @@ const slides = await Promise.all(
 </style>
 
 <script>
-  function initAlteReferenzenCarousel() {
-    const root = document.querySelector<HTMLElement>("[data-arc-carousel]");
+  function initWebdesignCarousel() {
+    const root = document.querySelector<HTMLElement>("[data-wdc-carousel]");
     if (!root) return;
 
-    const track = root.querySelector<HTMLElement>("[data-arc-track]");
-    const prevBtn = root.querySelector<HTMLElement>("[data-arc-prev]");
-    const nextBtn = root.querySelector<HTMLElement>("[data-arc-next]");
+    const track = root.querySelector<HTMLElement>("[data-wdc-track]");
+    const prevBtn = root.querySelector<HTMLElement>("[data-wdc-prev]");
+    const nextBtn = root.querySelector<HTMLElement>("[data-wdc-next]");
     if (!track) return;
 
     const reducedMotion = window.matchMedia(
@@ -256,7 +298,7 @@ const slides = await Promise.all(
       isDown = true;
       startX = e.pageX;
       startScroll = track.scrollLeft;
-      track.classList.add("arc-dragging");
+      track.classList.add("wdc-dragging");
     });
     window.addEventListener("mousemove", (e) => {
       if (!isDown) return;
@@ -265,10 +307,10 @@ const slides = await Promise.all(
     window.addEventListener("mouseup", () => {
       if (!isDown) return;
       isDown = false;
-      track.classList.remove("arc-dragging");
+      track.classList.remove("wdc-dragging");
       window.setTimeout(() => (paused = false), 4000);
     });
   }
 
-  initAlteReferenzenCarousel();
+  initWebdesignCarousel();
 </script>
