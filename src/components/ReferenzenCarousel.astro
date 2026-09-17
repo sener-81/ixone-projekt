@@ -2,11 +2,12 @@
 // ═══════════════════════════════════════════════════════════════
 // src/components/ReferenzenCarousel.astro
 //
-// Auto-Loop-Carousel für die Startseite.
-// Liest Bilder + Alt-Texte aus src/data/galerieData.ts –
-// dieselbe Quelle wie die Galerie auf webdesign-regensburg.
-// Neues Projekt = 1 Bild in src/assets/galerie/ + 1 Eintrag
-// in galerieData.ts → erscheint automatisch auf beiden Seiten.
+// Auto-Loop-Carousel für die STARTSEITE.
+// Liest die ERSTEN 12 Einträge aus src/data/referenzenData.ts –
+// dieselbe Quelle wie die Galerie auf /referenzen/ (alle
+// Referenzen gemischt).
+// Neues Projekt = 1 Bild in src/assets/referenzen/ + 1 Eintrag
+// in referenzenData.ts → erscheint automatisch auf beiden Seiten.
 //
 // Performance:
 // - Thumbnails: 640px WebP, loading="lazy"
@@ -19,19 +20,22 @@
 // erhalten (SEO).
 // ═══════════════════════════════════════════════════════════════
 import { getImage } from "astro:assets";
-import { galerieData } from "../data/galerieData";
+import { referenzenData } from "../data/referenzenData";
+
+// Erste 12 Referenzen für die Startseite
+const startseitenReferenzen = referenzenData.slice(0, 12);
 
 const imageModules = import.meta.glob<{ default: ImageMetadata }>(
-  "../assets/galerie/*.{webp,jpg,jpeg,png,avif}",
+  "../assets/referenzen/*.{webp,jpg,jpeg,png,avif}",
 );
 
 const slides = await Promise.all(
-  galerieData.map(async (item) => {
-    const path = `../assets/galerie/${item.file}`;
+  startseitenReferenzen.map(async (item) => {
+    const path = `../assets/referenzen/${item.file}`;
     const loader = imageModules[path];
     if (!loader) {
       throw new Error(
-        `[ReferenzenCarousel] Bild nicht gefunden: src/assets/galerie/${item.file}`,
+        `[ReferenzenCarousel] Bild nicht gefunden: src/assets/referenzen/${item.file}`,
       );
     }
     const mod = await loader();

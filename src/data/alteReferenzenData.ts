@@ -23,9 +23,13 @@ export interface AlteReferenzItem {
 }
 
 export const alteReferenzenData: AlteReferenzItem[] = [
- {
+  {
     file: "akosoft.webp",
-    alt: "Akosoft – Unternehmenswebsite mit Leistungsübersicht, Webdesign von ixOne Regensburg",
+    alt: "Unternehmenswebsite für Handwerksbetrieb – Webdesign von ixOne Regensburg",
   },
-  // weitere alte Referenzen hier ergänzen …
+  // Hier deine ~20 alten Referenzen ergänzen:
+  // {
+  //   file: "dateiname.webp",
+  //   alt: "SEO-optimierter Alt-Text",
+  // },
 ];

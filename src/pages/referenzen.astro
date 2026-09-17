@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import ServiceCrosslinks from "../components/ServiceCrosslinks.astro";
 import ReferenzenGalerie from "../components/ReferenzenGalerie.astro";
+import AlteReferenzenCarousel from "../components/AlteReferenzenCarousel.astro";
 import { areaServedFull } from "../data/structuredData";
 
 const CALENDLY =
@@ -478,6 +479,8 @@ const collectionSchema = {
     </section>
 
     <ReferenzenGalerie />
+
+    <AlteReferenzenCarousel />
 
     <ServiceCrosslinks
       headline="Was wir für diese Kunden umsetzen"
