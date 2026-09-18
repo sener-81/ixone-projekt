@@ -18,7 +18,7 @@ const slides = await Promise.all(
     const mod = await loader();
     const thumb = await getImage({
       src: mod.default,
-      width: 640,
+      width: 480,
       format: "webp",
     });
     return { ...item, thumb };
@@ -51,14 +51,14 @@ const slides = await Promise.all(
 
   <div class="relative max-w-[100rem] mx-auto" data-alr-carousel>
     <ul
-      class="alr-track flex gap-5 md:gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth px-4 sm:px-6 lg:px-8 pb-4 cursor-grab select-none"
+      class="alr-track grid grid-rows-2 lg:grid-rows-3 grid-flow-col auto-cols-[70%] sm:auto-cols-[42%] lg:auto-cols-[27%] xl:auto-cols-[23%] gap-4 md:gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth px-4 sm:px-6 lg:px-8 pb-4 cursor-grab select-none"
       data-alr-track
       aria-label="Referenzen der ixOne Digitalagentur"
     >
       {
         slides.map((slide) => (
-          <li class="snap-center shrink-0 w-[82%] sm:w-[52%] lg:w-[31%] xl:w-[26%]">
-            <figure class="relative block w-full overflow-hidden rounded-2xl shadow-md">
+          <li class="snap-start">
+            <figure class="relative block w-full overflow-hidden rounded-xl shadow-md">
               <img
                 src={slide.thumb.src}
                 width={slide.thumb.attributes.width}
@@ -79,7 +79,7 @@ const slides = await Promise.all(
       type="button"
       class="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 items-center justify-center w-11 h-11 rounded-full bg-white shadow-lg text-gray-700 hover:text-brand-orange transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange"
       data-alr-prev
-      aria-label="Vorheriges Projekt"
+      aria-label="Vorherige Projekte"
     >
       <svg
         class="w-5 h-5"
@@ -99,7 +99,7 @@ const slides = await Promise.all(
       type="button"
       class="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 items-center justify-center w-11 h-11 rounded-full bg-white shadow-lg text-gray-700 hover:text-brand-orange transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange"
       data-alr-next
-      aria-label="Nächstes Projekt"
+      aria-label="Nächste Projekte"
     >
       <svg
         class="w-5 h-5"
