@@ -74,7 +74,7 @@ export const referenzenData: ReferenzItem[] = [
     caption: "Unternehmenswebsite",
   },
   {
-    file: "die-goldene-schere.webp",
+    file: "die-goldene-schere-friseur.webp",
     alt: "Die Goldene Schere – Friseursalon-Website mit Preisliste und Terminanfrage",
     caption: "Friseursalon Website",
   },
@@ -109,7 +109,7 @@ export const referenzenData: ReferenzItem[] = [
     caption: "Feinkosthandel Website",
   },
   {
-    file: "DJkerim-regenstauf.webp",
+    file: "dj-kerim-regenstauf.webp",
     alt: "DJ Kerim Regenstauf – Event-Website mit Musik-Integration und Buchungsanfrage",
     caption: "Event & DJ Website",
   },
@@ -209,6 +209,11 @@ export const referenzenData: ReferenzItem[] = [
     caption: "Sanierung Website",
   },
   {
+    file: "topi-gebaeudereinigung.webp",
+    alt: "Topi Gebäudereinigung – Website für Reinigungsservice mit Angebotsanfrage",
+    caption: "Gebäudereinigung Website",
+  },
+  {
     file: "fahrzeufpflegeshop.webp",
     alt: "Fahrzeugpflege-Onlineshop mit Produktkategorien und Warenkorbsystem",
     caption: "Onlineshop Fahrzeugpflege",
@@ -229,12 +234,17 @@ export const referenzenData: ReferenzItem[] = [
     caption: "Energie Website",
   },
   {
+    file: "Massage-paradise-regensburg.webp",
+    alt: "Massage Paradise Regensburg – Massagestudio-Website mit Angebot und Terminbuchung",
+    caption: "Massagestudio Regensburg",
+  },
+  {
     file: "onv-verpackungsdienstleistung.webp",
     alt: "ONV Verpackungsdienstleistung – B2B-Website mit Serviceportfolio",
     caption: "Verpackungsdienstleistung Website",
   },
   {
-    file: "3d-funhouse.jpg",
+    file: "3d-funhouse.webp",
     alt: "3D Funhouse – Freizeitpark-Website mit Schwarzlicht-Minigolf und Online-Buchung",
     caption: "Freizeitpark Website",
   },
@@ -242,6 +252,11 @@ export const referenzenData: ReferenzItem[] = [
     file: "hayo-reinigung.webp",
     alt: "Hayo Reinigung – Reinigungsfirma-Website mit Leistungsübersicht und Kontakt",
     caption: "Reinigungsfirma Website",
+  },
+  {
+    file: "desa-consulting.webp",
+    alt: "Desa Consulting – Beratungswebsite mit Leistungsübersicht und Kontaktanfrage",
+    caption: "Consulting Website",
   },
   {
     file: "av-werkstatt.webp",
@@ -257,6 +272,11 @@ export const referenzenData: ReferenzItem[] = [
     file: "steinschlagschutzfolie.webp",
     alt: "Steinschlagschutzfolie – Website für Fahrzeugfolierung mit Leistungspaketen",
     caption: "Fahrzeugfolierung Website",
+  },
+  {
+    file: "demontageteam-bayern.webp",
+    alt: "Demontageteam Bayern – Website für Demontage und Rückbau mit Anfrageformular",
+    caption: "Demontage & Rückbau Website",
   },
   {
     file: "vistar-autoaufbereitung.webp",
@@ -279,6 +299,11 @@ export const referenzenData: ReferenzItem[] = [
     caption: "Kosmetik Website",
   },
   {
+    file: "friseur-am-hochweg-regensburg.webp",
+    alt: "Friseur am Hochweg Regensburg – Friseursalon-Website mit Terminanfrage",
+    caption: "Friseursalon Regensburg",
+  },
+  {
     file: "ruempelteambayern.webp",
     alt: "Rümpelteam Bayern – Entrümpelung-Website mit Festpreisgarantie und Anfrageformular",
     caption: "Entrümpelung Website",
@@ -294,6 +319,11 @@ export const referenzenData: ReferenzItem[] = [
     caption: "Pizzaservice Website",
   },
   {
+    file: "sd-gebaeudemanagement.webp",
+    alt: "SD Gebäudemanagement – Website mit Serviceübersicht für Hausverwaltungen",
+    caption: "Gebäudemanagement Website",
+  },
+  {
     file: "teson-service.webp",
     alt: "Teson Service – Dienstleistungswebsite mit Serviceübersicht und Kontaktformular",
     caption: "Dienstleistung Website",
@@ -304,14 +334,19 @@ export const referenzenData: ReferenzItem[] = [
     caption: "Fliesenleger Website",
   },
   {
+    file: "everest-gmbh.webp",
+    alt: "Everest GmbH Gebäudemanagement – Website mit Serviceübersicht für Hausverwaltungen",
+    caption: "Gebäudemanagement Website",
+  },
+  {
     file: "solav.webp",
     alt: "Solav Pizzeria Restaurant Regensburg – Gastronomie-Website mit Speisekarte und Reservierung",
     caption: "Pizzeria & Restaurant Website",
   },
   {
-    file: "anlagenbau-hva.webp",
-    alt: "HVA Anlagenbau – Website mit Industriereferenzen und technischen Leistungen",
-    caption: "Anlagenbau Website",
+    file: "uwe-buettner-reinigungsdienst.webp",
+    alt: "Uwe Büttner Reinigungsdienst – Website mit Reinigungsleistungen und Kontakt",
+    caption: "Reinigungsdienst Website",
   },
   {
     file: "besenrein-logo.webp",
@@ -329,6 +364,11 @@ export const referenzenData: ReferenzItem[] = [
     caption: "Autopflege Website",
   },
   {
+    file: "tsw-gebaeudemanagement-gmbh.webp",
+    alt: "TSW Gebäudemanagement GmbH – Website mit Leistungen für Gewerbe und Hausverwaltungen",
+    caption: "Gebäudemanagement Website",
+  },
+  {
     file: "ugn-service.webp",
     alt: "UGN Service – Landingpage für Bau- und Dienstleistungsunternehmen",
     caption: "Bau & Service Website",
@@ -339,9 +379,9 @@ export const referenzenData: ReferenzItem[] = [
     caption: "Gebäudereinigung Website",
   },
   {
-    file: "minigolf-3d-schwarzlicht.webp",
-    alt: "3D Schwarzlicht-Minigolf – Freizeitwebsite mit Preisen und Online-Reservierung",
-    caption: "Freizeit Website",
+    file: "yonus-tankstellenreinigung.webp",
+    alt: "Yonus Tankstellenreinigung – Spezialreinigung-Website mit Leistungsübersicht",
+    caption: "Tankstellenreinigung Website",
   },
   {
     file: "chedaye.webp",
@@ -349,14 +389,24 @@ export const referenzenData: ReferenzItem[] = [
     caption: "Catering Website",
   },
   {
-    file: "logo-design-print.webp",
-    alt: "Logo-Design und Printmedien – Grafikdesign-Projekt mit Geschäftsausstattung",
-    caption: "Grafikdesign & Print",
-  },
-  {
     file: "gor24.webp",
     alt: "GOR24 – Dienstleistungswebsite mit 24-Stunden-Service und Kontaktmöglichkeit",
     caption: "Dienstleistung Website",
+  },
+  {
+    file: "hammermeier.webp",
+    alt: "Hammermeier Anlagenbau – Industriewebsite mit Leistungsspektrum und Referenzen",
+    caption: "Anlagenbau Website",
+  },
+  {
+    file: "ruempelservice-nrw.webp",
+    alt: "Entrümpelungsservice NRW – Website mit Festpreisanfrage und Leistungsübersicht",
+    caption: "Entrümpelung NRW Website",
+  },
+  {
+    file: "nova.webp",
+    alt: "Nova Softwareentwicklung – IT-Website mit Leistungsübersicht und Projektanfrage",
+    caption: "Softwareentwicklung Website",
   },
   {
     file: "igs.webp",
@@ -374,6 +424,11 @@ export const referenzenData: ReferenzItem[] = [
     caption: "Gebäudemanagement Website",
   },
   {
+    file: "mahmoutes.webp",
+    alt: "Mahmoutes Physiotherapie Regensburg – Praxiswebsite mit Behandlungsangebot und Terminanfrage",
+    caption: "Physiotherapie Regensburg",
+  },
+  {
     file: "oneway.webp",
     alt: "Oneway – Website mit klarer Struktur und Conversion-Fokus",
     caption: "Unternehmenswebsite",
@@ -384,9 +439,19 @@ export const referenzenData: ReferenzItem[] = [
     caption: "Unternehmenswebsite",
   },
   {
-    file: "MD.webp",
-    alt: "MD – moderne Website mit klarem Layout und Kontaktmöglichkeit",
-    caption: "Unternehmenswebsite",
+    file: "md-projektbau.webp",
+    alt: "MD Projektbau – Website für Bauunternehmen mit Projektreferenzen und Kontaktanfrage",
+    caption: "Projektbau Website",
+  },
+  {
+    file: "verein-regensburg.webp",
+    alt: "Fußballverein Sportclub Regensburg – Vereinswebsite mit Spielplan und News",
+    caption: "Fußballverein Regensburg",
+  },
+  {
+    file: "antiquariat-redivivus.webp",
+    alt: "Antiquariat Redivivus – Website für Antiquariat mit Buchbestand und Ankaufsanfrage",
+    caption: "Antiquariat Website",
   },
   {
     file: "ida.webp",
