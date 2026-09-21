@@ -47,7 +47,7 @@ const jahreErfahrung = new Date().getFullYear() - GRUENDUNGSJAHR;
         <!-- Feature 1 -->
         <article>
           <div
-            class="bg-white rounded-3xl p-8 border border-gray-200 shadow-lg h-full"
+            class="bg-white rounded-3xl p-8 border border-gray-200 shadow-lg h-full flex flex-col"
           >
             <div
               class="w-12 h-12 rounded-xl border border-brand-orange/30 flex items-center justify-center mb-6"
@@ -75,18 +75,28 @@ const jahreErfahrung = new Date().getFullYear() - GRUENDUNGSJAHR;
               erfolgreichen Digitalprojekten und zufriedenen Kunden aus Regensburg,
               Bayern und ganz Deutschland. <em>Vertrauen durch Erfahrung</em>.
             </p>
-            <div class="mt-6 pt-6 border-t border-gray-200">
-              <div class="flex items-center gap-4">
-                <div class="text-center">
-                  <div class="text-2xl font-bold text-brand-orange">500+</div>
-                  <div class="text-xs text-gray-500">Erfolgreiche Projekte</div>
-                </div>
-                <div class="text-center">
-                  <div class="text-2xl font-bold text-brand-orange">
-                    {jahreErfahrung}
+            <div class="mt-auto pt-6 border-t border-gray-200">
+              <div class="flex items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-brand-orange">500+</div>
+                    <div class="text-xs text-gray-500">
+                      Erfolgreiche Projekte
+                    </div>
                   </div>
-                  <div class="text-xs text-gray-500">Jahre Erfahrung</div>
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-brand-orange">
+                      {jahreErfahrung}
+                    </div>
+                    <div class="text-xs text-gray-500">Jahre Erfahrung</div>
+                  </div>
                 </div>
+                <a
+                  href="/referenzen/"
+                  class="text-sm font-semibold text-brand-orange hover:underline whitespace-nowrap"
+                  aria-label="Referenzen von ixOne ansehen"
+                  >Referenzen&nbsp;→</a
+                >
               </div>
             </div>
           </div>
@@ -95,7 +105,7 @@ const jahreErfahrung = new Date().getFullYear() - GRUENDUNGSJAHR;
         <!-- Feature 2 -->
         <article>
           <div
-            class="bg-white rounded-3xl p-8 border border-gray-200 shadow-lg h-full"
+            class="bg-white rounded-3xl p-8 border border-gray-200 shadow-lg h-full flex flex-col"
           >
             <div
               class="w-12 h-12 rounded-xl border border-brand-orange/30 flex items-center justify-center mb-6"
@@ -124,7 +134,7 @@ const jahreErfahrung = new Date().getFullYear() - GRUENDUNGSJAHR;
                 >Datenbasierte Entscheidungen</em
               > für nachhaltigen ROI-Erfolg.
             </p>
-            <div class="mt-6 pt-6 border-t border-gray-200">
+            <div class="mt-auto pt-6 border-t border-gray-200">
               <div class="flex items-center gap-2">
                 <span class="text-sm text-brand-orange font-semibold"
                   >Strategie, Tracking und laufende Optimierung</span
@@ -137,7 +147,7 @@ const jahreErfahrung = new Date().getFullYear() - GRUENDUNGSJAHR;
         <!-- Feature 3 -->
         <article>
           <div
-            class="bg-white rounded-3xl p-8 border border-gray-200 shadow-lg h-full"
+            class="bg-white rounded-3xl p-8 border border-gray-200 shadow-lg h-full flex flex-col"
           >
             <div
               class="w-12 h-12 rounded-xl border border-brand-orange/30 flex items-center justify-center mb-6"
@@ -168,7 +178,7 @@ const jahreErfahrung = new Date().getFullYear() - GRUENDUNGSJAHR;
                 >Lokale Nähe, persönlicher Service</em
               >.
             </p>
-            <div class="mt-6 pt-6 border-t border-gray-200">
+            <div class="mt-auto pt-6 border-t border-gray-200">
               <div class="flex items-center gap-2 text-sm text-brand-orange">
                 <svg
                   class="w-4 h-4 shrink-0"
@@ -186,6 +196,12 @@ const jahreErfahrung = new Date().getFullYear() - GRUENDUNGSJAHR;
                 </svg>
                 <span>Direkter Draht zu Ihrem Digitalagentur-Experten</span>
               </div>
+              <a
+                href="/kontakt/"
+                class="inline-block mt-3 text-sm font-semibold text-brand-orange hover:underline"
+                aria-label="Kontakt zu ixOne aufnehmen"
+                >Kontakt aufnehmen&nbsp;→</a
+              >
             </div>
           </div>
         </article>
@@ -193,7 +209,7 @@ const jahreErfahrung = new Date().getFullYear() - GRUENDUNGSJAHR;
         <!-- Feature 4 -->
         <article>
           <div
-            class="bg-white rounded-3xl p-8 border border-gray-200 shadow-lg h-full"
+            class="bg-white rounded-3xl p-8 border border-gray-200 shadow-lg h-full flex flex-col"
           >
             <div
               class="w-12 h-12 rounded-xl border border-brand-orange/30 flex items-center justify-center mb-6"
@@ -220,7 +236,7 @@ const jahreErfahrung = new Date().getFullYear() - GRUENDUNGSJAHR;
                 >Faire Preise für professionelle Digitalagentur-Services</em
               > aus Regensburg.
             </p>
-            <div class="mt-6 pt-6 border-t border-gray-200 space-y-2">
+            <div class="mt-auto pt-6 border-t border-gray-200 space-y-2">
               <div class="flex items-center gap-2 text-sm text-brand-orange">
                 <svg
                   class="w-4 h-4 shrink-0"
@@ -255,6 +271,12 @@ const jahreErfahrung = new Date().getFullYear() - GRUENDUNGSJAHR;
                 </svg>
                 <span>Flexible Laufzeiten</span>
               </div>
+              <a
+                href="/preise/"
+                class="inline-block mt-1 text-sm font-semibold text-brand-orange hover:underline"
+                aria-label="Preise von ixOne ansehen"
+                >Zu den Preisen&nbsp;→</a
+              >
             </div>
           </div>
         </article>
@@ -262,7 +284,7 @@ const jahreErfahrung = new Date().getFullYear() - GRUENDUNGSJAHR;
         <!-- Feature 5 -->
         <article>
           <div
-            class="bg-white rounded-3xl p-8 border border-gray-200 shadow-lg h-full"
+            class="bg-white rounded-3xl p-8 border border-gray-200 shadow-lg h-full flex flex-col"
           >
             <div
               class="w-12 h-12 rounded-xl border border-brand-orange/30 flex items-center justify-center mb-6"
@@ -295,7 +317,7 @@ const jahreErfahrung = new Date().getFullYear() - GRUENDUNGSJAHR;
                 >Lokale Verwurzelung, regionale Expertise</em
               > für Ihren digitalen Erfolg.
             </p>
-            <div class="mt-6 pt-6 border-t border-gray-200">
+            <div class="mt-auto pt-6 border-t border-gray-200">
               <div class="flex items-center gap-2 text-sm text-brand-orange">
                 <svg
                   class="w-4 h-4 shrink-0"
@@ -317,6 +339,12 @@ const jahreErfahrung = new Date().getFullYear() - GRUENDUNGSJAHR;
                 </svg>
                 <span>Regensburg, Bayern, Deutschland</span>
               </div>
+              <a
+                href="/branchen/"
+                class="inline-block mt-3 text-sm font-semibold text-brand-orange hover:underline"
+                aria-label="Branchen ansehen, die ixOne betreut"
+                >Unsere Branchen&nbsp;→</a
+              >
             </div>
           </div>
         </article>
@@ -324,7 +352,7 @@ const jahreErfahrung = new Date().getFullYear() - GRUENDUNGSJAHR;
         <!-- Feature 6 -->
         <article>
           <div
-            class="bg-white rounded-3xl p-8 border border-gray-200 shadow-lg h-full"
+            class="bg-white rounded-3xl p-8 border border-gray-200 shadow-lg h-full flex flex-col"
           >
             <div
               class="w-12 h-12 rounded-xl border border-brand-orange/30 flex items-center justify-center mb-6"
@@ -350,8 +378,12 @@ const jahreErfahrung = new Date().getFullYear() - GRUENDUNGSJAHR;
               Technologien für optimale Performance. <em>Moderner Tech-Stack</em
               > für zukunftssichere Digitallösungen.
             </p>
-            <div class="mt-6 pt-6 border-t border-gray-200">
-              <div class="flex gap-2">
+            <div class="mt-auto pt-6 border-t border-gray-200">
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-2 py-1 bg-brand-orange/10 text-brand-orange text-xs rounded-lg border border-brand-orange/20"
+                  >Astro</span
+                >
                 <span
                   class="px-2 py-1 bg-brand-orange/10 text-brand-orange text-xs rounded-lg border border-brand-orange/20"
                   >React</span
@@ -359,6 +391,10 @@ const jahreErfahrung = new Date().getFullYear() - GRUENDUNGSJAHR;
                 <span
                   class="px-2 py-1 bg-brand-orange/10 text-brand-orange text-xs rounded-lg border border-brand-orange/20"
                   >Next.js</span
+                >
+                <span
+                  class="px-2 py-1 bg-brand-orange/10 text-brand-orange text-xs rounded-lg border border-brand-orange/20"
+                  >Headless CMS</span
                 >
                 <span
                   class="px-2 py-1 bg-brand-orange/10 text-brand-orange text-xs rounded-lg border border-brand-orange/20"

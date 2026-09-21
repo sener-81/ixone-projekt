@@ -235,29 +235,31 @@ if (API_KEY && PLACE_ID) {
         track.scrollBy({ left: step(), behavior: "smooth" }),
       );
 
-    // Maus-Drag: greifen und schieben (Touch läuft nativ über Scroll-Snap)
-    let isDown = false;
+    // Maus-Drag: Listener existieren nur während des Drags
+    // (Touch läuft nativ über Scroll-Snap)
     let startX = 0;
     let startScroll = 0;
 
+    const onMove = (e: PointerEvent) => {
+      e.preventDefault();
+      track.scrollLeft = startScroll - (e.clientX - startX);
+    };
+
+    const endDrag = () => {
+      track.classList.remove("dragging");
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", endDrag);
+      window.removeEventListener("pointercancel", endDrag);
+    };
+
     track.addEventListener("pointerdown", (e) => {
       if (e.pointerType !== "mouse" || e.button !== 0) return;
-      isDown = true;
       startX = e.clientX;
       startScroll = track.scrollLeft;
       track.classList.add("dragging");
-    });
-
-    window.addEventListener("pointermove", (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      track.scrollLeft = startScroll - (e.clientX - startX);
-    });
-
-    window.addEventListener("pointerup", () => {
-      if (!isDown) return;
-      isDown = false;
-      track.classList.remove("dragging");
+      window.addEventListener("pointermove", onMove);
+      window.addEventListener("pointerup", endDrag);
+      window.addEventListener("pointercancel", endDrag);
     });
   });
 </script>

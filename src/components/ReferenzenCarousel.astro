@@ -246,25 +246,27 @@ const slides = await Promise.all(
     );
     io.observe(root);
 
-    let isDown = false;
+    // Maus-Drag: Listener existieren nur während des Drags.
     let startX = 0;
     let startScroll = 0;
 
+    const onMove = (e: MouseEvent) => {
+      track.scrollLeft = startScroll - (e.pageX - startX);
+    };
+
+    const endDrag = () => {
+      track.classList.remove("rc-dragging");
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mouseup", endDrag);
+      window.setTimeout(() => (paused = false), 4000);
+    };
+
     track.addEventListener("mousedown", (e) => {
-      isDown = true;
       startX = e.pageX;
       startScroll = track.scrollLeft;
       track.classList.add("rc-dragging");
-    });
-    window.addEventListener("mousemove", (e) => {
-      if (!isDown) return;
-      track.scrollLeft = startScroll - (e.pageX - startX);
-    });
-    window.addEventListener("mouseup", () => {
-      if (!isDown) return;
-      isDown = false;
-      track.classList.remove("rc-dragging");
-      window.setTimeout(() => (paused = false), 4000);
+      window.addEventListener("mousemove", onMove);
+      window.addEventListener("mouseup", endDrag);
     });
   }
 
