@@ -345,20 +345,8 @@
   }
 }
 
-/* Hero Image */
-.hero-image {
-  will-change: transform;
-  transform: translateZ(0);
-  object-fit: cover;
-  object-position: center;
-}
-
+/* Responsive Container & Typo */
 @media (max-width: 768px) {
-  .hero-image {
-    object-position: center top;
-    height: 100%;
-    min-height: 70vh;
-  }
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -366,15 +354,7 @@
   h1 { line-height: 1.2; }
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
-  .hero-image { object-position: center center; }
-}
-
 @media (min-width: 1024px) {
-  .hero-image {
-    object-position: center center;
-    filter: brightness(0.85) contrast(1.1);
-  }
   .container { max-width: 1400px; }
 }
 
@@ -403,7 +383,6 @@ html { scroll-behavior: smooth; }
   }
   .transition-all,
   .transition-transform { transition: none; }
-  .hero-image { transform: none; }
 }
 
 /* High Contrast Mode */
