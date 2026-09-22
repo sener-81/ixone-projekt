@@ -19,6 +19,11 @@ export const referenzenData: ReferenzItem[] = [
     caption: "Notdienst Website",
   },
   {
+    file: "rohrglanz.webp",
+    alt: "Rohrglanz Berlin – Rohrreinigung-Website mit Google Ads Landingpages und Conversion-Tracking",
+    caption: "Rohrreinigung Berlin",
+  },
+  {
     file: "sed-immobilien.webp",
     alt: "SED Immobilien – Immobilien-Website mit Objektpräsentation und klaren Kontaktwegen",
     caption: "Immobilien Website",
@@ -149,7 +154,7 @@ export const referenzenData: ReferenzItem[] = [
     caption: "Malerbetrieb Website",
   },
   {
-    file: "goldenpalaceevents-nuernberg.jpg",
+    file: "goldenpalaceevents-nuernberg.webp",
     alt: "Golden Palace Events Nürnberg – Eventlocation-Website mit Saalpräsentation",
     caption: "Eventlocation Website",
   },
@@ -199,7 +204,7 @@ export const referenzenData: ReferenzItem[] = [
     caption: "Hausmeisterdienst Website",
   },
   {
-    file: "living-interior.jpg",
+    file: "living-interior.webp",
     alt: "Living Interior – Website für Innenausstattung mit Projektgalerie",
     caption: "Interior Design Website",
   },
@@ -249,6 +254,11 @@ export const referenzenData: ReferenzItem[] = [
     caption: "Freizeitpark Website",
   },
   {
+    file: "3d-funhouse-webseite.webp",
+    alt: "3D Funhouse Webseite – Attraktionsübersicht mit Preisen und Ticketbuchung",
+    caption: "Freizeitpark Webseite",
+  },
+  {
     file: "hayo-reinigung.webp",
     alt: "Hayo Reinigung – Reinigungsfirma-Website mit Leistungsübersicht und Kontakt",
     caption: "Reinigungsfirma Website",
@@ -272,6 +282,11 @@ export const referenzenData: ReferenzItem[] = [
     file: "steinschlagschutzfolie.webp",
     alt: "Steinschlagschutzfolie – Website für Fahrzeugfolierung mit Leistungspaketen",
     caption: "Fahrzeugfolierung Website",
+  },
+  {
+    file: "steinschlagschutzfolie-schwandorf.webp",
+    alt: "Steinschlagschutzfolie Schwandorf – lokale Landingpage für Lackschutz und Folierung",
+    caption: "Fahrzeugfolierung Schwandorf",
   },
   {
     file: "demontageteam-bayern.webp",
@@ -329,8 +344,8 @@ export const referenzenData: ReferenzItem[] = [
     caption: "Dienstleistung Website",
   },
   {
-    file: "njfliesenlege2r.webp",
-    alt: "Fliesenleger-Website mit Projektgalerie und Handwerker-Anfrageformular",
+    file: "njfliesenleger.webp",
+    alt: "NJ Fliesenleger – Handwerker-Website mit Projektgalerie und Anfrageformular",
     caption: "Fliesenleger Website",
   },
   {
@@ -469,8 +484,8 @@ export const referenzenData: ReferenzItem[] = [
     caption: "Webdesign & SEO",
   },
   {
-    file: "seo-webdesign-regensburg-6.jpg",
-    alt: "SEO und Webdesign Regensburg – Kundenprojekt mit Fokus auf Google-Rankings",
-    caption: "SEO & Webdesign",
+    file: "senerdesign-regensburg.webp",
+    alt: "Senerdesign Regensburg – Agenturprojekt für Webdesign und Grafikdesign",
+    caption: "Webdesignagentur Regensburg",
   },
 ];
