@@ -42,7 +42,7 @@ const serviceSchema = {
 const faqs = [
   {
     q: "Was kostet professionelles Webdesign in Regensburg?",
-    a: "Ein Onepager startet ab 1.200 €, eine mehrseitige Unternehmenswebsite ab 2.500 €. Der genaue Preis hängt von Funktionsumfang, Seitenanzahl und gewünschten Integrationen ab. Eine vollständige Übersicht mit Richtwerten für alle Leistungen finden Sie auf unserer Preisseite. Nach einem kostenlosen Erstgespräch erhalten Sie ein verbindliches Angebot ohne versteckte Kosten.",
+    a: "Ein Onepager startet ab 1.200 €, eine mehrseitige Unternehmenswebsite ab 2.500 € – alle Preise zzgl. MwSt. Der genaue Preis hängt von Funktionsumfang, Seitenanzahl und gewünschten Integrationen ab. Eine vollständige Übersicht mit Richtwerten für alle Leistungen finden Sie auf unserer Preisseite. Nach einem kostenlosen Erstgespräch erhalten Sie ein verbindliches Angebot ohne versteckte Kosten.",
   },
   {
     q: "Wie lange dauert ein Webdesign-Projekt bei ixOne?",
@@ -62,7 +62,7 @@ const faqs = [
   },
   {
     q: "Mit welchem CMS arbeitet ihr?",
-    a: "Je nach Anforderung setzen wir auf WordPress für inhaltsgetriebene Projekte oder Astro für maximale Performance. Beide Systeme ermöglichen Ihnen eine einfache Content-Pflege ohne technische Vorkenntnisse.",
+    a: "Je nach Anforderung setzen wir auf WordPress für inhaltsgetriebene Projekte, Astro für maximale Performance oder Headless-CMS-Lösungen mit React für individuelle Anforderungen. Alle Systeme ermöglichen Ihnen eine einfache Content-Pflege ohne technische Vorkenntnisse.",
   },
   {
     q: "Sind SEO und Performance wirklich inklusive?",
@@ -383,11 +383,11 @@ const prozessSchritte = [
                 eigeneSeiteFakten.map((punkt) => (
                   <li class="flex items-start gap-3">
                     <span
-                      class="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center mt-0.5"
+                      class="flex-shrink-0 w-6 h-6 rounded-full border-2 border-brand-orange flex items-center justify-center mt-0.5"
                       aria-hidden="true"
                     >
                       <svg
-                        class="w-3.5 h-3.5 text-white"
+                        class="w-3.5 h-3.5 text-brand-orange"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -436,17 +436,33 @@ const prozessSchritte = [
             Begleitung von der ersten Idee bis zum erfolgreichen Launch
           </p>
         </div>
+        <svg width="0" height="0" class="absolute" aria-hidden="true">
+          <defs>
+            <linearGradient
+              id="leistungen-icon-grad"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop
+                offset="0%"
+                stop-color="var(--color-brand-orange, #ec6a1b)"></stop>
+              <stop offset="100%" stop-color="#eab308"></stop>
+            </linearGradient>
+          </defs>
+        </svg>
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
         >
           {
             leistungen.map((feature) => (
               <article class="group text-center p-8 bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                <div class="w-16 h-16 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <div class="w-16 h-16 rounded-full border-2 border-transparent [background:linear-gradient(white,white)_padding-box,linear-gradient(to_bottom_right,var(--color-brand-orange),#eab308)_border-box] flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                   <svg
-                    class="w-8 h-8 text-white"
+                    class="w-8 h-8"
                     fill="none"
-                    stroke="currentColor"
+                    stroke="url(#leistungen-icon-grad)"
                     viewBox="0 0 24 24"
                     aria-hidden="true"
                   >
@@ -518,18 +534,18 @@ const prozessSchritte = [
               <ul class="mt-8 space-y-3" role="list">
                 {
                   [
-                    "Individuelles Design – keine Templates, keine Kompromisse",
-                    "Astro-Technologie für PageSpeed 90+ und Top-Rankings",
+                    "Individuelles Design mit WordPress, React oder Headless CMS",
+                    "Moderne Technologie für PageSpeed & Top-Rankings",
                     "Persönlicher Ansprechpartner – kein Ticket-System",
                     "Transparente Festpreise ohne versteckte Kosten",
                   ].map((item) => (
                     <li class="flex items-start gap-3">
                       <span
-                        class="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center mt-0.5"
+                        class="flex-shrink-0 w-6 h-6 rounded-full border-2 border-brand-orange flex items-center justify-center mt-0.5"
                         aria-hidden="true"
                       >
                         <svg
-                          class="w-3.5 h-3.5 text-white"
+                          class="w-3.5 h-3.5 text-brand-orange"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -622,24 +638,10 @@ const prozessSchritte = [
             <article
               class="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-100 shadow-md hover:shadow-lg transition-shadow duration-300"
             >
-              <div class="flex items-start gap-4 mb-4">
-                <div
-                  class="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center"
-                >
-                  <svg
-                    class="w-5 h-5 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                  </svg>
-                </div>
+              <div class="flex items-stretch gap-3 mb-4">
+                <span
+                  class="w-1 rounded-full bg-gradient-to-b from-brand-orange to-yellow-500 flex-shrink-0"
+                  aria-hidden="true"></span>
                 <h3 class="text-xl font-bold text-gray-900">
                   Aktuelle Webdesign-Trends in Regensburg
                 </h3>
@@ -664,24 +666,10 @@ const prozessSchritte = [
             <article
               class="bg-gradient-to-br from-orange-50 to-white rounded-2xl p-8 border border-orange-100 shadow-md hover:shadow-lg transition-shadow duration-300"
             >
-              <div class="flex items-start gap-4 mb-4">
-                <div
-                  class="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-xl flex items-center justify-center"
-                >
-                  <svg
-                    class="w-5 h-5 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                  </svg>
-                </div>
+              <div class="flex items-stretch gap-3 mb-4">
+                <span
+                  class="w-1 rounded-full bg-gradient-to-b from-brand-orange to-yellow-500 flex-shrink-0"
+                  aria-hidden="true"></span>
                 <h3 class="text-xl font-bold text-gray-900">
                   Die richtige Webdesign Agentur in Regensburg wählen
                 </h3>
@@ -725,25 +713,10 @@ const prozessSchritte = [
             <article
               class="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-100 shadow-md hover:shadow-lg transition-shadow duration-300"
             >
-              <div class="flex items-start gap-4 mb-4">
-                <div
-                  class="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-green-500 to-teal-600 rounded-xl flex items-center justify-center"
-                >
-                  <svg
-                    class="w-5 h-5 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                    ></path>
-                  </svg>
-                </div>
+              <div class="flex items-stretch gap-3 mb-4">
+                <span
+                  class="w-1 rounded-full bg-gradient-to-b from-brand-orange to-yellow-500 flex-shrink-0"
+                  aria-hidden="true"></span>
                 <h3 class="text-xl font-bold text-gray-900">
                   Lokale Digitalagentur vs. anonyme Webagentur
                 </h3>
@@ -767,25 +740,10 @@ const prozessSchritte = [
             <article
               class="bg-gradient-to-br from-purple-50 to-white rounded-2xl p-8 border border-purple-100 shadow-md hover:shadow-lg transition-shadow duration-300"
             >
-              <div class="flex items-start gap-4 mb-4">
-                <div
-                  class="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center"
-                >
-                  <svg
-                    class="w-5 h-5 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                    ></path>
-                  </svg>
-                </div>
+              <div class="flex items-stretch gap-3 mb-4">
+                <span
+                  class="w-1 rounded-full bg-gradient-to-b from-brand-orange to-yellow-500 flex-shrink-0"
+                  aria-hidden="true"></span>
                 <h3 class="text-xl font-bold text-gray-900">
                   So messen Sie den Erfolg Ihrer Website
                 </h3>
@@ -876,7 +834,7 @@ const prozessSchritte = [
             prozessSchritte.map((item) => (
               <div class="flex items-start gap-4 lg:gap-6">
                 <div
-                  class="flex-shrink-0 w-14 h-14 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg"
+                  class="flex-shrink-0 w-14 h-14 rounded-full border-2 border-transparent [background:linear-gradient(#f9fafb,#f9fafb)_padding-box,linear-gradient(to_bottom_right,var(--color-brand-orange),#eab308)_border-box] flex items-center justify-center text-brand-orange font-bold text-xl"
                   aria-hidden="true"
                 >
                   {item.step}
@@ -983,7 +941,9 @@ const prozessSchritte = [
       </div>
     </section>
 
-    <WebdesignCarousel />
+    <div id="webdesign-galerie">
+      <WebdesignCarousel />
+    </div>
 
     <section
       class="py-20 md:py-28 lg:py-32 bg-gray-50"
@@ -1011,28 +971,16 @@ const prozessSchritte = [
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div
-              class="relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 group"
+              class="relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300"
             >
-              <div
-                class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"
-              >
-                <svg
-                  class="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                  ></path></svg
-                >
+              <div class="flex items-stretch gap-3 mb-3">
+                <span
+                  class="w-1 rounded-full bg-gradient-to-b from-brand-orange to-yellow-500 flex-shrink-0"
+                  aria-hidden="true"></span>
+                <h3 class="text-xl font-bold text-gray-900">
+                  Lokal verwurzelt, digital führend
+                </h3>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-3">
-                Lokal verwurzelt, digital führend
-              </h3>
               <p class="text-gray-600 leading-relaxed">
                 Als Digitalagentur in Regensburg kennen wir den regionalen
                 Markt, Ihre Wettbewerber und die lokalen Suchbegriffe die Ihre
@@ -1042,28 +990,16 @@ const prozessSchritte = [
             </div>
 
             <div
-              class="relative bg-gradient-to-br from-orange-50 to-white rounded-2xl p-8 border border-orange-100 shadow-md hover:shadow-xl transition-all duration-300 group"
+              class="relative bg-gradient-to-br from-orange-50 to-white rounded-2xl p-8 border border-orange-100 shadow-md hover:shadow-xl transition-all duration-300"
             >
-              <div
-                class="w-12 h-12 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"
-              >
-                <svg
-                  class="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                  ></path></svg
-                >
+              <div class="flex items-stretch gap-3 mb-3">
+                <span
+                  class="w-1 rounded-full bg-gradient-to-b from-brand-orange to-yellow-500 flex-shrink-0"
+                  aria-hidden="true"></span>
+                <h3 class="text-xl font-bold text-gray-900">
+                  Webdesign und SEO greifen ineinander
+                </h3>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-3">
-                Webdesign und SEO greifen ineinander
-              </h3>
               <p class="text-gray-600 leading-relaxed">
                 Viele Agenturen bauen erst die Website, dann kommt SEO als
                 Nachgedanke. Bei ixOne ist SEO von der ersten Zeile Code
@@ -1073,28 +1009,16 @@ const prozessSchritte = [
             </div>
 
             <div
-              class="relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 group"
+              class="relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300"
             >
-              <div
-                class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"
-              >
-                <svg
-                  class="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  ><path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                  ></path></svg
-                >
+              <div class="flex items-stretch gap-3 mb-3">
+                <span
+                  class="w-1 rounded-full bg-gradient-to-b from-brand-orange to-yellow-500 flex-shrink-0"
+                  aria-hidden="true"></span>
+                <h3 class="text-xl font-bold text-gray-900">
+                  Ergebnisse die sich messen lassen
+                </h3>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-3">
-                Ergebnisse die sich messen lassen
-              </h3>
               <p class="text-gray-600 leading-relaxed">
                 Kein Agentur-Blabla, sondern klare KPIs: organischer Traffic,
                 Conversion-Rate, PageSpeed Score und Rankings. Sie sehen genau
@@ -1195,7 +1119,7 @@ const prozessSchritte = [
             Ansprechpartner. Starten Sie jetzt Ihr Webdesign-Projekt mit ixOne
             Regensburg.
           </p>
-          <div class="flex justify-center">
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={CALENDLY}
               target="_blank"
@@ -1219,6 +1143,27 @@ const prozessSchritte = [
                 ></path>
               </svg>
               Termin vereinbaren
+            </a>
+            <a
+              href="/kontakt/"
+              class="inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl border-2 border-white/40 text-white font-bold text-lg hover:bg-white/10 hover:border-white transition-all duration-300 transform hover:-translate-y-1"
+              aria-label="Kontakt aufnehmen – ixOne Digitalagentur Regensburg und Neutraubling"
+            >
+              <svg
+                class="w-6 h-6 flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                ></path>
+              </svg>
+              Kontakt aufnehmen
             </a>
           </div>
         </div>
