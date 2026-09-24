@@ -2,8 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import ServiceCrosslinks from "../components/ServiceCrosslinks.astro";
 import { Image } from "astro:assets";
-import heroImage from "../assets/webdesigner-aus-regensburg.webp";
-import performanceImage from "../assets/ixone-online-marketing-regensburg.webp";
+import heroImage from "../assets/online-marketing/online-marketing-regensburg.webp";
+import performanceImage from "../assets/online-marketing/ixone-onlinemarketing.webp";
 import { areaServedFull } from "../data/structuredData";
 
 const CALENDLY =
@@ -152,6 +152,114 @@ const qualityFactors = [
     webdesignLink: true,
   },
 ];
+
+const performancePunkte = [
+  {
+    strong: "A/B-Testing",
+    text: " – wir testen Anzeigen, Landingpages und CTAs, um die effektivsten Varianten zu finden.",
+  },
+  {
+    strong: "Funnel-Optimierung",
+    text: " – wir identifizieren Engpässe in der Customer Journey und beseitigen sie gezielt.",
+  },
+  {
+    strong: "Landingpages, die verkaufen",
+    text: " – klar strukturiert, überzeugend, auf die gewünschte Aktion ausgerichtet.",
+  },
+  {
+    strong: "Messbarer ROI",
+    text: " – über Google Analytics und detailliertes Tracking zeigen wir genau, was Ihre Investition bringt.",
+  },
+];
+
+const campaignTypes = [
+  {
+    icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z",
+    title: "Search Ads",
+    desc: "Textanzeigen genau dann, wenn Ihre Kunden aktiv suchen. Die kaufstärkste Kampagnenform – Nutzer mit konkreter Absicht landen direkt bei Ihnen statt bei der Konkurrenz.",
+    ideal: "Dienstleister & lokale Unternehmen",
+  },
+  {
+    icon: "M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z",
+    title: "Performance Max",
+    desc: "KI-gestützte Kampagnen über alle Google-Kanäle gleichzeitig – Suche, Maps, YouTube, Gmail und Display. Google optimiert automatisch auf Ihre Conversion-Ziele.",
+    ideal: "Maximale Reichweite mit einem Budget",
+  },
+  {
+    icon: "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z",
+    title: "Shopping Ads",
+    desc: "Produktanzeigen mit Bild, Preis und Shop-Name direkt in den Suchergebnissen. Käufer sehen Ihr Angebot, bevor sie überhaupt eine Website öffnen.",
+    ideal: "Onlineshops mit Produktkatalog",
+  },
+  {
+    icon: "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z",
+    title: "Display Ads",
+    desc: "Bannerwerbung auf Millionen Websites im Google Displaynetzwerk. Ideal, um Ihre Marke sichtbar zu machen und im Kopf Ihrer Zielgruppe zu bleiben.",
+    ideal: "Markenbekanntheit & Branding",
+  },
+  {
+    icon: "M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+    title: "YouTube Ads",
+    desc: "Videoanzeigen vor und zwischen YouTube-Inhalten – zielgenau nach Interessen, Suchverhalten und Demografie ausgesteuert. Bewegtbild, das hängen bleibt.",
+    ideal: "Emotionale Produkte & Erklärungsbedarf",
+  },
+  {
+    icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15",
+    title: "Remarketing",
+    desc: "Besucher, die Ihre Website ohne Anfrage verlassen haben, gezielt zurückholen. Oft die Kampagne mit dem besten ROAS – weil die Zielgruppe Sie schon kennt.",
+    ideal: "Längere Entscheidungsprozesse",
+  },
+];
+
+const prozessSchritte = [
+  {
+    step: "1",
+    title: "Analyse & Zieldefinition",
+    desc: "Wir analysieren Ihre Zielgruppe, Wettbewerber und bisherigen Kanäle. Gemeinsam definieren wir messbare Ziele: Leads, Verkäufe, Anrufe oder Ladenbesuche – und das passende Budget dafür.",
+  },
+  {
+    step: "2",
+    title: "Strategie & Kampagnen-Setup",
+    desc: "Kanalauswahl, Keyword-Recherche, Anzeigentexte und Landingpage-Abstimmung. Dazu sauberes Conversion-Tracking mit Google Analytics und Tag Manager – ohne Messung keine Optimierung.",
+  },
+  {
+    step: "3",
+    title: "Laufende Optimierung",
+    desc: "Gebote, Zielgruppen, Anzeigen und Suchbegriffe werden kontinuierlich ausgewertet und nachgeschärft. Budget fließt dorthin, wo es nachweislich Anfragen bringt – nicht wo es versickert.",
+  },
+  {
+    step: "4",
+    title: "Reporting & Skalierung",
+    desc: "Monatliche Reports mit klaren Zahlen: Kosten, Conversions, Cost-per-Lead, ROAS. Was funktioniert, wird skaliert – transparent und nachvollziehbar, ohne Agentur-Blackbox.",
+  },
+];
+
+const vergleichKlassisch = [
+  { pro: true, text: "Regionale Präsenz im Alltag Ihrer Zielgruppe" },
+  { pro: true, text: "Wirkt vertrauensbildend bei älteren Zielgruppen" },
+  { pro: true, text: "Markenaufbau durch Wiederholung" },
+  {
+    pro: false,
+    text: "Hoher Streuverlust – Sie zahlen für alle, nicht nur Interessenten",
+  },
+  { pro: false, text: "Erfolg kaum messbar – Wirkung bleibt Bauchgefühl" },
+  { pro: false, text: "Lange Vorlaufzeiten, Änderungen teuer" },
+];
+
+const vergleichOnline = [
+  {
+    pro: true,
+    text: "Zielgruppe nach Ort, Interesse und Verhalten ansprechbar",
+  },
+  { pro: true, text: "Jeder Euro messbar: Conversions, Cost-per-Lead, ROAS" },
+  {
+    pro: true,
+    text: "Budget flexibel – täglich anpassbar, auch klein startbar",
+  },
+  { pro: true, text: "Kampagnen in Echtzeit optimierbar statt Blindflug" },
+  { pro: false, text: "Erfordert laufende Betreuung und Know-how" },
+  { pro: false, text: "Wettbewerb um Aufmerksamkeit nimmt zu" },
+];
 ---
 
 <Layout
@@ -233,7 +341,7 @@ const qualityFactors = [
           <div class="relative">
             <Image
               src={heroImage}
-              alt="Online Marketing Agentur Regensburg – ixOne Team bei der Kampagnenplanung"
+              alt="Online Marketing Regensburg – Kampagnen, Auswertungen und Strategie bei ixOne"
               class="w-full h-auto rounded-3xl shadow-2xl"
               loading="eager"
               fetchpriority="high"
@@ -308,17 +416,33 @@ const qualityFactors = [
           </p>
         </div>
 
+        <svg width="0" height="0" class="absolute" aria-hidden="true">
+          <defs>
+            <linearGradient
+              id="om-icon-grad"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop offset="0%" stop-color="var(--color-brand-orange, #ec6a1b)"
+              ></stop>
+              <stop offset="100%" stop-color="#eab308"></stop>
+            </linearGradient>
+          </defs>
+        </svg>
+
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
         >
           {
             services.map((service) => (
               <article class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-8 border border-gray-100">
-                <div class="w-12 h-12 rounded-xl border border-brand-orange/30 flex items-center justify-center mb-6">
+                <div class="w-14 h-14 rounded-full border-2 border-transparent [background:linear-gradient(white,white)_padding-box,linear-gradient(to_bottom_right,var(--color-brand-orange),#eab308)_border-box] flex items-center justify-center mb-6">
                   <svg
-                    class="w-6 h-6 text-brand-orange"
+                    class="w-7 h-7"
                     fill="none"
-                    stroke="currentColor"
+                    stroke="url(#om-icon-grad)"
                     stroke-width="1.75"
                     viewBox="0 0 24 24"
                     aria-hidden="true"
@@ -426,6 +550,72 @@ const qualityFactors = [
     </section>
 
     <section
+      id="google-ads-kampagnen"
+      class="py-20 md:py-28 lg:py-32 bg-gray-50"
+      aria-labelledby="kampagnen-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+          <h2
+            id="kampagnen-heading"
+            class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+          >
+            <span class="gradient-text-brand">Google Ads Kampagnen</span> im Überblick
+          </h2>
+          <p class="text-xl text-gray-600">
+            Jedes Ziel braucht den passenden Kampagnentyp – wir wählen und
+            kombinieren, was zu Ihrem Budget und Ihrer Zielgruppe passt.
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+        >
+          {
+            campaignTypes.map((campaign) => (
+              <article class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-8 border border-gray-100">
+                <div class="w-14 h-14 rounded-full border-2 border-transparent [background:linear-gradient(white,white)_padding-box,linear-gradient(to_bottom_right,var(--color-brand-orange),#eab308)_border-box] flex items-center justify-center mb-6">
+                  <svg
+                    class="w-7 h-7"
+                    fill="none"
+                    stroke="url(#om-icon-grad)"
+                    stroke-width="1.75"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d={campaign.icon}
+                    />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">
+                  {campaign.title}
+                </h3>
+                <p class="text-gray-600 leading-relaxed mb-4">
+                  {campaign.desc}
+                </p>
+                <p class="text-sm text-gray-500 flex items-center gap-2">
+                  <span
+                    class="w-1.5 h-1.5 bg-brand-orange rounded-full flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  <span>
+                    <strong class="text-gray-700 font-semibold">
+                      Ideal für:
+                    </strong>{" "}
+                    {campaign.ideal}
+                  </span>
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section
       class="py-20 md:py-28 lg:py-32 bg-gray-50"
       aria-labelledby="termin-heading"
     >
@@ -498,6 +688,145 @@ const qualityFactors = [
 
     <section
       class="py-20 md:py-28 lg:py-32 bg-white"
+      aria-labelledby="vergleich-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+            <h2
+              id="vergleich-heading"
+              class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            >
+              <span class="gradient-text-brand"
+                >Klassische Werbung vs. Online Marketing</span
+              > – was bringt mehr?
+            </h2>
+            <p class="text-xl text-gray-600">
+              Print, Radio und Plakat haben ihren Platz – im direkten Vergleich
+              zeigt sich, warum digitale Kanäle für die meisten Unternehmen
+              effizienter sind
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div
+              class="bg-white rounded-2xl p-8 border-2 border-gray-200 shadow-md"
+            >
+              <div class="flex items-stretch gap-3 mb-6">
+                <span
+                  class="w-1 rounded-full bg-gradient-to-b from-gray-400 to-gray-500 flex-shrink-0"
+                  aria-hidden="true"></span>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-900">
+                    Klassische Werbung
+                  </h3>
+                  <span
+                    class="text-xs font-semibold text-gray-600 bg-gray-100 px-2 py-0.5 rounded-full"
+                    >Print · Radio · Plakat</span
+                  >
+                </div>
+              </div>
+              <ul class="space-y-3">
+                {
+                  vergleichKlassisch.map((item) => (
+                    <li class="flex items-start gap-2 text-sm text-gray-600">
+                      <svg
+                        class={`w-4 h-4 flex-shrink-0 mt-0.5 ${item.pro ? "text-green-500" : "text-orange-400"}`}
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        aria-hidden="true"
+                      >
+                        {item.pro ? (
+                          <path
+                            fill-rule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clip-rule="evenodd"
+                          />
+                        ) : (
+                          <path
+                            fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                            clip-rule="evenodd"
+                          />
+                        )}
+                      </svg>
+                      {item.text}
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+
+            <div
+              class="bg-white rounded-2xl p-8 border-2 border-orange-200 shadow-md"
+            >
+              <div class="flex items-stretch gap-3 mb-6">
+                <span
+                  class="w-1 rounded-full bg-gradient-to-b from-brand-orange to-yellow-500 flex-shrink-0"
+                  aria-hidden="true"></span>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-900">
+                    Online Marketing
+                  </h3>
+                  <span
+                    class="text-xs font-semibold text-orange-600 bg-orange-50 px-2 py-0.5 rounded-full"
+                    >Google Ads · Social · SEO</span
+                  >
+                </div>
+              </div>
+              <ul class="space-y-3">
+                {
+                  vergleichOnline.map((item) => (
+                    <li class="flex items-start gap-2 text-sm text-gray-600">
+                      <svg
+                        class={`w-4 h-4 flex-shrink-0 mt-0.5 ${item.pro ? "text-green-500" : "text-orange-400"}`}
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        aria-hidden="true"
+                      >
+                        {item.pro ? (
+                          <path
+                            fill-rule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clip-rule="evenodd"
+                          />
+                        ) : (
+                          <path
+                            fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                            clip-rule="evenodd"
+                          />
+                        )}
+                      </svg>
+                      {item.text}
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-10 max-w-3xl mx-auto text-center">
+            <div
+              class="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-6 border border-orange-100"
+            >
+              <p class="text-gray-700 text-lg leading-relaxed">
+                <strong class="text-gray-900">Empfehlung ixOne:</strong> Für die meisten
+                Unternehmen aus Regensburg ist Online Marketing der effizientere Hebel
+                – weil jeder Euro messbar ist und Streuverlust minimiert wird. Klassische
+                Werbung kann ergänzen, wo lokale Präsenz zählt. Entscheidend ist:
+                <strong class="text-gray-900"
+                  >erst messen, dann Budget verteilen</strong
+                > – genau dafür richten wir das Tracking von Anfang an ein.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-gray-50"
       aria-labelledby="performance-heading"
     >
       <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -532,56 +861,75 @@ const qualityFactors = [
               transparent.
             </p>
             <ul class="space-y-5">
-              <li class="flex gap-3">
-                <span
-                  class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-orange/10 flex items-center justify-center mt-0.5"
-                >
-                  <span class="w-2 h-2 rounded-full bg-brand-orange"></span>
-                </span>
-                <span class="text-gray-600">
-                  <strong class="text-gray-900">A/B-Testing</strong> – wir testen
-                  Anzeigen, Landingpages und CTAs, um die effektivsten Varianten zu
-                  finden.
-                </span>
-              </li>
-              <li class="flex gap-3">
-                <span
-                  class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-orange/10 flex items-center justify-center mt-0.5"
-                >
-                  <span class="w-2 h-2 rounded-full bg-brand-orange"></span>
-                </span>
-                <span class="text-gray-600">
-                  <strong class="text-gray-900">Funnel-Optimierung</strong> – wir
-                  identifizieren Engpässe in der Customer Journey und beseitigen sie
-                  gezielt.
-                </span>
-              </li>
-              <li class="flex gap-3">
-                <span
-                  class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-orange/10 flex items-center justify-center mt-0.5"
-                >
-                  <span class="w-2 h-2 rounded-full bg-brand-orange"></span>
-                </span>
-                <span class="text-gray-600">
-                  <strong class="text-gray-900"
-                    >Landingpages, die verkaufen</strong
-                  > – klar strukturiert, überzeugend, auf die gewünschte Aktion ausgerichtet.
-                </span>
-              </li>
-              <li class="flex gap-3">
-                <span
-                  class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-orange/10 flex items-center justify-center mt-0.5"
-                >
-                  <span class="w-2 h-2 rounded-full bg-brand-orange"></span>
-                </span>
-                <span class="text-gray-600">
-                  <strong class="text-gray-900">Messbarer ROI</strong> – über Google
-                  Analytics und detailliertes Tracking zeigen wir genau, was Ihre
-                  Investition bringt.
-                </span>
-              </li>
+              {
+                performancePunkte.map((punkt) => (
+                  <li class="flex gap-3">
+                    <span
+                      class="flex-shrink-0 w-6 h-6 rounded-full border-2 border-brand-orange flex items-center justify-center mt-0.5"
+                      aria-hidden="true"
+                    >
+                      <svg
+                        class="w-3.5 h-3.5 text-brand-orange"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </span>
+                    <span class="text-gray-600">
+                      <strong class="text-gray-900">{punkt.strong}</strong>
+                      {punkt.text}
+                    </span>
+                  </li>
+                ))
+              }
             </ul>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-20 md:py-28 lg:py-32 bg-white"
+      aria-labelledby="marketing-prozess-heading"
+    >
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 md:mb-20 max-w-3xl mx-auto">
+          <h2
+            id="marketing-prozess-heading"
+            class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+          >
+            Unser <span class="gradient-text-brand">Online Marketing</span> Prozess
+          </h2>
+          <p class="text-xl text-gray-600">
+            Vom Kickoff zur skalierten Kampagne – transparent in vier Phasen
+          </p>
+        </div>
+        <div
+          class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12"
+        >
+          {
+            prozessSchritte.map((item) => (
+              <div class="flex items-start gap-4 lg:gap-6">
+                <div
+                  class="flex-shrink-0 w-14 h-14 rounded-full border-2 border-transparent [background:linear-gradient(white,white)_padding-box,linear-gradient(to_bottom_right,var(--color-brand-orange),#eab308)_border-box] flex items-center justify-center text-brand-orange font-bold text-xl"
+                  aria-hidden="true"
+                >
+                  {item.step}
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-gray-900 mb-3">
+                    {item.title}
+                  </h3>
+                  <p class="text-gray-600 leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -610,12 +958,12 @@ const qualityFactors = [
         >
           <div class="text-center">
             <div
-              class="w-14 h-14 rounded-2xl border border-brand-orange/30 flex items-center justify-center mx-auto mb-6"
+              class="w-14 h-14 rounded-full border-2 border-transparent [background:linear-gradient(#f9fafb,#f9fafb)_padding-box,linear-gradient(to_bottom_right,var(--color-brand-orange),#eab308)_border-box] flex items-center justify-center mx-auto mb-6"
             >
               <svg
-                class="w-7 h-7 text-brand-orange"
+                class="w-7 h-7"
                 fill="none"
-                stroke="currentColor"
+                stroke="url(#om-icon-grad)"
                 stroke-width="1.75"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -639,12 +987,12 @@ const qualityFactors = [
 
           <div class="text-center">
             <div
-              class="w-14 h-14 rounded-2xl border border-brand-orange/30 flex items-center justify-center mx-auto mb-6"
+              class="w-14 h-14 rounded-full border-2 border-transparent [background:linear-gradient(#f9fafb,#f9fafb)_padding-box,linear-gradient(to_bottom_right,var(--color-brand-orange),#eab308)_border-box] flex items-center justify-center mx-auto mb-6"
             >
               <svg
-                class="w-7 h-7 text-brand-orange"
+                class="w-7 h-7"
                 fill="none"
-                stroke="currentColor"
+                stroke="url(#om-icon-grad)"
                 stroke-width="1.75"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -668,12 +1016,12 @@ const qualityFactors = [
 
           <div class="text-center">
             <div
-              class="w-14 h-14 rounded-2xl border border-brand-orange/30 flex items-center justify-center mx-auto mb-6"
+              class="w-14 h-14 rounded-full border-2 border-transparent [background:linear-gradient(#f9fafb,#f9fafb)_padding-box,linear-gradient(to_bottom_right,var(--color-brand-orange),#eab308)_border-box] flex items-center justify-center mx-auto mb-6"
             >
               <svg
-                class="w-7 h-7 text-brand-orange"
+                class="w-7 h-7"
                 fill="none"
-                stroke="currentColor"
+                stroke="url(#om-icon-grad)"
                 stroke-width="1.75"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -721,10 +1069,12 @@ const qualityFactors = [
               id="faq-heading"
               class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
             >
-              Häufig gestellte <span class="gradient-text-brand">Fragen</span>
+              Häufige Fragen zum <span class="gradient-text-brand"
+                >Online Marketing Regensburg</span
+              >
             </h2>
             <p class="text-xl text-gray-600">
-              Antworten rund um Online Marketing aus Regensburg
+              Ehrliche Antworten zu Kampagnen, Kosten und Ergebnissen
             </p>
           </div>
 
@@ -792,7 +1142,7 @@ const qualityFactors = [
             Erstberatung – Preis individuell je nach Projekt, ohne versteckte
             Kosten.
           </p>
-          <div class="flex justify-center">
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={CALENDLY}
               target="_blank"
@@ -817,9 +1167,65 @@ const qualityFactors = [
               </svg>
               Termin vereinbaren
             </a>
+            <a
+              href="/kontakt/"
+              class="inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl border-2 border-white/40 text-white font-bold text-lg hover:bg-white/10 hover:border-white transition-all duration-300 transform hover:-translate-y-1"
+              aria-label="Kontakt aufnehmen – ixOne Digitalagentur Regensburg und Neutraubling"
+            >
+              <svg
+                class="w-6 h-6 flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                ></path>
+              </svg>
+              Kontakt aufnehmen
+            </a>
           </div>
         </div>
       </div>
     </section>
   </div>
 </Layout>
+
+<script>
+  document.querySelectorAll(".faq-item").forEach((details) => {
+    const body = details.querySelector(".faq-body") as HTMLElement | null;
+    if (!body) return;
+    body.style.overflow = "hidden";
+    body.style.transition = "max-height 0.35s ease, opacity 0.25s ease";
+    if ((details as HTMLDetailsElement).open) {
+      body.style.maxHeight = "none";
+      body.style.opacity = "1";
+    } else {
+      body.style.maxHeight = "0px";
+      body.style.opacity = "0";
+    }
+    details.addEventListener("toggle", () => {
+      if ((details as HTMLDetailsElement).open) {
+        body.style.maxHeight = `${body.scrollHeight}px`;
+        body.style.opacity = "1";
+        const onEnd = (e: TransitionEvent) => {
+          if (e.propertyName === "max-height") {
+            body.style.maxHeight = "none";
+            body.removeEventListener("transitionend", onEnd);
+          }
+        };
+        body.addEventListener("transitionend", onEnd);
+      } else {
+        body.style.maxHeight = `${body.scrollHeight}px`;
+        requestAnimationFrame(() => {
+          body.style.maxHeight = "0px";
+          body.style.opacity = "0";
+        });
+      }
+    });
+  });
+</script>

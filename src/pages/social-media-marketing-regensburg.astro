@@ -70,7 +70,11 @@ const faqSchema = {
 const counters = [
   { target: "4", suffix: "", label: "Haupt-Plattformen" },
   { target: "500", suffix: "+", label: "Projekte umgesetzt" },
-  { target: "19", suffix: "", label: "Jahre am Markt" },
+  {
+    target: String(new Date().getFullYear() - 2007),
+    suffix: "",
+    label: "Jahre am Markt",
+  },
   { target: "100", suffix: "%", label: "lokaler Fokus" },
 ];
 
@@ -413,17 +417,33 @@ const kanaele = [
           </p>
         </div>
 
+        <svg width="0" height="0" class="absolute" aria-hidden="true">
+          <defs>
+            <linearGradient
+              id="sm-icon-grad"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="100%"
+            >
+              <stop offset="0%" stop-color="var(--color-brand-orange, #ec6a1b)"
+              ></stop>
+              <stop offset="100%" stop-color="#eab308"></stop>
+            </linearGradient>
+          </defs>
+        </svg>
+
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto"
         >
           {
             leistungen.map((l) => (
               <article class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-8 border border-gray-100">
-                <div class="w-12 h-12 rounded-xl border border-brand-orange/30 flex items-center justify-center mb-6">
+                <div class="w-14 h-14 rounded-full border-2 border-transparent [background:linear-gradient(white,white)_padding-box,linear-gradient(to_bottom_right,var(--color-brand-orange),#eab308)_border-box] flex items-center justify-center mb-6">
                   <svg
-                    class="w-6 h-6 text-brand-orange"
+                    class="w-7 h-7"
                     fill="none"
-                    stroke="currentColor"
+                    stroke="url(#sm-icon-grad)"
                     stroke-width="1.75"
                     viewBox="0 0 24 24"
                     aria-hidden="true"
@@ -553,7 +573,7 @@ const kanaele = [
             arbeitsschritte.map((s) => (
               <div class="text-center">
                 <div
-                  class="w-14 h-14 rounded-2xl bg-brand-orange text-white flex items-center justify-center mx-auto mb-6 text-xl font-bold"
+                  class="w-14 h-14 rounded-full border-2 border-transparent [background:linear-gradient(white,white)_padding-box,linear-gradient(to_bottom_right,var(--color-brand-orange),#eab308)_border-box] flex items-center justify-center mx-auto mb-6 text-brand-orange text-xl font-bold"
                   aria-hidden="true"
                 >
                   {s.step}
@@ -591,12 +611,12 @@ const kanaele = [
         >
           <div class="text-center">
             <div
-              class="w-14 h-14 rounded-2xl border border-brand-orange/30 flex items-center justify-center mx-auto mb-6"
+              class="w-14 h-14 rounded-full border-2 border-transparent [background:linear-gradient(#f9fafb,#f9fafb)_padding-box,linear-gradient(to_bottom_right,var(--color-brand-orange),#eab308)_border-box] flex items-center justify-center mx-auto mb-6"
             >
               <svg
-                class="w-7 h-7 text-brand-orange"
+                class="w-7 h-7"
                 fill="none"
-                stroke="currentColor"
+                stroke="url(#sm-icon-grad)"
                 stroke-width="1.75"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -619,12 +639,12 @@ const kanaele = [
 
           <div class="text-center">
             <div
-              class="w-14 h-14 rounded-2xl border border-brand-orange/30 flex items-center justify-center mx-auto mb-6"
+              class="w-14 h-14 rounded-full border-2 border-transparent [background:linear-gradient(#f9fafb,#f9fafb)_padding-box,linear-gradient(to_bottom_right,var(--color-brand-orange),#eab308)_border-box] flex items-center justify-center mx-auto mb-6"
             >
               <svg
-                class="w-7 h-7 text-brand-orange"
+                class="w-7 h-7"
                 fill="none"
-                stroke="currentColor"
+                stroke="url(#sm-icon-grad)"
                 stroke-width="1.75"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -647,12 +667,12 @@ const kanaele = [
 
           <div class="text-center">
             <div
-              class="w-14 h-14 rounded-2xl border border-brand-orange/30 flex items-center justify-center mx-auto mb-6"
+              class="w-14 h-14 rounded-full border-2 border-transparent [background:linear-gradient(#f9fafb,#f9fafb)_padding-box,linear-gradient(to_bottom_right,var(--color-brand-orange),#eab308)_border-box] flex items-center justify-center mx-auto mb-6"
             >
               <svg
-                class="w-7 h-7 text-brand-orange"
+                class="w-7 h-7"
                 fill="none"
-                stroke="currentColor"
+                stroke="url(#sm-icon-grad)"
                 stroke-width="1.75"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
@@ -740,10 +760,12 @@ const kanaele = [
               id="faq-heading"
               class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
             >
-              Häufig gestellte <span class="gradient-text-brand">Fragen</span>
+              Häufige Fragen zum <span class="gradient-text-brand"
+                >Social Media Marketing Regensburg</span
+              >
             </h2>
             <p class="text-xl text-gray-600">
-              Antworten rund um Social Media Marketing aus Regensburg
+              Ehrliche Antworten zu Plattformen, Kosten und Ergebnissen
             </p>
           </div>
 
@@ -811,7 +833,7 @@ const kanaele = [
             Community vergrößern. Kostenlose Strategieberatung – Preis
             individuell je nach Projekt, ohne versteckte Kosten.
           </p>
-          <div class="flex justify-center">
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={CALENDLY}
               target="_blank"
@@ -835,6 +857,27 @@ const kanaele = [
                 ></path>
               </svg>
               Termin vereinbaren
+            </a>
+            <a
+              href="/kontakt/"
+              class="inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl border-2 border-white/40 text-white font-bold text-lg hover:bg-white/10 hover:border-white transition-all duration-300 transform hover:-translate-y-1"
+              aria-label="Kontakt aufnehmen – ixOne Digitalagentur Regensburg und Neutraubling"
+            >
+              <svg
+                class="w-6 h-6 flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                ></path>
+              </svg>
+              Kontakt aufnehmen
             </a>
           </div>
         </div>
@@ -888,4 +931,37 @@ const kanaele = [
     animateCounters();
     document.addEventListener("astro:page-load", animateCounters);
   }
+
+  document.querySelectorAll(".faq-item").forEach((details) => {
+    const body = details.querySelector(".faq-body") as HTMLElement | null;
+    if (!body) return;
+    body.style.overflow = "hidden";
+    body.style.transition = "max-height 0.35s ease, opacity 0.25s ease";
+    if ((details as HTMLDetailsElement).open) {
+      body.style.maxHeight = "none";
+      body.style.opacity = "1";
+    } else {
+      body.style.maxHeight = "0px";
+      body.style.opacity = "0";
+    }
+    details.addEventListener("toggle", () => {
+      if ((details as HTMLDetailsElement).open) {
+        body.style.maxHeight = `${body.scrollHeight}px`;
+        body.style.opacity = "1";
+        const onEnd = (e: TransitionEvent) => {
+          if (e.propertyName === "max-height") {
+            body.style.maxHeight = "none";
+            body.removeEventListener("transitionend", onEnd);
+          }
+        };
+        body.addEventListener("transitionend", onEnd);
+      } else {
+        body.style.maxHeight = `${body.scrollHeight}px`;
+        requestAnimationFrame(() => {
+          body.style.maxHeight = "0px";
+          body.style.opacity = "0";
+        });
+      }
+    });
+  });
 </script>
