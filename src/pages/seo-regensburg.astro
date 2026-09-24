@@ -1,7 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ServiceCrosslinks from "../components/ServiceCrosslinks.astro";
+import { Image } from "astro:assets";
 import { areaServedFull } from "../data/structuredData";
+import localSeoMaps from "../assets/SEO/Local-SEO-Google-Maps-Ergebnis.webp";
+import coreWebVitals from "../assets/SEO/core-webvitals.webp";
 
 const CALENDLY =
   "https://calendly.com/senerbayram-info/30min?primary_color=ec6a1b";
@@ -85,6 +88,7 @@ const faqSchema = {
 const services = [
   {
     color: "from-blue-500 to-cyan-500",
+    grad: ["#3b82f6", "#06b6d4"],
     icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
     title: "OnPage SEO",
     desc: "<strong>Optimierung direkt auf Ihrer Website</strong> – Content, Struktur, Meta-Tags, interne Verlinkung und Ladezeiten. Das Fundament für nachhaltige Rankings.",
@@ -97,6 +101,7 @@ const services = [
   },
   {
     color: "from-green-500 to-emerald-500",
+    grad: ["#22c55e", "#10b981"],
     icon: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1",
     title: "OffPage SEO & Linkaufbau",
     desc: "<strong>Hochwertige Backlinks</strong> von relevanten Websites stärken Ihre Domain-Autorität und verbessern dauerhaft Ihre Positionen bei Google.",
@@ -109,6 +114,7 @@ const services = [
   },
   {
     color: "from-purple-500 to-pink-500",
+    grad: ["#a855f7", "#ec4899"],
     icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z",
     title: "Local SEO Regensburg",
     desc: "<strong>Sichtbarkeit bei lokalen Suchanfragen</strong> – Google Business Profile, lokale Keywords und Bewertungsmanagement für mehr regionale Kunden.",
@@ -121,6 +127,7 @@ const services = [
   },
   {
     color: "from-orange-500 to-yellow-500",
+    grad: ["#f97316", "#eab308"],
     icon: "M13 10V3L4 14h7v7l9-11h-7z",
     title: "Technisches SEO",
     desc: "<strong>Core Web Vitals, PageSpeed und Crawlbarkeit</strong> – technische Perfektion als Basis für Top-Rankings. Moderne Technologie, sauberer Code.",
@@ -133,6 +140,7 @@ const services = [
   },
   {
     color: "from-yellow-500 to-orange-500",
+    grad: ["#eab308", "#f97316"],
     icon: "M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z",
     title: "Keyword-Strategie",
     desc: "<strong>Professionelle Keyword-Recherche</strong> – Suchvolumen, Kaufintention und Wettbewerb analysieren, um die wertvollsten Rankings zu gewinnen.",
@@ -145,6 +153,7 @@ const services = [
   },
   {
     color: "from-indigo-500 to-purple-500",
+    grad: ["#6366f1", "#a855f7"],
     icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
     title: "SEO Audit & Monitoring",
     desc: "<strong>Umfassende Analyse und laufende Überwachung</strong> – technischer Audit, Ranking-Tracking und monatliche Reports mit klaren Handlungsempfehlungen.",
@@ -598,19 +607,39 @@ const preisPakete = [
           </p>
         </div>
 
+        <svg width="0" height="0" class="absolute" aria-hidden="true">
+          <defs>
+            {
+              services.map((service, i) => (
+                <linearGradient
+                  id={`seo-icon-grad-${i}`}
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
+                >
+                  <stop offset="0%" stop-color={service.grad[0]} />
+                  <stop offset="100%" stop-color={service.grad[1]} />
+                </linearGradient>
+              ))
+            }
+          </defs>
+        </svg>
+
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
         >
           {
-            services.map((service) => (
+            services.map((service, i) => (
               <article class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 p-8">
                 <div
-                  class={`w-14 h-14 bg-gradient-to-r ${service.color} rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
+                  class="w-14 h-14 rounded-full border-2 border-transparent flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300"
+                  style={`background: linear-gradient(white,white) padding-box, linear-gradient(to bottom right, ${service.grad[0]}, ${service.grad[1]}) border-box`}
                 >
                   <svg
-                    class="w-7 h-7 text-white"
+                    class="w-7 h-7"
                     fill="none"
-                    stroke="currentColor"
+                    stroke={`url(#seo-icon-grad-${i})`}
                     viewBox="0 0 24 24"
                     aria-hidden="true"
                   >
@@ -704,11 +733,11 @@ const preisPakete = [
                   ].map((item) => (
                     <li class="flex items-start gap-3">
                       <span
-                        class="flex-shrink-0 w-6 h-6 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mt-0.5"
+                        class="flex-shrink-0 w-6 h-6 rounded-full border-2 border-blue-500 flex items-center justify-center mt-0.5"
                         aria-hidden="true"
                       >
                         <svg
-                          class="w-3.5 h-3.5 text-white"
+                          class="w-3.5 h-3.5 text-blue-500"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -801,27 +830,14 @@ const preisPakete = [
             <div
               class="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-100 shadow-md hover:shadow-lg transition-shadow duration-300"
             >
-              <div
-                class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mb-5"
-              >
-                <svg
-                  class="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                  ></path>
-                </svg>
+              <div class="flex items-stretch gap-3 mb-4">
+                <span
+                  class="w-1 rounded-full bg-gradient-to-b from-purple-500 to-pink-500 flex-shrink-0"
+                  aria-hidden="true"></span>
+                <h3 class="text-xl font-bold text-gray-900">
+                  Google Business Profile
+                </h3>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-3">
-                Google Business Profile
-              </h3>
               <p class="text-gray-600 leading-relaxed">
                 Vollständige Optimierung Ihres <strong class="text-gray-800"
                   >Google Business Profils</strong
@@ -834,26 +850,14 @@ const preisPakete = [
             <div
               class="bg-gradient-to-br from-blue-50 to-white rounded-2xl p-8 border border-blue-100 shadow-md hover:shadow-lg transition-shadow duration-300"
             >
-              <div
-                class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mb-5"
-              >
-                <svg
-                  class="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                </svg>
+              <div class="flex items-stretch gap-3 mb-4">
+                <span
+                  class="w-1 rounded-full bg-gradient-to-b from-blue-500 to-cyan-500 flex-shrink-0"
+                  aria-hidden="true"></span>
+                <h3 class="text-xl font-bold text-gray-900">
+                  Lokale Keywords & Content
+                </h3>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-3">
-                Lokale Keywords & Content
-              </h3>
               <p class="text-gray-600 leading-relaxed">
                 Optimierung für Suchanfragen wie <strong class="text-gray-800"
                   >„Steuerberater Regensburg"</strong
@@ -866,27 +870,14 @@ const preisPakete = [
             <div
               class="bg-gradient-to-br from-green-50 to-white rounded-2xl p-8 border border-green-100 shadow-md hover:shadow-lg transition-shadow duration-300"
             >
-              <div
-                class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mb-5"
-              >
-                <svg
-                  class="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-                  ></path>
-                </svg>
+              <div class="flex items-stretch gap-3 mb-4">
+                <span
+                  class="w-1 rounded-full bg-gradient-to-b from-green-500 to-emerald-500 flex-shrink-0"
+                  aria-hidden="true"></span>
+                <h3 class="text-xl font-bold text-gray-900">
+                  Bewertungsmanagement
+                </h3>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-3">
-                Bewertungsmanagement
-              </h3>
               <p class="text-gray-600 leading-relaxed">
                 <strong class="text-gray-800"
                   >Google-Bewertungen sind ein Rankingfaktor</strong
@@ -897,29 +888,14 @@ const preisPakete = [
             </div>
           </div>
 
-          <div
-            class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-blue-900 to-indigo-900 aspect-[16/6] flex items-center justify-center shadow-2xl"
-          >
-            <div class="text-center text-white p-8">
-              <svg
-                class="w-12 h-12 mx-auto mb-3 opacity-40"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                ></path>
-              </svg>
-              <p class="text-sm opacity-50">
-                Local SEO Screenshot / Google Maps Ergebnis
-              </p>
-            </div>
-          </div>
+          <Image
+            src={localSeoMaps}
+            alt="Local SEO Ergebnis: Top-Platzierung eines ixOne Kunden in Google Maps und lokaler Suche Regensburg"
+            width={1400}
+            loading="lazy"
+            decoding="async"
+            class="w-full h-auto rounded-3xl shadow-2xl"
+          />
         </div>
       </div>
     </section>
@@ -949,25 +925,10 @@ const preisPakete = [
             <div
               class="bg-white rounded-2xl p-8 border border-blue-100 shadow-md"
             >
-              <div class="flex items-center gap-4 mb-6">
-                <div
-                  class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center flex-shrink-0"
-                >
-                  <svg
-                    class="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                    ></path>
-                  </svg>
-                </div>
+              <div class="flex items-stretch gap-3 mb-6">
+                <span
+                  class="w-1 rounded-full bg-gradient-to-b from-blue-500 to-cyan-500 flex-shrink-0"
+                  aria-hidden="true"></span>
                 <div>
                   <h3 class="text-xl font-bold text-gray-900">OnPage SEO</h3>
                   <p class="text-sm text-blue-600 font-medium">
@@ -1015,25 +976,10 @@ const preisPakete = [
             <div
               class="bg-white rounded-2xl p-8 border border-green-100 shadow-md"
             >
-              <div class="flex items-center gap-4 mb-6">
-                <div
-                  class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center flex-shrink-0"
-                >
-                  <svg
-                    class="w-6 h-6 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
-                    ></path>
-                  </svg>
-                </div>
+              <div class="flex items-stretch gap-3 mb-6">
+                <span
+                  class="w-1 rounded-full bg-gradient-to-b from-green-500 to-emerald-500 flex-shrink-0"
+                  aria-hidden="true"></span>
                 <div>
                   <h3 class="text-xl font-bold text-gray-900">OffPage SEO</h3>
                   <p class="text-sm text-green-600 font-medium">
@@ -1091,28 +1037,15 @@ const preisPakete = [
           <div
             class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
           >
-            <div
-              class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-indigo-900 to-blue-900 aspect-square flex items-center justify-center shadow-2xl order-2 lg:order-1"
-            >
-              <div class="text-center text-white p-8">
-                <svg
-                  class="w-16 h-16 mx-auto mb-4 opacity-30"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                </svg>
-                <p class="text-sm opacity-40">Core Web Vitals Screenshot</p>
-                <p class="text-xs opacity-25 mt-1">
-                  /assets/seo/technisches-seo-core-web-vitals-regensburg.webp
-                </p>
-              </div>
+            <div class="order-2 lg:order-1">
+              <Image
+                src={coreWebVitals}
+                alt="Core Web Vitals im grünen Bereich: PageSpeed Ergebnis einer von ixOne optimierten Website"
+                width={1000}
+                loading="lazy"
+                decoding="async"
+                class="w-full h-auto rounded-3xl shadow-2xl"
+              />
             </div>
 
             <div class="order-1 lg:order-2">
@@ -1207,24 +1140,10 @@ const preisPakete = [
             <div
               class="bg-white rounded-2xl p-8 border-2 border-blue-200 shadow-md"
             >
-              <div class="flex items-center gap-3 mb-6">
-                <div
-                  class="w-10 h-10 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0"
-                >
-                  <svg
-                    class="w-5 h-5 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                  </svg>
-                </div>
+              <div class="flex items-stretch gap-3 mb-6">
+                <span
+                  class="w-1 rounded-full bg-gradient-to-b from-blue-500 to-indigo-600 flex-shrink-0"
+                  aria-hidden="true"></span>
                 <div>
                   <h3 class="text-xl font-bold text-gray-900">
                     SEO – Organische Sichtbarkeit
@@ -1276,25 +1195,10 @@ const preisPakete = [
             <div
               class="bg-white rounded-2xl p-8 border-2 border-orange-200 shadow-md"
             >
-              <div class="flex items-center gap-3 mb-6">
-                <div
-                  class="w-10 h-10 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-xl flex items-center justify-center flex-shrink-0"
-                >
-                  <svg
-                    class="w-5 h-5 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-                    ></path>
-                  </svg>
-                </div>
+              <div class="flex items-stretch gap-3 mb-6">
+                <span
+                  class="w-1 rounded-full bg-gradient-to-b from-brand-orange to-yellow-500 flex-shrink-0"
+                  aria-hidden="true"></span>
                 <div>
                   <h3 class="text-xl font-bold text-gray-900">
                     Google Ads – Bezahlte Anzeigen
@@ -1398,7 +1302,7 @@ const preisPakete = [
             prozessSchritte.map((item) => (
               <div class="flex items-start gap-4 lg:gap-6">
                 <div
-                  class="flex-shrink-0 w-14 h-14 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg"
+                  class="flex-shrink-0 w-14 h-14 rounded-full border-2 border-transparent [background:linear-gradient(white,white)_padding-box,linear-gradient(to_bottom_right,#3b82f6,#6366f1)_border-box] flex items-center justify-center text-blue-600 font-bold text-xl"
                   aria-hidden="true"
                 >
                   {item.step}
@@ -1534,29 +1438,16 @@ const preisPakete = [
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div
-              class="relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 group"
+              class="relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300"
             >
-              <div
-                class="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"
-              >
-                <svg
-                  class="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                  ></path>
-                </svg>
+              <div class="flex items-stretch gap-3 mb-3">
+                <span
+                  class="w-1 rounded-full bg-gradient-to-b from-blue-500 to-indigo-600 flex-shrink-0"
+                  aria-hidden="true"></span>
+                <h3 class="text-xl font-bold text-gray-900">
+                  Lokale Expertise + moderner Tech-Stack
+                </h3>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-3">
-                Lokale Expertise + moderner Tech-Stack
-              </h3>
               <p class="text-gray-600 leading-relaxed">
                 Als Digitalagentur in Regensburg kennen wir den regionalen Markt
                 und Ihre Konkurrenz. Gleichzeitig setzen wir auf modernste
@@ -1566,29 +1457,16 @@ const preisPakete = [
             </div>
 
             <div
-              class="relative bg-gradient-to-br from-orange-50 to-white rounded-2xl p-8 border border-orange-100 shadow-md hover:shadow-xl transition-all duration-300 group"
+              class="relative bg-gradient-to-br from-orange-50 to-white rounded-2xl p-8 border border-orange-100 shadow-md hover:shadow-xl transition-all duration-300"
             >
-              <div
-                class="w-12 h-12 bg-gradient-to-r from-brand-orange to-yellow-500 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"
-              >
-                <svg
-                  class="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                  ></path>
-                </svg>
+              <div class="flex items-stretch gap-3 mb-3">
+                <span
+                  class="w-1 rounded-full bg-gradient-to-b from-brand-orange to-yellow-500 flex-shrink-0"
+                  aria-hidden="true"></span>
+                <h3 class="text-xl font-bold text-gray-900">
+                  SEO und Webdesign greifen ineinander
+                </h3>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-3">
-                SEO und Webdesign greifen ineinander
-              </h3>
               <p class="text-gray-600 leading-relaxed">
                 Viele Agenturen trennen Design und SEO – bei ixOne ist beides
                 integriert. Websites die wir entwickeln ranken von Tag 1. Keine
@@ -1598,29 +1476,16 @@ const preisPakete = [
             </div>
 
             <div
-              class="relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300 group"
+              class="relative bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 border border-gray-100 shadow-md hover:shadow-xl transition-all duration-300"
             >
-              <div
-                class="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-600 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300"
-              >
-                <svg
-                  class="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                  ></path>
-                </svg>
+              <div class="flex items-stretch gap-3 mb-3">
+                <span
+                  class="w-1 rounded-full bg-gradient-to-b from-green-500 to-teal-600 flex-shrink-0"
+                  aria-hidden="true"></span>
+                <h3 class="text-xl font-bold text-gray-900">
+                  Transparenz statt Agentur-Blabla
+                </h3>
               </div>
-              <h3 class="text-xl font-bold text-gray-900 mb-3">
-                Transparenz statt Agentur-Blabla
-              </h3>
               <p class="text-gray-600 leading-relaxed">
                 Monatliche Reports mit echten Zahlen: Rankings, Traffic,
                 Conversions. Sie sehen genau was Ihre Investition bringt und wo
@@ -1719,7 +1584,7 @@ const preisPakete = [
             Ansprechpartner. Starten Sie jetzt mit ixOne – der SEO Agentur aus
             Regensburg.
           </p>
-          <div class="flex justify-center">
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={CALENDLY}
               target="_blank"
@@ -1743,6 +1608,27 @@ const preisPakete = [
                 ></path>
               </svg>
               Termin vereinbaren
+            </a>
+            <a
+              href="/kontakt/"
+              class="inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl border-2 border-white/40 text-white font-bold text-lg hover:bg-white/10 hover:border-white transition-all duration-300 transform hover:-translate-y-1"
+              aria-label="Kontakt aufnehmen – ixOne Digitalagentur Regensburg und Neutraubling"
+            >
+              <svg
+                class="w-6 h-6 flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                ></path>
+              </svg>
+              Kontakt aufnehmen
             </a>
           </div>
         </div>
